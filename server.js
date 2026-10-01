@@ -15,7 +15,6 @@ const auditReceipts = new Map();
 
 const railsFile = path.join(
   __dirname,
-  "data",
   "production-payment-rails.json"
 );
 
