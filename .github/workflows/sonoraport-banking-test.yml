@@ -1,0 +1,85 @@
+name: SonoraPort Banking Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify SonoraPort Banking
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Show runtime
+        run: |
+          node --version
+          npm --version
+
+      - name: Validate package
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('package.json','utf8'))"
+
+      - name: Validate banking server
+        run: node --check server.js
+
+      - name: Start banking API
+        run: |
+          node server.js > server.log 2>&1 &
+          echo $! > server.pid
+
+          for i in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:3100/api/health > /dev/null; then
+              echo "SonoraPort Banking API is online"
+              exit 0
+            fi
+            sleep 1
+          done
+
+          echo "SonoraPort Banking API failed to start"
+          cat server.log || true
+          exit 1
+        env:
+          PORT: "3100"
+          HOST: "127.0.0.1"
+
+      - name: Test health
+        run: curl --fail --silent http://127.0.0.1:3100/api/health
+
+      - name: Test banking capabilities
+        run: curl --fail --silent http://127.0.0.1:3100/api/capabilities
+
+      - name: Test World Sandbox bridge
+        run: curl --fail --silent http://127.0.0.1:3100/api/world-sandbox/status
+
+      - name: Verify credentials are not exposed
+        run: |
+          RESPONSE="$(curl --fail --silent http://127.0.0.1:3100/api/world-sandbox/status)"
+          echo "$RESPONSE" | grep '"credentialRead": false'
+          echo "$RESPONSE" | grep '"unrestrictedTransfers": false'
+
+      - name: Stop banking API
+        if: always()
+        run: |
+          if [ -f server.pid ]; then
+            kill "$(cat server.pid)" || true
+          fi
+
+          echo "----- BANKING SERVER LOG -----"
+          cat server.log || true
