@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0.0",
+  "environment": "production",
+  "system": "sonoraport-banking",
+  "executionAuthority": "sonoraport-banking",
+
+  "rails": {
+    "visa": {
+      "enabled": true,
+      "mode": "production",
+      "status": "awaiting-provider-verification",
+      "credentialsSource": "environment",
+      "requiredEnvironment": [
+        "VISA_API_KEY",
+        "VISA_SHARED_SECRET",
+        "VISA_CLIENT_CERT_PATH",
+        "VISA_PRIVATE_KEY_PATH"
+      ]
+    },
+
+    "mastercard": {
+      "enabled": true,
+      "mode": "production",
+      "status": "awaiting-provider-verification",
+      "credentialsSource": "environment",
+      "requiredEnvironment": [
+        "MASTERCARD_CONSUMER_KEY",
+        "MASTERCARD_SIGNING_KEY_PATH",
+        "MASTERCARD_SIGNING_KEY_PASSWORD"
+      ]
+    },
+
+    "paypal": {
+      "enabled": true,
+      "mode": "production",
+      "status": "awaiting-provider-verification",
+      "authentication": "oauth2",
+      "credentialsSource": "environment",
+      "requiredEnvironment": [
+        "PAYPAL_CLIENT_ID",
+        "PAYPAL_CLIENT_SECRET"
+      ]
+    },
+
+    "venmo": {
+      "enabled": true,
+      "mode": "production",
+      "status": "awaiting-provider-verification",
+      "provider": "paypal",
+      "credentialsSource": "environment",
+      "requiredEnvironment": [
+        "PAYPAL_CLIENT_ID",
+        "PAYPAL_CLIENT_SECRET"
+      ]
+    },
+
+    "zelle": {
+      "enabled": true,
+      "mode": "production",
+      "status": "awaiting-partner-provisioning",
+      "credentialsSource": "authorized-partner",
+      "publicApiKeyAssumed": false
+    },
+
+    "jpmorganChase": {
+      "enabled": true,
+      "mode": "production",
+      "status": "awaiting-bank-provisioning",
+      "credentialsSource": "environment-or-bank-provisioned",
+      "requiredEnvironment": []
+    }
+  },
+
+  "controls": {
+    "realMoneyTarget": true,
+    "credentialsStoredInRepository": false,
+    "requireProviderAuthentication": true,
+    "requireProviderConfirmation": true,
+    "requireIdempotency": true,
+    "requireAuditReceipt": true,
+    "requireReconciliation": true,
+    "allowUnverifiedSettlement": false,
+    "reportSuccessBeforeConfirmation": false
+  }
+}
