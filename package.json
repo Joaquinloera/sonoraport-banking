@@ -1,0 +1,15 @@
+{
+  "name": "sonoraport-banking",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SonoraPort Banking secure banking runtime and World Sandbox bridge",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js",
+    "test": "node --check server.js"
+  }
+}
