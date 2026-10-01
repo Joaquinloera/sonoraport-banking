@@ -1,74 +1,288 @@
 /**
- * SonoraPort Banking — Secure Banking Runtime
+ * SonoraPort Banking — Production Banking Runtime
  * Node.js 20+
  *
- * Includes:
- * - Core banking status API
- * - World Sandbox status boundary
- * - MATCHA MANITA server-to-server payment-intent boundary
+ * Production targets:
+ * - Visa
+ * - Mastercard
+ * - PayPal
+ * - Venmo
+ * - Zelle
+ * - JPMorganChase
  *
- * IMPORTANT:
- * - No banking credentials are returned to clients.
+ * MATCHA MANITA:
+ * - Server-to-server payment intent boundary
+ *
+ * Security:
+ * - Credentials remain server-side.
+ * - Credentials are never returned through APIs.
+ * - Credential presence does not equal provider verification.
  * - Payment success is never fabricated.
- * - Real settlement remains disabled until explicitly configured.
  */
 
 const http = require("http");
 const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
 
-const PORT = Number(process.env.PORT) || 3100;
-const HOST = process.env.HOST || "0.0.0.0";
+const PORT =
+  Number(process.env.PORT) || 3100;
 
-const SERVICE_NAME = "sonoraport-banking";
-const API_VERSION = "1.1.0";
+const HOST =
+  process.env.HOST || "0.0.0.0";
 
-const MAX_BODY_BYTES = 64 * 1024;
+const SERVICE_NAME =
+  "sonoraport-banking";
+
+const API_VERSION =
+  "1.2.0";
+
+const MAX_BODY_BYTES =
+  64 * 1024;
+
+const PRODUCTION_RAILS_FILE =
+  path.join(
+    __dirname,
+    "data",
+    "production-payment-rails.json"
+  );
 
 /*
- * In-memory sandbox storage.
+ * Payment-intent storage.
  *
- * Production deployment should replace this with durable
- * transactional storage before real settlement is enabled.
+ * This is process-local storage.
+ * Durable transactional storage is required
+ * before production settlement execution.
  */
-const paymentIntents = new Map();
-const idempotencyIndex = new Map();
-const auditReceipts = new Map();
+const paymentIntents =
+  new Map();
 
-function sendJSON(res, statusCode, data) {
-  res.writeHead(statusCode, {
-    "Content-Type": "application/json; charset=utf-8",
-    "Cache-Control": "no-store",
-    "X-Content-Type-Options": "nosniff"
-  });
+const idempotencyIndex =
+  new Map();
 
-  res.end(JSON.stringify(data, null, 2));
+const auditReceipts =
+  new Map();
+
+/*
+ * Load production payment-rail configuration.
+ */
+function loadProductionRails() {
+  const registry =
+    JSON.parse(
+      fs.readFileSync(
+        PRODUCTION_RAILS_FILE,
+        "utf8"
+      )
+    );
+
+  if (
+    registry.environment !==
+      "production" ||
+    registry.system !==
+      "sonoraport-banking" ||
+    registry.executionAuthority !==
+      "sonoraport-banking"
+  ) {
+    throw new Error(
+      "Invalid production payment rails configuration."
+    );
+  }
+
+  if (
+    !registry.rails ||
+    typeof registry.rails !== "object"
+  ) {
+    throw new Error(
+      "Production payment rails are missing."
+    );
+  }
+
+  return registry;
+}
+
+const productionRails =
+  loadProductionRails();
+
+/*
+ * Determine whether required environment
+ * configuration exists for a rail.
+ *
+ * This never exposes credential values.
+ */
+function railRuntimeStatus(id) {
+  const rail =
+    productionRails.rails[id];
+
+  if (
+    !rail ||
+    rail.enabled !== true
+  ) {
+    return {
+      enabled: false,
+      environment: "production",
+      configured: false,
+      verified: false,
+      status: "disabled"
+    };
+  }
+
+  const requiredEnvironment =
+    Array.isArray(
+      rail.requiredEnvironment
+    )
+      ? rail.requiredEnvironment
+      : [];
+
+  /*
+   * Rails without declared environment
+   * credentials require external provisioning.
+   */
+  if (
+    requiredEnvironment.length === 0
+  ) {
+    return {
+      enabled: true,
+      environment: "production",
+      configured: false,
+      verified: false,
+      status:
+        rail.status ||
+        "awaiting-provider-provisioning"
+    };
+  }
+
+  const configured =
+    requiredEnvironment.every(
+      variableName => {
+        const value =
+          process.env[variableName];
+
+        return (
+          typeof value === "string" &&
+          value.trim().length > 0
+        );
+      }
+    );
+
+  return {
+    enabled: true,
+    environment: "production",
+    configured,
+    verified: false,
+    status: configured
+      ? "credentials-present-awaiting-provider-verification"
+      : (
+          rail.status ||
+          "awaiting-production-credentials"
+        )
+  };
+}
+
+function productionRailStatus() {
+  return {
+    visa:
+      railRuntimeStatus("visa"),
+
+    mastercard:
+      railRuntimeStatus(
+        "mastercard"
+      ),
+
+    paypal:
+      railRuntimeStatus("paypal"),
+
+    venmo:
+      railRuntimeStatus("venmo"),
+
+    zelle:
+      railRuntimeStatus("zelle"),
+
+    jpmorganChase:
+      railRuntimeStatus(
+        "jpmorganChase"
+      )
+  };
+}
+
+function sendJSON(
+  res,
+  statusCode,
+  data
+) {
+  res.writeHead(
+    statusCode,
+    {
+      "Content-Type":
+        "application/json; charset=utf-8",
+
+      "Cache-Control":
+        "no-store",
+
+      "X-Content-Type-Options":
+        "nosniff"
+    }
+  );
+
+  res.end(
+    JSON.stringify(
+      data,
+      null,
+      2
+    )
+  );
 }
 
 function requestId() {
   return crypto.randomUUID();
 }
 
-function timingSafeEqualString(a, b) {
-  const left = Buffer.from(String(a || ""));
-  const right = Buffer.from(String(b || ""));
+function timingSafeEqualString(
+  a,
+  b
+) {
+  const left =
+    Buffer.from(
+      String(a || "")
+    );
 
-  if (left.length !== right.length) {
+  const right =
+    Buffer.from(
+      String(b || "")
+    );
+
+  if (
+    left.length !==
+    right.length
+  ) {
     return false;
   }
 
-  return crypto.timingSafeEqual(left, right);
+  return crypto.timingSafeEqual(
+    left,
+    right
+  );
 }
 
+/*
+ * Legacy generic settlement flags remain
+ * supported for compatibility, but they
+ * cannot independently establish that a
+ * production provider has verified a payment.
+ */
 function settlementConfigured() {
   return Boolean(
-    process.env.BANKING_SETTLEMENT_PROVIDER &&
-    process.env.BANKING_SETTLEMENT_CREDENTIAL
+    process.env
+      .BANKING_SETTLEMENT_PROVIDER &&
+    process.env
+      .BANKING_SETTLEMENT_CREDENTIAL
   );
 }
 
 function realSettlementAuthorized() {
   return (
-    process.env.BANKING_REAL_SETTLEMENT_AUTHORIZED === "true" &&
+    process.env
+      .BANKING_REAL_SETTLEMENT_AUTHORIZED ===
+      "true" &&
     settlementConfigured()
   );
 }
@@ -82,6 +296,15 @@ function bankingCapabilities() {
     statements: true,
     disputes: true,
 
+    environment:
+      "production",
+
+    productionTarget:
+      true,
+
+    productionRails:
+      productionRailStatus(),
+
     worldSandboxBridge: {
       enabled: true,
       authenticated: true
@@ -89,21 +312,36 @@ function bankingCapabilities() {
 
     matchaManita: {
       paymentIntents: true,
-      sandboxMode: !realSettlementAuthorized(),
+
       realSettlementAuthorized:
-        realSettlementAuthorized()
+        realSettlementAuthorized(),
+
+      providerConfirmationRequired:
+        true
     },
 
     externalSettlement: {
-      configured: settlementConfigured(),
-      authorized: realSettlementAuthorized()
+      configured:
+        settlementConfigured(),
+
+      authorized:
+        realSettlementAuthorized(),
+
+      providerConfirmationRequired:
+        true,
+
+      unverifiedSettlementAllowed:
+        false
     }
   };
 }
 
-function authenticateMatchaManita(req) {
+function authenticateMatchaManita(
+  req
+) {
   const configuredToken =
-    process.env.MATCHA_MANITA_BANKING_TOKEN;
+    process.env
+      .MATCHA_MANITA_BANKING_TOKEN;
 
   if (!configuredToken) {
     return {
@@ -117,11 +355,16 @@ function authenticateMatchaManita(req) {
   const authorization =
     req.headers.authorization || "";
 
-  if (!authorization.startsWith("Bearer ")) {
+  if (
+    !authorization.startsWith(
+      "Bearer "
+    )
+  ) {
     return {
       ok: false,
       statusCode: 401,
-      error: "Authentication required."
+      error:
+        "Authentication required."
     };
   }
 
@@ -137,7 +380,8 @@ function authenticateMatchaManita(req) {
     return {
       ok: false,
       statusCode: 403,
-      error: "Invalid banking authorization."
+      error:
+        "Invalid banking authorization."
     };
   }
 
@@ -147,63 +391,92 @@ function authenticateMatchaManita(req) {
 }
 
 async function readJSONBody(req) {
-  return new Promise((resolve, reject) => {
-    let body = "";
-    let size = 0;
-    let settled = false;
+  return new Promise(
+    (resolve, reject) => {
+      let body = "";
+      let size = 0;
+      let settled = false;
 
-    req.on("data", chunk => {
-      if (settled) return;
+      req.on(
+        "data",
+        chunk => {
+          if (settled) {
+            return;
+          }
 
-      size += chunk.length;
+          size += chunk.length;
 
-      if (size > MAX_BODY_BYTES) {
-        settled = true;
+          if (
+            size >
+            MAX_BODY_BYTES
+          ) {
+            settled = true;
 
-        reject(
-          new Error("REQUEST_BODY_TOO_LARGE")
-        );
+            reject(
+              new Error(
+                "REQUEST_BODY_TOO_LARGE"
+              )
+            );
 
-        req.destroy();
-        return;
-      }
+            req.destroy();
 
-      body += chunk;
-    });
+            return;
+          }
 
-    req.on("end", () => {
-      if (settled) return;
+          body += chunk;
+        }
+      );
 
-      settled = true;
+      req.on(
+        "end",
+        () => {
+          if (settled) {
+            return;
+          }
 
-      if (!body) {
-        resolve({});
-        return;
-      }
+          settled = true;
 
-      try {
-        resolve(JSON.parse(body));
-      } catch {
-        reject(
-          new Error("INVALID_JSON")
-        );
-      }
-    });
+          if (!body) {
+            resolve({});
+            return;
+          }
 
-    req.on("error", error => {
-      if (!settled) {
-        settled = true;
-        reject(error);
-      }
-    });
-  });
+          try {
+            resolve(
+              JSON.parse(body)
+            );
+          } catch {
+            reject(
+              new Error(
+                "INVALID_JSON"
+              )
+            );
+          }
+        }
+      );
+
+      req.on(
+        "error",
+        error => {
+          if (!settled) {
+            settled = true;
+            reject(error);
+          }
+        }
+      );
+    }
+  );
 }
 
-function validateCreateIntent(body) {
+function validateCreateIntent(
+  body
+) {
   const errors = [];
 
   if (
-    !Number.isInteger(body.amount) ||
+    !Number.isInteger(
+      body.amount
+    ) ||
     body.amount <= 0
   ) {
     errors.push(
@@ -212,8 +485,11 @@ function validateCreateIntent(body) {
   }
 
   if (
-    typeof body.currency !== "string" ||
-    !/^[A-Za-z]{3}$/.test(body.currency)
+    typeof body.currency !==
+      "string" ||
+    !/^[A-Za-z]{3}$/.test(
+      body.currency
+    )
   ) {
     errors.push(
       "currency must be a three-letter currency code."
@@ -221,9 +497,11 @@ function validateCreateIntent(body) {
   }
 
   if (
-    body.orderId !== undefined &&
+    body.orderId !==
+      undefined &&
     (
-      typeof body.orderId !== "string" ||
+      typeof body.orderId !==
+        "string" ||
       body.orderId.length > 128
     )
   ) {
@@ -233,9 +511,11 @@ function validateCreateIntent(body) {
   }
 
   if (
-    body.description !== undefined &&
+    body.description !==
+      undefined &&
     (
-      typeof body.description !== "string" ||
+      typeof body.description !==
+        "string" ||
       body.description.length > 500
     )
   ) {
@@ -250,22 +530,48 @@ function validateCreateIntent(body) {
 function hashObject(value) {
   return crypto
     .createHash("sha256")
-    .update(JSON.stringify(value))
+    .update(
+      JSON.stringify(value)
+    )
     .digest("hex");
 }
 
-function publicPaymentIntent(intent) {
+function publicPaymentIntent(
+  intent
+) {
   return {
-    id: intent.id,
-    object: "payment_intent",
-    amount: intent.amount,
-    currency: intent.currency,
-    orderId: intent.orderId,
-    description: intent.description,
-    status: intent.status,
-    mode: intent.mode,
-    createdAt: intent.createdAt,
-    updatedAt: intent.updatedAt
+    id:
+      intent.id,
+
+    object:
+      "payment_intent",
+
+    amount:
+      intent.amount,
+
+    currency:
+      intent.currency,
+
+    orderId:
+      intent.orderId,
+
+    description:
+      intent.description,
+
+    status:
+      intent.status,
+
+    environment:
+      intent.environment,
+
+    settlementStatus:
+      intent.settlementStatus,
+
+    createdAt:
+      intent.createdAt,
+
+    updatedAt:
+      intent.updatedAt
   };
 }
 
@@ -292,8 +598,11 @@ function createAuditReceipt({
     paymentStatus:
       intent.status,
 
-    mode:
-      intent.mode,
+    environment:
+      intent.environment,
+
+    settlementStatus:
+      intent.settlementStatus,
 
     requestId:
       reqId,
@@ -312,7 +621,10 @@ function createAuditReceipt({
   return receipt;
 }
 
-function getIntentId(pathname, suffix = "") {
+function getIntentId(
+  pathname,
+  suffix = ""
+) {
   const escapedSuffix =
     suffix.replace(
       /[.*+?^${}()|[\]\\]/g,
@@ -328,7 +640,9 @@ function getIntentId(pathname, suffix = "") {
     pathname.match(expression);
 
   return match
-    ? decodeURIComponent(match[1])
+    ? decodeURIComponent(
+        match[1]
+      )
     : null;
 }
 
@@ -339,7 +653,9 @@ async function handleMatchaManita(
   reqId
 ) {
   const auth =
-    authenticateMatchaManita(req);
+    authenticateMatchaManita(
+      req
+    );
 
   if (!auth.ok) {
     return sendJSON(
@@ -347,8 +663,10 @@ async function handleMatchaManita(
       auth.statusCode,
       {
         ok: false,
-        error: auth.error,
-        requestId: reqId
+        error:
+          auth.error,
+        requestId:
+          reqId
       }
     );
   }
@@ -362,10 +680,13 @@ async function handleMatchaManita(
       "/api/matcha-manita/payment-intents"
   ) {
     const idempotencyKey =
-      req.headers["idempotency-key"];
+      req.headers[
+        "idempotency-key"
+      ];
 
     if (
-      typeof idempotencyKey !== "string" ||
+      typeof idempotencyKey !==
+        "string" ||
       idempotencyKey.length < 8 ||
       idempotencyKey.length > 255
     ) {
@@ -374,9 +695,12 @@ async function handleMatchaManita(
         400,
         {
           ok: false,
+
           error:
             "A valid Idempotency-Key header is required.",
-          requestId: reqId
+
+          requestId:
+            reqId
         }
       );
     }
@@ -385,7 +709,9 @@ async function handleMatchaManita(
       await readJSONBody(req);
 
     const errors =
-      validateCreateIntent(body);
+      validateCreateIntent(
+        body
+      );
 
     if (errors.length) {
       return sendJSON(
@@ -393,23 +719,35 @@ async function handleMatchaManita(
         400,
         {
           ok: false,
+
           error:
             "Invalid payment intent request.",
-          details: errors,
-          requestId: reqId
+
+          details:
+            errors,
+
+          requestId:
+            reqId
         }
       );
     }
 
     const requestFingerprint =
       hashObject({
-        amount: body.amount,
+        amount:
+          body.amount,
+
         currency:
-          body.currency.toUpperCase(),
+          body.currency
+            .toUpperCase(),
+
         orderId:
-          body.orderId || null,
+          body.orderId ||
+          null,
+
         description:
-          body.description || null
+          body.description ||
+          null
       });
 
     const existing =
@@ -427,9 +765,12 @@ async function handleMatchaManita(
           409,
           {
             ok: false,
+
             error:
               "Idempotency key was already used with a different request.",
-            requestId: reqId
+
+            requestId:
+              reqId
           }
         );
       }
@@ -444,12 +785,17 @@ async function handleMatchaManita(
         200,
         {
           ok: true,
-          idempotentReplay: true,
+
+          idempotentReplay:
+            true,
+
           paymentIntent:
             publicPaymentIntent(
               existingIntent
             ),
-          requestId: reqId
+
+          requestId:
+            reqId
         }
       );
     }
@@ -465,24 +811,32 @@ async function handleMatchaManita(
         body.amount,
 
       currency:
-        body.currency.toUpperCase(),
+        body.currency
+          .toUpperCase(),
 
       orderId:
-        body.orderId || null,
+        body.orderId ||
+        null,
 
       description:
-        body.description || null,
+        body.description ||
+        null,
 
       /*
-       * Creating an intent does NOT mean money moved.
+       * Production target does not mean
+       * payment authorization occurred.
        */
       status:
         "requires_authorization",
 
-      mode:
-        realSettlementAuthorized()
-          ? "live"
-          : "sandbox",
+      environment:
+        "production",
+
+      /*
+       * No provider has confirmed settlement.
+       */
+      settlementStatus:
+        "not_executed",
 
       createdAt:
         now,
@@ -499,7 +853,9 @@ async function handleMatchaManita(
     idempotencyIndex.set(
       idempotencyKey,
       {
-        intentId: intent.id,
+        intentId:
+          intent.id,
+
         fingerprint:
           requestFingerprint
       }
@@ -523,12 +879,17 @@ async function handleMatchaManita(
         ok: true,
 
         paymentIntent:
-          publicPaymentIntent(intent),
+          publicPaymentIntent(
+            intent
+          ),
 
         auditReceiptId:
           receipt.receiptId,
 
         settlementExecuted:
+          false,
+
+        providerConfirmed:
           false,
 
         requestId:
@@ -538,15 +899,21 @@ async function handleMatchaManita(
   }
 
   /*
-   * GET /api/matcha-manita/payment-intents/:id
+   * GET payment intent
    */
-  if (req.method === "GET") {
+  if (
+    req.method === "GET"
+  ) {
     const intentId =
-      getIntentId(url.pathname);
+      getIntentId(
+        url.pathname
+      );
 
     if (intentId) {
       const intent =
-        paymentIntents.get(intentId);
+        paymentIntents.get(
+          intentId
+        );
 
       if (!intent) {
         return sendJSON(
@@ -556,7 +923,8 @@ async function handleMatchaManita(
             ok: false,
             error:
               "Payment intent not found.",
-            requestId: reqId
+            requestId:
+              reqId
           }
         );
       }
@@ -566,18 +934,25 @@ async function handleMatchaManita(
         200,
         {
           ok: true,
+
           paymentIntent:
-            publicPaymentIntent(intent),
-          requestId: reqId
+            publicPaymentIntent(
+              intent
+            ),
+
+          requestId:
+            reqId
         }
       );
     }
   }
 
   /*
-   * POST /api/matcha-manita/payment-intents/:id/cancel
+   * Cancel payment intent
    */
-  if (req.method === "POST") {
+  if (
+    req.method === "POST"
+  ) {
     const intentId =
       getIntentId(
         url.pathname,
@@ -586,7 +961,9 @@ async function handleMatchaManita(
 
     if (intentId) {
       const intent =
-        paymentIntents.get(intentId);
+        paymentIntents.get(
+          intentId
+        );
 
       if (!intent) {
         return sendJSON(
@@ -594,36 +971,45 @@ async function handleMatchaManita(
           404,
           {
             ok: false,
+
             error:
               "Payment intent not found.",
-            requestId: reqId
+
+            requestId:
+              reqId
           }
         );
       }
 
       if (
-        intent.status === "succeeded"
+        intent.status ===
+        "succeeded"
       ) {
         return sendJSON(
           res,
           409,
           {
             ok: false,
+
             error:
               "A succeeded payment intent cannot be cancelled.",
-            requestId: reqId
+
+            requestId:
+              reqId
           }
         );
       }
 
       if (
-        intent.status !== "cancelled"
+        intent.status !==
+        "cancelled"
       ) {
         intent.status =
           "cancelled";
 
         intent.updatedAt =
-          new Date().toISOString();
+          new Date()
+            .toISOString();
 
         createAuditReceipt({
           action:
@@ -643,7 +1029,9 @@ async function handleMatchaManita(
           ok: true,
 
           paymentIntent:
-            publicPaymentIntent(intent),
+            publicPaymentIntent(
+              intent
+            ),
 
           requestId:
             reqId
@@ -653,9 +1041,11 @@ async function handleMatchaManita(
   }
 
   /*
-   * GET /api/matcha-manita/payment-intents/:id/receipt
+   * Get audit receipt
    */
-  if (req.method === "GET") {
+  if (
+    req.method === "GET"
+  ) {
     const intentId =
       getIntentId(
         url.pathname,
@@ -664,7 +1054,9 @@ async function handleMatchaManita(
 
     if (intentId) {
       const intent =
-        paymentIntents.get(intentId);
+        paymentIntents.get(
+          intentId
+        );
 
       if (!intent) {
         return sendJSON(
@@ -672,15 +1064,20 @@ async function handleMatchaManita(
           404,
           {
             ok: false,
+
             error:
               "Payment intent not found.",
-            requestId: reqId
+
+            requestId:
+              reqId
           }
         );
       }
 
       const receipt =
-        auditReceipts.get(intentId);
+        auditReceipts.get(
+          intentId
+        );
 
       if (!receipt) {
         return sendJSON(
@@ -688,9 +1085,12 @@ async function handleMatchaManita(
           404,
           {
             ok: false,
+
             error:
               "Audit receipt not found.",
-            requestId: reqId
+
+            requestId:
+              reqId
           }
         );
       }
@@ -700,8 +1100,11 @@ async function handleMatchaManita(
         200,
         {
           ok: true,
+
           receipt,
-          requestId: reqId
+
+          requestId:
+            reqId
         }
       );
     }
@@ -712,16 +1115,22 @@ async function handleMatchaManita(
     404,
     {
       ok: false,
+
       error:
         "MATCHA MANITA banking endpoint not found.",
-      requestId: reqId
+
+      requestId:
+        reqId
     }
   );
 }
 
 const server =
   http.createServer(
-    async (req, res) => {
+    async (
+      req,
+      res
+    ) => {
       const id =
         requestId();
 
@@ -746,7 +1155,8 @@ const server =
         }
 
         if (
-          req.method !== "GET"
+          req.method !==
+          "GET"
         ) {
           return sendJSON(
             res,
@@ -754,12 +1164,17 @@ const server =
             {
               error:
                 "Method not allowed",
-              requestId: id
+
+              requestId:
+                id
             }
           );
         }
 
-        if (url.pathname === "/") {
+        if (
+          url.pathname ===
+          "/"
+        ) {
           return sendJSON(
             res,
             200,
@@ -772,6 +1187,9 @@ const server =
 
               version:
                 API_VERSION,
+
+              environment:
+                "production",
 
               requestId:
                 id
@@ -796,11 +1214,15 @@ const server =
               version:
                 API_VERSION,
 
+              environment:
+                "production",
+
               runtime:
                 process.version,
 
               timestamp:
-                new Date().toISOString(),
+                new Date()
+                  .toISOString(),
 
               requestId:
                 id
@@ -819,11 +1241,15 @@ const server =
               service:
                 SERVICE_NAME,
 
+              environment:
+                "production",
+
               capabilities:
                 bankingCapabilities(),
 
               timestamp:
-                new Date().toISOString(),
+                new Date()
+                  .toISOString(),
 
               requestId:
                 id
@@ -831,119 +1257,6 @@ const server =
           );
         }
 
-        if (
-          url.pathname ===
-          "/api/world-sandbox/status"
-        ) {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
-
-              bridge:
-                "worldsandbox13",
-
-              status:
-                "available",
-
-              authority: {
-                statusRead: true,
-                capabilityRead: true,
-                credentialRead: false,
-                unrestrictedTransfers:
-                  false
-              },
-
-              timestamp:
-                new Date().toISOString(),
-
-              requestId:
-                id
-            }
-          );
-        }
-
-        return sendJSON(
-          res,
-          404,
-          {
-            error:
-              "Endpoint not found",
-            requestId:
-              id
-          }
-        );
-
-      } catch (error) {
-        console.error(
-          "SONORAPORT BANKING ERROR:",
-          error
-        );
-
-        if (
-          error.message ===
-          "INVALID_JSON"
-        ) {
-          return sendJSON(
-            res,
-            400,
-            {
-              ok: false,
-              error:
-                "Invalid JSON request body.",
-              requestId:
-                id
-            }
-          );
-        }
-
-        if (
-          error.message ===
-          "REQUEST_BODY_TOO_LARGE"
-        ) {
-          return sendJSON(
-            res,
-            413,
-            {
-              ok: false,
-              error:
-                "Request body too large.",
-              requestId:
-                id
-            }
-          );
-        }
-
-        return sendJSON(
-          res,
-          500,
-          {
-            ok: false,
-            error:
-              "Internal banking service error.",
-            requestId:
-              id
-          }
-        );
-      }
-    }
-  );
-
-server.listen(
-  PORT,
-  HOST,
-  () => {
-    console.log(
-      `SONORAPORT BANKING ONLINE — ${HOST}:${PORT}`
-    );
-  }
-);
-
-module.exports = {
-  server,
-  bankingCapabilities,
-  authenticateMatchaManita,
-  handleMatchaManita
-};
+        /*
+         * Production rail readiness.
+     
