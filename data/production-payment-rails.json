@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0.0",
+  "registry": {
+    "id": "sonoraport-production-payment-rails",
+    "name": "SonoraPort Production Payment Rails",
+    "environment": "production",
+    "registryAuthority": "WorldSandbox13",
+    "executionAuthority": "sonoraport-banking",
+    "credentialsStoredInRepository": false
+  },
+
+  "rails": [
+    {
+      "id": "visa",
+      "name": "Visa",
+      "environment": "production",
+      "connectionState": "awaiting-production-credentials",
+      "executionAuthority": "sonoraport-banking",
+      "authentication": {
+        "credentialsSource": "environment",
+        "supportedMethods": [
+          "mtls",
+          "x-pay-token"
+        ],
+        "environmentVariables": [
+          "VISA_API_KEY",
+          "VISA_SHARED_SECRET",
+          "VISA_CLIENT_CERT_PATH",
+          "VISA_PRIVATE_KEY_PATH"
+        ]
+      },
+      "verification": {
+        "required": true,
+        "verified": false
+      }
+    },
+
+    {
+      "id": "mastercard",
+      "name": "Mastercard",
+      "environment": "production",
+      "connectionState": "awaiting-production-credentials",
+      "executionAuthority": "sonoraport-banking",
+      "authentication": {
+        "credentialsSource": "environment",
+        "environmentVariables": [
+          "MASTERCARD_CONSUMER_KEY",
+          "MASTERCARD_SIGNING_KEY_PATH",
+          "MASTERCARD_SIGNING_KEY_PASSWORD"
+        ]
+      },
+      "verification": {
+        "required": true,
+        "verified": false
+      }
+    },
+
+    {
+      "id": "paypal",
+      "name": "PayPal",
+      "environment": "production",
+      "connectionState": "awaiting-production-credentials",
+      "executionAuthority": "sonoraport-banking",
+      "authentication": {
+        "type": "oauth2",
+        "credentialsSource": "environment",
+        "environmentVariables": [
+          "PAYPAL_CLIENT_ID",
+          "PAYPAL_CLIENT_SECRET"
+        ]
+      },
+      "verification": {
+        "required": true,
+        "verified": false
+      }
+    },
+
+    {
+      "id": "venmo",
+      "name": "Venmo",
+      "environment": "production",
+      "connectionState": "awaiting-production-authorization",
+      "executionAuthority": "sonoraport-banking",
+      "provider": "paypal",
+      "authentication": {
+        "type": "paypal-platform",
+        "credentialsSource": "environment",
+        "environmentVariables": [
+          "PAYPAL_CLIENT_ID",
+          "PAYPAL_CLIENT_SECRET"
+        ]
+      },
+      "verification": {
+        "required": true,
+        "verified": false
+      }
+    },
+
+    {
+      "id": "zelle",
+      "name": "Zelle",
+      "environment": "production",
+      "connectionState": "awaiting-partner-provisioning",
+      "executionAuthority": "sonoraport-banking",
+      "authentication": {
+        "type": "financial-institution-or-technology-partner",
+        "credentialsSource": "partner-provisioned",
+        "publicApiKeyAssumed": false
+      },
+      "verification": {
+        "required": true,
+        "verified": false
+      }
+    }
+  ],
+
+  "productionControls": {
+    "realMoneyEnvironment": true,
+    "allowUnverifiedSettlement": false,
+    "requireProviderAuthorization": true,
+    "requireProviderConfirmation": true,
+    "requireIdempotency": true,
+    "requireAuditReceipt": true,
+    "requireReconciliation": true,
+    "secretsAllowedInRepository": false
+  },
+
+  "settlementPolicy": {
+    "requestedEnvironment": "production",
+    "providerConfirmationRequired": true,
+    "reportSuccessBeforeProviderConfirmation": false,
+    "fabricatedSettlementStatusProhibited": true
+  }
+}
