@@ -2,11 +2,12 @@ const http = require("http");
 const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
+const paypalProduction = require("./paypal-production-adapter");
 
 const PORT = Number(process.env.PORT) || 3100;
 const HOST = process.env.HOST || "0.0.0.0";
 const SERVICE_NAME = "sonoraport-banking";
-const API_VERSION = "1.2.3";
+const API_VERSION = "1.3.0";
 const MAX_BODY_BYTES = 65536;
 
 const paymentIntents = new Map();
@@ -144,6 +145,9 @@ function bankingCapabilities() {
       productionRails.controls?.realMoneyTarget === true,
 
     productionRails: productionRailStatus(),
+
+    paypalProduction:
+      paypalProduction.configurationStatus(),
 
     worldSandboxBridge: {
       enabled: true,
@@ -352,7 +356,210 @@ function intentIdFromPath(pathname, suffix = "") {
   return decodeURIComponent(rest);
 }
 
-async function handleMatcha(req, res, url, requestId) {
+async function handlePayPalProduction(
+  req,
+  res,
+  url,
+  requestId
+) {
+  const auth = authenticate(req);
+
+  if (!auth.ok) {
+    return sendJSON(res, auth.code, {
+      ok: false,
+      error: auth.error,
+      requestId
+    });
+  }
+
+  if (
+    req.method === "GET" &&
+    url.pathname === "/api/paypal/status"
+  ) {
+    return sendJSON(res, 200, {
+      ok: true,
+      paypal:
+        paypalProduction.configurationStatus(),
+      requestId
+    });
+  }
+
+  if (
+    req.method === "POST" &&
+    url.pathname === "/api/paypal/orders"
+  ) {
+    const key =
+      req.headers["idempotency-key"];
+
+    if (
+      typeof key !== "string" ||
+      key.length < 8 ||
+      key.length > 255
+    ) {
+      return sendJSON(res, 400, {
+        ok: false,
+        error:
+          "A valid Idempotency-Key header is required.",
+        requestId
+      });
+    }
+
+    const body = await readJSON(req);
+
+    if (
+      !Number.isInteger(body.amount) ||
+      body.amount <= 0
+    ) {
+      return sendJSON(res, 400, {
+        ok: false,
+        error:
+          "amount must be a positive integer in minor currency units.",
+        requestId
+      });
+    }
+
+    if (
+      typeof body.currency !== "string" ||
+      !/^[A-Za-z]{3}$/.test(body.currency)
+    ) {
+      return sendJSON(res, 400, {
+        ok: false,
+        error:
+          "currency must be a three-letter currency code.",
+        requestId
+      });
+    }
+
+    const result =
+      await paypalProduction.createOrder({
+        amount:
+          (body.amount / 100).toFixed(2),
+
+        currency:
+          body.currency.toUpperCase(),
+
+        referenceId:
+          body.orderId || null,
+
+        description:
+          body.description || null,
+
+        idempotencyKey:
+          key
+      });
+
+    return sendJSON(res, 201, {
+      ok: true,
+      paypalOrder: result,
+      settlementExecuted: false,
+      providerConfirmed: false,
+      requestId
+    });
+  }
+
+  const orderPrefix =
+    "/api/paypal/orders/";
+
+  if (
+    url.pathname.startsWith(orderPrefix)
+  ) {
+    const rest =
+      url.pathname.slice(
+        orderPrefix.length
+      );
+
+    if (
+      req.method === "POST" &&
+      rest.endsWith("/capture")
+    ) {
+      const providerOrderId =
+        decodeURIComponent(
+          rest.slice(
+            0,
+            -"/capture".length
+          )
+        );
+
+      if (
+        !providerOrderId ||
+        providerOrderId.includes("/")
+      ) {
+        return sendJSON(res, 400, {
+          ok: false,
+          error:
+            "Invalid PayPal order ID.",
+          requestId
+        });
+      }
+
+      const key =
+        req.headers["idempotency-key"];
+
+      if (
+        typeof key !== "string" ||
+        key.length < 8 ||
+        key.length > 255
+      ) {
+        return sendJSON(res, 400, {
+          ok: false,
+          error:
+            "A valid Idempotency-Key header is required.",
+          requestId
+        });
+      }
+
+      const result =
+        await paypalProduction.captureOrder({
+          providerOrderId,
+          idempotencyKey: key
+        });
+
+      return sendJSON(res, 200, {
+        ok: true,
+        paypalCapture: result,
+        settlementExecuted:
+          result.settlementExecuted === true,
+        providerConfirmed:
+          result.providerConfirmed === true,
+        requestId
+      });
+    }
+
+    if (
+      req.method === "GET" &&
+      rest &&
+      !rest.includes("/")
+    ) {
+      const providerOrderId =
+        decodeURIComponent(rest);
+
+      const result =
+        await paypalProduction.getOrder(
+          providerOrderId
+        );
+
+      return sendJSON(res, 200, {
+        ok: true,
+        paypalOrder: result,
+        requestId
+      });
+    }
+  }
+
+  return sendJSON(res, 404, {
+    ok: false,
+    error:
+      "PayPal production endpoint not found.",
+    requestId
+  });
+}
+
+async function handleMatcha(
+  req,
+  res,
+  url,
+  requestId
+) {
   const auth = authenticate(req);
 
   if (!auth.ok) {
@@ -399,9 +606,12 @@ async function handleMatcha(req, res, url, requestId) {
 
     const fingerprint = digest({
       amount: body.amount,
-      currency: body.currency.toUpperCase(),
-      orderId: body.orderId || null,
-      description: body.description || null
+      currency:
+        body.currency.toUpperCase(),
+      orderId:
+        body.orderId || null,
+      description:
+        body.description || null
     });
 
     const previous =
@@ -420,7 +630,9 @@ async function handleMatcha(req, res, url, requestId) {
       }
 
       const intent =
-        paymentIntents.get(previous.intentId);
+        paymentIntents.get(
+          previous.intentId
+        );
 
       if (!intent) {
         return sendJSON(res, 409, {
@@ -434,77 +646,125 @@ async function handleMatcha(req, res, url, requestId) {
       return sendJSON(res, 200, {
         ok: true,
         idempotentReplay: true,
-        paymentIntent: publicIntent(intent),
+        paymentIntent:
+          publicIntent(intent),
         requestId
       });
     }
 
-    const now = new Date().toISOString();
+    const now =
+      new Date().toISOString();
 
     const intent = {
-      id: `pi_${crypto.randomUUID()}`,
-      amount: body.amount,
-      currency: body.currency.toUpperCase(),
-      orderId: body.orderId || null,
-      description: body.description || null,
-      status: "requires_authorization",
-      mode: realSettlementAuthorized()
-        ? "live"
-        : "sandbox",
-      environment: "production",
-      settlementStatus: "not_executed",
-      createdAt: now,
-      updatedAt: now
+      id:
+        `pi_${crypto.randomUUID()}`,
+
+      amount:
+        body.amount,
+
+      currency:
+        body.currency.toUpperCase(),
+
+      orderId:
+        body.orderId || null,
+
+      description:
+        body.description || null,
+
+      status:
+        "requires_authorization",
+
+      mode:
+        realSettlementAuthorized()
+          ? "live"
+          : "sandbox",
+
+      environment:
+        "production",
+
+      settlementStatus:
+        "not_executed",
+
+      createdAt:
+        now,
+
+      updatedAt:
+        now
     };
 
-    paymentIntents.set(intent.id, intent);
-
-    idempotencyIndex.set(key, {
-      intentId: intent.id,
-      fingerprint
-    });
-
-    const receipt = createReceipt(
-      "payment_intent.created",
-      intent,
-      requestId
+    paymentIntents.set(
+      intent.id,
+      intent
     );
+
+    idempotencyIndex.set(
+      key,
+      {
+        intentId:
+          intent.id,
+
+        fingerprint
+      }
+    );
+
+    const receipt =
+      createReceipt(
+        "payment_intent.created",
+        intent,
+        requestId
+      );
 
     return sendJSON(res, 201, {
       ok: true,
-      paymentIntent: publicIntent(intent),
-      auditReceiptId: receipt.receiptId,
-      settlementExecuted: false,
-      providerConfirmed: false,
+
+      paymentIntent:
+        publicIntent(intent),
+
+      auditReceiptId:
+        receipt.receiptId,
+
+      settlementExecuted:
+        false,
+
+      providerConfirmed:
+        false,
+
       requestId
     });
   }
 
   if (req.method === "GET") {
-    const receiptId = intentIdFromPath(
-      url.pathname,
-      "/receipt"
-    );
+    const receiptId =
+      intentIdFromPath(
+        url.pathname,
+        "/receipt"
+      );
 
     if (receiptId) {
       const intent =
-        paymentIntents.get(receiptId);
+        paymentIntents.get(
+          receiptId
+        );
 
       if (!intent) {
         return sendJSON(res, 404, {
           ok: false,
-          error: "Payment intent not found.",
+          error:
+            "Payment intent not found.",
           requestId
         });
       }
 
       const receipt =
-        auditReceipts.get(receiptId);
+        auditReceipts.get(
+          receiptId
+        );
 
       if (!receipt) {
         return sendJSON(res, 404, {
           ok: false,
-          error: "Audit receipt not found.",
+          error:
+            "Audit receipt not found.",
           requestId
         });
       }
@@ -517,47 +777,59 @@ async function handleMatcha(req, res, url, requestId) {
     }
 
     const intentId =
-      intentIdFromPath(url.pathname);
+      intentIdFromPath(
+        url.pathname
+      );
 
     if (intentId) {
       const intent =
-        paymentIntents.get(intentId);
+        paymentIntents.get(
+          intentId
+        );
 
       if (!intent) {
         return sendJSON(res, 404, {
           ok: false,
-          error: "Payment intent not found.",
+          error:
+            "Payment intent not found.",
           requestId
         });
       }
 
       return sendJSON(res, 200, {
         ok: true,
-        paymentIntent: publicIntent(intent),
+        paymentIntent:
+          publicIntent(intent),
         requestId
       });
     }
   }
 
   if (req.method === "POST") {
-    const intentId = intentIdFromPath(
-      url.pathname,
-      "/cancel"
-    );
+    const intentId =
+      intentIdFromPath(
+        url.pathname,
+        "/cancel"
+      );
 
     if (intentId) {
       const intent =
-        paymentIntents.get(intentId);
+        paymentIntents.get(
+          intentId
+        );
 
       if (!intent) {
         return sendJSON(res, 404, {
           ok: false,
-          error: "Payment intent not found.",
+          error:
+            "Payment intent not found.",
           requestId
         });
       }
 
-      if (intent.status === "succeeded") {
+      if (
+        intent.status === "succeeded"
+      ) {
         return sendJSON(res, 409, {
           ok: false,
           error:
@@ -566,8 +838,12 @@ async function handleMatcha(req, res, url, requestId) {
         });
       }
 
-      if (intent.status !== "cancelled") {
-        intent.status = "cancelled";
+      if (
+        intent.status !== "cancelled"
+      ) {
+        intent.status =
+          "cancelled";
+
         intent.updatedAt =
           new Date().toISOString();
 
@@ -580,7 +856,8 @@ async function handleMatcha(req, res, url, requestId) {
 
       return sendJSON(res, 200, {
         ok: true,
-        paymentIntent: publicIntent(intent),
+        paymentIntent:
+          publicIntent(intent),
         requestId
       });
     }
@@ -594,173 +871,35 @@ async function handleMatcha(req, res, url, requestId) {
   });
 }
 
-const server = http.createServer(
-  async (req, res) => {
-    const requestId = newRequestId();
+const server =
+  http.createServer(
+    async (req, res) => {
+      const requestId =
+        newRequestId();
 
-    try {
-      const url = new URL(
-        req.url,
-        `http://${req.headers.host || "localhost"}`
-      );
+      try {
+        const url =
+          new URL(
+            req.url,
+            `http://${req.headers.host || "localhost"}`
+          );
 
-      if (
-        url.pathname.startsWith(
-          "/api/matcha-manita/"
-        )
-      ) {
-        return await handleMatcha(
-          req,
-          res,
-          url,
-          requestId
-        );
-      }
+        if (
+          url.pathname.startsWith(
+            "/api/paypal/"
+          )
+        ) {
+          return await handlePayPalProduction(
+            req,
+            res,
+            url,
+            requestId
+          );
+        }
 
-      if (req.method !== "GET") {
-        return sendJSON(res, 405, {
-          error: "Method not allowed",
-          requestId
-        });
-      }
-
-      if (url.pathname === "/") {
-        return sendJSON(res, 200, {
-          service: SERVICE_NAME,
-          message: "SonoraPort Banking API",
-          version: API_VERSION,
-          environment: "production",
-          requestId
-        });
-      }
-
-      if (url.pathname === "/api/health") {
-        return sendJSON(res, 200, {
-          service: SERVICE_NAME,
-          status: "healthy",
-          version: API_VERSION,
-          environment: "production",
-          runtime: process.version,
-          timestamp: new Date().toISOString(),
-          requestId
-        });
-      }
-
-      if (
-        url.pathname === "/api/capabilities"
-      ) {
-        return sendJSON(res, 200, {
-          service: SERVICE_NAME,
-          capabilities:
-            bankingCapabilities(),
-          timestamp: new Date().toISOString(),
-          requestId
-        });
-      }
-
-      if (
-        url.pathname ===
-        "/api/production-rails"
-      ) {
-        return sendJSON(res, 200, {
-          service: SERVICE_NAME,
-          environment:
-            productionRails.environment,
-          executionAuthority:
-            productionRails.executionAuthority,
-          rails: productionRailStatus(),
-          controls: {
-            realMoneyTarget:
-              productionRails.controls
-                ?.realMoneyTarget === true,
-            credentialsStoredInRepository:
-              productionRails.controls
-                ?.credentialsStoredInRepository ===
-              true,
-            providerConfirmationRequired:
-              productionRails.controls
-                ?.requireProviderConfirmation ===
-              true,
-            reconciliationRequired:
-              productionRails.controls
-                ?.requireReconciliation === true,
-            unverifiedSettlementAllowed:
-              productionRails.controls
-                ?.allowUnverifiedSettlement ===
-              true
-          },
-          timestamp: new Date().toISOString(),
-          requestId
-        });
-      }
-
-      if (
-        url.pathname ===
-        "/api/world-sandbox/status"
-      ) {
-        return sendJSON(res, 200, {
-          service: SERVICE_NAME,
-          bridge: "worldsandbox13",
-          status: "available",
-          authority: {
-            statusRead: true,
-            capabilityRead: true,
-            credentialRead: false,
-            unrestrictedTransfers: false
-          },
-          timestamp: new Date().toISOString(),
-          requestId
-        });
-      }
-
-      return sendJSON(res, 404, {
-        error: "Endpoint not found",
-        requestId
-      });
-    } catch (error) {
-      console.error(
-        "SONORAPORT BANKING ERROR:",
-        error
-      );
-
-      if (error.message === "INVALID_JSON") {
-        return sendJSON(res, 400, {
-          ok: false,
-          error: "Invalid JSON request body.",
-          requestId
-        });
-      }
-
-      if (error.message === "BODY_TOO_LARGE") {
-        return sendJSON(res, 413, {
-          ok: false,
-          error: "Request body too large.",
-          requestId
-        });
-      }
-
-      return sendJSON(res, 500, {
-        ok: false,
-        error:
-          "Internal banking service error.",
-        requestId
-      });
-    }
-  }
-);
-
-server.listen(PORT, HOST, () => {
-  console.log(
-    `SONORAPORT BANKING ONLINE — ${HOST}:${PORT}`
-  );
-});
-
-module.exports = {
-  server,
-  bankingCapabilities,
-  authenticateMatchaManita: authenticate,
-  handleMatchaManita: handleMatcha,
-  loadProductionRails,
-  railRuntimeStatus: railStatus,
-  productionRailStatus
-};
+        if (
+          url.pathname.startsWith(
+            "/api/matcha-manita/"
+          )
+        ) {
+          return await handleMatcha
