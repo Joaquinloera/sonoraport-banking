@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "bridge": {
+    "id": "sonoraport-banking-bridge",
+    "name": "World Sandbox — SonoraPort Banking Bridge",
+    "enabled": true,
+    "mode": "authenticated-service",
+    "source": "Worldsandbox13",
+    "target": "sonoraport-banking"
+  },
+  "service": {
+    "baseUrlEnvironmentVariable": "SONORAPORT_BANKING_API_URL",
+    "authenticationEnvironmentVariable": "SONORAPORT_BANKING_BRIDGE_TOKEN",
+    "healthEndpoint": "/api/health",
+    "capabilitiesEndpoint": "/api/capabilities",
+    "bridgeStatusEndpoint": "/api/world-sandbox/status"
+  },
+  "permissions": {
+    "healthRead": true,
+    "capabilityRead": true,
+    "bankingStatusRead": true,
+    "credentialRead": false,
+    "secretRead": false,
+    "unrestrictedTransferAuthority": false
+  },
+  "security": {
+    "credentialsStoredInRepository": false,
+    "requireHttpsInProduction": true,
+    "requireAuthenticationInProduction": true,
+    "serverToServerOnly": true,
+    "auditRequests": true,
+    "failClosed": true
+  },
+  "moneyMovement": {
+    "supportedByBankingLayer": true,
+    "worldSandboxDirectExecution": false,
+    "requiresBankingAuthorization": true,
+    "requiresAuthorizedProvider": true,
+    "requiresPolicyChecks": true
+  }
+}
