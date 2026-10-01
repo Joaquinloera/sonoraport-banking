@@ -7,79 +7,147 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
-
-permissions:
-  contents: read
 
 jobs:
-  verify:
-    name: Verify SonoraPort Banking
+  banking-test:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Show runtime
-        run: |
-          node --version
-          npm --version
+      - name: Validate package.json
+        run: node -e "JSON.parse(require('fs').readFileSync('package.json','utf8')); console.log('package.json valid')"
 
-      - name: Validate package
-        run: |
-          node -e "JSON.parse(require('fs').readFileSync('package.json','utf8'))"
-
-      - name: Validate banking server
+      - name: Check server syntax
         run: node --check server.js
 
-      - name: Start banking API
+      - name: Generate temporary test authentication
         run: |
-          node server.js > server.log 2>&1 &
-          echo $! > server.pid
+          echo "MATCHA_MANITA_BANKING_TOKEN=$(openssl rand -hex 32)" >> "$GITHUB_ENV"
+          echo "BANKING_REAL_SETTLEMENT_AUTHORIZED=false" >> "$GITHUB_ENV"
 
-          for i in {1..20}; do
-            if curl --fail --silent http://127.0.0.1:3100/api/health > /dev/null; then
-              echo "SonoraPort Banking API is online"
-              exit 0
-            fi
-            sleep 1
-          done
+      - name: Start SonoraPort Banking
+        run: |
+          node server.js > banking.log 2>&1 &
+          echo $! > banking.pid
+          sleep 2
 
-          echo "SonoraPort Banking API failed to start"
-          cat server.log || true
-          exit 1
-        env:
-          PORT: "3100"
-          HOST: "127.0.0.1"
-
-      - name: Test health
-        run: curl --fail --silent http://127.0.0.1:3100/api/health
+      - name: Test banking health
+        run: |
+          curl --fail --silent http://127.0.0.1:3100/api/health | tee health.json
+          grep -q '"status": "healthy"' health.json
 
       - name: Test banking capabilities
-        run: curl --fail --silent http://127.0.0.1:3100/api/capabilities
-
-      - name: Test World Sandbox bridge
-        run: curl --fail --silent http://127.0.0.1:3100/api/world-sandbox/status
-
-      - name: Verify credentials are not exposed
         run: |
-          RESPONSE="$(curl --fail --silent http://127.0.0.1:3100/api/world-sandbox/status)"
-          echo "$RESPONSE" | grep '"credentialRead": false'
-          echo "$RESPONSE" | grep '"unrestrictedTransfers": false'
+          curl --fail --silent http://127.0.0.1:3100/api/capabilities | tee capabilities.json
+          grep -q '"paymentIntents": true' capabilities.json
+          grep -q '"realSettlementAuthorized": false' capabilities.json
 
-      - name: Stop banking API
+      - name: Test World Sandbox boundary
+        run: |
+          curl --fail --silent http://127.0.0.1:3100/api/world-sandbox/status | tee world-sandbox.json
+          grep -q '"credentialRead": false' world-sandbox.json
+          grep -q '"unrestrictedTransfers": false' world-sandbox.json
+
+      - name: Reject unauthenticated MATCHA MANITA request
+        run: |
+          STATUS=$(curl --silent --output unauthorized.json --write-out "%{http_code}" \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: unauthorized-test-001" \
+            -d '{"amount":1250,"currency":"USD","orderId":"TEST-UNAUTHORIZED"}' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents)
+
+          test "$STATUS" = "401"
+
+      - name: Create sandbox payment intent
+        run: |
+          curl --fail --silent \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: matcha-test-intent-001" \
+            -d '{"amount":1250,"currency":"USD","orderId":"MATCHA-TEST-001","description":"MATCHA MANITA sandbox integration test"}' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents \
+            | tee payment-intent.json
+
+          grep -q '"status": "requires_authorization"' payment-intent.json
+          grep -q '"mode": "sandbox"' payment-intent.json
+          grep -q '"settlementExecuted": false' payment-intent.json
+
+          node -e "const x=require('./payment-intent.json'); if(!x.paymentIntent?.id) process.exit(1); require('fs').writeFileSync('payment-intent-id.txt',x.paymentIntent.id)"
+
+      - name: Test idempotency replay
+        run: |
+          curl --fail --silent \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: matcha-test-intent-001" \
+            -d '{"amount":1250,"currency":"USD","orderId":"MATCHA-TEST-001","description":"MATCHA MANITA sandbox integration test"}' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents \
+            | tee replay.json
+
+          grep -q '"idempotentReplay": true' replay.json
+
+      - name: Verify payment intent status
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID" \
+            | tee payment-status.json
+
+          grep -q '"status": "requires_authorization"' payment-status.json
+
+      - name: Verify audit receipt
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID/receipt" \
+            | tee receipt.json
+
+          grep -q '"protocol": "SONORAPORT-AUDIT-1"' receipt.json
+          grep -q '"paymentStatus": "requires_authorization"' receipt.json
+
+      - name: Cancel sandbox payment intent
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID/cancel" \
+            | tee cancelled.json
+
+          grep -q '"status": "cancelled"' cancelled.json
+
+      - name: Verify cancelled status
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID" \
+            | tee cancelled-status.json
+
+          grep -q '"status": "cancelled"' cancelled-status.json
+
+      - name: Stop SonoraPort Banking
         if: always()
         run: |
-          if [ -f server.pid ]; then
-            kill "$(cat server.pid)" || true
+          if [ -f banking.pid ]; then
+            kill "$(cat banking.pid)" 2>/dev/null || true
           fi
 
-          echo "----- BANKING SERVER LOG -----"
-          cat server.log || true
+          echo "=== Banking runtime log ==="
+          cat banking.log 2>/dev/null || true
