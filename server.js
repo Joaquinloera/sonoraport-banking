@@ -1,20 +1,3 @@
-/**
- * SonoraPort Banking — Production Banking Runtime
- * Node.js 20+
- *
- * Production rail registry:
- * data/production-payment-rails.json
- *
- * MATCHA MANITA:
- * Server-to-server payment-intent boundary.
- *
- * Security:
- * - Secrets remain server-side.
- * - Secret values are never returned.
- * - Credential presence does not equal provider verification.
- * - Payment success is never fabricated.
- */
-
 const http = require("http");
 const crypto = require("crypto");
 const fs = require("fs");
@@ -22,50 +5,34 @@ const path = require("path");
 
 const PORT = Number(process.env.PORT) || 3100;
 const HOST = process.env.HOST || "0.0.0.0";
-
 const SERVICE_NAME = "sonoraport-banking";
-const API_VERSION = "1.2.2";
-const MAX_BODY_BYTES = 64 * 1024;
-
-const PRODUCTION_RAILS_FILE = path.join(
-  __dirname,
-  "data",
-  "production-payment-rails.json"
-);
+const API_VERSION = "1.2.3";
+const MAX_BODY_BYTES = 65536;
 
 const paymentIntents = new Map();
 const idempotencyIndex = new Map();
 const auditReceipts = new Map();
 
-/*
- * PRODUCTION RAIL REGISTRY
- */
+const railsFile = path.join(
+  __dirname,
+  "data",
+  "production-payment-rails.json"
+);
 
 function loadProductionRails() {
   const config = JSON.parse(
-    fs.readFileSync(
-      PRODUCTION_RAILS_FILE,
-      "utf8"
-    )
+    fs.readFileSync(railsFile, "utf8")
   );
 
   if (
     config.environment !== "production" ||
     config.system !== SERVICE_NAME ||
-    config.executionAuthority !== SERVICE_NAME
-  ) {
-    throw new Error(
-      "Invalid production payment rails configuration."
-    );
-  }
-
-  if (
+    config.executionAuthority !== SERVICE_NAME ||
     !config.rails ||
-    typeof config.rails !== "object" ||
     Array.isArray(config.rails)
   ) {
     throw new Error(
-      "Production payment rails configuration is missing rails."
+      "Invalid production payment rails configuration."
     );
   }
 
@@ -74,32 +41,32 @@ function loadProductionRails() {
 
 const productionRails = loadProductionRails();
 
-function railRuntimeStatus(id) {
+function railStatus(id) {
   const rail = productionRails.rails[id];
 
   if (!rail || rail.enabled !== true) {
     return {
       enabled: false,
-      environment: "production",
       configured: false,
       verified: false,
       status: "not-registered"
     };
   }
 
-  const requiredEnvironment =
-    Array.isArray(rail.requiredEnvironment)
-      ? rail.requiredEnvironment
-      : [];
+  const required = Array.isArray(
+    rail.requiredEnvironment
+  )
+    ? rail.requiredEnvironment
+    : [];
 
   const configured =
-    requiredEnvironment.length > 0 &&
-    requiredEnvironment.every(name => {
+    required.length > 0 &&
+    required.every(name => {
       const value = process.env[name];
 
       return (
         typeof value === "string" &&
-        value.trim().length > 0
+        value.trim() !== ""
       );
     });
 
@@ -116,59 +83,38 @@ function railRuntimeStatus(id) {
 
 function productionRailStatus() {
   return {
-    visa: railRuntimeStatus("visa"),
-    mastercard: railRuntimeStatus("mastercard"),
-    paypal: railRuntimeStatus("paypal"),
-    venmo: railRuntimeStatus("venmo"),
-    zelle: railRuntimeStatus("zelle"),
-    jpmorganChase:
-      railRuntimeStatus("jpmorganChase")
+    visa: railStatus("visa"),
+    mastercard: railStatus("mastercard"),
+    paypal: railStatus("paypal"),
+    venmo: railStatus("venmo"),
+    zelle: railStatus("zelle"),
+    jpmorganChase: railStatus("jpmorganChase")
   };
 }
 
-/*
- * HTTP HELPERS
- */
-
-function sendJSON(res, statusCode, data) {
-  res.writeHead(statusCode, {
-    "Content-Type":
-      "application/json; charset=utf-8",
+function sendJSON(res, status, data) {
+  res.writeHead(status, {
+    "Content-Type": "application/json; charset=utf-8",
     "Cache-Control": "no-store",
     "X-Content-Type-Options": "nosniff"
   });
 
-  res.end(
-    JSON.stringify(data, null, 2)
-  );
+  res.end(JSON.stringify(data, null, 2));
 }
 
-function requestId() {
+function newRequestId() {
   return crypto.randomUUID();
 }
 
-function timingSafeEqualString(a, b) {
-  const left = Buffer.from(
-    String(a || "")
-  );
+function safeEqual(a, b) {
+  const left = Buffer.from(String(a || ""));
+  const right = Buffer.from(String(b || ""));
 
-  const right = Buffer.from(
-    String(b || "")
-  );
-
-  if (left.length !== right.length) {
-    return false;
-  }
-
-  return crypto.timingSafeEqual(
-    left,
-    right
+  return (
+    left.length === right.length &&
+    crypto.timingSafeEqual(left, right)
   );
 }
-
-/*
- * SETTLEMENT CONFIGURATION
- */
 
 function settlementConfigured() {
   return Boolean(
@@ -179,16 +125,10 @@ function settlementConfigured() {
 
 function realSettlementAuthorized() {
   return (
-    process.env
-      .BANKING_REAL_SETTLEMENT_AUTHORIZED ===
-      "true" &&
+    process.env.BANKING_REAL_SETTLEMENT_AUTHORIZED === "true" &&
     settlementConfigured()
   );
 }
-
-/*
- * CAPABILITIES
- */
 
 function bankingCapabilities() {
   return {
@@ -202,11 +142,9 @@ function bankingCapabilities() {
     environment: "production",
 
     productionTarget:
-      productionRails.controls
-        ?.realMoneyTarget === true,
+      productionRails.controls?.realMoneyTarget === true,
 
-    productionRails:
-      productionRailStatus(),
+    productionRails: productionRailStatus(),
 
     worldSandboxBridge: {
       enabled: true,
@@ -215,158 +153,91 @@ function bankingCapabilities() {
 
     matchaManita: {
       paymentIntents: true,
-
-      sandboxMode:
-        !realSettlementAuthorized(),
-
+      sandboxMode: !realSettlementAuthorized(),
       realSettlementAuthorized:
         realSettlementAuthorized(),
-
-      providerConfirmationRequired:
-        true
+      providerConfirmationRequired: true
     },
 
     externalSettlement: {
-      configured:
-        settlementConfigured(),
-
-      authorized:
-        realSettlementAuthorized(),
-
-      providerConfirmationRequired:
-        true,
-
-      unverifiedSettlementAllowed:
-        false
+      configured: settlementConfigured(),
+      authorized: realSettlementAuthorized(),
+      providerConfirmationRequired: true,
+      unverifiedSettlementAllowed: false
     }
   };
 }
 
-/*
- * MATCHA MANITA AUTHENTICATION
- */
-
-function authenticateMatchaManita(req) {
-  const configuredToken =
+function authenticate(req) {
+  const expected =
     process.env.MATCHA_MANITA_BANKING_TOKEN;
 
-  if (!configuredToken) {
+  if (!expected) {
     return {
       ok: false,
-      statusCode: 503,
+      code: 503,
       error:
         "MATCHA MANITA banking authentication is not configured."
     };
   }
 
-  const authorization =
+  const header =
     req.headers.authorization || "";
 
-  if (
-    !authorization.startsWith(
-      "Bearer "
-    )
-  ) {
+  if (!header.startsWith("Bearer ")) {
     return {
       ok: false,
-      statusCode: 401,
-      error:
-        "Authentication required."
+      code: 401,
+      error: "Authentication required."
     };
   }
 
-  const suppliedToken =
-    authorization.slice(7);
-
-  if (
-    !timingSafeEqualString(
-      suppliedToken,
-      configuredToken
-    )
-  ) {
+  if (!safeEqual(header.slice(7), expected)) {
     return {
       ok: false,
-      statusCode: 403,
-      error:
-        "Invalid banking authorization."
+      code: 403,
+      error: "Invalid banking authorization."
     };
   }
 
-  return {
-    ok: true
-  };
+  return { ok: true };
 }
 
-/*
- * REQUEST BODY
- */
+function readJSON(req) {
+  return new Promise((resolve, reject) => {
+    let body = "";
+    let size = 0;
 
-async function readJSONBody(req) {
-  return new Promise(
-    (resolve, reject) => {
-      let body = "";
-      let size = 0;
-      let settled = false;
+    req.on("data", chunk => {
+      size += chunk.length;
 
-      req.on("data", chunk => {
-        if (settled) {
-          return;
-        }
+      if (size > MAX_BODY_BYTES) {
+        reject(new Error("BODY_TOO_LARGE"));
+        req.destroy();
+        return;
+      }
 
-        size += chunk.length;
+      body += chunk;
+    });
 
-        if (size > MAX_BODY_BYTES) {
-          settled = true;
+    req.on("end", () => {
+      if (!body) {
+        resolve({});
+        return;
+      }
 
-          reject(
-            new Error(
-              "REQUEST_BODY_TOO_LARGE"
-            )
-          );
+      try {
+        resolve(JSON.parse(body));
+      } catch {
+        reject(new Error("INVALID_JSON"));
+      }
+    });
 
-          req.destroy();
-          return;
-        }
-
-        body += chunk;
-      });
-
-      req.on("end", () => {
-        if (settled) {
-          return;
-        }
-
-        settled = true;
-
-        if (!body) {
-          resolve({});
-          return;
-        }
-
-        try {
-          resolve(JSON.parse(body));
-        } catch {
-          reject(
-            new Error("INVALID_JSON")
-          );
-        }
-      });
-
-      req.on("error", error => {
-        if (!settled) {
-          settled = true;
-          reject(error);
-        }
-      });
-    }
-  );
+    req.on("error", reject);
+  });
 }
 
-/*
- * PAYMENT INTENT VALIDATION
- */
-
-function validateCreateIntent(body) {
+function validateIntent(body) {
   const errors = [];
 
   if (
@@ -374,15 +245,13 @@ function validateCreateIntent(body) {
     body.amount <= 0
   ) {
     errors.push(
-      "amount must be a positive integer in the currency's smallest unit."
+      "amount must be a positive integer."
     );
   }
 
   if (
     typeof body.currency !== "string" ||
-    !/^[A-Za-z]{3}$/.test(
-      body.currency
-    )
+    !/^[A-Za-z]{3}$/.test(body.currency)
   ) {
     errors.push(
       "currency must be a three-letter currency code."
@@ -396,35 +265,30 @@ function validateCreateIntent(body) {
       body.orderId.length > 128
     )
   ) {
-    errors.push(
-      "orderId must be a string of 128 characters or fewer."
-    );
+    errors.push("invalid orderId.");
   }
 
   if (
     body.description !== undefined &&
     (
-      typeof body.description !==
-        "string" ||
+      typeof body.description !== "string" ||
       body.description.length > 500
     )
   ) {
-    errors.push(
-      "description must be a string of 500 characters or fewer."
-    );
+    errors.push("invalid description.");
   }
 
   return errors;
 }
 
-function hashObject(value) {
+function digest(value) {
   return crypto
     .createHash("sha256")
     .update(JSON.stringify(value))
     .digest("hex");
 }
 
-function publicPaymentIntent(intent) {
+function publicIntent(intent) {
   return {
     id: intent.id,
     object: "payment_intent",
@@ -435,735 +299,469 @@ function publicPaymentIntent(intent) {
     status: intent.status,
     mode: intent.mode,
     environment: intent.environment,
-    settlementStatus:
-      intent.settlementStatus,
+    settlementStatus: intent.settlementStatus,
     createdAt: intent.createdAt,
     updatedAt: intent.updatedAt
   };
 }
 
-/*
- * AUDIT RECEIPTS
- */
-
-function createAuditReceipt({
-  action,
-  intent,
-  requestId: reqId
-}) {
-  const createdAt =
-    new Date().toISOString();
-
+function createReceipt(action, intent, requestId) {
   const receipt = {
-    receiptId:
-      `rcpt_${crypto.randomUUID()}`,
-
-    protocol:
-      "SONORAPORT-AUDIT-1",
-
+    receiptId: `rcpt_${crypto.randomUUID()}`,
+    protocol: "SONORAPORT-AUDIT-1",
     action,
-
-    paymentIntentId:
-      intent.id,
-
-    paymentStatus:
-      intent.status,
-
-    mode:
-      intent.mode,
-
-    environment:
-      intent.environment,
-
-    settlementStatus:
-      intent.settlementStatus,
-
-    requestId:
-      reqId,
-
-    createdAt
+    paymentIntentId: intent.id,
+    paymentStatus: intent.status,
+    mode: intent.mode,
+    environment: intent.environment,
+    settlementStatus: intent.settlementStatus,
+    requestId,
+    createdAt: new Date().toISOString()
   };
 
-  receipt.digest =
-    hashObject(receipt);
-
-  auditReceipts.set(
-    intent.id,
-    receipt
-  );
+  receipt.digest = digest(receipt);
+  auditReceipts.set(intent.id, receipt);
 
   return receipt;
 }
 
-function getIntentId(
-  pathname,
-  suffix = ""
-) {
-  const escapedSuffix =
-    suffix.replace(
-      /[.*+?^${}()|[\]\\]/g,
-      "\\$&"
-    );
+function intentIdFromPath(pathname, suffix = "") {
+  const base =
+    "/api/matcha-manita/payment-intents/";
 
-  const expression =
-    new RegExp(
-      `^/api/matcha-manita/payment-intents/([^/]+)${escapedSuffix}$`
-    );
+  if (!pathname.startsWith(base)) {
+    return null;
+  }
 
-  const match =
-    pathname.match(expression);
+  let rest = pathname.slice(base.length);
 
-  return match
-    ? decodeURIComponent(match[1])
-    : null;
-}
+  if (suffix) {
+    if (!rest.endsWith(suffix)) {
+      return null;
+    }
 
-/*
- * MATCHA MANITA API
- */
-
-async function handleMatchaManita(
-  req,
-  res,
-  url,
-  reqId
-) {
-  const auth =
-    authenticateMatchaManita(req);
-
-  if (!auth.ok) {
-    return sendJSON(
-      res,
-      auth.statusCode,
-      {
-        ok: false,
-        error: auth.error,
-        requestId: reqId
-      }
+    rest = rest.slice(
+      0,
+      rest.length - suffix.length
     );
   }
 
-  /*
-   * CREATE PAYMENT INTENT
-   */
+  if (!rest || rest.includes("/")) {
+    return null;
+  }
+
+  return decodeURIComponent(rest);
+}
+
+async function handleMatcha(req, res, url, requestId) {
+  const auth = authenticate(req);
+
+  if (!auth.ok) {
+    return sendJSON(res, auth.code, {
+      ok: false,
+      error: auth.error,
+      requestId
+    });
+  }
 
   if (
     req.method === "POST" &&
     url.pathname ===
       "/api/matcha-manita/payment-intents"
   ) {
-    const idempotencyKey =
+    const key =
       req.headers["idempotency-key"];
 
     if (
-      typeof idempotencyKey !==
-        "string" ||
-      idempotencyKey.length < 8 ||
-      idempotencyKey.length > 255
+      typeof key !== "string" ||
+      key.length < 8 ||
+      key.length > 255
     ) {
-      return sendJSON(
-        res,
-        400,
-        {
-          ok: false,
-
-          error:
-            "A valid Idempotency-Key header is required.",
-
-          requestId: reqId
-        }
-      );
-    }
-
-    const body =
-      await readJSONBody(req);
-
-    const errors =
-      validateCreateIntent(body);
-
-    if (errors.length > 0) {
-      return sendJSON(
-        res,
-        400,
-        {
-          ok: false,
-
-          error:
-            "Invalid payment intent request.",
-
-          details: errors,
-
-          requestId: reqId
-        }
-      );
-    }
-
-    const requestFingerprint =
-      hashObject({
-        amount:
-          body.amount,
-
-        currency:
-          body.currency.toUpperCase(),
-
-        orderId:
-          body.orderId || null,
-
-        description:
-          body.description || null
+      return sendJSON(res, 400, {
+        ok: false,
+        error:
+          "A valid Idempotency-Key header is required.",
+        requestId
       });
-
-    const existing =
-      idempotencyIndex.get(
-        idempotencyKey
-      );
-
-    if (existing) {
-      if (
-        existing.fingerprint !==
-        requestFingerprint
-      ) {
-        return sendJSON(
-          res,
-          409,
-          {
-            ok: false,
-
-            error:
-              "Idempotency key was already used with a different request.",
-
-            requestId: reqId
-          }
-        );
-      }
-
-      const existingIntent =
-        paymentIntents.get(
-          existing.intentId
-        );
-
-      if (!existingIntent) {
-        return sendJSON(
-          res,
-          409,
-          {
-            ok: false,
-
-            error:
-              "Idempotent payment intent is no longer available.",
-
-            requestId: reqId
-          }
-        );
-      }
-
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-
-          idempotentReplay:
-            true,
-
-          paymentIntent:
-            publicPaymentIntent(
-              existingIntent
-            ),
-
-          requestId: reqId
-        }
-      );
     }
 
-    const now =
-      new Date().toISOString();
+    const body = await readJSON(req);
+    const errors = validateIntent(body);
 
-    const intent = {
-      id:
-        `pi_${crypto.randomUUID()}`,
-
-      amount:
-        body.amount,
-
-      currency:
-        body.currency.toUpperCase(),
-
-      orderId:
-        body.orderId || null,
-
-      description:
-        body.description || null,
-
-      /*
-       * Creating an intent does not
-       * mean money has moved.
-       */
-      status:
-        "requires_authorization",
-
-      /*
-       * Retained for compatibility
-       * with the existing test suite.
-       */
-      mode:
-        realSettlementAuthorized()
-          ? "live"
-          : "sandbox",
-
-      environment:
-        "production",
-
-      settlementStatus:
-        "not_executed",
-
-      createdAt:
-        now,
-
-      updatedAt:
-        now
-    };
-
-    paymentIntents.set(
-      intent.id,
-      intent
-    );
-
-    idempotencyIndex.set(
-      idempotencyKey,
-      {
-        intentId:
-          intent.id,
-
-        fingerprint:
-          requestFingerprint
-      }
-    );
-
-    const receipt =
-      createAuditReceipt({
-        action:
-          "payment_intent.created",
-
-        intent,
-
-        requestId:
-          reqId
+    if (errors.length) {
+      return sendJSON(res, 400, {
+        ok: false,
+        error:
+          "Invalid payment intent request.",
+        details: errors,
+        requestId
       });
-
-    return sendJSON(
-      res,
-      201,
-      {
-        ok: true,
-
-        paymentIntent:
-          publicPaymentIntent(
-            intent
-          ),
-
-        auditReceiptId:
-          receipt.receiptId,
-
-        settlementExecuted:
-          false,
-
-        providerConfirmed:
-          false,
-
-        requestId:
-          reqId
-      }
-    );
-  }
-
-  /*
-   * GET PAYMENT INTENT
-   */
-
-  if (req.method === "GET") {
-    const intentId =
-      getIntentId(
-        url.pathname
-      );
-
-    if (intentId) {
-      const intent =
-        paymentIntents.get(
-          intentId
-        );
-
-      if (!intent) {
-        return sendJSON(
-          res,
-          404,
-          {
-            ok: false,
-            error:
-              "Payment intent not found.",
-            requestId: reqId
-          }
-        );
-      }
-
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-
-          paymentIntent:
-            publicPaymentIntent(
-              intent
-            ),
-
-          requestId: reqId
-        }
-      );
     }
-  }
 
-  /*
-   * CANCEL PAYMENT INTENT
-   */
+    const fingerprint = digest({
+      amount: body.amount,
+      currency: body.currency.toUpperCase(),
+      orderId: body.orderId || null,
+      description: body.description || null
+    });
 
-  if (req.method === "POST") {
-    const intentId =
-      getIntentId(
-        url.pathname,
-        "/cancel"
-      );
+    const previous =
+      idempotencyIndex.get(key);
 
-    if (intentId) {
-      const intent =
-        paymentIntents.get(
-          intentId
-        );
-
-      if (!intent) {
-        return sendJSON(
-          res,
-          404,
-          {
-            ok: false,
-            error:
-              "Payment intent not found.",
-            requestId: reqId
-          }
-        );
-      }
-
+    if (previous) {
       if (
-        intent.status ===
-        "succeeded"
+        previous.fingerprint !== fingerprint
       ) {
-        return sendJSON(
-          res,
-          409,
-          {
-            ok: false,
-
-            error:
-              "A succeeded payment intent cannot be cancelled.",
-
-            requestId: reqId
-          }
-        );
-      }
-
-      if (
-        intent.status !==
-        "cancelled"
-      ) {
-        intent.status =
-          "cancelled";
-
-        intent.updatedAt =
-          new Date().toISOString();
-
-        createAuditReceipt({
-          action:
-            "payment_intent.cancelled",
-
-          intent,
-
-          requestId:
-            reqId
+        return sendJSON(res, 409, {
+          ok: false,
+          error:
+            "Idempotency key was already used with a different request.",
+          requestId
         });
       }
 
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-
-          paymentIntent:
-            publicPaymentIntent(
-              intent
-            ),
-
-          requestId: reqId
-        }
-      );
-    }
-  }
-
-  /*
-   * GET AUDIT RECEIPT
-   */
-
-  if (req.method === "GET") {
-    const intentId =
-      getIntentId(
-        url.pathname,
-        "/receipt"
-      );
-
-    if (intentId) {
       const intent =
-        paymentIntents.get(
-          intentId
-        );
+        paymentIntents.get(previous.intentId);
 
       if (!intent) {
-        return sendJSON(
-          res,
-          404,
-          {
-            ok: false,
-            error:
-              "Payment intent not found.",
-            requestId: reqId
-          }
-        );
+        return sendJSON(res, 409, {
+          ok: false,
+          error:
+            "Idempotent payment intent is no longer available.",
+          requestId
+        });
+      }
+
+      return sendJSON(res, 200, {
+        ok: true,
+        idempotentReplay: true,
+        paymentIntent: publicIntent(intent),
+        requestId
+      });
+    }
+
+    const now = new Date().toISOString();
+
+    const intent = {
+      id: `pi_${crypto.randomUUID()}`,
+      amount: body.amount,
+      currency: body.currency.toUpperCase(),
+      orderId: body.orderId || null,
+      description: body.description || null,
+      status: "requires_authorization",
+      mode: realSettlementAuthorized()
+        ? "live"
+        : "sandbox",
+      environment: "production",
+      settlementStatus: "not_executed",
+      createdAt: now,
+      updatedAt: now
+    };
+
+    paymentIntents.set(intent.id, intent);
+
+    idempotencyIndex.set(key, {
+      intentId: intent.id,
+      fingerprint
+    });
+
+    const receipt = createReceipt(
+      "payment_intent.created",
+      intent,
+      requestId
+    );
+
+    return sendJSON(res, 201, {
+      ok: true,
+      paymentIntent: publicIntent(intent),
+      auditReceiptId: receipt.receiptId,
+      settlementExecuted: false,
+      providerConfirmed: false,
+      requestId
+    });
+  }
+
+  if (req.method === "GET") {
+    const receiptId = intentIdFromPath(
+      url.pathname,
+      "/receipt"
+    );
+
+    if (receiptId) {
+      const intent =
+        paymentIntents.get(receiptId);
+
+      if (!intent) {
+        return sendJSON(res, 404, {
+          ok: false,
+          error: "Payment intent not found.",
+          requestId
+        });
       }
 
       const receipt =
-        auditReceipts.get(
-          intentId
-        );
+        auditReceipts.get(receiptId);
 
       if (!receipt) {
-        return sendJSON(
-          res,
-          404,
-          {
-            ok: false,
-            error:
-              "Audit receipt not found.",
-            requestId: reqId
-          }
-        );
+        return sendJSON(res, 404, {
+          ok: false,
+          error: "Audit receipt not found.",
+          requestId
+        });
       }
 
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-          receipt,
-          requestId: reqId
-        }
-      );
+      return sendJSON(res, 200, {
+        ok: true,
+        receipt,
+        requestId
+      });
+    }
+
+    const intentId =
+      intentIdFromPath(url.pathname);
+
+    if (intentId) {
+      const intent =
+        paymentIntents.get(intentId);
+
+      if (!intent) {
+        return sendJSON(res, 404, {
+          ok: false,
+          error: "Payment intent not found.",
+          requestId
+        });
+      }
+
+      return sendJSON(res, 200, {
+        ok: true,
+        paymentIntent: publicIntent(intent),
+        requestId
+      });
     }
   }
 
-  return sendJSON(
-    res,
-    404,
-    {
-      ok: false,
+  if (req.method === "POST") {
+    const intentId = intentIdFromPath(
+      url.pathname,
+      "/cancel"
+    );
 
-      error:
-        "MATCHA MANITA banking endpoint not found.",
+    if (intentId) {
+      const intent =
+        paymentIntents.get(intentId);
 
-      requestId: reqId
+      if (!intent) {
+        return sendJSON(res, 404, {
+          ok: false,
+          error: "Payment intent not found.",
+          requestId
+        });
+      }
+
+      if (intent.status === "succeeded") {
+        return sendJSON(res, 409, {
+          ok: false,
+          error:
+            "A succeeded payment intent cannot be cancelled.",
+          requestId
+        });
+      }
+
+      if (intent.status !== "cancelled") {
+        intent.status = "cancelled";
+        intent.updatedAt =
+          new Date().toISOString();
+
+        createReceipt(
+          "payment_intent.cancelled",
+          intent,
+          requestId
+        );
+      }
+
+      return sendJSON(res, 200, {
+        ok: true,
+        paymentIntent: publicIntent(intent),
+        requestId
+      });
     }
-  );
+  }
+
+  return sendJSON(res, 404, {
+    ok: false,
+    error:
+      "MATCHA MANITA banking endpoint not found.",
+    requestId
+  });
 }
 
-/*
- * SERVER
- */
+const server = http.createServer(
+  async (req, res) => {
+    const requestId = newRequestId();
 
-const server =
-  http.createServer(
-    async (req, res) => {
-      const id =
-        requestId();
+    try {
+      const url = new URL(
+        req.url,
+        `http://${req.headers.host || "localhost"}`
+      );
 
-      const url =
-        new URL(
-          req.url,
-          `http://${req.headers.host || "localhost"}`
+      if (
+        url.pathname.startsWith(
+          "/api/matcha-manita/"
+        )
+      ) {
+        return await handleMatcha(
+          req,
+          res,
+          url,
+          requestId
         );
+      }
 
-      try {
-        if (
-          url.pathname.startsWith(
-            "/api/matcha-manita/"
-          )
-        ) {
-          return await handleMatchaManita(
-            req,
-            res,
-            url,
-            id
-          );
-        }
+      if (req.method !== "GET") {
+        return sendJSON(res, 405, {
+          error: "Method not allowed",
+          requestId
+        });
+      }
 
-        if (
-          req.method !== "GET"
-        ) {
-          return sendJSON(
-            res,
-            405,
-            {
-              error:
-                "Method not allowed",
+      if (url.pathname === "/") {
+        return sendJSON(res, 200, {
+          service: SERVICE_NAME,
+          message: "SonoraPort Banking API",
+          version: API_VERSION,
+          environment: "production",
+          requestId
+        });
+      }
 
-              requestId: id
-            }
-          );
-        }
+      if (url.pathname === "/api/health") {
+        return sendJSON(res, 200, {
+          service: SERVICE_NAME,
+          status: "healthy",
+          version: API_VERSION,
+          environment: "production",
+          runtime: process.version,
+          timestamp: new Date().toISOString(),
+          requestId
+        });
+      }
 
-        /*
-         * ROOT
-         */
+      if (
+        url.pathname === "/api/capabilities"
+      ) {
+        return sendJSON(res, 200, {
+          service: SERVICE_NAME,
+          capabilities:
+            bankingCapabilities(),
+          timestamp: new Date().toISOString(),
+          requestId
+        });
+      }
 
-        if (url.pathname === "/") {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
+      if (
+        url.pathname ===
+        "/api/production-rails"
+      ) {
+        return sendJSON(res, 200, {
+          service: SERVICE_NAME,
+          environment:
+            productionRails.environment,
+          executionAuthority:
+            productionRails.executionAuthority,
+          rails: productionRailStatus(),
+          controls: {
+            realMoneyTarget:
+              productionRails.controls
+                ?.realMoneyTarget === true,
+            credentialsStoredInRepository:
+              productionRails.controls
+                ?.credentialsStoredInRepository ===
+              true,
+            providerConfirmationRequired:
+              productionRails.controls
+                ?.requireProviderConfirmation ===
+              true,
+            reconciliationRequired:
+              productionRails.controls
+                ?.requireReconciliation === true,
+            unverifiedSettlementAllowed:
+              productionRails.controls
+                ?.allowUnverifiedSettlement ===
+              true
+          },
+          timestamp: new Date().toISOString(),
+          requestId
+        });
+      }
 
-              message:
-                "SonoraPort Banking API",
+      if (
+        url.pathname ===
+        "/api/world-sandbox/status"
+      ) {
+        return sendJSON(res, 200, {
+          service: SERVICE_NAME,
+          bridge: "worldsandbox13",
+          status: "available",
+          authority: {
+            statusRead: true,
+            capabilityRead: true,
+            credentialRead: false,
+            unrestrictedTransfers: false
+          },
+          timestamp: new Date().toISOString(),
+          requestId
+        });
+      }
 
-              version:
-                API_VERSION,
+      return sendJSON(res, 404, {
+        error: "Endpoint not found",
+        requestId
+      });
+    } catch (error) {
+      console.error(
+        "SONORAPORT BANKING ERROR:",
+        error
+      );
 
-              environment:
-                "production",
+      if (error.message === "INVALID_JSON") {
+        return sendJSON(res, 400, {
+          ok: false,
+          error: "Invalid JSON request body.",
+          requestId
+        });
+      }
 
-              requestId: id
-            }
-          );
-        }
+      if (error.message === "BODY_TOO_LARGE") {
+        return sendJSON(res, 413, {
+          ok: false,
+          error: "Request body too large.",
+          requestId
+        });
+      }
 
-        /*
-         * HEALTH
-         */
+      return sendJSON(res, 500, {
+        ok: false,
+        error:
+          "Internal banking service error.",
+        requestId
+      });
+    }
+  }
+);
 
-        if (
-          url.pathname ===
-          "/api/health"
-        ) {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
+server.listen(PORT, HOST, () => {
+  console.log(
+    `SONORAPORT BANKING ONLINE — ${HOST}:${PORT}`
+  );
+});
 
-              status:
-                "healthy",
-
-              version:
-                API_VERSION,
-
-              environment:
-                "production",
-
-              runtime:
-                process.version,
-
-              timestamp:
-                new Date()
-                  .toISOString(),
-
-              requestId: id
-            }
-          );
-        }
-
-        /*
-         * CAPABILITIES
-         */
-
-        if (
-          url.pathname ===
-          "/api/capabilities"
-        ) {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
-
-              environment:
-                "production",
-
-              capabilities:
-                bankingCapabilities(),
-
-              timestamp:
-                new Date()
-                  .toISOString(),
-
-              requestId: id
-            }
-          );
-        }
-
-        /*
-         * PRODUCTION RAIL STATUS
-         */
-
-        if (
-          url.pathname ===
-          "/api/production-rails"
-        ) {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
-
-              environment:
-                productionRails
-                  .environment,
-
-              executionAuthority:
-                productionRails
-                  .executionAuthority,
-
-              rails:
-                productionRailStatus(),
-
-              controls: {
-                realMoneyTarget:
-                  productionRails
-                    .controls
-                    ?.realMoneyTarget ===
-                  true,
-
-                credentialsStoredInRepository:
-                  productionRails
-                    .controls
-                    ?.credentialsStoredInRepository ===
-                  true,
-
-                providerAuthenticationRequired:
-                  productionRails
-                    .controls
-                    ?.requireProviderAuthentication ===
-                  true,
-
-                providerConfirmationRequired:
-                  productio
+module.exports = {
+  server,
+  bankingCapabilities,
+  authenticateMatchaManita: authenticate,
+  handleMatchaManita: handleMatcha,
+  loadProductionRails,
+  railRuntimeStatus: railStatus,
+  productionRailStatus
+};
