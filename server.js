@@ -902,4 +902,126 @@ const server =
             "/api/matcha-manita/"
           )
         ) {
-          return await handleMatcha
+          return await handleMatcha(
+            req,
+            res,
+            url,
+            requestId
+          );
+        }
+
+        if (
+          req.method !== "GET"
+        ) {
+          return sendJSON(
+            res,
+            405,
+            {
+              error:
+                "Method not allowed",
+              requestId
+            }
+          );
+        }
+
+        if (
+          url.pathname === "/"
+        ) {
+          return sendJSON(
+            res,
+            200,
+            {
+              service:
+                SERVICE_NAME,
+              message:
+                "SonoraPort Banking API",
+              version:
+                API_VERSION,
+              environment:
+                "production",
+              requestId
+            }
+          );
+        }
+
+        if (
+          url.pathname ===
+          "/api/health"
+        ) {
+          return sendJSON(
+            res,
+            200,
+            {
+              service:
+                SERVICE_NAME,
+              status:
+                "healthy",
+              version:
+                API_VERSION,
+              environment:
+                "production",
+              runtime:
+                process.version,
+              timestamp:
+                new Date().toISOString(),
+              requestId
+            }
+          );
+        }
+
+        if (
+          url.pathname ===
+          "/api/capabilities"
+        ) {
+          return sendJSON(
+            res,
+            200,
+            {
+              service:
+                SERVICE_NAME,
+              capabilities:
+                bankingCapabilities(),
+              timestamp:
+                new Date().toISOString(),
+              requestId
+            }
+          );
+        }
+
+        if (
+          url.pathname ===
+          "/api/production-rails"
+        ) {
+          return sendJSON(
+            res,
+            200,
+            {
+              service:
+                SERVICE_NAME,
+
+              environment:
+                productionRails.environment,
+
+              executionAuthority:
+                productionRails.executionAuthority,
+
+              rails:
+                productionRailStatus(),
+
+              controls: {
+                realMoneyTarget:
+                  productionRails
+                    .controls
+                    ?.realMoneyTarget ===
+                  true,
+
+                credentialsStoredInRepository:
+                  productionRails
+                    .controls
+                    ?.credentialsStoredInRepository ===
+                  true,
+
+                providerConfirmationRequired:
+                  productionRails
+                    .controls
+    
