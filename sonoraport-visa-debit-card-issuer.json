@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "integration_id": "sonoraport-visa-debit-card-issuer",
+  "purpose": "Repository-safe configuration contract for the existing SonoraPort Visa debit card lifecycle.",
+  "security": {
+    "commit_secret_values": false,
+    "secret_storage": "Netlify environment variables or equivalent server-side secret store",
+    "note": "This file contains variable names only. Never commit API keys, client secrets, webhook secrets, private keys, or access tokens."
+  },
+  "implementation": {
+    "adapter": "netlify/functions/lib/card-issuer-router.mjs",
+    "issuance_function": "netlify/functions/card-issuance-request.mjs",
+    "transaction_webhook": "netlify/functions/card-transaction-webhook.mjs",
+    "settlement_webhook": "netlify/functions/card-settlement-webhook.mjs"
+  },
+  "environment_variables": [
+    {
+      "name": "CARD_ISSUER_NAME",
+      "value": "CONFIGURE_IN_NETLIFY",
+      "secret": false
+    },
+    {
+      "name": "CARD_ISSUER_PRIORITY",
+      "value": "CONFIGURE_IN_NETLIFY",
+      "secret": false
+    },
+    {
+      "name": "CARD_ISSUER_TIMEOUT_MS",
+      "value": "CONFIGURE_IN_NETLIFY",
+      "secret": false
+    },
+    {
+      "name": "CARD_ISSUER_WEBHOOK_SECRET",
+      "value": "SET_IN_NETLIFY_NOT_GITHUB",
+      "secret": true
+    }
+  ],
+  "release_rules": {
+    "provider_readiness_must_be_verified": true,
+    "issuance_must_not_fabricate_provider_acceptance": true,
+    "webhook_signature_verification_required": true,
+    "production_cutover_independent_of_config_presence": true
+  }
+}
