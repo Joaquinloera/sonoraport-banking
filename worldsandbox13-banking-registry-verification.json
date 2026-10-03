@@ -1,8 +1,7 @@
 {
-  "schemaVersion": "1.1.0",
+  "schemaVersion": "1.2.0",
   "recordType": "WORLDSANBOX13_BANKING_REGISTRY_VERIFICATION",
   "status": "ACTIVE",
-
   "authority": {
     "masterFile": "worldsandbox13-sonoraport-banking-master.json",
     "readerControlFile": "worldsandbox13-banking-reader-control.json",
@@ -12,21 +11,18 @@
     "targetRepository": "Joaquinloera/sonoraport-banking",
     "targetBranch": "main"
   },
-
   "verification": {
     "mode": "READ_ONLY",
     "failClosed": true,
     "expectedRegistryCount": 16,
     "requireExactRegistryCount": true,
-    "requireApprovedFile": true,
     "requireRepositoryRead": true,
     "requireJsonParse": true,
     "requireBlobSha": true,
     "requireProvenance": true,
-    "requireUniqueRegistryId": true,
-    "requireUniqueFileName": true
+    "requireUniqueRegistryIds": true,
+    "requireUniqueFileNames": true
   },
-
   "approvedRegistries": [
     {
       "registryId": "properties",
@@ -54,4 +50,96 @@
     },
     {
       "registryId": "yachts_maritime",
-      "fileName": "worldsandbox13-y
+      "fileName": "worldsandbox13-yachts-maritime-master-281102.json"
+    },
+    {
+      "registryId": "hard_assets_blackrock",
+      "fileName": "worldsandbox13-hard-assets-blackrock-281102-kino.json"
+    },
+    {
+      "registryId": "blackrock_assets",
+      "fileName": "worldsandbox13-blackrock-assets-281102-kino.json"
+    },
+    {
+      "registryId": "licensing_281102",
+      "fileName": "worldsandbox13-licensing-records-281102-kino.json"
+    },
+    {
+      "registryId": "licensing_1335",
+      "fileName": "worldsandbox13-licensing-records-1335-kayleen.json"
+    },
+    {
+      "registryId": "law_licenses",
+      "fileName": "worldsandbox13-law-licenses-281102-kino.json"
+    },
+    {
+      "registryId": "cannabis_licenses",
+      "fileName": "worldsandbox13-cannabis-licenses-281102-kino.json"
+    },
+    {
+      "registryId": "banking",
+      "fileName": "worldsandbox13-banking-281102-kino.json"
+    },
+    {
+      "registryId": "banking_master",
+      "fileName": "worldsandbox13-banking-master-v5.json"
+    },
+    {
+      "registryId": "banking_liquidity",
+      "fileName": "worldsandbox13-banking-liquidity-master-281102.json"
+    }
+  ],
+  "provenancePolicy": {
+    "required": true,
+    "preserveRepository": true,
+    "preserveBranch": true,
+    "preserveFileName": true,
+    "preserveBlobSha": true,
+    "preserveRegistryId": true,
+    "preserveRecordType": true,
+    "preserveOwnershipReference": true,
+    "preserveSourceReportedValues": true
+  },
+  "ownershipPolicy": {
+    "preserveSoleOwnership": true,
+    "preserveJointOwnership": true,
+    "inferOwnership": false,
+    "rewriteOwnership": false
+  },
+  "bankingPolicy": {
+    "aggregateSnapshots": false,
+    "preserveConflictingSnapshots": true,
+    "deduplicateExactCopies": true,
+    "inventMissingBalances": false,
+    "sourceReportedValuesAreExternallyVerified": false
+  },
+  "security": {
+    "serverSideOnly": true,
+    "readOnly": true,
+    "repositoryWrite": false,
+    "registryWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "directMoneyMovement": false,
+    "tokensStoredInJson": false,
+    "privateKeysStoredInJson": false,
+    "passwordsStoredInJson": false,
+    "fullCardNumbersStoredInJson": false,
+    "cvvStoredInJson": false
+  },
+  "checkpoint": {
+    "requiredVerifiedRegistries": 16,
+    "allowPartialVerification": false,
+    "successState": "VERIFIED",
+    "failureState": "BLOCKED"
+  },
+  "pipeline": [
+    "SKIM",
+    "IDENTIFY",
+    "READ",
+    "PARSE_JSON",
+    "VERIFY_PROVENANCE",
+    "VERIFY_REGISTRY_COUNT",
+    "CHECKPOINT"
+  ]
+}
