@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_TOKENIZATION_DATA_BOUNDARY",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json",
+    "runtimeVerification": "sonoraport-card-runtime-verification.json",
+    "transactionControl": "sonoraport-card-webhook-transaction-control.json"
+  },
+  "scope": {
+    "creditCards": true,
+    "debitCards": true,
+    "cardTokenization": true,
+    "storedPaymentMethods": true,
+    "transactionReferences": true
+  },
+  "tokenization": {
+    "required": true,
+    "providerSidePreferred": true,
+    "tokenRequiredBeforePersistence": true,
+    "rawPanPersistenceAllowed": false,
+    "cvvPersistenceAllowed": false,
+    "pinPersistenceAllowed": false,
+    "providerTokenPersistenceAllowed": true
+  },
+  "allowedStoredCardMetadata": {
+    "providerToken": true,
+    "providerPaymentMethodId": true,
+    "cardBrand": true,
+    "lastFour": true,
+    "expirationMonth": true,
+    "expirationYear": true,
+    "cardholderReference": true,
+    "providerCustomerReference": true,
+    "providerTransactionReference": true
+  },
+  "prohibitedStoredData": {
+    "fullPan": true,
+    "cvv": true,
+    "pin": true,
+    "magneticStripeData": true,
+    "chipCryptogram": true,
+    "providerApiKey": true,
+    "webhookSecret": true,
+    "privateKey": true
+  },
+  "logging": {
+    "logFullPan": false,
+    "logCvv": false,
+    "logPin": false,
+    "logApiKeys": false,
+    "logWebhookSecrets": false,
+    "maskedPanOnly": true,
+    "transactionReferenceAllowed": true
+  },
+  "clientBoundary": {
+    "providerSecretsExposedToClient": false,
+    "privateKeysExposedToClient": false,
+    "webhookSecretsExposedToClient": false,
+    "rawCardDataReturnedByApi": false,
+    "maskedCardMetadataAllowed": true
+  },
+  "serverBoundary": {
+    "providerCallsServerSideOnly": true,
+    "credentialsFromEnvironmentOnly": true,
+    "requireAuthenticatedRequests": true,
+    "requireAuthorizationChecks": true,
+    "requireTokenizedPersistence": true
+  },
+  "verification": {
+    "verifyTokenizationAdapter": true,
+    "verifyNoRawPanPersistence": true,
+    "verifyNoCvvPersistence": true,
+    "verifyNoPinPersistence": true,
+    "verifyNoSecretsInRepository": true,
+    "verifyNoSecretsInClientResponses": true,
+    "verifyMaskedLogging": true,
+    "configurationAloneProvesCompliance": false
+  },
+  "runtimeStatus": {
+    "initialState": "UNVERIFIED",
+    "successState": "VERIFIED",
+    "failureState": "BLOCKED",
+    "requireLiveVerification": true
+  },
+  "worldsanbox13": {
+    "mode": "READ_ONLY",
+    "allowRawCardImport": false,
+    "allowCredentialImport": false,
+    "allowSecretImport": false,
+    "allowTokenReferenceRead": true
+  },
+  "pipeline": [
+    "RECEIVE_PAYMENT_METHOD",
+    "TOKENIZE",
+    "DISCARD_RAW_SENSITIVE_DATA",
+    "STORE_PROVIDER_TOKEN",
+    "STORE_MASKED_METADATA",
+    "VERIFY_DATA_BOUNDARY",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}
