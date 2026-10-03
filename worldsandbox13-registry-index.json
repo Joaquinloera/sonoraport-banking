@@ -1,22 +1,11 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "recordType": "WORLDSANBOX13_REGISTRY_INDEX",
   "status": "ACTIVE",
   "source": {
     "repository": "Joaquinloera/Worldsanbox13",
     "branch": "main",
     "mode": "READ_ONLY"
-  },
-  "target": {
-    "repository": "Joaquinloera/sonoraport-banking",
-    "branch": "main"
-  },
-  "authority": {
-    "masterFile": "worldsandbox13-sonoraport-banking-master.json",
-    "readerControlFile": "worldsandbox13-banking-reader-control.json",
-    "verificationFile": "worldsandbox13-banking-registry-verification.json",
-    "bridgeStatusFile": "worldsandbox13-banking-bridge-status.json",
-    "accessManifestFile": "worldsandbox13-banking-access-manifest.json"
   },
   "expectedRegistryCount": 16,
   "registries": [
@@ -89,25 +78,16 @@
     "requireExactRegistryCount": true,
     "requireUniqueRegistryIds": true,
     "requireUniquePaths": true,
-    "requireJsonExtension": true,
-    "requireReadableFile": true,
     "requireValidJson": true,
     "requireBlobSha": true,
     "failClosed": true
   },
-  "provenance": {
-    "required": true,
-    "preserveRepository": true,
-    "preserveBranch": true,
-    "preservePath": true,
-    "preserveBlobSha": true,
-    "preserveRegistryId": true,
-    "preserveRecordType": true,
-    "preserveOwnershipReference": true,
-    "preserveSourceReportedValues": true
-  },
-  "dataPolicy": {
-    "worldsanbox13IsAuthoritative": true,
-    "copyRegistriesIntoBanking": false,
-    "duplicateAssetDatabase": false,
-   
+  "security": {
+    "readOnly": true,
+    "repositoryWrite": false,
+    "registryWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "directMoneyMovement": false
+  }
+}
