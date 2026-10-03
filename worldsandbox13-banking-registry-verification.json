@@ -1,11 +1,12 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "recordType": "WORLDSANBOX13_BANKING_REGISTRY_VERIFICATION",
   "status": "ACTIVE",
 
   "authority": {
     "masterFile": "worldsandbox13-sonoraport-banking-master.json",
     "readerControlFile": "worldsandbox13-banking-reader-control.json",
+    "accessManifestFile": "worldsandbox13-banking-access-manifest.json",
     "sourceRepository": "Joaquinloera/Worldsanbox13",
     "sourceBranch": "main",
     "targetRepository": "Joaquinloera/sonoraport-banking",
@@ -53,16 +54,4 @@
     },
     {
       "registryId": "yachts_maritime",
-      "fileName": "worldsandbox13-yachts-maritime-master-281102.json"
-    },
-    {
-      "registryId": "hard_assets_blackrock",
-      "fileName": "worldsandbox13-hard-assets-blackrock-281102-kino.json"
-    },
-    {
-      "registryId": "blackrock_assets",
-      "fileName": "worldsandbox13-blackrock-assets-281102-kino.json"
-    },
-    {
-      "registryId": "licensing_281102",
-      "fileName": "worldsandbox13-licensing-record
+      "fileName": "worldsandbox13-y
