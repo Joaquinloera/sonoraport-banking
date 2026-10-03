@@ -81,3 +81,37 @@
     "requireProviderTransactionReference": true,
     "requireProviderSettlementConfirmation": true,
     "doNotInventApproval": true,
+    "doNotInventSettlement": true
+  },
+  "runtimeStatus": {
+    "configured": false,
+    "connected": false,
+    "authenticated": false,
+    "verified": false,
+    "state": "UNVERIFIED"
+  },
+  "verification": {
+    "verifySourceEvidence": true,
+    "verifyAdapter": true,
+    "verifyEnvironmentConfiguration": true,
+    "verifyAuthentication": true,
+    "verifyTokenization": true,
+    "verifyAuthorization": true,
+    "verifySettlement": true,
+    "verifyReconciliation": true
+  },
+  "pipeline": [
+    "SKIM_MASTERCARD_SOURCE",
+    "IDENTIFY_ADAPTER",
+    "DISCOVER_ENVIRONMENT_NAMES",
+    "VERIFY_CONFIGURATION",
+    "VERIFY_AUTHENTICATION",
+    "VERIFY_TOKENIZATION",
+    "VERIFY_AUTHORIZATION",
+    "VERIFY_SETTLEMENT",
+    "VERIFY_RECONCILIATION",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}
