@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_PAYPAL_RUNTIME_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "provider": {
+    "providerId": "paypal",
+    "providerName": "PayPal",
+    "sourceDiscovered": true,
+    "adapterDiscovered": true,
+    "sourceFiles": [
+      "paypal-production-adapter.js",
+      "production-payment-rails.json",
+      "server.js"
+    ]
+  },
+  "environmentVariables": [
+    {
+      "name": "PAYPAL_CLIENT_ID",
+      "sourceObserved": true,
+      "secretValueStoredHere": false
+    },
+    {
+      "name": "PAYPAL_CLIENT_SECRET",
+      "sourceObserved": true,
+      "secretValueStoredHere": false
+    }
+  ],
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json",
+    "runtimeVerification": "sonoraport-card-runtime-verification.json",
+    "webhookControl": "sonoraport-card-webhook-transaction-control.json",
+    "settlementControl": "sonoraport-card-settlement-reconciliation-control.json",
+    "sourceEvidence": "sonoraport-card-provider-source-evidence.json"
+  },
+  "runtimeRequirements": {
+    "requireProductionAdapter": true,
+    "requireEnvironmentConfiguration": true,
+    "requireServerSideAuthentication": true,
+    "requireProviderResponse": true,
+    "requireWebhookVerificationWhenUsed": true,
+    "requireReconciliation": true
+  },
+  "connectionRules": {
+    "adapterPresenceProvesConnected": false,
+    "environmentNamesProveConfigured": false,
+    "configurationProvesAuthenticated": false,
+    "hardcodedConnectedAllowed": false,
+    "hardcodedAuthenticatedAllowed": false,
+    "hardcodedVerifiedAllowed": false
+  },
+  "security": {
+    "credentialsFromEnvironmentOnly": true,
+    "storeClientIdValueInRepository": false,
+    "storeClientSecretValueInRepository": false,
+    "storeAccessTokensInRepository": false,
+    "storeWebhookSecretsInRepository": false,
+    "logSecretValues": false
+  },
+  "transactionRules": {
+    "providerApprovalRequired": true,
+    "providerTransactionReferenceRequired": true,
+    "pendingIsSettled": false,
+    "requireSettlementConfirmation": true,
+    "doNotInventApproval": true,
+    "doNotInventSettlement": true
+  },
+  "runtimeStatus": {
+    "configured": false,
+    "connected": false,
+    "authenticated": false,
+    "verified": false,
+    "state": "UNVERIFIED"
+  },
+  "verification": {
+    "verifyAdapterLoad": true,
+    "verifyEnvironmentPresence": true,
+    "verifyAuthentication": true,
+    "verifyProviderResponse": true,
+    "verifyWebhookSignatureWhenUsed": true,
+    "verifySettlement": true,
+    "verifyReconciliation": true
+  },
+  "failClosed": true
+}
