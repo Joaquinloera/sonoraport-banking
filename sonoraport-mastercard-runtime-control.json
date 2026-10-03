@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.0.1",
   "recordType": "SONORAPORT_MASTERCARD_RUNTIME_CONTROL",
   "status": "ACTIVE",
   "service": "SONORAPORT_BANKING",
@@ -30,15 +30,6 @@
     "cvvPersistenceAllowed": false,
     "pinPersistenceAllowed": false
   },
-  "transactionCapabilities": {
-    "authorization": true,
-    "capture": true,
-    "settlement": true,
-    "refund": true,
-    "reversal": true,
-    "reconciliation": true,
-    "dispute": true
-  },
   "runtimeRequirements": {
     "requireProviderAdapter": true,
     "requireProviderConfiguration": true,
@@ -46,7 +37,6 @@
     "requireTokenization": true,
     "requireAuthorizationResponse": true,
     "requireSettlementConfirmation": true,
-    "requireWebhookVerificationWhenUsed": true,
     "requireReconciliation": true
   },
   "connectionRules": {
@@ -61,14 +51,11 @@
     "discoverVariableNamesFromSource": true,
     "inventVariableNames": false,
     "storeVariableValues": false,
-    "storeApiKeys": false,
-    "storeClientSecrets": false,
-    "storePrivateKeys": false
+    "storeSecretValues": false
   },
   "security": {
     "credentialsFromEnvironmentOnly": true,
     "storeSecretsInRepository": false,
-    "storeSecretsInJson": false,
     "storeFullPan": false,
     "storeCvv": false,
     "storePin": false,
@@ -100,18 +87,5 @@
     "verifySettlement": true,
     "verifyReconciliation": true
   },
-  "pipeline": [
-    "SKIM_MASTERCARD_SOURCE",
-    "IDENTIFY_ADAPTER",
-    "DISCOVER_ENVIRONMENT_NAMES",
-    "VERIFY_CONFIGURATION",
-    "VERIFY_AUTHENTICATION",
-    "VERIFY_TOKENIZATION",
-    "VERIFY_AUTHORIZATION",
-    "VERIFY_SETTLEMENT",
-    "VERIFY_RECONCILIATION",
-    "REPORT_STATUS",
-    "CHECKPOINT"
-  ],
   "failClosed": true
 }
