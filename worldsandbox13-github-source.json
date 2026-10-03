@@ -1,0 +1,48 @@
+{
+  "integration": {
+    "id": "worldsandbox13",
+    "type": "github_repository",
+    "enabled": true,
+    "required": true
+  },
+  "github": {
+    "owner": "Joaquinloera",
+    "repository": "Worldsandbox13",
+    "fullName": "Joaquinloera/Worldsandbox13",
+    "defaultBranch": "main",
+    "readEnabled": true,
+    "writeEnabled": false
+  },
+  "source": {
+    "purpose": "SonoraPort Banking WorldSandbox13 registry source",
+    "recursiveRead": true,
+    "include": [
+      "**/*.json"
+    ],
+    "exclude": [
+      "**/.git/**",
+      "**/node_modules/**",
+      "**/.env",
+      "**/.env.*"
+    ]
+  },
+  "reader": {
+    "provider": "github",
+    "repository": "Joaquinloera/Worldsandbox13",
+    "branch": "main",
+    "mode": "read_only",
+    "recursive": true,
+    "failOnMissingRepository": true,
+    "failOnAuthenticationError": true
+  },
+  "security": {
+    "credentialsInJson": false,
+    "githubTokenInJson": false,
+    "allowSecrets": false,
+    "requireAuthenticatedConnectorForPrivateRepository": true
+  },
+  "status": {
+    "expected": "CONNECTED",
+    "repositoryRequired": true
+  }
+}
