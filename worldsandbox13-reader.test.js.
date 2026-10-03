@@ -1,0 +1,95 @@
+"use strict";
+
+const assert = require("assert");
+
+const {
+  repositoryStatus,
+  verifyApprovedRegistries,
+  registryIndex
+} = require("./worldsandbox13-reader");
+
+async function run() {
+  console.log("WORLDSANBOX13 → SONORAPORT BANKING VERIFICATION");
+
+  assert.strictEqual(
+    registryIndex.source.repository,
+    "Joaquinloera/Worldsanbox13"
+  );
+
+  assert.strictEqual(
+    registryIndex.source.branch,
+    "main"
+  );
+
+  assert.strictEqual(
+    registryIndex.source.mode,
+    "READ_ONLY"
+  );
+
+  assert.strictEqual(
+    registryIndex.registries.length,
+    16,
+    "Expected exactly 16 approved Worldsanbox13 registries"
+  );
+
+  const repository = await repositoryStatus();
+
+  assert.strictEqual(
+    repository.connected,
+    true,
+    "Worldsanbox13 repository is not reachable"
+  );
+
+  assert.strictEqual(
+    repository.repository,
+    "Joaquinloera/Worldsanbox13"
+  );
+
+  console.log(
+    `✓ Repository connected: ${repository.repository}`
+  );
+
+  const verification =
+    await verifyApprovedRegistries();
+
+  console.log(
+    `✓ Registries verified: ` +
+    `${verification.verifiedRegistries}/` +
+    `${verification.expectedRegistries}`
+  );
+
+  for (const result of verification.results) {
+    const status =
+      result.readable && result.jsonValid
+        ? "PASS"
+        : "FAIL";
+
+    console.log(
+      `${status} | ${result.registryId} | ${result.path}`
+    );
+
+    if (result.error) {
+      console.error(`       ${result.error}`);
+    }
+  }
+
+  assert.strictEqual(
+    verification.ok,
+    true,
+    "One or more Worldsanbox13 registries failed verification"
+  );
+
+  console.log(
+    "✓ WORLDSANBOX13 READ-ONLY BRIDGE VERIFIED"
+  );
+}
+
+run().catch((error) => {
+  console.error(
+    "WORLDSANBOX13 VERIFICATION FAILED"
+  );
+
+  console.error(error);
+
+  process.exit(1);
+});
