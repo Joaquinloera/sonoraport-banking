@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_RUNTIME_VERIFICATION",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json"
+  },
+  "scope": {
+    "creditCards": true,
+    "debitCards": true,
+    "tokenization": true,
+    "authorization": true,
+    "capture": true,
+    "refund": true,
+    "webhooks": true,
+    "reconciliation": true
+  },
+  "connectionRules": {
+    "configurationAloneProvesConnected": false,
+    "environmentVariableNameAloneProvesConfigured": false,
+    "providerNameAloneProvesConnected": false,
+    "hardcodedConnectedStatusAllowed": false,
+    "hardcodedAuthenticatedStatusAllowed": false,
+    "hardcodedVerifiedStatusAllowed": false
+  },
+  "requiredRuntimeChecks": {
+    "providerIdentifiedFromSource": true,
+    "providerAdapterExists": true,
+    "providerAdapterLoads": true,
+    "requiredEnvironmentConfigurationPresent": true,
+    "providerAuthenticationSucceeds": true,
+    "tokenizationAvailable": true,
+    "paymentRoutesAvailable": true,
+    "webhookRouteAvailable": true,
+    "webhookSignatureVerificationAvailable": true
+  },
+  "transactionFlowChecks": {
+    "authorizationFlow": true,
+    "captureFlow": true,
+    "refundFlow": true,
+    "reconciliationFlow": true,
+    "requireExplicitSuccessResponse": true,
+    "doNotTreatPendingAsSettled": true,
+    "doNotTreatConfigurationAsTransactionProof": true
+  },
+  "cardDataSecurity": {
+    "fullPanInRepository": false,
+    "cvvInRepository": false,
+    "fullPanInLogs": false,
+    "cvvInLogs": false,
+    "providerApiKeyInRepository": false,
+    "webhookSecretInRepository": false,
+    "privateKeyInRepository": false,
+    "tokenizationRequired": true,
+    "maskedPanAllowed": true,
+    "providerTokenAllowed": true
+  },
+  "runtimeStatus": {
+    "initialState": "UNVERIFIED",
+    "allowedStates": [
+      "UNVERIFIED",
+      "CONFIGURED",
+      "CONNECTED",
+      "AUTHENTICATED",
+      "VERIFIED",
+      "BLOCKED"
+    ],
+    "verifiedRequiresAllMandatoryChecks": true,
+    "blockedOnMandatoryFailure": true
+  },
+  "worldsanbox13": {
+    "mode": "READ_ONLY",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "allowCredentialImport": false,
+    "allowSecretImport": false,
+    "allowRawCardImport": false
+  },
+  "reporting": {
+    "includeProviderName": true,
+    "includeAdapterStatus": true,
+    "includeRouteStatus": true,
+    "includeWebhookStatus": true,
+    "includeTokenizationStatus": true,
+    "includeAuthenticationStatus": true,
+    "includeSecretValues": false,
+    "includeFullCardNumbers": false,
+    "includeCvv": false
+  },
+  "pipeline": [
+    "SKIM",
+    "IDENTIFY_PROVIDER",
+    "VERIFY_ADAPTER",
+    "VERIFY_ENVIRONMENT_CONFIGURATION",
+    "VERIFY_AUTHENTICATION",
+    "VERIFY_TOKENIZATION",
+    "VERIFY_ROUTES",
+    "VERIFY_WEBHOOK_SIGNATURE",
+    "VERIFY_TRANSACTION_FLOWS",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}
