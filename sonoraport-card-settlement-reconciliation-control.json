@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_SETTLEMENT_RECONCILIATION_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json",
+    "runtimeVerification": "sonoraport-card-runtime-verification.json",
+    "transactionControl": "sonoraport-card-webhook-transaction-control.json",
+    "tokenizationBoundary": "sonoraport-card-tokenization-data-boundary.json"
+  },
+  "transactionStates": [
+    "CREATED",
+    "PENDING",
+    "AUTHORIZED",
+    "CAPTURED",
+    "SETTLEMENT_PENDING",
+    "SETTLED",
+    "DECLINED",
+    "FAILED",
+    "VOIDED",
+    "REVERSED",
+    "REFUND_PENDING",
+    "REFUNDED",
+    "PARTIALLY_REFUNDED",
+    "DISPUTED"
+  ],
+  "stateRules": {
+    "createdIsSettled": false,
+    "pendingIsSettled": false,
+    "authorizedIsSettled": false,
+    "capturedIsSettled": false,
+    "settlementPendingIsSettled": false,
+    "settledRequiresProviderConfirmation": true,
+    "refundedRequiresProviderConfirmation": true,
+    "doNotInventSettlement": true,
+    "doNotInventProviderConfirmation": true
+  },
+  "authorization": {
+    "enabled": true,
+    "requireProviderTransactionReference": true,
+    "requireExplicitProviderSuccess": true,
+    "preserveAuthorizationReference": true,
+    "authorizationDoesNotEqualSettlement": true
+  },
+  "capture": {
+    "enabled": true,
+    "requireValidAuthorization": true,
+    "requireProviderCaptureReference": true,
+    "requireExplicitProviderSuccess": true,
+    "captureDoesNotEqualSettlement": true
+  },
+  "settlement": {
+    "enabled": true,
+    "requireProviderSettlementStatus": true,
+    "requireProviderTransactionReference": true,
+    "preserveProviderSettlementReference": true,
+    "requireCurrencyMatch": true,
+    "requireAmountMatch": true
+  },
+  "refunds": {
+    "enabled": true,
+    "requireOriginalTransactionReference": true,
+    "requireProviderRefundReference": true,
+    "requireExplicitProviderSuccess": true,
+    "partialRefundSupported": true,
+    "preserveRefundAmount": true
+  },
+  "reconciliation": {
+    "enabled": true,
+    "requireInternalTransactionReference": true,
+    "requireProviderTransactionReference": true,
+    "compareAmount": true,
+    "compareCurrency": true,
+    "compareTransactionState": true,
+    "compareSettlementState": true,
+    "preserveProviderReportedValues": true,
+    "flagMismatch": true,
+    "autoInventMissingValues": false
+  },
+  "idempotency": {
+    "required": true,
+    "authorization": true,
+    "capture": true,
+    "refund": true,
+    "webhookProcessing": true
+  },
+  "security": {
+    "tokenizationRequired": true,
+    "storeFullPan": false,
+    "storeCvv": false,
+    "storePin": false,
+    "storeApiKeys": false,
+    "storeWebhookSecrets": false,
+    "credentialsFromEnvironmentOnly": true
+  },
+  "verification": {
+    "configurationAloneProvesSettlement": false,
+    "authorizationAloneProvesSettlement": false,
+    "captureAloneProvesSettlement": false,
+    "requireLiveProviderConfirmation": true,
+    "requireReconciliationBeforeVerifiedSettlement": true
+  },
+  "worldsanbox13": {
+    "mode": "READ_ONLY",
+    "allowInventedBalances": false,
+    "allowInventedTransactions": false,
+    "preserveSourceReportedValues": true,
+    "preserveConflictingSourceSnapshots": true
+  },
+  "runtimeStatus": {
+    "initialState": "UNVERIFIED",
+    "successState": "VERIFIED",
+    "failureState": "BLOCKED"
+  },
+  "pipeline": [
+    "CREATE_TRANSACTION",
+    "AUTHORIZE",
+    "CAPTURE",
+    "WAIT_FOR_PROVIDER_SETTLEMENT",
+    "VERIFY_PROVIDER_STATUS",
+    "RECONCILE_AMOUNT",
+    "RECONCILE_CURRENCY",
+    "RECONCILE_STATE",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}
