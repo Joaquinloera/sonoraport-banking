@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_MASTERCARD_RUNTIME_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "provider": {
+    "providerId": "mastercard",
+    "providerName": "Mastercard",
+    "sourceDiscovered": true,
+    "sourceFiles": [
+      "production-payment-rails.json",
+      "server.js"
+    ]
+  },
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json",
+    "runtimeVerification": "sonoraport-card-runtime-verification.json",
+    "tokenizationBoundary": "sonoraport-card-tokenization-data-boundary.json",
+    "settlementControl": "sonoraport-card-settlement-reconciliation-control.json",
+    "disputeControl": "sonoraport-card-dispute-chargeback-control.json",
+    "sourceEvidence": "sonoraport-card-provider-source-evidence.json"
+  },
+  "cardProgram": {
+    "credit": true,
+    "debit": true,
+    "tokenizationRequired": true,
+    "providerTokenPersistenceAllowed": true,
+    "fullPanPersistenceAllowed": false,
+    "cvvPersistenceAllowed": false,
+    "pinPersistenceAllowed": false
+  },
+  "transactionCapabilities": {
+    "authorization": true,
+    "capture": true,
+    "settlement": true,
+    "refund": true,
+    "reversal": true,
+    "reconciliation": true,
+    "dispute": true
+  },
+  "runtimeRequirements": {
+    "requireProviderAdapter": true,
+    "requireProviderConfiguration": true,
+    "requireServerSideAuthentication": true,
+    "requireTokenization": true,
+    "requireAuthorizationResponse": true,
+    "requireSettlementConfirmation": true,
+    "requireWebhookVerificationWhenUsed": true,
+    "requireReconciliation": true
+  },
+  "connectionRules": {
+    "sourceReferenceProvesConnected": false,
+    "enabledFlagProvesConnected": false,
+    "configurationProvesAuthenticated": false,
+    "hardcodedConnectedAllowed": false,
+    "hardcodedAuthenticatedAllowed": false,
+    "hardcodedVerifiedAllowed": false
+  },
+  "environmentDiscovery": {
+    "discoverVariableNamesFromSource": true,
+    "inventVariableNames": false,
+    "storeVariableValues": false,
+    "storeApiKeys": false,
+    "storeClientSecrets": false,
+    "storePrivateKeys": false
+  },
+  "security": {
+    "credentialsFromEnvironmentOnly": true,
+    "storeSecretsInRepository": false,
+    "storeSecretsInJson": false,
+    "storeFullPan": false,
+    "storeCvv": false,
+    "storePin": false,
+    "maskedPanAllowed": true,
+    "providerTokenAllowed": true
+  },
+  "transactionRules": {
+    "authorizationIsSettlement": false,
+    "captureIsSettlement": false,
+    "requireProviderTransactionReference": true,
+    "requireProviderSettlementConfirmation": true,
+    "doNotInventApproval": true,
