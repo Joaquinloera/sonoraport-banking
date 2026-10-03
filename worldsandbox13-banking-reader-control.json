@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_BANKING_READER_CONTROL",
+  "status": "ACTIVE",
+
+  "master": {
+    "fileName": "worldsandbox13-sonoraport-banking-master.json",
+    "required": true,
+    "authoritative": true
+  },
+
+  "source": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "target": {
+    "repository": "Joaquinloera/sonoraport-banking",
+    "branch": "main"
+  },
+
+  "reader": {
+    "fileName": "worldsandbox13-reader.js",
+    "enabled": true,
+    "masterControlled": true,
+    "allowUnapprovedRegistry": false,
+    "requireJson": true,
+    "returnProvenance": true,
+    "failClosed": true
+  },
+
+  "registryVerification": {
+    "expectedRegistries": 16,
+    "requireExactRegistryCount": true,
+    "requireRepositoryReachable": true,
+    "requireFileReadable": true,
+    "requireValidJson": true,
+    "requireBlobSha": true,
+    "requireRegistryId": true,
+    "requireSourcePath": true
+  },
+
+  "bankingAccess": {
+    "properties": true,
+    "companies": true,
+    "vehicles": true,
+    "airplanes": true,
+    "helicopters": true,
+    "yachtsMaritime": true,
+    "hardAssets": true,
+    "licensing": true,
+    "lawLicenses": true,
+    "cannabisLicenses": true,
+    "bankingRecords": true,
+    "bankingMaster": true,
+    "bankingLiquidity": true
+  },
+
+  "ownership": {
+    "primaryReference": "281102",
+    "relatedReference": "1335",
+    "preserveSourceOwnership": true,
+    "doNotConvertJointToSole": true,
+    "doNotConvertSoleToJoint": true
+  },
+
+  "dataPolicy": {
+    "worldsanbox13IsSourceOfTruth": true,
+    "duplicateAssetDatabase": false,
+    "copyRegistriesIntoBanking": false,
+    "preserveSourceReportedValues": true,
+    "preserveConflictingSourceSnapshots": true,
+    "aggregateBankingSnapshots": false,
+    "deduplicateExactCopies": true,
+    "doNotInventMissingValues": true
+  },
+
+  "security": {
+    "readOnly": true,
+    "serverSideOnly": true,
+    "writeAccess": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "directMoneyMovement": false,
+    "credentialsInRepository": false,
+    "githubTokenEnvironmentVariable": "WORLDSANDBOX13_GITHUB_TOKEN",
+    "bridgeTokenEnvironmentVariable": "SONORAPORT_BANKING_BRIDGE_TOKEN"
+  },
+
+  "runtimeStatus": {
+    "hardcodeConnected": false,
+    "hardcodeAuthenticated": false,
+    "hardcodeVerified": false,
+    "connectedRequiresLiveRepositoryRead": true,
+    "verifiedRequiresRegistryVerification": true
+  },
+
+  "pipeline": [
+    "SKIM",
+    "IDENTIFY",
+    "READ_MASTER",
+    "READ_REGISTRY",
+    "PARSE_JSON",
+    "VERIFY_PROVENANCE",
+    "VERIFY_REGISTRY",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ]
+}
