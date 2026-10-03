@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_PROVIDER_ENVIRONMENT_MAP",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "sourceOfTruth": {
+    "paymentRails": "production-payment-rails.json",
+    "visaIssuer": "sonoraport-visa-debit-card-issuer.json",
+    "paypalAdapter": "paypal-production-adapter.js",
+    "runtimeServer": "server.js"
+  },
+  "providers": {
+    "visa": {
+      "runtimeStatus": "UNVERIFIED",
+      "requiredEnvironment": [
+        "VISA_API_KEY",
+        "VISA_SHARED_SECRET",
+        "VISA_CLIENT_CERT_PATH",
+        "VISA_PRIVATE_KEY_PATH"
+      ],
+      "issuerEnvironment": [
+        "CARD_ISSUER_NAME",
+        "CARD_ISSUER_PRIORITY",
+        "CARD_ISSUER_TIMEOUT_MS",
+        "CARD_ISSUER_WEBHOOK_SECRET"
+      ]
+    },
+    "mastercard": {
+      "runtimeStatus": "UNVERIFIED",
+      "requiredEnvironment": [
+        "MASTERCARD_CONSUMER_KEY",
+        "MASTERCARD_SIGNING_KEY_PATH",
+        "MASTERCARD_SIGNING_KEY_PASSWORD"
+      ]
+    },
+    "paypal": {
+      "runtimeStatus": "UNVERIFIED",
+      "requiredEnvironment": [
+        "PAYPAL_CLIENT_ID",
+        "PAYPAL_CLIENT_SECRET"
+      ],
+      "authentication": "oauth2",
+      "adapter": "paypal-production-adapter.js"
+    }
+  },
+  "visaImplementation": {
+    "adapter": "netlify/functions/lib/card-issuer-router.mjs",
+    "issuanceFunction": "netlify/functions/card-issuance-request.mjs",
+    "transactionWebhook": "netlify/functions/card-transaction-webhook.mjs",
+    "settlementWebhook": "netlify/functions/card-settlement-webhook.mjs"
+  },
+  "runtimeBehavior": {
+    "environmentPresenceCanSetConfigured": true,
+    "environmentPresenceProvesAuthentication": false,
+    "environmentPresenceProvesProviderVerification": false,
+    "environmentPresenceProvesSettlement": false,
+    "providerVerificationRequired": true
+  },
+  "repositoryBoundary": {
+    "environmentVariableNamesAllowed": true,
+    "secretValuesAllowed": false,
+    "apiKeyValuesAllowed": false,
+    "sharedSecretValuesAllowed": false,
+    "clientSecretValuesAllowed": false,
+    "privateKeyContentsAllowed": false,
+    "signingKeyContentsAllowed": false,
+    "webhookSecretValuesAllowed": false
+  },
+  "sourceIntegrity": {
+    "rootProductionPaymentRailsIsConfigurationSource": true,
+    "dataProductionPaymentRailsHasJsonExtensionButContainsJavaScript": true,
+    "treatDataProductionPaymentRailsAsJson": false
+  },
+  "verification": {
+    "visa": {
+      "configured": false,
+      "authenticated": false,
+      "verified": false
+    },
+    "mastercard": {
+      "configured": false,
+      "authenticated": false,
+      "verified": false
+    },
+    "paypal": {
+      "configured": false,
+      "authenticated": false,
+      "verified": false
+    }
+  },
+  "failClosed": true
+}
