@@ -1,20 +1,20 @@
 {
   "integration": {
-    "id": "worldsandbox13",
+    "id": "worldsanbox13",
     "type": "github_repository",
     "enabled": true,
     "required": true
   },
   "github": {
     "owner": "Joaquinloera",
-    "repository": "Worldsandbox13",
-    "fullName": "Joaquinloera/Worldsandbox13",
+    "repository": "Worldsanbox13",
+    "fullName": "Joaquinloera/Worldsanbox13",
     "defaultBranch": "main",
     "readEnabled": true,
     "writeEnabled": false
   },
   "source": {
-    "purpose": "SonoraPort Banking WorldSandbox13 registry source",
+    "purpose": "SonoraPort Banking Worldsanbox13 registry source",
     "recursiveRead": true,
     "include": [
       "**/*.json"
@@ -28,7 +28,7 @@
   },
   "reader": {
     "provider": "github",
-    "repository": "Joaquinloera/Worldsandbox13",
+    "repository": "Joaquinloera/Worldsanbox13",
     "branch": "main",
     "mode": "read_only",
     "recursive": true,
