@@ -1,0 +1,165 @@
+"use strict";
+
+const fs = require("fs");
+const path = require("path");
+
+const CONFIG_FILE = path.join(
+  __dirname,
+  "worldsandbox13-github-source.json"
+);
+
+function loadConfig() {
+  return JSON.parse(
+    fs.readFileSync(CONFIG_FILE, "utf8")
+  );
+}
+
+function getRepositorySettings() {
+  const config = loadConfig();
+
+  return {
+    owner: config.github.owner,
+    repository: config.github.repository,
+    fullName: config.github.fullName,
+    branch: config.github.defaultBranch || "main",
+    recursive: config.source?.recursiveRead === true
+  };
+}
+
+function githubHeaders() {
+  const token = process.env.WORLDSANDBOX13_GITHUB_TOKEN;
+
+  const headers = {
+    Accept: "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "User-Agent": "sonoraport-banking-worldsandbox13-reader"
+  };
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  return headers;
+}
+
+async function githubRequest(endpoint) {
+  const response = await fetch(
+    `https://api.github.com${endpoint}`,
+    {
+      method: "GET",
+      headers: githubHeaders()
+    }
+  );
+
+  if (!response.ok) {
+    const body = await response.text();
+
+    const error = new Error(
+      `WorldSandbox13 GitHub request failed: ${response.status}`
+    );
+
+    error.status = response.status;
+    error.body = body;
+
+    throw error;
+  }
+
+  return response.json();
+}
+
+async function repositoryStatus() {
+  const repo = getRepositorySettings();
+
+  const metadata = await githubRequest(
+    `/repos/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.repository)}`
+  );
+
+  return {
+    connected: true,
+    repository: metadata.full_name,
+    private: metadata.private === true,
+    defaultBranch: metadata.default_branch,
+    updatedAt: metadata.updated_at,
+    pushedAt: metadata.pushed_at
+  };
+}
+
+async function listJsonFiles() {
+  const repo = getRepositorySettings();
+
+  const branch = encodeURIComponent(repo.branch);
+
+  const tree = await githubRequest(
+    `/repos/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.repository)}/git/trees/${branch}?recursive=1`
+  );
+
+  return (tree.tree || [])
+    .filter(entry => {
+      return (
+        entry.type === "blob" &&
+        typeof entry.path === "string" &&
+        entry.path.toLowerCase().endsWith(".json")
+      );
+    })
+    .map(entry => ({
+      path: entry.path,
+      sha: entry.sha,
+      size: entry.size
+    }));
+}
+
+async function readJsonFile(filePath) {
+  const repo = getRepositorySettings();
+
+  if (
+    typeof filePath !== "string" ||
+    !filePath.toLowerCase().endsWith(".json") ||
+    filePath.includes("..")
+  ) {
+    throw new Error(
+      "Invalid WorldSandbox13 JSON path."
+    );
+  }
+
+  const endpoint =
+    `/repos/${encodeURIComponent(repo.owner)}` +
+    `/${encodeURIComponent(repo.repository)}` +
+    `/contents/${filePath
+      .split("/")
+      .map(encodeURIComponent)
+      .join("/")}` +
+    `?ref=${encodeURIComponent(repo.branch)}`;
+
+  const file = await githubRequest(endpoint);
+
+  if (
+    !file ||
+    file.type !== "file" ||
+    typeof file.content !== "string"
+  ) {
+    throw new Error(
+      "WorldSandbox13 file response was invalid."
+    );
+  }
+
+  const text = Buffer.from(
+    file.content.replace(/\n/g, ""),
+    "base64"
+  ).toString("utf8");
+
+  return {
+    repository: repo.fullName,
+    branch: repo.branch,
+    path: filePath,
+    sha: file.sha,
+    data: JSON.parse(text)
+  };
+}
+
+module.exports = {
+  loadConfig,
+  getRepositorySettings,
+  repositoryStatus,
+  listJsonFiles,
+  readJsonFile
+};
