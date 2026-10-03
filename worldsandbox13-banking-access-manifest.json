@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_BANKING_ACCESS_MANIFEST",
+  "status": "ACTIVE",
+
+  "integration": {
+    "id": "worldsanbox13-sonoraport-banking",
+    "sourceRepository": "Joaquinloera/Worldsanbox13",
+    "sourceBranch": "main",
+    "targetRepository": "Joaquinloera/sonoraport-banking",
+    "targetBranch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "controlFiles": {
+    "master": "worldsandbox13-sonoraport-banking-master.json",
+    "readerControl": "worldsandbox13-banking-reader-control.json",
+    "registryVerification": "worldsandbox13-banking-registry-verification.json",
+    "bridgeStatus": "worldsandbox13-banking-bridge-status.json"
+  },
+
+  "access": {
+    "enabled": true,
+    "serverSideOnly": true,
+    "failClosed": true,
+    "approvedRegistriesOnly": true,
+    "expectedRegistryCount": 16,
+
+    "categories": {
+      "properties": {
+        "read": true,
+        "write": false
+      },
+      "companies": {
+        "read": true,
+        "write": false
+      },
+      "vehicles": {
+        "read": true,
+        "write": false
+      },
+      "airplanes": {
+        "read": true,
+        "write": false
+      },
+      "helicopters": {
+        "read": true,
+        "write": false
+      },
+      "yachtsMaritime": {
+        "read": true,
+        "write": false
+      },
+      "hardAssets": {
+        "read": true,
+        "write": false
+      },
+      "licensing": {
+        "read": true,
+        "write": false
+      },
+      "lawLicenses": {
+        "read": true,
+        "write": false
+      },
+      "cannabisLicenses": {
+        "read": true,
+        "write": false
+      },
+      "bankingRecords": {
+        "read": true,
+        "write": false
+      },
+      "bankingLiquidity": {
+        "read": true,
+        "write": false
+      }
+    }
+  },
+
+  "identityReferences": {
+    "primary": {
+      "reference": "281102"
+    },
+    "related": {
+      "reference": "1335",
+      "useOnlyWhenPresentInSourceRegistry": true
+    },
+    "preserveSourceAssignment": true,
+    "inferIdentity": false
+  },
+
+  "provenance": {
+    "required": true,
+    "preserveRepository": true,
+    "preserveBranch": true,
+    "preserveFileName": true,
+    "preserveBlobSha": true,
+    "preserveRegistryId": true,
+    "preserveRecordType": true,
+    "preserveOwnershipReference": true,
+    "preserveSourceReportedValues": true
+  },
+
+  "dataHandling": {
+    "duplicateAssetDatabase": false,
+    "copySourceRegistriesIntoBanking": false,
+    "aggregateBankingSnapshots": false,
+    "preserveConflictingSourceSnapshots": true,
+    "deduplicateExactCopies": true,
+    "doNotInventMissingValues": true,
+    "doNotInferOwnership": true,
+    "doNotInferBalances": true
+  },
+
+  "runtimeGate": {
+    "requireMasterActive": true,
+    "requireReaderControlActive": true,
+    "requireRegistryVerificationActive": true,
+    "requireBridgeStatusActive": true,
+    "requireRepositoryReachable": true,
+    "requireVerifiedRegistryCount": 16,
+    "requireFailedRegistryCount": 0,
+    "configurationAloneDoesNotProveConnection": true
+  },
+
+  "security": {
+    "githubTokenEnvironmentVariable": "WORLDSANDBOX13_GITHUB_TOKEN",
+    "bridgeTokenEnvironmentVariable": "SONORAPORT_BANKING_BRIDGE_TOKEN",
+    "tokensStoredInJson": false,
+    "credentialsStoredInJson": false,
+    "privateKeysStoredInJson": false,
+    "passwordsStoredInJson": false,
+    "fullCardNumbersStoredInJson": false,
+    "cvvStoredInJson": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "repositoryWrite": false,
+    "registryWrite": false,
+    "directMoneyMovement": false
+  },
+
+  "consumerPolicy": {
+    "sonoraportBanking": {
+      "authorized": true,
+      "access": "READ_ONLY"
+    },
+    "matchaManita": {
+      "authorizedThroughSonoraportBanking": true,
+      "directWorldsanbox13Access": false
+    },
+    "kayleenGpt": {
+      "authorizedThroughSonoraportBanking": true,
+      "directWorldsanbox13Access": false
+    }
+  },
+
+  "verificationPipeline": [
+    "LOAD_CONTROL_FILES",
+    "VERIFY_CONTROL_STATUS",
+    "VERIFY_SOURCE_REPOSITORY",
+    "VERIFY_SOURCE_BRANCH",
+    "VERIFY_APPROVED_REGISTRIES",
+    "VERIFY_PROVENANCE",
+    "VERIFY_SECURITY_BOUNDARY",
+    "OPEN_READ_ONLY_ACCESS",
+    "CHECKPOINT"
+  ]
+}
