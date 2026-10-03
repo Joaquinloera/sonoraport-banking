@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_VISA_DEBIT_RUNTIME_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "provider": {
+    "providerId": "visa",
+    "providerName": "Visa",
+    "sourceDiscovered": true,
+    "sourceFiles": [
+      "sonoraport-visa-debit-card-issuer.json",
+      "production-payment-rails.json",
+      "server.js"
+    ]
+  },
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json",
+    "runtimeVerification": "sonoraport-card-runtime-verification.json",
+    "tokenizationBoundary": "sonoraport-card-tokenization-data-boundary.json",
+    "settlementControl": "sonoraport-card-settlement-reconciliation-control.json",
+    "sourceEvidence": "sonoraport-card-provider-source-evidence.json"
+  },
+  "cardProgram": {
+    "credit": false,
+    "debit": true,
+    "tokenizationRequired": true,
+    "providerTokenPersistenceAllowed": true,
+    "fullPanPersistenceAllowed": false,
+    "cvvPersistenceAllowed": false,
+    "pinPersistenceAllowed": false
+  },
+  "lifecycle": {
+    "issue": true,
+    "activate": true,
+    "authorize": true,
+    "capture": true,
+    "settle": true,
+    "refund": true,
+    "freeze": true,
+    "unfreeze": true,
+    "replace": true,
+    "close": true,
+    "dispute": true
+  },
+  "runtimeRequirements": {
+    "requireIssuerAdapter": true,
+    "requireProviderConfiguration": true,
+    "requireServerSideAuthentication": true,
+    "requireTokenization": true,
+    "requireAuthorizationResponse": true,
+    "requireSettlementConfirmation": true,
+    "requireWebhookVerificationWhenUsed": true,
+    "requireReconciliation": true
+  },
+  "connectionRules": {
+    "sourceFileProvesConnected": false,
+    "enabledFlagProvesConnected": false,
+    "configurationProvesAuthenticated": false,
+    "hardcodedConnectedAllowed": false,
+    "hardcodedAuthenticatedAllowed": false,
+    "hardcodedVerifiedAllowed": false
+  },
+  "security": {
+    "credentialsFromEnvironmentOnly": true,
+    "storeApiKeysInRepository": false,
+    "storeApiKeysInJson": false,
+    "storePrivateKeysInRepository": false,
+    "storeWebhookSecretsInRepository": false,
+    "storeFullPan": false,
+    "storeCvv": false,
+    "storePin": false,
+    "maskedPanAllowed": true,
+    "providerTokenAllowed": true
+  },
+  "transactionRules": {
+    "authorizationIsSettlement": false,
+    "captureIsSettlement": false,
+    "requireProviderTransactionReference": true,
+    "requireProviderSettlementConfirmation": true,
+    "doNotInventApproval": true,
+    "doNotInventSettlement": true
+  },
+  "runtimeStatus": {
+    "configured": false,
+    "connected": false,
+    "authenticated": false,
+    "verified": false,
+    "state": "UNVERIFIED"
+  },
+  "verification": {
+    "verifyIssuerSource": true,
+    "verifyAdapter": true,
+    "verifyEnvironmentConfiguration": true,
+    "verifyAuthentication": true,
+    "verifyTokenization": true,
+    "verifyAuthorization": true,
+    "verifySettlement": true,
+    "verifyReconciliation": true
+  },
+  "pipeline": [
+    "SKIM_VISA_SOURCE",
+    "IDENTIFY_ISSUER_CONFIGURATION",
+    "IDENTIFY_ADAPTER",
+    "MAP_ENVIRONMENT_NAMES",
+    "VERIFY_AUTHENTICATION",
+    "VERIFY_TOKENIZATION",
+    "VERIFY_AUTHORIZATION",
+    "VERIFY_SETTLEMENT",
+    "VERIFY_RECONCILIATION",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}
