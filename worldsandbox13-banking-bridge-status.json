@@ -1,68 +1,127 @@
 {
-  "schemaVersion": "1.0.0",
-  "recordType": "WORLDSANBOX13_BANKING_REGISTRY_VERIFICATION",
+  "schemaVersion": "1.1.0",
+  "recordType": "WORLDSANBOX13_BANKING_BRIDGE_STATUS_CONTROL",
   "status": "ACTIVE",
-
   "authority": {
     "masterFile": "worldsandbox13-sonoraport-banking-master.json",
     "readerControlFile": "worldsandbox13-banking-reader-control.json",
-    "sourceRepository": "Joaquinloera/Worldsanbox13",
-    "sourceBranch": "main",
-    "targetRepository": "Joaquinloera/sonoraport-banking",
-    "targetBranch": "main"
+    "verificationFile": "worldsandbox13-banking-registry-verification.json",
+    "accessManifestFile": "worldsandbox13-banking-access-manifest.json"
   },
-
-  "verification": {
-    "mode": "READ_ONLY",
+  "source": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+  "target": {
+    "repository": "Joaquinloera/sonoraport-banking",
+    "branch": "main",
+    "service": "SONORAPORT_BANKING"
+  },
+  "bridge": {
+    "id": "worldsanbox13-sonoraport-banking",
+    "enabled": true,
+    "readOnly": true,
     "failClosed": true,
-    "expectedRegistryCount": 16,
-    "requireExactRegistryCount": true,
-    "requireApprovedFile": true,
-    "requireRepositoryRead": true,
-    "requireJsonParse": true,
-    "requireBlobSha": true,
-    "requireProvenance": true,
-    "requireUniqueRegistryId": true,
-    "requireUniqueFileName": true
+    "expectedRegistryCount": 16
   },
-
-  "approvedRegistries": [
-    {
-      "registryId": "properties",
-      "fileName": "worldsandbox13-properties-281102-kino.json"
+  "endpoints": {
+    "health": "/api/health",
+    "capabilities": "/api/capabilities",
+    "worldsanboxStatus": "/api/world-sandbox/status"
+  },
+  "statusRules": {
+    "allowHardcodedConnected": false,
+    "allowHardcodedAuthenticated": false,
+    "allowHardcodedVerified": false,
+    "connected": {
+      "requiresRepositoryReachable": true,
+      "requiresCorrectRepository": true,
+      "requiresCorrectBranch": true
     },
-    {
-      "registryId": "property_870_s_tusa",
-      "fileName": "worldsandbox13-property-870-s-tusa-rd.json"
-    },
-    {
-      "registryId": "companies",
-      "fileName": "worldsandbox13-companies-281102-kino.json"
-    },
-    {
-      "registryId": "vehicles",
-      "fileName": "worldsandbox13-vehicles-281102-kino.json"
-    },
-    {
-      "registryId": "airplanes",
-      "fileName": "worldsandbox13-airplanes-master-281102.json"
-    },
-    {
-      "registryId": "helicopters",
-      "fileName": "worldsandbox13-helicopters-281102.json"
-    },
-    {
-      "registryId": "yachts_maritime",
-      "fileName": "worldsandbox13-yachts-maritime-master-281102.json"
-    },
-    {
-      "registryId": "hard_assets_blackrock",
-      "fileName": "worldsandbox13-hard-assets-blackrock-281102-kino.json"
-    },
-    {
-      "registryId": "blackrock_assets",
-      "fileName": "worldsandbox13-blackrock-assets-281102-kino.json"
-    },
-    {
-      "registryId": "licensing_281102",
-      "fileName": "worldsandbox13-licensing-record
+    "verified": {
+      "requiresMasterActive": true,
+      "requiresReaderControlActive": true,
+      "requiresVerificationControlActive": true,
+      "requiresAccessManifestActive": true,
+      "requiresExactRegistryCount": true,
+      "requiresAllRegistriesReadable": true,
+      "requiresAllRegistriesValidJson": true,
+      "requiresProvenance": true,
+      "requiredVerifiedRegistries": 16
+    }
+  },
+  "capabilities": {
+    "repositoryRead": true,
+    "registryRead": true,
+    "statusRead": true,
+    "capabilityRead": true,
+    "provenanceRead": true,
+    "repositoryWrite": false,
+    "registryWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "directMoneyMovement": false,
+    "unrestrictedTransfers": false
+  },
+  "authentication": {
+    "serverSideOnly": true,
+    "bridgeTokenEnvironmentVariable": "SONORAPORT_BANKING_BRIDGE_TOKEN",
+    "githubTokenEnvironmentVariable": "WORLDSANDBOX13_GITHUB_TOKEN",
+    "tokensStoredInJson": false,
+    "tokensStoredInRepository": false
+  },
+  "runtimeVerification": {
+    "configurationAloneProvesConnection": false,
+    "requireLiveRepositoryRead": true,
+    "requireLiveRegistryVerification": true,
+    "requireVerifiedRegistryCount": 16,
+    "requireFailedRegistryCount": 0
+  },
+  "responseContract": {
+    "include": [
+      "bridgeId",
+      "mode",
+      "repository",
+      "branch",
+      "connected",
+      "verified",
+      "expectedRegistryCount",
+      "verifiedRegistryCount",
+      "failedRegistryCount",
+      "verificationState"
+    ],
+    "exclude": [
+      "tokens",
+      "passwords",
+      "privateKeys",
+      "credentials",
+      "fullCardNumbers",
+      "cvv"
+    ]
+  },
+  "states": {
+    "verified": "VERIFIED",
+    "degraded": "DEGRADED",
+    "blocked": "BLOCKED"
+  },
+  "checkpoint": {
+    "requireLiveVerification": true,
+    "requireZeroRegistryFailuresForVerified": true,
+    "doNotTreatConfigurationAsRuntimeProof": true,
+    "doNotTreatSourceReportedFinancialValuesAsExternallyVerified": true
+  },
+  "pipeline": [
+    "LOAD_MASTER",
+    "LOAD_READER_CONTROL",
+    "LOAD_VERIFICATION_CONTROL",
+    "LOAD_ACCESS_MANIFEST",
+    "CHECK_REPOSITORY",
+    "CHECK_BRANCH",
+    "VERIFY_16_REGISTRIES",
+    "VERIFY_PROVENANCE",
+    "CALCULATE_STATUS",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ]
+}
