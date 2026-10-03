@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_WEBHOOK_TRANSACTION_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json",
+    "runtimeVerification": "sonoraport-card-runtime-verification.json"
+  },
+  "transactionLifecycle": {
+    "authorization": {
+      "enabled": true,
+      "requireProviderResponse": true,
+      "pendingIsSettled": false
+    },
+    "capture": {
+      "enabled": true,
+      "requireSuccessfulAuthorization": true,
+      "requireProviderResponse": true
+    },
+    "refund": {
+      "enabled": true,
+      "requireOriginalTransactionReference": true,
+      "requireProviderResponse": true
+    },
+    "reconciliation": {
+      "enabled": true,
+      "requireProviderTransactionReference": true,
+      "preserveProviderStatus": true,
+      "doNotInventSettlement": true
+    }
+  },
+  "webhooks": {
+    "enabled": true,
+    "serverSideOnly": true,
+    "signatureVerificationRequired": true,
+    "rejectInvalidSignature": true,
+    "rejectMissingSignature": true,
+    "webhookSecretFromEnvironmentOnly": true,
+    "storeWebhookSecretInRepository": false,
+    "storeWebhookSecretInJson": false,
+    "logWebhookSecret": false
+  },
+  "eventHandling": {
+    "requireEventId": true,
+    "requireEventType": true,
+    "requireProviderReference": true,
+    "deduplicateEvents": true,
+    "idempotencyRequired": true,
+    "preserveRawProviderStatus": true,
+    "doNotMarkSettledWithoutProviderConfirmation": true
+  },
+  "cardDataSecurity": {
+    "tokenizationRequired": true,
+    "storeFullPan": false,
+    "storeCvv": false,
+    "logFullPan": false,
+    "logCvv": false,
+    "maskedPanAllowed": true,
+    "providerTokenAllowed": true
+  },
+  "apiSecurity": {
+    "apiKeysFromEnvironmentOnly": true,
+    "privateKeysFromEnvironmentOnly": true,
+    "secretsInRepository": false,
+    "secretsInJson": false,
+    "secretsInClientResponse": false,
+    "requireAuthenticatedServerRequests": true
+  },
+  "verification": {
+    "verifyWebhookRouteExists": true,
+    "verifySignatureHandlerExists": true,
+    "verifyIdempotencyHandling": true,
+    "verifyAuthorizationFlow": true,
+    "verifyCaptureFlow": true,
+    "verifyRefundFlow": true,
+    "verifyReconciliationFlow": true,
+    "configurationAloneProvesOperational": false
+  },
+  "worldsanbox13": {
+    "mode": "READ_ONLY",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "allowCredentialImport": false,
+    "allowSecretImport": false,
+    "allowRawCardImport": false
+  },
+  "runtimeStatus": {
+    "initialState": "UNVERIFIED",
+    "successState": "VERIFIED",
+    "failureState": "BLOCKED",
+    "requireLiveVerification": true
+  },
+  "pipeline": [
+    "RECEIVE_EVENT",
+    "VERIFY_SIGNATURE",
+    "VERIFY_EVENT_ID",
+    "CHECK_IDEMPOTENCY",
+    "MAP_PROVIDER_REFERENCE",
+    "PROCESS_TRANSACTION_STATE",
+    "RECONCILE",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}
