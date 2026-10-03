@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_DISPUTE_CHARGEBACK_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json",
+    "runtimeVerification": "sonoraport-card-runtime-verification.json",
+    "transactionControl": "sonoraport-card-webhook-transaction-control.json",
+    "tokenizationBoundary": "sonoraport-card-tokenization-data-boundary.json",
+    "settlementControl": "sonoraport-card-settlement-reconciliation-control.json"
+  },
+  "disputeStates": [
+    "OPENED",
+    "EVIDENCE_REQUIRED",
+    "EVIDENCE_SUBMITTED",
+    "UNDER_REVIEW",
+    "WON",
+    "LOST",
+    "CLOSED"
+  ],
+  "disputeRules": {
+    "requireOriginalTransactionReference": true,
+    "requireProviderDisputeReference": true,
+    "preserveProviderReasonCode": true,
+    "preserveProviderStatus": true,
+    "doNotInventDisputeOutcome": true,
+    "providerConfirmationRequiredForOutcome": true
+  },
+  "chargebacks": {
+    "enabled": true,
+    "requireProviderReference": true,
+    "requireOriginalTransactionReference": true,
+    "preserveChargebackAmount": true,
+    "preserveChargebackCurrency": true,
+    "requireProviderConfirmation": true,
+    "doNotTreatOpenedAsLost": true
+  },
+  "evidence": {
+    "enabled": true,
+    "metadataOnlyInControlLayer": true,
+    "requireEvidenceReference": true,
+    "requireSubmissionTimestamp": true,
+    "preserveProviderSubmissionReference": true,
+    "storeFullPan": false,
+    "storeCvv": false,
+    "storePin": false,
+    "storeApiKeys": false
+  },
+  "reversals": {
+    "enabled": true,
+    "requireOriginalTransactionReference": true,
+    "requireProviderReversalReference": true,
+    "requireProviderConfirmation": true,
+    "preserveReversalAmount": true
+  },
+  "reconciliation": {
+    "enabled": true,
+    "compareDisputeAmount": true,
+    "compareCurrency": true,
+    "compareProviderStatus": true,
+    "compareInternalStatus": true,
+    "flagMismatch": true,
+    "autoInventMissingValues": false
+  },
+  "webhooks": {
+    "enabled": true,
+    "signatureVerificationRequired": true,
+    "idempotencyRequired": true,
+    "deduplicateProviderEvents": true,
+    "rejectInvalidSignature": true
+  },
+  "security": {
+    "tokenizationRequired": true,
+    "fullPanAllowed": false,
+    "cvvAllowed": false,
+    "pinAllowed": false,
+    "repositorySecretsAllowed": false,
+    "credentialsFromEnvironmentOnly": true
+  },
+  "verification": {
+    "configurationAloneProvesDisputeStatus": false,
+    "requireLiveProviderStatus": true,
+    "requireProviderReference": true,
+    "requireReconciliation": true
+  },
+  "worldsanbox13
