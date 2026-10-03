@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_PROVIDER_SOURCE_EVIDENCE",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "discoveryIndex": "sonoraport-card-provider-discovery-index.json",
+  "sourceEvidence": [
+    {
+      "providerId": "visa",
+      "providerName": "Visa",
+      "discovered": true,
+      "evidenceFiles": [
+        "sonoraport-visa-debit-card-issuer.json",
+        "production-payment-rails.json",
+        "server.js"
+      ],
+      "capabilitiesObserved": {
+        "debitCardConfiguration": true,
+        "paymentRailConfiguration": true,
+        "serverRailStatus": true
+      },
+      "runtime": {
+        "connected": false,
+        "authenticated": false,
+        "verified": false
+      }
+    },
+    {
+      "providerId": "mastercard",
+      "providerName": "Mastercard",
+      "discovered": true,
+      "evidenceFiles": [
+        "production-payment-rails.json",
+        "server.js"
+      ],
+      "capabilitiesObserved": {
+        "paymentRailConfiguration": true,
+        "serverRailStatus": true
+      },
+      "runtime": {
+        "connected": false,
+        "authenticated": false,
+        "verified": false
+      }
+    },
+    {
+      "providerId": "paypal",
+      "providerName": "PayPal",
+      "discovered": true,
+      "evidenceFiles": [
+        "paypal-production-adapter.js",
+        "production-payment-rails.json",
+        "server.js"
+      ],
+      "environmentVariableNamesObserved": [
+        "PAYPAL_CLIENT_ID",
+        "PAYPAL_CLIENT_SECRET"
+      ],
+      "capabilitiesObserved": {
+        "productionAdapter": true,
+        "paymentRailConfiguration": true,
+        "serverIntegration": true
+      },
+      "runtime": {
+        "connected": false,
+        "authenticated": false,
+        "verified": false
+      }
+    }
+  ],
+  "verificationRules": {
+    "sourceDiscoveryDoesNotProveConnection": true,
+    "configurationDoesNotProveAuthentication": true,
+    "requireRuntimeVerification": true,
+    "requireProviderAuthentication": true,
+    "doNotInventCredentials": true,
+    "doNotInventProviderCapabilities": true
+  },
+  "secretBoundary": {
+    "storeApiKeyValues": false,
+    "storeClientSecretValues": false,
+    "storeWebhookSecretValues": false,
+    "storePrivateKeys": false,
+    "environmentVariableNamesAllowed": true
+  },
+  "runtimeStatus": {
+    "visa": "UNVERIFIED",
+    "mastercard": "UNVERIFIED",
+    "paypal": "UNVERIFIED"
+  },
+  "failClosed": true
+}
