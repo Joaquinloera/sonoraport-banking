@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_BANKING_REGISTRY_VERIFICATION",
+  "status": "ACTIVE",
+
+  "authority": {
+    "masterFile": "worldsandbox13-sonoraport-banking-master.json",
+    "readerControlFile": "worldsandbox13-banking-reader-control.json",
+    "sourceRepository": "Joaquinloera/Worldsanbox13",
+    "sourceBranch": "main",
+    "targetRepository": "Joaquinloera/sonoraport-banking",
+    "targetBranch": "main"
+  },
+
+  "verification": {
+    "mode": "READ_ONLY",
+    "failClosed": true,
+    "expectedRegistryCount": 16,
+    "requireExactRegistryCount": true,
+    "requireApprovedFile": true,
+    "requireRepositoryRead": true,
+    "requireJsonParse": true,
+    "requireBlobSha": true,
+    "requireProvenance": true,
+    "requireUniqueRegistryId": true,
+    "requireUniqueFileName": true
+  },
+
+  "approvedRegistries": [
+    {
+      "registryId": "properties",
+      "fileName": "worldsandbox13-properties-281102-kino.json"
+    },
+    {
+      "registryId": "property_870_s_tusa",
+      "fileName": "worldsandbox13-property-870-s-tusa-rd.json"
+    },
+    {
+      "registryId": "companies",
+      "fileName": "worldsandbox13-companies-281102-kino.json"
+    },
+    {
+      "registryId": "vehicles",
+      "fileName": "worldsandbox13-vehicles-281102-kino.json"
+    },
+    {
+      "registryId": "airplanes",
+      "fileName": "worldsandbox13-airplanes-master-281102.json"
+    },
+    {
+      "registryId": "helicopters",
+      "fileName": "worldsandbox13-helicopters-281102.json"
+    },
+    {
+      "registryId": "yachts_maritime",
+      "fileName": "worldsandbox13-yachts-maritime-master-281102.json"
+    },
+    {
+      "registryId": "hard_assets_blackrock",
+      "fileName": "worldsandbox13-hard-assets-blackrock-281102-kino.json"
+    },
+    {
+      "registryId": "blackrock_assets",
+      "fileName": "worldsandbox13-blackrock-assets-281102-kino.json"
+    },
+    {
+      "registryId": "licensing_281102",
+      "fileName": "worldsandbox13-licensing-record
