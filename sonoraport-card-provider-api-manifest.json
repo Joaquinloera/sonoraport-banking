@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_PROVIDER_API_MANIFEST",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "controlFile": "sonoraport-card-payment-integration-control.json",
+  "cardTypes": {
+    "credit": {
+      "enabled": true,
+      "tokenizationRequired": true
+    },
+    "debit": {
+      "enabled": true,
+      "tokenizationRequired": true
+    }
+  },
+  "integrationDiscovery": {
+    "discoverExistingProviders": true,
+    "discoverExistingCardAdapters": true,
+    "discoverExistingPaymentRoutes": true,
+    "discoverExistingWebhookRoutes": true,
+    "discoverExistingEnvironmentVariableNames": true,
+    "discoverExistingTokenization": true,
+    "discoverExistingAuthorization": true,
+    "discoverExistingCapture": true,
+    "discoverExistingRefund": true,
+    "discoverExistingReconciliation": true
+  },
+  "environment": {
+    "serverSideOnly": true,
+    "allowRepositorySecrets": false,
+    "allowJsonSecrets": false,
+    "allowClientSideProviderSecrets": false,
+    "requiredConfiguration": [
+      {
+        "name": "CARD_PROVIDER_API_KEY",
+        "type": "SECRET",
+        "required": false,
+        "valueStoredHere": false
+      },
+      {
+        "name": "CARD_PROVIDER_WEBHOOK_SECRET",
+        "type": "SECRET",
+        "required": false,
+        "valueStoredHere": false
+      },
+      {
+        "name": "CARD_PROVIDER_ACCOUNT_ID",
+        "type": "IDENTIFIER",
+        "required": false,
+        "valueStoredHere": false
+      },
+      {
+        "name": "CARD_PROVIDER_BASE_URL",
+        "type": "CONFIGURATION",
+        "required": false,
+        "valueStoredHere": false
+      }
+    ]
+  },
+  "providerRules": {
+    "providerMustBeIdentifiedFromSource": true,
+    "doNotInventProvider": true,
+    "doNotInventApiKey": true,
+    "doNotInventAccountId": true,
+    "doNotClaimConnectedFromConfigurationAlone": true,
+    "requireRuntimeVerification": true
+  },
+  "cardDataRules": {
+    "storeFullPan": false,
+    "storeCvv": false,
+    "logFullPan": false,
+    "logCvv": false,
+    "tokenizeBeforePersistence": true,
+    "maskedPanAllowed": true,
+    "providerTokenAllowed": true
+  },
+  "verification": {
+    "verifyAdapterExists": true,
+    "verifyRoutesExist": true,
+    "verifyEnvironmentVariableNames": true,
+    "verifyWebhookSignatureHandling": true,
+    "verifyTokenizationFlow": true,
+    "verifyAuthorizationFlow": true,
+    "verifyCaptureFlow": true,
+    "verifyRefundFlow": true,
+    "verifyReconciliationFlow": true
+  },
+  "worldsanbox13": {
+    "mode": "READ_ONLY",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "allowSecretImport": false,
+    "allowRawCardImport": false
+  },
+  "pipeline": [
+    "SKIM_SOURCE",
+    "DISCOVER_PROVIDERS",
+    "DISCOVER_ADAPTERS",
+    "DISCOVER_ENVIRONMENT_NAMES",
+    "DISCOVER_ROUTES",
+    "DISCOVER_WEBHOOKS",
+    "VERIFY_TOKENIZATION",
+    "VERIFY_CARD_FLOWS",
+    "REPORT_RUNTIME_STATUS",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}
