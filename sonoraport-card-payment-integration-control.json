@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_PAYMENT_INTEGRATION_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "scope": {
+    "creditCards": true,
+    "debitCards": true,
+    "cardPayments": true,
+    "cardTokenization": true,
+    "paymentProviders": true,
+    "webhooks": true,
+    "apiConfiguration": true
+  },
+  "cardSecurity": {
+    "storeFullPan": false,
+    "storeCvv": false,
+    "logFullPan": false,
+    "logCvv": false,
+    "tokenizationRequired": true,
+    "maskedCardDataOnly": true,
+    "serverSideProviderCallsOnly": true
+  },
+  "credentials": {
+    "storeSecretsInRepository": false,
+    "storeApiKeysInJson": false,
+    "storePrivateKeysInJson": false,
+    "storeWebhookSecretsInJson": false,
+    "environmentVariablesOnly": true
+  },
+  "providerDiscovery": {
+    "enabled": true,
+    "inspectExistingAdapters": true,
+    "inspectExistingRoutes": true,
+    "inspectExistingWebhooks": true,
+    "inspectEnvironmentVariableNames": true,
+    "inspectTokenizationFlow": true,
+    "inspectCardAuthorizationFlow": true,
+    "inspectCaptureFlow": true,
+    "inspectRefundFlow": true,
+    "inspectReconciliationFlow": true,
+    "exposeSecretValues": false
+  },
+  "runtimeVerification": {
+    "configurationAloneProvesConnection": false,
+    "requireProviderAdapter": true,
+    "requireRuntimeRoute": true,
+    "requireEnvironmentConfiguration": true,
+    "requireAuthenticationCheck": true,
+    "requireWebhookVerification": true,
+    "requireTokenizationCheck": true
+  },
+  "capabilities": {
+    "readCardConfiguration": true,
+    "readProviderConfiguration": true,
+    "verifyProviderWiring": true,
+    "verifyWebhookWiring": true,
+    "verifyTokenizationWiring": true,
+    "repositorySecretRead": false,
+    "credentialExtraction": false,
+    "rawCardDataExtraction": false
+  },
+  "worldsanbox13Bridge": {
+    "enabled": true,
+    "mode": "READ_ONLY",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "bankingRegistry": "worldsandbox13-banking-281102-kino.json",
+    "bankingMasterRegistry": "worldsandbox13-banking-master-v5.json",
+    "bankingLiquidityRegistry": "worldsandbox13-banking-liquidity-master-281102.json",
+    "copySensitiveCardData": false,
+    "copySecrets": false
+  },
+  "pipeline": [
+    "SKIM",
+    "IDENTIFY",
+    "MAP_CARD_ADAPTERS",
+    "MAP_PROVIDER_APIS",
+    "MAP_ENVIRONMENT_VARIABLE_NAMES",
+    "MAP_WEBHOOKS",
+    "VERIFY_TOKENIZATION",
+    "VERIFY_RUNTIME_WIRING",
+    "TEST",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}
