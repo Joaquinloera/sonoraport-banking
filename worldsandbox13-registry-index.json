@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_REGISTRY_INDEX",
+  "status": "ACTIVE",
+  "source": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+  "target": {
+    "repository": "Joaquinloera/sonoraport-banking",
+    "branch": "main"
+  },
+  "authority": {
+    "masterFile": "worldsandbox13-sonoraport-banking-master.json",
+    "readerControlFile": "worldsandbox13-banking-reader-control.json",
+    "verificationFile": "worldsandbox13-banking-registry-verification.json",
+    "bridgeStatusFile": "worldsandbox13-banking-bridge-status.json",
+    "accessManifestFile": "worldsandbox13-banking-access-manifest.json"
+  },
+  "expectedRegistryCount": 16,
+  "registries": [
+    {
+      "id": "properties",
+      "path": "worldsandbox13-properties-281102-kino.json"
+    },
+    {
+      "id": "property_870_s_tusa",
+      "path": "worldsandbox13-property-870-s-tusa-rd.json"
+    },
+    {
+      "id": "companies",
+      "path": "worldsandbox13-companies-281102-kino.json"
+    },
+    {
+      "id": "vehicles",
+      "path": "worldsandbox13-vehicles-281102-kino.json"
+    },
+    {
+      "id": "airplanes",
+      "path": "worldsandbox13-airplanes-master-281102.json"
+    },
+    {
+      "id": "helicopters",
+      "path": "worldsandbox13-helicopters-281102.json"
+    },
+    {
+      "id": "yachts_maritime",
+      "path": "worldsandbox13-yachts-maritime-master-281102.json"
+    },
+    {
+      "id": "hard_assets_blackrock",
+      "path": "worldsandbox13-hard-assets-blackrock-281102-kino.json"
+    },
+    {
+      "id": "blackrock_assets",
+      "path": "worldsandbox13-blackrock-assets-281102-kino.json"
+    },
+    {
+      "id": "licensing_281102",
+      "path": "worldsandbox13-licensing-records-281102-kino.json"
+    },
+    {
+      "id": "licensing_1335",
+      "path": "worldsandbox13-licensing-records-1335-kayleen.json"
+    },
+    {
+      "id": "law_licenses",
+      "path": "worldsandbox13-law-licenses-281102-kino.json"
+    },
+    {
+      "id": "cannabis_licenses",
+      "path": "worldsandbox13-cannabis-licenses-281102-kino.json"
+    },
+    {
+      "id": "banking",
+      "path": "worldsandbox13-banking-281102-kino.json"
+    },
+    {
+      "id": "banking_master",
+      "path": "worldsandbox13-banking-master-v5.json"
+    },
+    {
+      "id": "banking_liquidity",
+      "path": "worldsandbox13-banking-liquidity-master-281102.json"
+    }
+  ],
+  "validation": {
+    "requireExactRegistryCount": true,
+    "requireUniqueRegistryIds": true,
+    "requireUniquePaths": true,
+    "requireJsonExtension": true,
+    "requireReadableFile": true,
+    "requireValidJson": true,
+    "requireBlobSha": true,
+    "failClosed": true
+  },
+  "provenance": {
+    "required": true,
+    "preserveRepository": true,
+    "preserveBranch": true,
+    "preservePath": true,
+    "preserveBlobSha": true,
+    "preserveRegistryId": true,
+    "preserveRecordType": true,
+    "preserveOwnershipReference": true,
+    "preserveSourceReportedValues": true
+  },
+  "dataPolicy": {
+    "worldsanbox13IsAuthoritative": true,
+    "copyRegistriesIntoBanking": false,
+    "duplicateAssetDatabase": false,
+   
