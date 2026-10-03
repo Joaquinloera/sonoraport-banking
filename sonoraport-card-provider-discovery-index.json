@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_PROVIDER_DISCOVERY_INDEX",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json",
+    "runtimeVerification": "sonoraport-card-runtime-verification.json",
+    "transactionControl": "sonoraport-card-webhook-transaction-control.json",
+    "tokenizationBoundary": "sonoraport-card-tokenization-data-boundary.json",
+    "settlementControl": "sonoraport-card-settlement-reconciliation-control.json",
+    "disputeControl": "sonoraport-card-dispute-chargeback-control.json"
+  },
+  "discovery": {
+    "enabled": true,
+    "scanSourceCode": true,
+    "scanServerRoutes": true,
+    "scanAdapters": true,
+    "scanProviderModules": true,
+    "scanWebhookHandlers": true,
+    "scanEnvironmentVariableNames": true,
+    "scanTokenizationCode": true,
+    "scanAuthorizationCode": true,
+    "scanCaptureCode": true,
+    "scanRefundCode": true,
+    "scanSettlementCode": true,
+    "scanDisputeCode": true
+  },
+  "providerRecords": [],
+  "providerRecordSchema": {
+    "providerId": "SOURCE_DISCOVERED_IDENTIFIER",
+    "providerName": "SOURCE_DISCOVERED_NAME",
+    "adapterPath": "SOURCE_DISCOVERED_PATH",
+    "environmentVariableNames": [],
+    "routes": [],
+    "webhookRoutes": [],
+    "capabilities": {
+      "credit": false,
+      "debit": false,
+      "tokenization": false,
+      "authorization": false,
+      "capture": false,
+      "refund": false,
+      "settlement": false,
+      "reconciliation": false,
+      "disputes": false
+    },
+    "runtime": {
+      "configured": false,
+      "connected": false,
+      "authenticated": false,
+      "verified": false
+    }
+  },
+  "discoveryRules": {
+    "providerMustComeFromSource": true,
+    "doNotInventProvider": true,
+    "doNotInventAdapter": true,
+    "doNotInventRoutes": true,
+    "doNotInventEnvironmentVariables": true,
+    "doNotInventCredentials": true,
+    "configurationAloneProvesConnected": false,
+    "hardcodedConnectedAllowed": false,
+    "hardcodedAuthenticatedAllowed": false,
+    "hardcodedVerifiedAllowed": false
+  },
+  "secretBoundary": {
+    "readSecretValues": false,
+    "recordSecretValues": false,
+    "recordApiKeys": false,
+    "recordWebhookSecrets": false,
+    "recordPrivateKeys": false,
+    "recordPasswords": false,
+    "recordFullPan": false,
+    "recordCvv": false,
+    "recordPin": false,
+    "environmentVariableNamesAllowed": true
+  },
+  "verification": {
+    "requireSourceEvidence": true,
+    "requireAdapterEvidence": true,
+    "requireRouteEvidence": true,
+    "requireRuntimeVerificationForConnected": true,
+    "requireAuthenticationVerificationForAuthenticated": true,
+    "requireMandatoryChecksForVerified": true
+  },
+  "runtimeStatus": {
+    "initialState": "DISCOVERY_PENDING",
+    "allowedStates": [
+      "DISCOVERY_PENDING",
+      "DISCOVERED",
+      "CONFIGURED",
+      "CONNECTED",
+      "AUTHENTICATED",
+      "VERIFIED",
+      "BLOCKED"
+    ]
+  },
+  "pipeline": [
+    "SKIM_SOURCE",
+    "DISCOVER_PROVIDER",
+    "DISCOVER_ADAPTER",
+    "DISCOVER_ENVIRONMENT_NAMES",
+    "DISCOVER_ROUTES",
+    "DISCOVER_WEBHOOKS",
+    "MAP_CAPABILITIES",
+    "VERIFY_RUNTIME",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_CARD_PROVIDER_DISCOVERY_INDEX",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "authority": {
+    "integrationControl": "sonoraport-card-payment-integration-control.json",
+    "providerManifest": "sonoraport-card-provider-api-manifest.json",
+    "runtimeVerification": "sonoraport-card-runtime-verification.json",
+    "transactionControl": "sonoraport-card-webhook-transaction-control.json",
+    "tokenizationBoundary": "sonoraport-card-tokenization-data-boundary.json",
+    "settlementControl": "sonoraport-card-settlement-reconciliation-control.json",
+    "disputeControl": "sonoraport-card-dispute-chargeback-control.json"
+  },
+  "discovery": {
+    "enabled": true,
+    "scanSourceCode": true,
+    "scanServerRoutes": true,
+    "scanAdapters": true,
+    "scanProviderModules": true,
+    "scanWebhookHandlers": true,
+    "scanEnvironmentVariableNames": true,
+    "scanTokenizationCode": true,
+    "scanAuthorizationCode": true,
+    "scanCaptureCode": true,
+    "scanRefundCode": true,
+    "scanSettlementCode": true,
+    "scanDisputeCode": true
+  },
+  "providerRecords": [],
+  "providerRecordSchema": {
+    "providerId": "SOURCE_DISCOVERED_IDENTIFIER",
+    "providerName": "SOURCE_DISCOVERED_NAME",
+    "adapterPath": "SOURCE_DISCOVERED_PATH",
+    "environmentVariableNames": [],
+    "routes": [],
+    "webhookRoutes": [],
+    "capabilities": {
+      "credit": false,
+      "debit": false,
+      "tokenization": false,
+      "authorization": false,
+      "capture": false,
+      "refund": false,
+      "settlement": false,
+      "reconciliation": false,
+      "disputes": false
+    },
+    "runtime": {
+      "configured": false,
+      "connected": false,
+      "authenticated": false,
+      "verified": false
+    }
+  },
+  "discoveryRules": {
+    "providerMustComeFromSource": true,
+    "doNotInventProvider": true,
+    "doNotInventAdapter": true,
+    "doNotInventRoutes": true,
+    "doNotInventEnvironmentVariables": true,
+    "doNotInventCredentials": true,
+    "configurationAloneProvesConnected": false,
+    "hardcodedConnectedAllowed": false,
+    "hardcodedAuthenticatedAllowed": false,
+    "hardcodedVerifiedAllowed": false
+  },
+  "secretBoundary": {
+    "readSecretValues": false,
+    "recordSecretValues": false,
+    "recordApiKeys": false,
+    "recordWebhookSecrets": false,
+    "recordPrivateKeys": false,
+    "recordPasswords": false,
+    "recordFullPan": false,
+    "recordCvv": false,
+    "recordPin": false,
+    "environmentVariableNamesAllowed": true
+  },
+  "verification": {
+    "requireSourceEvidence": true,
+    "requireAdapterEvidence": true,
+    "requireRouteEvidence": true,
+    "requireRuntimeVerificationForConnected": true,
+    "requireAuthenticationVerificationForAuthenticated": true,
+    "requireMandatoryChecksForVerified": true
+  },
+  "runtimeStatus": {
+    "initialState": "DISCOVERY_PENDING",
+    "allowedStates": [
+      "DISCOVERY_PENDING",
+      "DISCOVERED",
+      "CONFIGURED",
+      "CONNECTED",
+      "AUTHENTICATED",
+      "VERIFIED",
+      "BLOCKED"
+    ]
+  },
+  "pipeline": [
+    "SKIM_SOURCE",
+    "DISCOVER_PROVIDER",
+    "DISCOVER_ADAPTER",
+    "DISCOVER_ENVIRONMENT_NAMES",
+    "DISCOVER_ROUTES",
+    "DISCOVER_WEBHOOKS",
+    "MAP_CAPABILITIES",
+    "VERIFY_RUNTIME",
+    "REPORT_STATUS",
+    "CHECKPOINT"
+  ],
+  "failClosed": true
+}
