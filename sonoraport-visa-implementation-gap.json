@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_VISA_IMPLEMENTATION_GAP",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "provider": {
+    "providerId": "visa",
+    "providerName": "Visa",
+    "runtimeState": "BLOCKED"
+  },
+  "sourceConfiguration": {
+    "file": "sonoraport-visa-debit-card-issuer.json",
+    "exists": true,
+    "implementationPathsDeclared": true
+  },
+  "implementationVerification": [
+    {
+      "path": "netlify/functions/lib/card-issuer-router.mjs",
+      "purpose": "CARD_ISSUER_ROUTER",
+      "existsOnMain": false,
+      "required": true
+    },
+    {
+      "path": "netlify/functions/card-issuance-request.mjs",
+      "purpose": "CARD_ISSUANCE",
+      "existsOnMain": false,
+      "required": true
+    },
+    {
+      "path": "netlify/functions/card-transaction-webhook.mjs",
+      "purpose": "TRANSACTION_WEBHOOK",
+      "existsOnMain": false,
+      "required": true
+    },
+    {
+      "path": "netlify/functions/card-settlement-webhook.mjs",
+      "purpose": "SETTLEMENT_WEBHOOK",
+      "existsOnMain": false,
+      "required": true
+    }
+  ],
+  "gapSummary": {
+    "declaredImplementationFiles": 4,
+    "verifiedImplementationFiles": 0,
+    "missingImplementationFiles": 4,
+    "issuerConfigurationPresent": true,
+    "executableIssuerImplementationVerified": false
+  },
+  "runtimeRules": {
+    "configurationPresenceProvesImplementation": false,
+    "environmentPresenceProvesImplementation": false,
+    "environmentPresenceProvesAuthentication": false,
+    "missingAdapterBlocksRuntimeVerification": true,
+    "missingIssuanceFunctionBlocksIssuance": true,
+    "missingTransactionWebhookBlocksWebhookVerification": true,
+    "missingSettlementWebhookBlocksSettlementVerification": true
+  },
+  "runtimeStatus": {
+    "configured": false,
+    "connected": false,
+    "authenticated": false,
+    "issuanceVerified": false,
+    "transactionWebhookVerified": false,
+    "settlementWebhookVerified": false,
+    "settlementVerified": false,
+    "verified": false,
+    "state": "BLOCKED"
+  },
+  "requiredRepair": {
+    "createOrRestoreIssuerRouter": true,
+    "createOrRestoreIssuanceFunction": true,
+    "createOrRestoreTransactionWebhook": true,
+    "createOrRestoreSettlementWebhook": true,
+    "verifyWebhookSignatures": true,
+    "verifyProviderAuthentication": true,
+    "verifyProviderResponses": true,
+    "verifySettlementConfirmation": true
+  },
+  "securityBoundary": {
+    "commitSecretValues": false,
+    "commitApiKeyValues": false,
+    "commitSharedSecretValues": false,
+    "commitPrivateKeyContents": false,
+    "commitWebhookSecretValues": false,
+    "environmentVariableNamesAllowed": true
+  },
+  "releaseGate": {
+    "visaProductionReady": false,
+    "visaProviderVerified": false,
+    "allowUnverifiedSettlement": false,
+    "allowFabricatedProviderAcceptance": false
+  },
+  "failClosed": true
+}
