@@ -1,45 +1,70 @@
 {
   "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_BANKING_BRIDGE_STATUS_CONTROL",
+  "status": "ACTIVE",
+
+  "authority": {
+    "masterFile": "worldsandbox13-sonoraport-banking-master.json",
+    "readerControlFile": "worldsandbox13-banking-reader-control.json",
+    "verificationFile": "worldsandbox13-banking-registry-verification.json"
+  },
+
+  "source": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "target": {
+    "repository": "Joaquinloera/sonoraport-banking",
+    "branch": "main",
+    "service": "SONORAPORT_BANKING"
+  },
+
   "bridge": {
-    "id": "worldsandbox-sonoraport-banking",
-    "name": "Worldsandbox13 — SonoraPort Banking Bridge",
+    "id": "worldsanbox13-sonoraport-banking",
     "enabled": true,
-    "mode": "authenticated-service",
-    "source": "Worldsandbox13",
-    "target": "sonoraport-banking"
-  },
-  "bankingService": {
-    "baseUrlEnvironmentVariable": "SONORAPORT_BANKING_API_URL",
-    "authenticationEnvironmentVariable": "SONORAPORT_BANKING_BRIDGE_TOKEN",
-    "healthEndpoint": "/api/health",
-    "capabilitiesEndpoint": "/api/capabilities",
-    "bridgeStatusEndpoint": "/api/world-sandbox/status"
-  },
-  "permissions": {
-    "healthRead": true,
-    "capabilityRead": true,
-    "bankingStatusRead": true,
-    "credentialRead": false,
-    "secretRead": false,
-    "directMoneyMovement": false
-  },
-  "bankingRequests": {
-    "enabled": true,
-    "executionAuthority": "sonoraport-banking",
-    "requireAuthentication": true,
-    "requireAuthorization": true,
-    "requirePolicyChecks": true,
-    "requireAuditReceipt": true
-  },
-  "security": {
-    "credentialsStoredInRepository": false,
-    "serverToServerOnly": true,
-    "requireHttpsInProduction": true,
+    "readOnly": true,
     "failClosed": true,
-    "auditRequests": true
+    "expectedRegistryCount": 16
   },
-  "connectionState": {
-    "configured": false,
-    "reason": "Runtime banking URL and bridge token must be supplied through deployment environment secrets."
-  }
-}
+
+  "endpoints": {
+    "health": "/api/health",
+    "capabilities": "/api/capabilities",
+    "worldsanboxStatus": "/api/world-sandbox/status"
+  },
+
+  "statusRules": {
+    "allowHardcodedConnected": false,
+    "allowHardcodedAuthenticated": false,
+    "allowHardcodedVerified": false,
+
+    "connected": {
+      "requiresRepositoryReachable": true,
+      "requiresCorrectRepository": true,
+      "requiresCorrectBranch": true
+    },
+
+    "verified": {
+      "requiresMasterActive": true,
+      "requiresReaderControlActive": true,
+      "requiresVerificationControlActive": true,
+      "requiresExactRegistryCount": true,
+      "requiresAllRegistriesReadable": true,
+      "requiresAllRegistriesValidJson": true,
+      "requiresProvenance": true,
+      "requiredVerifiedRegistries": 16
+    }
+  },
+
+  "capabilities": {
+    "repositoryRead": true,
+    "registryRead": true,
+    "statusRead": true,
+    "capabilityRead": true,
+    "provenanceRead": true,
+    "repositoryWrite": false,
+    "registryWrite": false,
+    "credentialRead": false,
+    "secretRead": false
