@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_RUNTIME_FAILURE_RECOVERY_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "failClosedOnReaderFailure": true,
+    "preventFalseVerifiedState": true,
+    "preserveFailureEvidence": true,
+    "allowSafeRecovery": true
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "runtimeComponents": {
+    "server": "server.js",
+    "reader": "worldsandbox13-reader.js",
+    "sourceConfig": "worldsandbox13-github-source.json",
+    "registryIndex": "worldsandbox13-registry-index.json"
+  },
+
+  "failureConditions": [
+    "SOURCE_CONFIGURATION_FAILURE",
+    "REGISTRY_INDEX_FAILURE
