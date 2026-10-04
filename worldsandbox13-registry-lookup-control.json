@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_REGISTRY_LOOKUP_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "authorizedRegistryLookup": true,
+    "readOnly": true,
+    "duplicateAssetDatabase": false,
+    "directWorldsanboxWrite": false
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "reader": {
+    "path": "worldsandbox13-reader.js",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "lookupFunction": "readApprovedRegistry",
+    "approvalFunction": "approvedRegistry",
+    "pathValidationFunction": "validateRegistryPath"
+  },
+
+  "lookupRequest": {
+    "required": [
+      "registryId"
+    ],
+    "registryIdType": "string",
+    "acceptArbitraryRepositoryPath": false,
+    "acceptAbsolutePath": false,
+    "acceptParentTraversal": false
+  },
+
+  "lookupSequence": [
+    "RECEIVE_REGISTRY_ID",
+    "CHECK_APPROVED_REGISTRY_INDEX",
+    "RESOLVE_APPROVED_PATH",
+    "VALIDATE_PATH",
+    "READ_WORLDSANBOX13_FILE",
+    "PARSE_JSON",
+    "CAPTURE_BLOB_SHA",
+    "ATTACH_PROVENANCE",
+    "RETURN_READ_ONLY_RESULT"
+  ],
+
+  "approvalPolicy": {
+    "approvedRegistryRequired": true,
+    "unapprovedRegistryAllowed": false,
+    "arbitraryFileReadAllowed": false,
+    "automaticRegistryApproval": false
+  },
+
+  "pathSecurity": {
+    "jsonExtensionRequired": true,
+    "parentTraversalAllowed": false,
+    "absolutePathAllowed": false,
+    "backslashAllowed": false,
+    "approvedIndexPathRequired": true
+  },
+
+  "verification": {
+    "jsonParseRequired": true,
+    "blobShaRequired": true,
+    "repositoryRequired": true,
+    "branchRequired": true,
+    "registryIdRequired": true,
+    "registryPathRequired": true
+  },
+
+  "response": {
+    "includeRegistryId": true,
+    "includeRegistryPath": true,
+    "includeSourceRecord": true,
+    "includeRepository": true,
+    "includeBranch": true,
+    "includeBlobSha": true,
+    "includeReadMode": true,
+    "includeSecretValues": false,
+    "includeCredentialValues": false
+  },
+
+  "provenance": {
+    "authority": "Worldsanbox13",
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY",
+    "blobShaRequired": true
+  },
+
+  "failureStates": [
+    "REGISTRY_ID_REQUIRED",
+    "REGISTRY_NOT_APPROVED",
+    "INVALID_REGISTRY_PATH",
+    "SOURCE_FILE_NOT_FOUND",
+    "SOURCE_NOT_FILE",
+    "INVALID_BASE64_CONTENT",
+    "INVALID_JSON",
+    "REPOSITORY_READ_FAILURE"
+  ],
+
+  "bankingBoundary": {
+    "registryDiscovery": true,
+    "registryLookup": true,
+    "assetDatabaseCopy": false,
+    "registryWrite": false,
+    "sourceWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "moneyMovement": false
+  },
+
+  "newRegistryBehavior": {
+    "automaticallyDiscoverUnapprovedFiles": false,
+    "indexEntryRequiredBeforeLookup": true,
+    "runtimeVerificationRequired": true,
+    "expectedRegistryCountUpdateRequired": true
+  },
+
+  "httpIntegration": {
+    "implemented": false,
+    "proposedMethod": "GET",
+    "proposedPath": "/api/world-sandbox/registries/:registryId",
+    "serverFile": "server.js",
+    "mustUseCanonicalReader": true,
+    "directFilesystemBypassAllowed": false
+  },
+
+  "currentState": {
+    "readerLookupFunctionExists": true,
+    "httpLookupRouteVerified": false,
+    "runtimeLookupVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
