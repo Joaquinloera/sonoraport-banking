@@ -1,22 +1,14 @@
 {
   "schemaVersion": "1.0.0",
-  "recordType": "WORLDSANBOX13_STATUS_ENDPOINT_CONTRACT",
+  "recordType": "WORLDSANBOX13_REGISTRY_NORMALIZATION_CONTROL",
   "status": "ACTIVE",
   "service": "SONORAPORT_BANKING",
 
-  "endpoint": {
-    "method": "GET",
-    "path": "/api/world-sandbox/status",
-    "serverFile": "server.js",
-    "authenticationRequired": false,
-    "readOnly": true
-  },
-
-  "authoritativeRuntimeReader": {
-    "path": "worldsandbox13-reader.js",
-    "repositoryStatusFunction": "repositoryStatus",
-    "registryVerificationFunction": "verifyApprovedRegistries",
-    "required": true
+  "purpose": {
+    "normalizeForBankingRead": true,
+    "modifySourceRegistry": false,
+    "duplicateSourceDatabase": false,
+    "preserveOriginalSourceRecord": true
   },
 
   "authoritativeSource": {
@@ -25,112 +17,131 @@
     "mode": "READ_ONLY"
   },
 
-  "registryControl": {
-    "index": "worldsandbox13-registry-index.json",
-    "expectedRegistryCount": 16,
-    "requireExactCount": true,
-    "requireUniqueRegistryIds": true,
-    "requireUniqueRegistryPaths": true
+  "reader": {
+    "path": "worldsandbox13-reader.js",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "approvedRegistryOnly": true
   },
 
-  "verification": {
-    "repositoryReadRequired": true,
-    "approvedRegistryReadRequired": true,
+  "normalization": {
+    "required": true,
+    "nonDestructive": true,
+    "preserveUnknownFields": true,
+    "preserveHistoricalRecords": true,
+    "preserveConflictingSourceRecords": true,
+    "inventMissingValues": false,
+    "overwriteSourceValues": false
+  },
+
+  "normalizedEnvelope": {
+    "fields": [
+      "registryId",
+      "registryPath",
+      "recordType",
+      "category",
+      "source",
+      "records",
+      "provenance"
+    ]
+  },
+
+  "registryIdentity": {
+    "registryIdSource": "worldsandbox13-registry-index.json",
+    "registryPathSource": "worldsandbox13-registry-index.json",
+    "requireApprovedRegistry": true
+  },
+
+  "recordTypeHandling": {
+    "useSourceRecordTypeWhenPresent": true,
+    "missingRecordTypeBehavior": "UNSPECIFIED",
+    "rejectMissingRecordType": false
+  },
+
+  "categoryHandling": {
+    "deriveOnlyFromApprovedMetadata": true,
+    "inventCategory": false,
+    "unknownCategory": "UNCLASSIFIED"
+  },
+
+  "recordHandling": {
+    "allowSingleRecord": true,
+    "allowRecordArray": true,
+    "allowNestedSourceStructure": true,
+    "preserveSourceStructure": true,
+    "flattenDestructively": false
+  },
+
+  "provenance": {
+    "required": true,
+    "includeRepository": true,
+    "includeBranch": true,
+    "includeRegistryPath": true,
+    "includeBlobSha": true,
+    "includeRegistryId": true,
+    "includeReadTimestamp": true
+  },
+
+  "validation": {
     "jsonParseRequired": true,
+    "approvedPathRequired": true,
     "blobShaRequired": true,
-    "provenanceRequired": true,
-    "allApprovedRegistriesRequired": true,
-    "configurationAloneProvesConnection": false,
-    "hardcodedSuccessAllowed": false
+    "sourceRepositoryRequired": true,
+    "failOnUnapprovedRegistry": true,
+    "failOnInvalidJson": true
   },
 
-  "responseContract": {
-    "requiredFields": [
-      "service",
-      "bridge",
-      "status",
-      "repository",
-      "verification",
-      "authority",
-      "timestamp",
-      "requestId"
-    ],
-
-    "bridge": "worldsandbox13",
-
-    "allowedStatusValues": [
-      "VERIFIED",
-      "BLOCKED",
-      "UNVERIFIED"
-    ]
+  "duplicatePolicy": {
+    "duplicateRegistryIdsAllowed": false,
+    "duplicateRegistryPathsAllowed": false,
+    "duplicateAssetDatabaseAllowed": false,
+    "mergeDistinctHistoricalDocumentsAutomatically": false
   },
 
-  "verifiedState": {
-    "status": "VERIFIED",
-    "requirements": {
-      "repositoryReadable": true,
-      "approvedRegistryCountMatches": true,
-      "allApprovedRegistriesReadable": true,
-      "allApprovedRegistriesJsonValid": true,
-      "allApprovedRegistriesHaveBlobSha": true
-    }
+  "conflictPolicy": {
+    "discardConflictingSourceRecords": false,
+    "silentlyChooseWinner": false,
+    "preserveConflict": true,
+    "requireSourceProvenance": true
   },
 
-  "blockedState": {
-    "status": "BLOCKED",
-    "triggerOn": [
-      "REPOSITORY_READ_FAILURE",
-      "REGISTRY_NOT_APPROVED",
-      "REGISTRY_PATH_FAILURE",
-      "REGISTRY_READ_FAILURE",
-      "INVALID_JSON",
-      "MISSING_BLOB_SHA",
-      "REGISTRY_COUNT_MISMATCH",
-      "READER_FAILURE"
-    ]
-  },
-
-  "unverifiedState": {
-    "status": "UNVERIFIED",
-    "usedWhen": [
-      "RUNTIME_VERIFICATION_NOT_EXECUTED",
-      "RUNTIME_RESULT_UNAVAILABLE"
-    ]
-  },
-
-  "authority": {
-    "statusRead": true,
-    "capabilityRead": true,
+  "bankingBoundary": {
     "registryRead": true,
     "registryWrite": false,
+    "sourceDocumentWrite": false,
     "credentialRead": false,
     "secretRead": false,
-    "unrestrictedTransfers": false
+    "moneyMovement": false
   },
 
-  "security": {
-    "returnCredentialValues": false,
-    "returnSecretValues": false,
-    "returnAuthenticationTokens": false,
-    "exposeEnvironmentValues": false,
-    "serverSideOnly": true
-  },
+  "supportedRegistryCategories": [
+    "properties",
+    "companies",
+    "vehicles",
+    "airplanes",
+    "helicopters",
+    "yachts_maritime",
+    "hard_assets_blackrock",
+    "blackrock_assets",
+    "licensing_281102",
+    "licensing_1335",
+    "law_licenses",
+    "cannabis_licenses",
+    "banking",
+    "banking_master",
+    "banking_liquidity"
+  ],
 
-  "environmentVariableNames": {
-    "worldsanboxGithubToken": "WORLDSANDBOX13_GITHUB_TOKEN"
-  },
-
-  "ciRequirements": {
-    "endpointMustRespond": true,
-    "readerBackedVerificationRequired": true,
-    "hardcodedAvailableResponseMustFail": true,
-    "blockedReaderMustNotReturnVerified": true,
-    "registryCountMustBeValidated": true
+  "newRegistryPolicy": {
+    "automaticDiscovery": false,
+    "approvedIndexEntryRequired": true,
+    "expectedRegistryCountUpdateRequired": true,
+    "runtimeReadVerificationRequired": true,
+    "normalizationVerificationRequired": true
   },
 
   "currentState": {
-    "serverReaderWiringVerified": false,
-    "readerBackedEndpointVerified": false,
+    "normalizerImplementationVerified": false,
+    "runtimeNormalizationVerified": false,
     "state": "UNVERIFIED"
   },
 
