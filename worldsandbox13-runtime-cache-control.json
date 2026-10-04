@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_RUNTIME_CACHE_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "allowBoundedReadCache": true,
+    "reduceRepeatedSourceReads": true,
+    "preserveSourceAuthority": true,
+    "preventStaleVerifiedState": true,
+    "duplicateAssetDatabase": false
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "runtimeComponents": {
+    "server": "server.js",
+    "reader": "worldsandbox13-reader.js",
+    "registryIndex": "worldsandbox13-registry-index.json"
+  },
+
+  "cachePolicy": {
+    "cacheIsAuthoritative": false,
+    "cacheMayReplaceCanonicalReader": false,
+    "cacheMayBypassRegistryApproval": false,
+    "cacheMayBypassRuntimeVerification": false,
+    "cacheSecretValues": false,
+    "cacheCredentialValues": false
+  },
+
+  "cacheIdentity": {
+    "registryIdRequired": true,
+    "registryPathRequired": true,
+    "blobShaRequired": true,
+    "repositoryRequired": true,
+    "branchRequired": true
+  },
+
+  "invalidation": {
+    "invalidateOnBlobShaChange": true,
+    "invalidateOnRegistryIndexChange": true,
+    "invalidateOnRegistryRemoval": true,
+    "invalidateOnReaderFailure": true,
+    "invalidateOnJsonParseFailure": true,
+    "invalidateOnProvenanceFailure": true
+  },
+
+  "verifiedStatePolicy": {
+    "cachedVerifiedStatePermanent": false,
+    "sourceChangeRequiresReverification": true,
+    "readerFailureMayUseOldVerifiedState": false,
+    "missingBlobShaMayUseCache": false,
+    "unapprovedRegistryMayUseCache": false
+  },
+
+  "registryCountPolicy": {
+    "expectedRegistryCount": 16,
+    "exactCountRequired": true,
+    "newRegistryRequiresIndexUpdate": true,
+    "newRegistryRequiresCacheInvalidation": true
+  },
+
+  "securityBoundary": {
+    "worldsanboxWrite": false,
+    "registryWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "privateKeyRead": false,
+    "moneyMovement": false
+  },
+
+  "auditRequirements": {
+    "recordCacheHit": true,
+    "recordCacheMiss": true,
+    "recordInvalidation": true,
+    "includeRegistryId": true,
+    "includeBlobSha": true,
+    "includeTimestamp": true,
+    "includeSecretValues": false
+  },
+
+  "failureBehavior": {
+    "serveStaleVerifiedDataAfterIntegrityFailure": false,
+    "fabricateCacheHit": false,
+    "fabricateBlobSha": false,
+    "returnVerifiedWithoutSourceProof": false
+  },
+
+  "currentState": {
+    "runtimeCacheImplemented": false,
+    "runtimeCacheVerified": false,
+    "cacheInvalidationVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
