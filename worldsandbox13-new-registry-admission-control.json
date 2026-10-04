@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_NEW_REGISTRY_ADMISSION_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "controlNewRegistryAdmission": true,
+    "preventDuplicateRegistries": true,
+    "requireSourceVerification": true,
+    "automaticApproval": false
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "currentRegistryState": {
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "expectedRegistryCount": 16,
+    "newRegistryNumber": 17
+  },
+
+  "requiredHandoff": [
+    "registryId",
+    "exactFilename",
+    "changeType",
+    "recordType",
+    "category",
+    "jsonValid"
+  ],
+
+  "allowedChangeTypes": [
+    "NEW_REGISTRY",
+    "UPDATED_EXISTING_REGISTRY"
+  ],
+
+  "newRegistryAdmissionSequence": [
+    "RECEIVE_HANDOFF",
+    "VERIFY_FILE_EXISTS_ON_WORLDSANBOX13_MAIN",
+    "VERIFY_JSON_PARSE",
+    "CHECK_EXISTING_REGISTRY_IDS",
+    "CHECK_EXISTING_REGISTRY_PATHS",
+    "CHECK_DUPLICATE_ASSET_SCOPE",
+    "VERIFY_SOURCE_PROVENANCE",
+    "ADD_APPROVED_INDEX_ENTRY",
+    "UPDATE_EXPECTED_REGISTRY_COUNT",
+    "RUN_CANONICAL_READER",
+    "VERIFY_BLOB_SHA",
+    "CREATE_AUDIT_RECEIPT",
+    "MARK_REGISTRY_ADMITTED"
+  ],
+
+  "existingRegistryUpdateSequence": [
+    "RECEIVE_HANDOFF",
+    "VERIFY_EXISTING_REGISTRY_ID",
+    "VERIFY_EXISTING_FILENAME",
+    "VERIFY_UPDATED_FILE_ON_MAIN",
+    "VERIFY_JSON_PARSE",
+    "VERIFY_BLOB_SHA",
+    "RUN_CANONICAL_READER",
+    "CREATE_AUDIT_RECEIPT"
+  ],
+
+  "duplicateProtection": {
+    "duplicateRegistryIdAllowed": false,
+    "duplicateRegistryPathAllowed": false,
+    "duplicateAssetScopeAllowed": false,
+    "createSecondRegistryForExistingAssetByDefault": false,
+    "preserveHistoricalRecordsInsideExistingRegistry": true
+  },
+
+  "verificationRequirements": {
+    "fileExistsOnMain": true,
+    "jsonParseRequired": true,
+    "approvedPathRequiredBeforeBankingAccess": true,
+    "blobShaRequired": true,
+    "canonicalReaderRequired": true,
+    "runtimeReadRequired": true
+  },
+
+  "registryCountPolicy": {
+    "currentExpectedCount": 16,
+    "incrementOnlyForNewRegistry": true,
+    "doNotIncrementForExistingRegistryUpdate": true,
+    "exactCountVerificationRequired": true
+  },
+
+  "sourceDataPolicy": {
+    "inventMissingSourceInformation": false,
+    "silentlyDiscardConflicts": false,
+    "preserveHistoricalRecords": true,
+    "preserveConflictingSourceRecords": true
+  },
+
+  "securityBoundary": {
+    "bankingMayReadApprovedRegistry": true,
+    "bankingMayModifyWorldsanboxSource": false,
+    "automaticRepositoryWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "moneyMovement": false
+  },
+
+  "admissionStates": [
+    "PENDING",
+    "VERIFYING",
+    "BLOCKED",
+    "ADMITTED"
+  ],
+
+  "currentState": {
+    "pendingRegistry": null,
+    "admissionImplementationVerified": false,
+    "runtimeAdmissionVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
