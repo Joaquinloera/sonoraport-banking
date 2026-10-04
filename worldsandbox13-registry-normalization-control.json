@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_REGISTRY_NORMALIZATION_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "normalizeForBankingRead": true,
+    "modifySourceRegistry": false,
+    "duplicateSourceDatabase": false,
+    "preserveOriginalSourceRecord": true
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "reader": {
+    "path": "worldsandbox13-reader.js",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "approvedRegistryOnly": true
+  },
+
+  "normalization": {
+    "required": true,
+    "nonDestructive": true,
+    "preserveUnknownFields": true,
+    "preserveHistoricalRecords": true,
+    "preserveConflictingSourceRecords": true,
+    "inventMissingValues": false,
+    "overwriteSourceValues": false
+  },
+
+  "normalizedEnvelope": {
+    "fields": [
+      "registryId",
+      "registryPath",
+      "recordType",
+      "category",
+      "source",
+      "records",
+      "provenance"
+    ]
+  },
+
+  "registryIdentity": {
+    "registryIdSource": "worldsandbox13-registry-index.json",
+    "registryPathSource": "worldsandbox13-registry-index.json",
+    "requireApprovedRegistry": true
+  },
+
+  "recordTypeHandling": {
+    "useSourceRecordTypeWhenPresent": true,
+    "missingRecordTypeBehavior": "UNSPECIFIED",
+    "rejectMissingRecordType": false
+  },
+
+  "categoryHandling": {
+    "deriveOnlyFromApprovedMetadata": true,
+    "inventCategory": false,
+    "unknownCategory": "UNCLASSIFIED"
+  },
+
+  "recordHandling": {
+    "allowSingleRecord": true,
+    "allowRecordArray": true,
+    "allowNestedSourceStructure": true,
+    "preserveSourceStructure": true,
+    "flattenDestructively": false
+  },
+
+  "provenance": {
+    "required": true,
+    "includeRepository": true,
+    "includeBranch": true,
+    "includeRegistryPath": true,
+    "includeBlobSha": true,
+    "includeRegistryId": true,
+    "includeReadTimestamp": true
+  },
+
+  "validation": {
+    "jsonParseRequired": true,
+    "approvedPathRequired": true,
+    "blobShaRequired": true,
+    "sourceRepositoryRequired": true,
+    "failOnUnapprovedRegistry": true,
+    "failOnInvalidJson": true
+  },
+
+  "duplicatePolicy": {
+    "duplicateRegistryIdsAllowed": false,
+    "duplicateRegistryPathsAllowed": false,
+    "duplicateAssetDatabaseAllowed": false,
+    "mergeDistinctHistoricalDocumentsAutomatically": false
+  },
+
+  "conflictPolicy": {
+    "discardConflictingSourceRecords": false,
+    "silentlyChooseWinner": false,
+    "preserveConflict": true,
+    "requireSourceProvenance": true
+  },
+
+  "bankingBoundary": {
+    "registryRead": true,
+    "registryWrite": false,
+    "sourceDocumentWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "moneyMovement": false
+  },
+
+  "supportedRegistryCategories": [
+    "properties",
+    "companies",
+    "vehicles",
+    "airplanes",
+    "helicopters",
+    "yachts_maritime",
+    "hard_assets_blackrock",
+    "blackrock_assets",
+    "licensing_281102",
+    "licensing_1335",
+    "law_licenses",
+    "cannabis_licenses",
+    "banking",
+    "banking_master",
+    "banking_liquidity"
+  ],
+
+  "newRegistryPolicy": {
+    "automaticDiscovery": false,
+    "approvedIndexEntryRequired": true,
+    "expectedRegistryCountUpdateRequired": true,
+    "runtimeReadVerificationRequired": true,
+    "normalizationVerificationRequired": true
+  },
+
+  "currentState": {
+    "normalizerImplementationVerified": false,
+    "runtimeNormalizationVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
