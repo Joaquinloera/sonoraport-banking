@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_BANKING_RECORD_LOOKUP_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "authorizedBankingRecordLookup": true,
+    "readOnly": true,
+    "sourceReportedData": true,
+    "duplicateBankingRegistry": false
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "reader": {
+    "path": "worldsandbox13-reader.js",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "approvedRegistryOnly": true,
+    "requireCanonicalReader": true
+  },
+
+  "approvedBankingRegistries": [
+    "banking",
+    "banking_master",
+    "banking_liquidity"
+  ],
+
+  "approvedBankingRegistryPaths": [
+    "worldsandbox13-banking-281102-kino.json",
+    "worldsandbox13-banking-master-v5.json",
+    "worldsandbox13-banking-liquidity-master-281102.json"
+  ],
+
+  "lookupInputs": {
+    "supported": [
+      "registryId",
+      "recordId",
+      "reference",
+      "accountReference",
+      "institutionReference",
+      "transactionReference"
+    ],
+    "minimumSearchFields": 1,
+    "rawCredentialLookupAllowed": false,
+    "secretLookupAllowed": false
+  },
+
+  "lookupSequence": [
+    "VALIDATE_REQUEST",
+    "CONFIRM_BANKING_REGISTRY_IS_APPROVED",
+    "READ_WITH_CANONICAL_READER",
+    "PARSE_SOURCE_JSON",
+    "SEARCH_SOURCE_RECORDS",
+    "PRESERVE_SOURCE_REPORTED_VALUES",
+    "ATTACH_PROVENANCE",
+    "RETURN_READ_ONLY_RESULT"
+  ],
+
+  "dataPolicy": {
+    "treatSourceBalancesAsProviderVerified": false,
+    "treatSourceOwnershipAsIndependentlyVerified": false,
+    "treatSourceTransactionsAsSettledWithoutProviderConfirmation": false,
+    "inventMissingFinancialValues": false,
+    "modifySourceValues": false,
+    "preserveHistoricalRecords": true,
+    "preserveConflictingRecords": true
+  },
+
+  "sensitiveDataBoundary": {
+    "returnPasswords": false,
+    "returnApiKeys": false,
+    "returnAccessTokens": false,
+    "returnPrivateKeys": false,
+    "returnFullPan": false,
+    "returnCvv": false,
+    "returnPin": false,
+    "returnRawCredentials": false
+  },
+
+  "provenance": {
+    "required": true,
+    "includeRegistryId": true,
+    "includeRegistryPath": true,
+    "includeRepository": true,
+    "includeBranch": true,
+    "includeBlobSha": true,
+    "includeReadTimestamp": true
+  },
+
+  "duplicatePolicy": {
+    "copyBankingRecordsIntoSecondRegistry": false,
+    "createShadowBankingDatabase": false,
+    "worldsanbox13RemainsAuthoritative": true
+  },
+
+  "moneyMovementBoundary": {
+    "lookupAuthorizesTransfer": false,
+    "lookupAuthorizesSettlement": false,
+    "lookupAuthorizesWithdrawal": false,
+    "lookupAuthorizesDeposit": false,
+    "providerConfirmationStillRequired": true
+  },
+
+  "httpIntegration": {
+    "implemented": false,
+    "proposedMethod": "GET",
+    "proposedPath": "/api/world-sandbox/banking-records",
+    "serverFile": "server.js",
+    "mustUseCanonicalReader": true
+  },
+
+  "failureStates": [
+    "LOOKUP_PARAMETER_REQUIRED",
+    "BANKING_REGISTRY_NOT_APPROVED",
+    "INVALID_REGISTRY_PATH",
+    "SOURCE_READ_FAILURE",
+    "INVALID_JSON",
+    "RECORD_NOT_FOUND",
+    "READER_FAILURE"
+  ],
+
+  "currentState": {
+    "bankingRecordLookupImplementationVerified": false,
+    "httpBankingRecordRouteVerified": false,
+    "runtimeBankingRecordLookupVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
