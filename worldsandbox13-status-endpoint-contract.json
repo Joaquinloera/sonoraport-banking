@@ -142,8 +142,4 @@
   "currentState": {
     "normalizerImplementationVerified": false,
     "runtimeNormalizationVerified": false,
-    "state": "UNVERIFIED"
-  },
-
-  "failClosed": true
-}
+   
