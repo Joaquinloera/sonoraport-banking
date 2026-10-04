@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_ASSET_LOOKUP_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "authorizedAssetLookup": true,
+    "crossApprovedRegistries": true,
+    "readOnly": true,
+    "duplicateAssetDatabase": false
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "reader": {
+    "path": "worldsandbox13-reader.js",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "approvedRegistryOnly": true,
+    "requireCanonicalReader": true
+  },
+
+  "lookupInputs": {
+    "supported": [
+      "registryId",
+      "recordId",
+      "reference",
+      "assetId",
+      "parcelOrApn",
+      "accountReference"
+    ],
+    "minimumSearchFields": 1,
+    "arbitraryRepositoryPathAllowed": false
+  },
+
+  "lookupSequence": [
+    "VALIDATE_REQUEST",
+    "LOAD_APPROVED_REGISTRY_INDEX",
+    "RESOLVE_APPROVED_REGISTRIES",
+    "READ_USING_CANONICAL_READER",
+    "PARSE_SOURCE_JSON",
+    "SEARCH_SOURCE_RECORDS",
+    "PRESERVE_SOURCE_VALUES",
+    "ATTACH_PROVENANCE",
+    "RETURN_READ_ONLY_RESULTS"
+  ],
+
+  "matchingPolicy": {
+    "exactIdentifiersPreferred": true,
+    "caseInsensitiveTextMatchingAllowed": true,
+    "inventMissingIdentifiers": false,
+    "silentlyMergeConflictingRecords": false,
+    "preserveHistoricalMatches": true,
+    "preserveConflictingMatches": true
+  },
+
+  "resultPolicy": {
+    "includeRegistryId": true,
+    "includeRegistryPath": true,
+    "includeMatchedSourceRecord": true,
+    "includeBlobSha": true,
+    "includeRepository": true,
+    "includeBranch": true,
+    "includeProvenance": true,
+    "includeSecretValues": false,
+    "includeCredentialValues": false
+  },
+
+  "validation": {
+    "approvedRegistryRequired": true,
+    "jsonParseRequired": true,
+    "blobShaRequired": true,
+    "sourceProvenanceRequired": true,
+    "unapprovedRepositorySearchAllowed": false
+  },
+
+  "duplicatePolicy": {
+    "copyAssetsIntoBankingDatabase": false,
+    "createShadowAssetRegistry": false,
+    "worldsanbox13RemainsAuthoritative": true
+  },
+
+  "httpIntegration": {
+    "implemented": false,
+    "proposedMethod": "GET",
+    "proposedPath": "/api/world-sandbox/assets",
+    "serverFile": "server.js",
+    "mustUseCanonicalReader": true,
+    "mustUseApprovedRegistryIndex": true
+  },
+
+  "securityBoundary": {
+    "registryRead": true,
+    "assetRead": true,
+    "registryWrite": false,
+    "assetWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "moneyMovement": false
+  },
+
+  "failureStates": [
+    "LOOKUP_PARAMETER_REQUIRED",
+    "REGISTRY_NOT_APPROVED",
+    "INVALID_REGISTRY_PATH",
+    "SOURCE_READ_FAILURE",
+    "INVALID_JSON",
+    "ASSET_NOT_FOUND",
+    "READER_FAILURE"
+  ],
+
+  "currentState": {
+    "assetLookupImplementationVerified": false,
+    "httpAssetLookupRouteVerified": false,
+    "runtimeAssetLookupVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
