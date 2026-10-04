@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_REGISTRY_AUDIT_RECEIPT_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "createReadAuditReceipts": true,
+    "preserveSourceProvenance": true,
+    "proveRegistryReadResult": true,
+    "modifyWorldsanboxSource": false,
+    "duplicateAssetDatabase": false
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "reader": {
+    "path": "worldsandbox13-reader.js",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "approvedRegistryOnly": true
+  },
+
+  "receiptRequiredFor": [
+    "REGISTRY_VERIFICATION",
+    "REGISTRY_LOOKUP",
+    "ASSET_LOOKUP",
+    "BANKING_RECORD_LOOKUP"
+  ],
+
+  "receiptFields": [
+    "receiptId",
+    "operation",
+    "registryId",
+    "registryPath",
+    "repository",
+    "branch",
+    "blobSha",
+    "readMode",
+    "result",
+    "timestamp",
+    "requestId"
+  ],
+
+  "receiptPolicy": {
+    "receiptIdRequired": true,
+    "requestIdRequired": true,
+    "timestampRequired": true,
+    "blobShaRequiredForSuccessfulRead": true,
+    "registryIdRequiredForRegistryRead": true,
+    "registryPathRequiredForRegistryRead": true,
+    "sourceRecordCopiedIntoReceipt": false
+  },
+
+  "allowedResults": [
+    "VERIFIED",
+    "READ_SUCCESS",
+    "NOT_FOUND",
+    "BLOCKED",
+    "INVALID_JSON",
+    "READ_FAILURE"
+  ],
+
+  "provenance": {
+    "authority": "Worldsanbox13",
+    "repositoryRequired": true,
+    "branchRequired": true,
+    "registryPathRequired": true,
+    "blobShaRequired": true,
+    "readTimestampRequired": true
+  },
+
+  "integrity": {
+    "sourceBlobShaPreserved": true,
+    "inventBlobSha": false,
+    "inventSuccessfulRead": false,
+    "hardcodedVerifiedReceiptAllowed": false,
+    "receiptMustReflectRuntimeResult": true
+  },
+
+  "sensitiveDataBoundary": {
+    "storePasswords": false,
+    "storeApiKeys": false,
+    "storeAccessTokens": false,
+    "storePrivateKeys": false,
+    "storeFullPan": false,
+    "storeCvv": false,
+    "storePin": false,
+    "storeRawCredentials": false
+  },
+
+  "failureReceiptPolicy": {
+    "recordFailure": true,
+    "includeFailureCode": true,
+    "includeSecretValues": false,
+    "markFailureAsVerified": false
+  },
+
+  "bankingBoundary": {
+    "registryRead": true,
+    "auditReceiptWrite": true,
+    "worldsanboxRegistryWrite": false,
+    "assetWrite": false,
+    "credentialRead": false,
+    "moneyMovement": false
+  },
+
+  "runtimeIntegration": {
+    "implemented": false,
+    "serverFile": "server.js",
+    "readerBackedReceiptRequired": true,
+    "runtimeReceiptVerificationRequired": true
+  },
+
+  "currentState": {
+    "auditReceiptImplementationVerified": false,
+    "runtimeReceiptVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
