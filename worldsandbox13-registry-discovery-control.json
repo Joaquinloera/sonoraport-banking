@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_REGISTRY_DISCOVERY_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "discoverApprovedRegistries": true,
+    "readRegistryMetadata": true,
+    "readAssetContents": false,
+    "duplicateAssetDatabase": false
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "registryIndex": {
+    "path": "worldsandbox13-registry-index.json",
+    "authoritativeForBankingDiscovery": true,
+    "expectedRegistryCount": 16,
+    "requireExactCount": true
+  },
+
+  "reader": {
+    "path": "worldsandbox13-reader.js",
+    "approvedRegistryOnly": true,
+    "directRepositoryEnumeration": false
+  },
+
+  "discoveryResponse": {
+    "includeRegistryId": true,
+    "includeRegistryPath": true,
+    "includeApprovedStatus": true,
+    "includeRegistryContents": false,
+    "includeCredentialValues": false,
+    "includeSecretValues": false
+  },
+
+  "discoveryPolicy": {
+    "returnApprovedRegistriesOnly": true,
+    "discoverUnapprovedRepositoryFiles": false,
+    "automaticallyApproveFiles": false,
+    "automaticallyModifyIndex": false,
+    "arbitraryRepositoryBrowsing": false
+  },
+
+  "validation": {
+    "registryIdRequired": true,
+    "registryPathRequired": true,
+    "jsonExtensionRequired": true,
+    "uniqueRegistryIdsRequired": true,
+    "uniqueRegistryPathsRequired": true,
+    "expectedCountRequired": true
+  },
+
+  "newRegistryPolicy": {
+    "newWorldsanboxFileAutomaticallyVisible": false,
+    "approvedIndexEntryRequired": true,
+    "expectedRegistryCountUpdateRequired": true,
+    "verificationRequiredBeforeDiscovery": true
+  },
+
+  "httpIntegration": {
+    "implemented": false,
+    "proposedMethod": "GET",
+    "proposedPath": "/api/world-sandbox/registries",
+    "serverFile": "server.js",
+    "mustUseApprovedIndex": true
+  },
+
+  "securityBoundary": {
+    "readOnly": true,
+    "registryWrite": false,
+    "sourceWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "moneyMovement": false
+  },
+
+  "currentState": {
+    "registryIndexExists": true,
+    "expectedRegistryCount": 16,
+    "httpDiscoveryRouteVerified": false,
+    "runtimeDiscoveryVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
