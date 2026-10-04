@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_RUNTIME_WIRING_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+  "source": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+  "bankingRepository": {
+    "repository": "Joaquinloera/sonoraport-banking",
+    "branch": "main"
+  },
+  "canonicalReader": {
+    "path": "worldsandbox13-reader.js",
+    "sourceConfig": "worldsandbox13-github-source.json",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "required": true
+  },
+  "runtimeIntegration": {
+    "serverFile": "server.js",
+    "statusEndpoint": "/api/world-sandbox/status",
+    "readerImportedByServer": false,
+    "repositoryStatusCalledByServer": false,
+    "verifyApprovedRegistriesCalledByServer": false,
+    "hardcodedAvailableStatusAllowed": false,
+    "hardcodedAuthenticatedStatusAllowed": false,
+    "configurationAloneProvesConnection": false
+  },
+  "verificationRequirements": {
+    "requireRepositoryRead": true,
+    "requireApprovedRegistryRead": true,
+    "requireJsonParse": true,
+    "requireBlobSha": true,
+    "requireAllApprovedRegistries": true,
+    "allowPartialVerification": false,
+    "expectedRegistryCount": 16
+  },
+  "runtimeStates": {
+    "success": "VERIFIED",
+    "failure": "BLOCKED",
+    "unexecuted": "UNVERIFIED"
+  },
+  "currentRuntimeStatus": {
+    "readerExists": true,
+    "sourceConfigExists": true,
+    "registryIndexExists": true,
+    "approvedRegistryCount": 16,
+    "serverReaderWiringVerified": false,
+    "httpRuntimeVerificationPassed": false,
+    "state": "UNVERIFIED"
+  },
+  "newRegistryPolicy": {
+    "worldsanbox13RemainsAuthoritative": true,
+    "duplicateAssetDatabaseInBanking": false,
+    "newRegistryRequiresApprovedIndexEntry": true,
+    "newRegistryRequiresExpectedCountUpdate": true,
+    "newRegistryRequiresLiveRead": true,
+    "newRegistryRequiresJsonParse": true
+  },
+  "securityBoundary": {
+    "serverSideOnly": true,
+    "readOnly": true,
+    "repositoryWrite": false,
+    "registryWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "directMoneyMovement": false,
+    "secretValuesStoredHere": false
+  },
+  "environmentVariableNames": {
+    "githubAuthentication": "WORLDSANDBOX13_GITHUB_TOKEN",
+    "bankingBridgeAuthentication": "SONORAPORT_BANKING_BRIDGE_TOKEN",
+    "bankingBaseUrl": "SONORAPORT_BANKING_API_URL"
+  },
+  "requiredRepair": {
+    "importCanonicalReaderIntoServer": true,
+    "executeRepositoryStatusAtRuntime": true,
+    "executeApprovedRegistryVerificationAtRuntime": true,
+    "removeHardcodedWorldsanboxAvailability": true,
+    "removeHardcodedWorldsanboxAuthentication": true,
+    "returnBlockedOnReaderFailure": true,
+    "extendCiToVerifyReaderBackedStatus": true
+  },
+  "releaseGate": {
+    "runtimeReaderRequired": true,
+    "allApprovedRegistriesMustPass": true,
+    "hardcodedSuccessPermitted": false,
+    "worldsanboxRuntimeVerified": false
+  },
+  "failClosed": true
+}
