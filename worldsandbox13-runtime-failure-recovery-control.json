@@ -26,4 +26,93 @@
 
   "failureConditions": [
     "SOURCE_CONFIGURATION_FAILURE",
-    "REGISTRY_INDEX_FAILURE
+    "REGISTRY_INDEX_FAILURE",
+    "REPOSITORY_READ_FAILURE",
+    "REGISTRY_COUNT_MISMATCH",
+    "REGISTRY_NOT_APPROVED",
+    "INVALID_REGISTRY_PATH",
+    "SOURCE_FILE_NOT_FOUND",
+    "INVALID_JSON",
+    "MISSING_BLOB_SHA",
+    "PROVENANCE_FAILURE",
+    "READER_FAILURE"
+  ],
+
+  "failureBehavior": {
+    "returnVerified": false,
+    "returnAuthenticated": false,
+    "continueWithUnverifiedRegistryData": false,
+    "fabricateSuccessfulRead": false,
+    "fabricateBlobSha": false,
+    "modifySourceToRecover": false
+  },
+
+  "runtimeStates": [
+    "UNVERIFIED",
+    "VERIFYING",
+    "VERIFIED",
+    "DEGRADED",
+    "BLOCKED"
+  ],
+
+  "blockedState": {
+    "registryReadTrusted": false,
+    "assetLookupTrusted": false,
+    "bankingRecordLookupTrusted": false,
+    "moneyMovementAuthorized": false
+  },
+
+  "recoverySequence": [
+    "CAPTURE_FAILURE",
+    "CREATE_FAILURE_AUDIT_RECEIPT",
+    "MARK_RUNTIME_BLOCKED",
+    "RECHECK_SOURCE_CONFIGURATION",
+    "RECHECK_APPROVED_REGISTRY_INDEX",
+    "RETRY_CANONICAL_READER",
+    "REVERIFY_JSON",
+    "REVERIFY_BLOB_SHA",
+    "REVERIFY_PROVENANCE",
+    "RESTORE_VERIFIED_STATE_ONLY_AFTER_ALL_CHECKS_PASS"
+  ],
+
+  "retryPolicy": {
+    "automaticInfiniteRetry": false,
+    "boundedRetryRequired": true,
+    "successfulRetryMustReverifyAllRequirements": true,
+    "cachedVerifiedStateMayBypassFailure": false
+  },
+
+  "auditPolicy": {
+    "failureReceiptRequired": true,
+    "includeFailureCode": true,
+    "includeRegistryIdWhenKnown": true,
+    "includeRegistryPathWhenKnown": true,
+    "includeTimestamp": true,
+    "includeRequestId": true,
+    "includeSecretValues": false
+  },
+
+  "securityBoundary": {
+    "registryWrite": false,
+    "sourceWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "moneyMovement": false
+  },
+
+  "httpBehavior": {
+    "statusEndpoint": "/api/world-sandbox/status",
+    "blockedRuntimeMustNotReturnVerified": true,
+    "readerFailureMustBeVisibleAsBlocked": true,
+    "internalSecretDetailsReturned": false
+  },
+
+  "currentState": {
+    "failureRecoveryImplementationVerified": false,
+    "runtimeFailureTestVerified": false,
+    "runtimeRecoveryTestVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
