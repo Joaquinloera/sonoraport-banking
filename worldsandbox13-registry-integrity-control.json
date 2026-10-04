@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_REGISTRY_INTEGRITY_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "verifyApprovedRegistryIntegrity": true,
+    "detectSourceChanges": true,
+    "preserveProvenance": true,
+    "modifySource": false,
+    "duplicateAssetDatabase": false
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "reader": {
+    "path": "worldsandbox13-reader.js",
+    "registryIndex": "worldsandbox13-registry-index.json",
+    "approvedRegistryOnly": true,
+    "requireCanonicalReader": true
+  },
+
+  "integrityChecks": {
+    "registryIdPresent": true,
+    "registryPathPresent": true,
+    "registryIdUnique": true,
+    "registryPathUnique": true,
+    "jsonExtensionRequired": true,
+    "sourceFileExists": true,
+    "jsonParseRequired": true,
+    "blobShaRequired": true,
+    "repositoryProvenanceRequired": true,
+    "branchProvenanceRequired": true
+  },
+
+  "sourceChangeDetection": {
+    "compareBlobSha": true,
+    "changedBlobRequiresReverification": true,
+    "changedBlobAutomaticallyTrusted": false,
+    "missingBlobShaAllowed": false,
+    "inventBlobSha": false
+  },
+
+  "registryCount": {
+    "expected": 16,
+    "requireExactCount": true,
+    "incrementOnlyAfterNewRegistryAdmission": true,
+    "existingRegistryUpdateChangesCount": false
+  },
+
+  "verificationSequence": [
+    "LOAD_APPROVED_REGISTRY_INDEX",
+    "VERIFY_EXPECTED_COUNT",
+    "VERIFY_UNIQUE_REGISTRY_IDS",
+    "VERIFY_UNIQUE_REGISTRY_PATHS",
+    "READ_APPROVED_REGISTRY",
+    "VERIFY_JSON_PARSE",
+    "CAPTURE_SOURCE_BLOB_SHA",
+    "VERIFY_PROVENANCE",
+    "CREATE_AUDIT_RECEIPT",
+    "RETURN_RUNTIME_RESULT"
+  ],
+
+  "integrityStates": [
+    "UNVERIFIED",
+    "VERIFYING",
+    "VERIFIED",
+    "CHANGED",
+    "BLOCKED"
+  ],
+
+  "failureConditions": [
+    "REGISTRY_COUNT_MISMATCH",
+    "DUPLICATE_REGISTRY_ID",
+    "DUPLICATE_REGISTRY_PATH",
+    "INVALID_REGISTRY_PATH",
+    "SOURCE_FILE_NOT_FOUND",
+    "INVALID_JSON",
+    "MISSING_BLOB_SHA",
+    "REPOSITORY_READ_FAILURE",
+    "PROVENANCE_FAILURE"
+  ],
+
+  "trustPolicy": {
+    "hardcodedVerifiedAllowed": false,
+    "configurationAloneProvesIntegrity": false,
+    "runtimeReadRequired": true,
+    "runtimeBlobShaRequired": true,
+    "runtimeJsonParseRequired": true
+  },
+
+  "securityBoundary": {
+    "registryRead": true,
+    "registryWrite": false,
+    "sourceWrite": false,
+    "credentialRead": false,
+    "secretRead": false,
+    "moneyMovement": false
+  },
+
+  "currentState": {
+    "expectedRegistryCount": 16,
+    "integrityRuntimeImplemented": false,
+    "integrityRuntimeVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
