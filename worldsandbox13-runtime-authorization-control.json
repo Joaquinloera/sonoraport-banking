@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "WORLDSANBOX13_RUNTIME_AUTHORIZATION_CONTROL",
+  "status": "ACTIVE",
+  "service": "SONORAPORT_BANKING",
+
+  "purpose": {
+    "authorizeBankingRegistryReads": true,
+    "separateAuthenticationFromVerification": true,
+    "enforceLeastPrivilege": true,
+    "failClosed": true
+  },
+
+  "authoritativeSource": {
+    "repository": "Joaquinloera/Worldsanbox13",
+    "branch": "main",
+    "mode": "READ_ONLY"
+  },
+
+  "runtimeComponents": {
+    "server": "server.js",
+    "reader": "worldsandbox13-reader.js",
+    "registryIndex": "worldsandbox13-registry-index.json"
+  },
+
+  "authorizationPrinciples": {
+    "authenticatedMeansVerified": false,
+    "configuredMeansAuthenticated": false,
+    "configuredMeansConnected": false,
+    "registryApprovalRequired": true,
+    "canonicalReaderRequired": true,
+    "leastPrivilegeRequired": true
+  },
+
+  "allowedOperations": [
+    "REGISTRY_DISCOVERY",
+    "REGISTRY_VERIFICATION",
+    "REGISTRY_LOOKUP",
+    "ASSET_LOOKUP",
+    "BANKING_RECORD_LOOKUP"
+  ],
+
+  "prohibitedOperations": [
+    "WORLDSANBOX_SOURCE_WRITE",
+    "UNAPPROVED_REGISTRY_READ",
+    "ARBITRARY_REPOSITORY_READ",
+    "CREDENTIAL_READ",
+    "SECRET_READ",
+    "PRIVATE_KEY_READ",
+    "DIRECT_MONEY_MOVEMENT"
+  ],
+
+  "authorizationRequirements": {
+    "approvedRegistryRequired": true,
+    "validRegistryPathRequired": true,
+    "runtimeSourceReadRequired": true,
+    "jsonParseRequired": true,
+    "provenanceRequired": true
+  },
+
+  "bridgeAuthentication": {
+    "environmentVariableName": "SONORAPORT_BANKING_BRIDGE_TOKEN",
+    "secretValueStoredInRepository": false,
+    "returnTokenToClient": false,
+    "logToken": false
+  },
+
+  "worldsanboxAuthentication": {
+    "environmentVariableName": "WORLDSANDBOX13_GITHUB_TOKEN",
+    "secretValueStoredInRepository": false,
+    "returnTokenToClient": false,
+    "logToken": false
+  },
+
+  "accessDecisionStates": [
+    "UNVERIFIED",
+    "AUTHORIZED",
+    "DENIED",
+    "BLOCKED"
+  ],
+
+  "denialConditions": [
+    "AUTHENTICATION_FAILURE",
+    "REGISTRY_NOT_APPROVED",
+    "INVALID_REGISTRY_PATH",
+    "SOURCE_READ_FAILURE",
+    "INVALID_JSON",
+    "PROVENANCE_FAILURE",
+    "READER_FAILURE"
+  ],
+
+  "responseBoundary": {
+    "returnCredentialValues": false,
+    "returnSecretValues": false,
+    "returnAuthenticationTokens": false,
+    "returnPrivateKeys": false,
+    "returnFullPan": false,
+    "returnCvv": false,
+    "returnPin": false
+  },
+
+  "moneyMovementBoundary": {
+    "registryAuthorizationAuthorizesTransfer": false,
+    "
