@@ -101,4 +101,25 @@
 
   "moneyMovementBoundary": {
     "registryAuthorizationAuthorizesTransfer": false,
-    "
+    "registryAuthorizationAuthorizesSettlement": false,
+    "registryAuthorizationAuthorizesDeposit": false,
+    "registryAuthorizationAuthorizesWithdrawal": false,
+    "separateProviderAuthorizationRequired": true
+  },
+
+  "auditRequirements": {
+    "requestIdRequired": true,
+    "operationRequired": true,
+    "accessDecisionRequired": true,
+    "timestampRequired": true,
+    "secretValuesExcluded": true
+  },
+
+  "currentState": {
+    "runtimeAuthorizationImplemented": false,
+    "runtimeAuthorizationVerified": false,
+    "state": "UNVERIFIED"
+  },
+
+  "failClosed": true
+}
