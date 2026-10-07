@@ -1,0 +1,367 @@
+{
+  "schemaVersion": "5.0.0",
+  "buildId": "SONORAPORT_BANKING_SERVER_RUNTIME_005",
+  "project": "SONORAPORT_BANKING",
+  "repository": "Joaquinloera/sonoraport-banking",
+  "branch": "main",
+  "buildMode": "SERVER_SOURCE_RECOVERY_AND_RUNTIME_REBUILD",
+
+  "runtime": {
+    "service": "sonoraport-banking",
+    "entrypoint": "server.js",
+    "node": {
+      "minimumVersion": "20"
+    },
+    "network": {
+      "hostEnvironmentVariable": "HOST",
+      "portEnvironmentVariable": "PORT",
+      "defaultHost": "0.0.0.0",
+      "defaultPort": 3100
+    },
+    "apiVersion": "1.3.0",
+    "maxBodyBytes": 65536
+  },
+
+  "serverRecovery": {
+    "enabled": true,
+    "targetFile": "server.js",
+    "targetPath": "/server.js",
+    "strategy": "RECOVER_COMPLETE_SOURCE_THEN_MERGE_CURRENT_RUNTIME",
+    "replaceTruncatedMainSource": true,
+    "knownFailure": {
+      "type": "SyntaxError",
+      "message": "Unexpected end of input",
+      "line": 1316,
+      "cause": "server.js terminates in the middle of the payment-intent not-found response"
+    },
+    "knownBrokenMainBlob": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
+    "recoveryCommit": "a2c11a384c0025ead9eceadc4ea2f200800e6081",
+    "recoveryBlob": "e34fde550270621a3be7935577e0f9e360ddfc65",
+    "preserveCompleteHttpRuntime": true,
+    "preservePaymentIntentRuntime": true,
+    "preservePayPalRuntime": true,
+    "preserveWorldSandboxRuntime": true
+  },
+
+  "modules": {
+    "paypalProduction": {
+      "import": "./paypal-production-adapter",
+      "identifier": "paypalProduction",
+      "required": true
+    },
+    "productionRailRuntime": {
+      "import": "./production-rail-runtime",
+      "identifier": "productionRailRuntime",
+      "required": true
+    }
+  },
+
+  "productionRailConfiguration": {
+    "file": "production-payment-rails.json",
+    "required": true,
+    "environment": "production",
+    "system": "sonoraport-banking",
+    "executionAuthority": "sonoraport-banking",
+    "railsMustBeObject": true
+  },
+
+  "productionRailRuntime": {
+    "file": "production-rail-runtime.js",
+    "centralized": true,
+    "publicSummary": "productionRailRuntime.publicRailSummary()",
+    "railStatus": "productionRailRuntime.railStatus",
+    "duplicateLocalRailStatusAllowed": false,
+    "serverFunction": {
+      "name": "productionRailStatus",
+      "implementation": "productionRailRuntime.publicRailSummary()"
+    },
+    "serverExport": {
+      "name": "railRuntimeStatus",
+      "implementation": "productionRailRuntime.railStatus"
+    }
+  },
+
+  "productionRailsEndpoint": {
+    "enabled": true,
+    "method": "GET",
+    "path": "/api/production-rails",
+    "summaryVariable": "railSummary",
+    "summarySource": "productionRailStatus()",
+    "response": {
+      "rails": "railSummary.rails",
+      "runtime": "railSummary.totals"
+    }
+  },
+
+  "paymentRails": {
+    "paypal": {
+      "enabled": true,
+      "mode": "production",
+      "adapter": "paypal-production-adapter.js",
+      "authentication": "oauth2",
+      "credentialsSource": "environment",
+      "requiredEnvironment": [
+        "PAYPAL_CLIENT_ID",
+        "PAYPAL_CLIENT_SECRET"
+      ],
+      "providerConfirmationRequired": true,
+      "allowFabricatedSettlement": false
+    },
+
+    "visa": {
+      "enabled": true,
+      "mode": "production",
+      "router": "netlify/functions/lib/card-issuer-router.mjs",
+      "credentialsSource": "environment",
+      "requiredEnvironment": [
+        "VISA_API_KEY",
+        "VISA_SHARED_SECRET",
+        "VISA_CLIENT_CERT_PATH",
+        "VISA_PRIVATE_KEY_PATH",
+        "CARD_ISSUER_NAME",
+        "CARD_ISSUER_PRIORITY",
+        "CARD_ISSUER_TIMEOUT_MS",
+        "CARD_ISSUER_WEBHOOK_SECRET"
+      ],
+      "providerConfirmationRequired": true,
+      "allowFabricatedApproval": false
+    },
+
+    "venmo": {
+      "enabled": true,
+      "mode": "production",
+      "provider": "paypal",
+      "credentialsSource": "environment",
+      "requiredEnvironment": [
+        "PAYPAL_CLIENT_ID",
+        "PAYPAL_CLIENT_SECRET"
+      ],
+      "providerConfirmationRequired": true
+    },
+
+    "cashapp": {
+      "enabled": true,
+      "mode": "production",
+      "credentialsSource": "environment",
+      "requiredEnvironment": [
+        "CASH_APP_CLIENT_ID",
+        "CASH_APP_CLIENT_SECRET"
+      ],
+      "providerConfirmationRequired": true
+    },
+
+    "zelle": {
+      "enabled": true,
+      "mode": "production",
+      "credentialsSource": "authorized-partner",
+      "requiredEnvironment": [
+        "ZELLE_PARTNER_ID",
+        "ZELLE_API_BASE_URL"
+      ],
+      "providerConfirmationRequired": true,
+      "publicApiKeyAssumed": false
+    }
+  },
+
+  "paypalRoutes": {
+    "status": {
+      "method": "GET",
+      "path": "/api/paypal/status"
+    },
+    "createOrder": {
+      "method": "POST",
+      "path": "/api/paypal/orders",
+      "idempotencyRequired": true
+    },
+    "getOrder": {
+      "method": "GET",
+      "path": "/api/paypal/orders/:providerOrderId"
+    },
+    "captureOrder": {
+      "method": "POST",
+      "path": "/api/paypal/orders/:providerOrderId/capture",
+      "idempotencyRequired": true,
+      "providerConfirmationRequired": true
+    }
+  },
+
+  "paymentIntentBoundary": {
+    "enabled": true,
+    "authentication": {
+      "scheme": "Bearer",
+      "tokenEnvironmentVariable": "MATCHA_MANITA_BANKING_TOKEN",
+      "timingSafeComparison": true
+    },
+
+    "idempotency": {
+      "enabled": true,
+      "required": true,
+      "header": "Idempotency-Key",
+      "requestFingerprint": "SHA-256",
+      "rejectPayloadMismatch": true
+    },
+
+    "audit": {
+      "enabled": true,
+      "protocol": "SONORAPORT-AUDIT-1",
+      "receiptDigest": "SHA-256"
+    },
+
+    "settlement": {
+      "providerConfirmationRequired": true,
+      "allowFabricatedSettlement": false,
+      "allowUnverifiedSettlement": false
+    },
+
+    "routes": {
+      "create": {
+        "method": "POST",
+        "path": "/api/matcha-manita/payment-intents"
+      },
+      "get": {
+        "method": "GET",
+        "path": "/api/matcha-manita/payment-intents/:id"
+      },
+      "cancel": {
+        "method": "POST",
+        "path": "/api/matcha-manita/payment-intents/:id/cancel"
+      },
+      "receipt": {
+        "method": "GET",
+        "path": "/api/matcha-manita/payment-intents/:id/receipt"
+      }
+    }
+  },
+
+  "security": {
+    "requestBody": {
+      "maximumBytes": 65536,
+      "rejectInvalidJson": true,
+      "rejectOversizedBody": true
+    },
+
+    "authentication": {
+      "bearerTokenSupported": true,
+      "timingSafeComparisonRequired": true
+    },
+
+    "secrets": {
+      "source": "environment",
+      "credentialsStoredInRepository": false,
+      "exposeCredentialsThroughApi": false
+    },
+
+    "payments": {
+      "idempotencyRequired": true,
+      "providerConfirmationRequired": true,
+      "reconciliationRequired": true,
+      "allowFabricatedApproval": false,
+      "allowFabricatedSettlement": false,
+      "allowUnverifiedSettlement": false
+    },
+
+    "cryptography": {
+      "requestFingerprint": "SHA-256",
+      "receiptDigest": "SHA-256"
+    }
+  },
+
+  "worldSandbox": {
+    "enabled": true,
+    "route": "/api/world-sandbox/status",
+    "method": "GET",
+    "permissions": {
+      "statusRead": true,
+      "capabilityRead": true,
+      "credentialRead": false,
+      "unrestrictedTransfers": false
+    }
+  },
+
+  "healthEndpoints": {
+    "root": "/",
+    "health": "/api/health",
+    "capabilities": "/api/capabilities",
+    "productionRails": "/api/production-rails",
+    "worldSandbox": "/api/world-sandbox/status",
+    "paypalStatus": "/api/paypal/status"
+  },
+
+  "serverExports": {
+    "server": "server",
+    "bankingCapabilities": "bankingCapabilities",
+    "authenticateMatchaManita": "authenticate",
+    "handleMatchaManita": "handleMatcha",
+    "handlePayPalProduction": "handlePayPalProduction",
+    "loadProductionRails": "loadProductionRails",
+    "railRuntimeStatus": "productionRailRuntime.railStatus",
+    "productionRailStatus": "productionRailStatus"
+  },
+
+  "requiredFiles": [
+    "server.js",
+    "production-rail-runtime.js",
+    "production-payment-rails.json",
+    "paypal-production-adapter.js",
+    "package.json"
+  ],
+
+  "sourceRepairRequirements": {
+    "serverJsMustBeComplete": true,
+    "removeTruncatedEnding": true,
+    "restorePaymentIntentNotFoundResponse": true,
+    "restoreRemainingPaymentIntentRoutes": true,
+    "restoreWorldSandboxRoute": true,
+    "restoreErrorHandling": true,
+    "restoreServerListen": true,
+    "restoreModuleExports": true,
+    "retainProductionRailRuntimeImport": true,
+    "retainCentralizedProductionRailSummary": true,
+    "removeStaleLocalRailStatusExport": true,
+    "useProductionRailRuntimeStatusExport": true
+  },
+
+  "syntaxGate": {
+    "commands": [
+      "node --check server.js",
+      "node --check production-rail-runtime.js",
+      "node --check paypal-production-adapter.js"
+    ],
+    "allRequired": true
+  },
+
+  "testGate": {
+    "commands": [
+      "npm test"
+    ],
+    "requiredChecks": [
+      "banking health",
+      "banking capabilities",
+      "World Sandbox boundary",
+      "unauthenticated payment request rejection",
+      "payment intent creation",
+      "idempotency replay",
+      "payment intent status",
+      "audit receipt",
+      "payment intent cancellation",
+      "cancelled payment intent status"
+    ],
+    "allRequired": true
+  },
+
+  "releaseGate": {
+    "serverSyntaxMustPass": true,
+    "runtimeSyntaxMustPass": true,
+    "paypalAdapterSyntaxMustPass": true,
+    "testsMustPass": true,
+    "authenticationMustPass": true,
+    "idempotencyMustPass": true,
+    "auditMustPass": true,
+    "providerConfirmationRequired": true,
+    "productionRailRuntimeRequired": true,
+    "worldSandboxBoundaryRequired": true,
+    "allowReleaseWithTruncatedServer": false,
+    "allowReleaseOnSyntaxFailure": false,
+    "allowReleaseOnTestFailure": false
+  }
+}
