@@ -1,0 +1,125 @@
+{
+  "build": {
+    "id": "SONORAPORT_BANKING_SERVER_RUNTIME_001",
+    "system": "sonoraport-banking",
+    "branch": "main",
+    "environment": "production",
+    "status": "READY_FOR_INTEGRATION"
+  },
+
+  "verifiedInput": {
+    "runtimeFile": "production-rail-runtime.js",
+    "runtimeBlobSha": "48e5717acdd1b4a3ba59561d98386b4228b1e740",
+    "serverFile": "server.js",
+    "serverBlobSha": "e34fde550270621a3be7935577e0f9e360ddfc65"
+  },
+
+  "runtime": {
+    "module": "./production-rail-runtime",
+    "sourceOfTruth": true,
+    "realMoneyTarget": true,
+    "moneyMovementTarget": "OPEN_ENABLED",
+    "credentialsStoredInRepository": false
+  },
+
+  "rails": {
+    "paypal": {
+      "enabled": true,
+      "mode": "production",
+      "adapter": "paypal-production-adapter.js",
+      "runtimeManaged": true
+    },
+
+    "visa": {
+      "enabled": true,
+      "mode": "production",
+      "adapter": "netlify/functions/lib/card-issuer-router.mjs",
+      "runtimeManaged": true
+    },
+
+    "venmo": {
+      "enabled": true,
+      "mode": "production",
+      "upstreamProvider": "paypal",
+      "runtimeManaged": true
+    },
+
+    "cashapp": {
+      "enabled": true,
+      "mode": "production",
+      "runtimeManaged": true
+    },
+
+    "zelle": {
+      "enabled": true,
+      "mode": "production",
+      "provisioning": "authorized-partner",
+      "runtimeManaged": true
+    }
+  },
+
+  "serverIntegration": {
+    "target": "server.js",
+
+    "addRequire": {
+      "after": "const paypalProduction = require(\"./paypal-production-adapter\");",
+      "code": "const productionRailRuntime = require(\"./production-rail-runtime\");"
+    },
+
+    "removeFunctions": [
+      "railStatus"
+    ],
+
+    "replaceFunction": {
+      "name": "productionRailStatus",
+      "code": "function productionRailStatus() {\n  return productionRailRuntime.publicRailSummary();\n}"
+    },
+
+    "capabilities": {
+      "productionRails": "productionRailStatus()"
+    },
+
+    "productionRailsEndpoint": {
+      "path": "/api/production-rails",
+      "method": "GET",
+      "railsExpression": "productionRailStatus().rails",
+      "runtimeTotalsExpression": "productionRailStatus().totals"
+    }
+  },
+
+  "preserve": {
+    "authentication": true,
+    "bearerAuthentication": true,
+    "paypalProductionAdapter": true,
+    "paypalCreateOrder": true,
+    "paypalGetOrder": true,
+    "paypalCaptureOrder": true,
+    "idempotency": true,
+    "auditReceipts": true,
+    "paymentIntents": true,
+    "worldSandboxBridge": true,
+    "matchaManitaBoundary": true
+  },
+
+  "security": {
+    "secretValuesAllowedInRepository": false,
+    "environmentVariableNamesAllowed": true,
+    "rawPanAllowed": false,
+    "cvvPersistenceAllowed": false,
+    "pinPersistenceAllowed": false,
+    "browserCredentialExposureAllowed": false
+  },
+
+  "verification": {
+    "required": [
+      "JSON_PARSE",
+      "SERVER_SYNTAX",
+      "RUNTIME_MODULE_LOAD",
+      "PUBLIC_RAIL_SUMMARY",
+      "NO_SECRET_VALUES",
+      "PAYPAL_ROUTES_PRESERVED",
+      "AUTH_BOUNDARY_PRESERVED"
+    ],
+    "greenOnlyAfterVerification": true
+  }
+}
