@@ -2,69 +2,176 @@
   "schemaVersion": "1.0.0",
   "buildId": "SONORAPORT_BANKING_SERVER_RUNTIME_004",
   "system": "sonoraport-banking",
+  "branch": "main",
   "environment": "production",
-  "buildMode": "SOURCE_REPAIR",
-  "status": "READY_FOR_SOURCE_REPAIR",
+  "buildMode": "SOURCE_RECOVERY_AND_RUNTIME_INTEGRATION",
+  "status": "READY_FOR_MANUAL_UPLOAD",
+
+  "swarmSkim": {
+    "required": true,
+    "sourceRecoveryLane": "VERIFIED",
+    "runtimeIntegrationLane": "VERIFIED",
+    "qaLane": "REQUIRED_AFTER_SOURCE_MERGE",
+    "coordinatorRule": "MERGE_ONLY_VERIFIED_FINDINGS"
+  },
+
   "sourceRecovery": {
     "target": "server.js",
     "knownGoodBlobSha": "e34fde550270621a3be7935577e0f9e360ddfc65",
     "knownGoodCommit": "a2c11a384c0025ead9eceadc4ea2f200800e6081",
     "damagedBlobSha": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
-    "strategy": "RESTORE_KNOWN_GOOD_THEN_APPLY_RUNTIME_INTEGRATION"
+    "strategy": "RESTORE_KNOWN_GOOD_THEN_APPLY_RUNTIME_INTEGRATION",
+    "replaceDamagedSource": true
   },
+
   "runtime": {
     "file": "production-rail-runtime.js",
     "verifiedBlobSha": "48e5717acdd1b4a3ba59561d98386b4228b1e740",
     "import": "./production-rail-runtime",
     "summaryFunction": "publicRailSummary",
-    "railStatusFunction": "railStatus"
+    "railStatusFunction": "railStatus",
+    "singleRuntimeAuthority": true
   },
-  "integration": {
-    "productionRailStatus": {
-      "source": "productionRailRuntime.publicRailSummary()"
+
+  "previousManifest": {
+    "file": "sonoraport-banking-server-runtime-implementation-v3.json",
+    "verifiedBlobSha": "6bd94a162f0126cb117f99196c2007e4c0209480",
+    "buildId": "SONORAPORT_BANKING_SERVER_RUNTIME_003"
+  },
+
+  "sourceOperations": [
+    {
+      "operation": "ADD_IMPORT",
+      "target": "server.js",
+      "after": "const paypalProduction = require(\"./paypal-production-adapter\");",
+      "code": "const productionRailRuntime = require(\"./production-rail-runtime\");"
     },
-    "productionRailsEndpoint": {
+    {
+      "operation": "REMOVE_LEGACY_FUNCTION",
+      "function": "railStatus",
+      "reason": "production-rail-runtime.js owns centralized rail state evaluation"
+    },
+    {
+      "operation": "REPLACE_FUNCTION",
+      "function": "productionRailStatus",
+      "code": "function productionRailStatus() {\n  return productionRailRuntime.publicRailSummary();\n}"
+    },
+    {
+      "operation": "UPDATE_ENDPOINT",
+      "method": "GET",
       "path": "/api/production-rails",
+      "summary": "const railSummary = productionRailStatus();",
       "railsSource": "railSummary.rails",
       "runtimeTotalsSource": "railSummary.totals"
     },
-    "exports": {
-      "railRuntimeStatus": "productionRailRuntime.railStatus",
-      "productionRailStatus": "productionRailStatus"
+    {
+      "operation": "UPDATE_EXPORT",
+      "from": "railRuntimeStatus: railStatus",
+      "to": "railRuntimeStatus: productionRailRuntime.railStatus"
     }
-  },
+  ],
+
   "preserve": [
     "HTTP_SERVER",
     "PAYPAL_PRODUCTION_ROUTES",
     "MATCHA_MANITA_PAYMENT_INTENTS",
     "BEARER_AUTHENTICATION",
     "TIMING_SAFE_TOKEN_COMPARISON",
+    "REQUEST_IDS",
+    "BODY_SIZE_LIMIT",
     "IDEMPOTENCY",
     "AUDIT_RECEIPTS",
     "WORLD_SANDBOX_STATUS",
     "SERVER_LISTEN",
     "MODULE_EXPORTS"
   ],
+
+  "railTargets": {
+    "paypal": {
+      "enabled": true,
+      "mode": "production"
+    },
+    "visa": {
+      "enabled": true,
+      "mode": "production"
+    },
+    "venmo": {
+      "enabled": true,
+      "mode": "production",
+      "upstreamProvider": "paypal"
+    },
+    "cashapp": {
+      "enabled": true,
+      "mode": "production"
+    },
+    "zelle": {
+      "enabled": true,
+      "mode": "production",
+      "provisioning": "authorized-partner"
+    }
+  },
+
+  "moneyMovement": {
+    "realMoneyTarget": true,
+    "targetState": "OPEN_ENABLED",
+    "executionAuthority": "sonoraport-banking",
+    "providerStateDeterminedByRuntime": true,
+    "providerConfirmationRequired": true
+  },
+
+  "credentialPolicy": {
+    "credentialsStoredInRepository": false,
+    "credentialsServerSideOnly": true,
+    "exposeEnvironmentValues": false,
+    "exposeProviderSecrets": false,
+    "exposePrivateKeys": false,
+    "exposeCardPan": false,
+    "exposeCvv": false,
+    "exposePin": false
+  },
+
   "verification": {
-    "syntaxCheck": "node --check server.js",
+    "jsonParse": true,
+    "serverSyntaxCommand": "node --check server.js",
+    "runtimeSyntaxCommand": "node --check production-rail-runtime.js",
     "requireRuntimeImport": true,
+    "requireLegacyRailStatusRemoved": true,
+    "requireCentralRailStatusActive": true,
     "requireProductionRailsEndpoint": true,
+    "requireRuntimeTotals": true,
+    "requireRailRuntimeExport": true,
     "requirePayPalRoutes": true,
     "requireMatchaRoutes": true,
+    "requireAuthentication": true,
+    "requireIdempotency": true,
+    "requireAuditReceipts": true,
+    "requireWorldSandboxStatus": true,
     "requireServerListen": true,
     "requireModuleExports": true,
     "requireNoCredentialValuesInSource": true,
     "requireNoTruncatedSource": true
   },
-  "execution": {
-    "phase": "MANIFEST_UPLOAD_ONLY",
-    "modifyServerDuringUpload": false,
-    "deleteExistingFiles": false,
-    "replaceExistingJson": false
+
+  "releaseGate": {
+    "greenOnlyAfterManualUploadAndVerification": true,
+    "greenOnlyAfterServerSyntaxPass": true,
+    "greenOnlyAfterRuntimeSyntaxPass": true,
+    "doNotClaimProviderAuthenticationFromConfigurationAlone": true,
+    "doNotClaimSettlementWithoutProviderConfirmation": true
   },
+
+  "manualUpload": {
+    "performedBy": "USER",
+    "repository": "Joaquinloera/sonoraport-banking",
+    "branch": "main",
+    "destination": "repository-root",
+    "fileType": "NEW_JSON_FILE"
+  },
+
   "next": {
-    "action": "VERIFY_MANIFEST_THEN_REBUILD_SERVER",
-    "target": "server.js",
+    "action": "MANUALLY_UPLOAD_JSON_THEN_VERIFY",
+    "followingTarget": "server.js",
+    "followingAction": "MANUALLY_REPLACE_DAMAGED_SERVER_WITH_COMPLETE_BUILD_004_SOURCE",
     "expectedResult": "VALIDATED_SERVER_WITH_CENTRALIZED_PRODUCTION_RAIL_RUNTIME"
   }
 }
