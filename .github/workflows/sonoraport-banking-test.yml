@@ -1,1674 +1,377 @@
-"use strict";
+name: SonoraPort Banking Test
 
-const http = require("http");
-const crypto = require("crypto");
-const fs = require("fs");
-const path = require("path");
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
-const paypalProduction =
-  require("./paypal-production-adapter");
+jobs:
+  banking-test:
+    runs-on: ubuntu-latest
 
-const productionRailRuntime =
-  require("./production-rail-runtime");
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-const PORT =
-  Number(process.env.PORT) || 3100;
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-const HOST =
-  process.env.HOST || "0.0.0.0";
+      - name: Validate package.json
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('package.json','utf8')); console.log('package.json valid')"
 
-const SERVICE_NAME =
-  "sonoraport-banking";
+      - name: Check server syntax
+        run: |
+          node --check server.js
 
-const API_VERSION =
-  "1.3.0";
+      - name: Enforce production rail registry alignment
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
 
-const MAX_BODY_BYTES =
-  65536;
+          const declared = JSON.parse(
+            fs.readFileSync(
+              "production-payment-rails.json",
+              "utf8"
+            )
+          );
 
-const paymentIntents =
-  new Map();
+          const runtime =
+            require("./production-rail-runtime");
 
-const idempotencyIndex =
-  new Map();
+          const declaredRails =
+            Object.keys(
+              declared.rails || {}
+            ).sort();
 
-const auditReceipts =
-  new Map();
+          const runtimeRails =
+            Object.keys(
+              runtime.RAIL_CONFIGURATION || {}
+            ).sort();
 
-const railsFile =
-  path.join(
-    __dirname,
-    "production-payment-rails.json"
-  );
+          console.log(
+            "Declared rails:",
+            declaredRails.join(", ")
+          );
 
-function loadProductionRails() {
-  const config =
-    JSON.parse(
-      fs.readFileSync(
-        railsFile,
-        "utf8"
-      )
-    );
-
-  if (
-    config.environment !== "production" ||
-    config.system !== SERVICE_NAME ||
-    config.executionAuthority !== SERVICE_NAME ||
-    !config.rails ||
-    Array.isArray(config.rails)
-  ) {
-    throw new Error(
-      "Invalid production payment rails configuration."
-    );
-  }
-
-  return config;
-}
-
-const productionRails =
-  loadProductionRails();
-
-function productionRailStatus() {
-  return productionRailRuntime
-    .publicRailSummary();
-}
-
-function sendJSON(
-  res,
-  status,
-  data
-) {
-  res.writeHead(
-    status,
-    {
-      "Content-Type":
-        "application/json; charset=utf-8",
-
-      "Cache-Control":
-        "no-store",
-
-      "X-Content-Type-Options":
-        "nosniff"
-    }
-  );
-
-  res.end(
-    JSON.stringify(
-      data,
-      null,
-      2
-    )
-  );
-}
-
-function newRequestId() {
-  return crypto.randomUUID();
-}
-
-function safeEqual(a, b) {
-  const left =
-    Buffer.from(
-      String(a || "")
-    );
-
-  const right =
-    Buffer.from(
-      String(b || "")
-    );
-
-  return (
-    left.length ===
-      right.length &&
-    crypto.timingSafeEqual(
-      left,
-      right
-    )
-  );
-}
-
-function settlementConfigured() {
-  return Boolean(
-    process.env
-      .BANKING_SETTLEMENT_PROVIDER &&
-    process.env
-      .BANKING_SETTLEMENT_CREDENTIAL
-  );
-}
-
-function realSettlementAuthorized() {
-  return (
-    process.env
-      .BANKING_REAL_SETTLEMENT_AUTHORIZED ===
-      "true" &&
-    settlementConfigured()
-  );
-}
-
-function bankingCapabilities() {
-  return {
-    accounts: true,
-    transactions: true,
-    cards: true,
-    transfers: true,
-    statements: true,
-    disputes: true,
-
-    environment:
-      "production",
-
-    productionTarget:
-      productionRails
-        .controls
-        ?.realMoneyTarget ===
-      true,
-
-    productionRails:
-      productionRailStatus(),
-
-    paypalProduction:
-      paypalProduction
-        .configurationStatus(),
-
-    worldSandboxBridge: {
-      enabled: true,
-      authenticated: true
-    },
-
-    matchaManita: {
-      paymentIntents: true,
-
-      sandboxMode:
-        !realSettlementAuthorized(),
-
-      realSettlementAuthorized:
-        realSettlementAuthorized(),
-
-      providerConfirmationRequired:
-        true
-    },
-
-    externalSettlement: {
-      configured:
-        settlementConfigured(),
-
-      authorized:
-        realSettlementAuthorized(),
-
-      providerConfirmationRequired:
-        true,
-
-      unverifiedSettlementAllowed:
-        false
-    }
-  };
-}
-
-function authenticate(req) {
-  const expected =
-    process.env
-      .MATCHA_MANITA_BANKING_TOKEN;
-
-  if (!expected) {
-    return {
-      ok: false,
-      code: 503,
-
-      error:
-        "MATCHA MANITA banking authentication is not configured."
-    };
-  }
-
-  const header =
-    req.headers.authorization ||
-    "";
-
-  if (
-    !header.startsWith(
-      "Bearer "
-    )
-  ) {
-    return {
-      ok: false,
-      code: 401,
-
-      error:
-        "Authentication required."
-    };
-  }
-
-  if (
-    !safeEqual(
-      header.slice(7),
-      expected
-    )
-  ) {
-    return {
-      ok: false,
-      code: 403,
-
-      error:
-        "Invalid banking authorization."
-    };
-  }
-
-  return {
-    ok: true
-  };
-}
-
-function readJSON(req) {
-  return new Promise(
-    (resolve, reject) => {
-      let body = "";
-      let size = 0;
-      let settled = false;
-      let tooLarge = false;
-
-      req.on(
-        "data",
-        chunk => {
-          if (tooLarge) {
-            return;
-          }
-
-          size +=
-            chunk.length;
+          console.log(
+            "Runtime rails:",
+            runtimeRails.join(", ")
+          );
 
           if (
-            size >
-            MAX_BODY_BYTES
+            JSON.stringify(declaredRails) !==
+            JSON.stringify(runtimeRails)
           ) {
-            tooLarge = true;
+            console.error(
+              "PRODUCTION RAIL DRIFT DETECTED"
+            );
 
-            if (!settled) {
-              settled = true;
+            console.error(
+              "Declared:",
+              declaredRails
+            );
 
-              reject(
-                new Error(
-                  "BODY_TOO_LARGE"
-                )
+            console.error(
+              "Runtime:",
+              runtimeRails
+            );
+
+            process.exit(1);
+          }
+
+          for (const rail of declaredRails) {
+            const declaredRail =
+              declared.rails[rail];
+
+            const runtimeRail =
+              runtime.RAIL_CONFIGURATION[rail];
+
+            if (
+              Boolean(declaredRail.enabled) !==
+              Boolean(runtimeRail.enabled)
+            ) {
+              throw new Error(
+                `Enabled-state drift: ${rail}`
               );
             }
 
-            return;
+            if (
+              declaredRail.mode !==
+              runtimeRail.mode
+            ) {
+              throw new Error(
+                `Mode drift: ${rail}`
+              );
+            }
           }
 
-          body += chunk;
-        }
-      );
+          console.log(
+            "Production rail registry alignment PASS"
+          );
+          NODE
 
-      req.on(
-        "end",
-        () => {
-          if (
-            settled ||
-            tooLarge
-          ) {
-            return;
-          }
+      - name: Enforce unverified rail safety boundary
+        run: |
+          node <<'NODE'
+          const runtime =
+            require("./production-rail-runtime");
 
-          settled = true;
+          const statuses =
+            runtime.allStatuses();
 
-          if (!body) {
-            resolve({});
-            return;
-          }
-
-          try {
-            resolve(
-              JSON.parse(body)
-            );
-          } catch {
-            reject(
-              new Error(
-                "INVALID_JSON"
-              )
+          if (statuses.length !== 6) {
+            throw new Error(
+              `Expected 6 production rails, found ${statuses.length}`
             );
           }
-        }
-      );
 
-      req.on(
-        "error",
-        error => {
-          if (settled) {
-            return;
-          }
-
-          settled = true;
-          reject(error);
-        }
-      );
-    }
-  );
-}
-
-function validateIntent(
-  body
-) {
-  const errors = [];
-
-  if (
-    !Number.isInteger(
-      body.amount
-    ) ||
-    body.amount <= 0
-  ) {
-    errors.push(
-      "amount must be a positive integer."
-    );
-  }
-
-  if (
-    typeof body.currency !==
-      "string" ||
-    !/^[A-Za-z]{3}$/.test(
-      body.currency
-    )
-  ) {
-    errors.push(
-      "currency must be a three-letter currency code."
-    );
-  }
-
-  if (
-    body.orderId !==
-      undefined &&
-    (
-      typeof body.orderId !==
-        "string" ||
-      body.orderId.length >
-        128
-    )
-  ) {
-    errors.push(
-      "invalid orderId."
-    );
-  }
-
-  if (
-    body.description !==
-      undefined &&
-    (
-      typeof body.description !==
-        "string" ||
-      body.description.length >
-        500
-    )
-  ) {
-    errors.push(
-      "invalid description."
-    );
-  }
-
-  return errors;
-}
-
-function digest(value) {
-  return crypto
-    .createHash("sha256")
-    .update(
-      JSON.stringify(value)
-    )
-    .digest("hex");
-}
-
-function publicIntent(
-  intent
-) {
-  return {
-    id:
-      intent.id,
-
-    object:
-      "payment_intent",
-
-    amount:
-      intent.amount,
-
-    currency:
-      intent.currency,
-
-    orderId:
-      intent.orderId,
-
-    description:
-      intent.description,
-
-    status:
-      intent.status,
-
-    mode:
-      intent.mode,
-
-    environment:
-      intent.environment,
-
-    settlementStatus:
-      intent.settlementStatus,
-
-    createdAt:
-      intent.createdAt,
-
-    updatedAt:
-      intent.updatedAt
-  };
-}
-
-function createReceipt(
-  action,
-  intent,
-  requestId
-) {
-  const receipt = {
-    receiptId:
-      `rcpt_${crypto.randomUUID()}`,
-
-    protocol:
-      "SONORAPORT-AUDIT-1",
-
-    action,
-
-    paymentIntentId:
-      intent.id,
-
-    paymentStatus:
-      intent.status,
-
-    mode:
-      intent.mode,
-
-    environment:
-      intent.environment,
-
-    settlementStatus:
-      intent.settlementStatus,
-
-    requestId,
-
-    createdAt:
-      new Date()
-        .toISOString()
-  };
-
-  receipt.digest =
-    digest(receipt);
-
-  auditReceipts.set(
-    intent.id,
-    receipt
-  );
-
-  return receipt;
-}
-
-function intentIdFromPath(
-  pathname,
-  suffix = ""
-) {
-  const base =
-    "/api/matcha-manita/payment-intents/";
-
-  if (
-    !pathname.startsWith(
-      base
-    )
-  ) {
-    return null;
-  }
-
-  let rest =
-    pathname.slice(
-      base.length
-    );
-
-  if (suffix) {
-    if (
-      !rest.endsWith(
-        suffix
-      )
-    ) {
-      return null;
-    }
-
-    rest =
-      rest.slice(
-        0,
-        rest.length -
-          suffix.length
-      );
-  }
-
-  if (
-    !rest ||
-    rest.includes("/")
-  ) {
-    return null;
-  }
-
-  return decodeURIComponent(
-    rest
-  );
-}
-
-async function handlePayPalProduction(
-  req,
-  res,
-  url,
-  requestId
-) {
-  const auth =
-    authenticate(req);
-
-  if (!auth.ok) {
-    return sendJSON(
-      res,
-      auth.code,
-      {
-        ok: false,
-
-        error:
-          auth.error,
-
-        requestId
-      }
-    );
-  }
-
-  if (
-    req.method === "GET" &&
-    url.pathname ===
-      "/api/paypal/status"
-  ) {
-    return sendJSON(
-      res,
-      200,
-      {
-        ok: true,
-
-        paypal:
-          paypalProduction
-            .configurationStatus(),
-
-        requestId
-      }
-    );
-  }
-
-  if (
-    req.method === "POST" &&
-    url.pathname ===
-      "/api/paypal/orders"
-  ) {
-    const key =
-      req.headers[
-        "idempotency-key"
-      ];
-
-    if (
-      typeof key !==
-        "string" ||
-      key.length < 8 ||
-      key.length > 255
-    ) {
-      return sendJSON(
-        res,
-        400,
-        {
-          ok: false,
-
-          error:
-            "A valid Idempotency-Key header is required.",
-
-          requestId
-        }
-      );
-    }
-
-    const body =
-      await readJSON(req);
-
-    if (
-      !Number.isInteger(
-        body.amount
-      ) ||
-      body.amount <= 0
-    ) {
-      return sendJSON(
-        res,
-        400,
-        {
-          ok: false,
-
-          error:
-            "amount must be a positive integer in minor currency units.",
-
-          requestId
-        }
-      );
-    }
-
-    if (
-      typeof body.currency !==
-        "string" ||
-      !/^[A-Za-z]{3}$/.test(
-        body.currency
-      )
-    ) {
-      return sendJSON(
-        res,
-        400,
-        {
-          ok: false,
-
-          error:
-            "currency must be a three-letter currency code.",
-
-          requestId
-        }
-      );
-    }
-
-    const result =
-      await paypalProduction
-        .createOrder({
-          amount:
-            (
-              body.amount /
-              100
-            ).toFixed(2),
-
-          currency:
-            body.currency
-              .toUpperCase(),
-
-          referenceId:
-            body.orderId ||
-            null,
-
-          description:
-            body.description ||
-            null,
-
-          idempotencyKey:
-            key
-        });
-
-    return sendJSON(
-      res,
-      201,
-      {
-        ok: true,
-
-        paypalOrder:
-          result,
-
-        settlementExecuted:
-          false,
-
-        providerConfirmed:
-          false,
-
-        requestId
-      }
-    );
-  }
-
-  const orderPrefix =
-    "/api/paypal/orders/";
-
-  if (
-    url.pathname.startsWith(
-      orderPrefix
-    )
-  ) {
-    const rest =
-      url.pathname.slice(
-        orderPrefix.length
-      );
-
-    if (
-      req.method ===
-        "POST" &&
-      rest.endsWith(
-        "/capture"
-      )
-    ) {
-      const providerOrderId =
-        decodeURIComponent(
-          rest.slice(
-            0,
-            -"/capture".length
-          )
-        );
-
-      if (
-        !providerOrderId ||
-        providerOrderId
-          .includes("/")
-      ) {
-        return sendJSON(
-          res,
-          400,
-          {
-            ok: false,
-
-            error:
-              "Invalid PayPal order ID.",
-
-            requestId
-          }
-        );
-      }
-
-      const key =
-        req.headers[
-          "idempotency-key"
-        ];
-
-      if (
-        typeof key !==
-          "string" ||
-        key.length < 8 ||
-        key.length > 255
-      ) {
-        return sendJSON(
-          res,
-          400,
-          {
-            ok: false,
-
-            error:
-              "A valid Idempotency-Key header is required.",
-
-            requestId
-          }
-        );
-      }
-
-      const result =
-        await paypalProduction
-          .captureOrder({
-            providerOrderId,
-
-            idempotencyKey:
-              key
-          });
-
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-
-          paypalCapture:
-            result,
-
-          settlementExecuted:
-            result
-              .settlementExecuted ===
-            true,
-
-          providerConfirmed:
-            result
-              .providerConfirmed ===
-            true,
-
-          requestId
-        }
-      );
-    }
-
-    if (
-      req.method === "GET" &&
-      rest &&
-      !rest.includes("/")
-    ) {
-      const providerOrderId =
-        decodeURIComponent(
-          rest
-        );
-
-      const result =
-        await paypalProduction
-          .getOrder(
-            providerOrderId
-          );
-
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-
-          paypalOrder:
-            result,
-
-          requestId
-        }
-      );
-    }
-  }
-
-  return sendJSON(
-    res,
-    404,
-    {
-      ok: false,
-
-      error:
-        "PayPal production endpoint not found.",
-
-      requestId
-    }
-  );
-}
-
-async function handleMatcha(
-  req,
-  res,
-  url,
-  requestId
-) {
-  const auth =
-    authenticate(req);
-
-  if (!auth.ok) {
-    return sendJSON(
-      res,
-      auth.code,
-      {
-        ok: false,
-
-        error:
-          auth.error,
-
-        requestId
-      }
-    );
-  }
-
-  if (
-    req.method === "POST" &&
-    url.pathname ===
-      "/api/matcha-manita/payment-intents"
-  ) {
-    const key =
-      req.headers[
-        "idempotency-key"
-      ];
-
-    if (
-      typeof key !==
-        "string" ||
-      key.length < 8 ||
-      key.length > 255
-    ) {
-      return sendJSON(
-        res,
-        400,
-        {
-          ok: false,
-
-          error:
-            "A valid Idempotency-Key header is required.",
-
-          requestId
-        }
-      );
-    }
-
-    const body =
-      await readJSON(req);
-
-    const errors =
-      validateIntent(body);
-
-    if (errors.length) {
-      return sendJSON(
-        res,
-        400,
-        {
-          ok: false,
-
-          error:
-            "Invalid payment intent request.",
-
-          details:
-            errors,
-
-          requestId
-        }
-      );
-    }
-
-    const fingerprint =
-      digest({
-        amount:
-          body.amount,
-
-        currency:
-          body.currency
-            .toUpperCase(),
-
-        orderId:
-          body.orderId ||
-          null,
-
-        description:
-          body.description ||
-          null
-      });
-
-    const previous =
-      idempotencyIndex.get(
-        key
-      );
-
-    if (previous) {
-      if (
-        previous.fingerprint !==
-        fingerprint
-      ) {
-        return sendJSON(
-          res,
-          409,
-          {
-            ok: false,
-
-            error:
-              "Idempotency key was already used with a different request.",
-
-            requestId
-          }
-        );
-      }
-
-      const intent =
-        paymentIntents.get(
-          previous.intentId
-        );
-
-      if (!intent) {
-        return sendJSON(
-          res,
-          409,
-          {
-            ok: false,
-
-            error:
-              "Idempotent payment intent is no longer available.",
-
-            requestId
-          }
-        );
-      }
-
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-
-          idempotentReplay:
-            true,
-
-          paymentIntent:
-            publicIntent(
-              intent
-            ),
-
-          requestId
-        }
-      );
-    }
-
-    const now =
-      new Date()
-        .toISOString();
-
-    const intent = {
-      id:
-        `pi_${crypto.randomUUID()}`,
-
-      amount:
-        body.amount,
-
-      currency:
-        body.currency
-          .toUpperCase(),
-
-      orderId:
-        body.orderId ||
-        null,
-
-      description:
-        body.description ||
-        null,
-
-      status:
-        "requires_authorization",
-
-      mode:
-        realSettlementAuthorized()
-          ? "live"
-          : "sandbox",
-
-      environment:
-        "production",
-
-      settlementStatus:
-        "not_executed",
-
-      createdAt:
-        now,
-
-      updatedAt:
-        now
-    };
-
-    paymentIntents.set(
-      intent.id,
-      intent
-    );
-
-    idempotencyIndex.set(
-      key,
-      {
-        intentId:
-          intent.id,
-
-        fingerprint
-      }
-    );
-
-    const receipt =
-      createReceipt(
-        "payment_intent.created",
-        intent,
-        requestId
-      );
-
-    return sendJSON(
-      res,
-      201,
-      {
-        ok: true,
-
-        paymentIntent:
-          publicIntent(
-            intent
-          ),
-
-        auditReceiptId:
-          receipt.receiptId,
-
-        settlementExecuted:
-          false,
-
-        providerConfirmed:
-          false,
-
-        requestId
-      }
-    );
-  }
-    if (
-    req.method === "GET"
-  ) {
-    const receiptId =
-      intentIdFromPath(
-        url.pathname,
-        "/receipt"
-      );
-
-    if (receiptId) {
-      const intent =
-        paymentIntents.get(
-          receiptId
-        );
-
-      if (!intent) {
-        return sendJSON(
-          res,
-          404,
-          {
-            ok: false,
-
-            error:
-              "Payment intent not found.",
-
-            requestId
-          }
-        );
-      }
-
-      const receipt =
-        auditReceipts.get(
-          receiptId
-        );
-
-      if (!receipt) {
-        return sendJSON(
-          res,
-          404,
-          {
-            ok: false,
-
-            error:
-              "Audit receipt not found.",
-
-            requestId
-          }
-        );
-      }
-
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-
-          receipt,
-
-          requestId
-        }
-      );
-    }
-
-    const intentId =
-      intentIdFromPath(
-        url.pathname
-      );
-
-    if (intentId) {
-      const intent =
-        paymentIntents.get(
-          intentId
-        );
-
-      if (!intent) {
-        return sendJSON(
-          res,
-          404,
-          {
-            ok: false,
-
-            error:
-              "Payment intent not found.",
-
-            requestId
-          }
-        );
-      }
-
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-
-          paymentIntent:
-            publicIntent(
-              intent
-            ),
-
-          requestId
-        }
-      );
-    }
-  }
-
-  if (
-    req.method === "POST"
-  ) {
-    const intentId =
-      intentIdFromPath(
-        url.pathname,
-        "/cancel"
-      );
-
-    if (intentId) {
-      const intent =
-        paymentIntents.get(
-          intentId
-        );
-
-      if (!intent) {
-        return sendJSON(
-          res,
-          404,
-          {
-            ok: false,
-
-            error:
-              "Payment intent not found.",
-
-            requestId
-          }
-        );
-      }
-
-      if (
-        intent.status ===
-        "succeeded"
-      ) {
-        return sendJSON(
-          res,
-          409,
-          {
-            ok: false,
-
-            error:
-              "A succeeded payment intent cannot be cancelled.",
-
-            requestId
-          }
-        );
-      }
-
-      if (
-        intent.status !==
-        "cancelled"
-      ) {
-        intent.status =
-          "cancelled";
-
-        intent.updatedAt =
-          new Date()
-            .toISOString();
-
-        createReceipt(
-          "payment_intent.cancelled",
-          intent,
-          requestId
-        );
-      }
-
-      return sendJSON(
-        res,
-        200,
-        {
-          ok: true,
-
-          paymentIntent:
-            publicIntent(
-              intent
-            ),
-
-          requestId
-        }
-      );
-    }
-  }
-
-  return sendJSON(
-    res,
-    404,
-    {
-      ok: false,
-
-      error:
-        "MATCHA MANITA banking endpoint not found.",
-
-      requestId
-    }
-  );
-}
-
-const server =
-  http.createServer(
-    async (req, res) => {
-      const requestId =
-        newRequestId();
-
-      try {
-        const url =
-          new URL(
-            req.url,
-            `http://${req.headers.host || "localhost"}`
-          );
-
-        if (
-          url.pathname
-            .startsWith(
-              "/api/paypal/"
-            )
-        ) {
-          return await handlePayPalProduction(
-            req,
-            res,
-            url,
-            requestId
-          );
-        }
-
-        if (
-          url.pathname
-            .startsWith(
-              "/api/matcha-manita/"
-            )
-        ) {
-          return await handleMatcha(
-            req,
-            res,
-            url,
-            requestId
-          );
-        }
-
-        if (
-          req.method !==
-          "GET"
-        ) {
-          return sendJSON(
-            res,
-            405,
-            {
-              error:
-                "Method not allowed",
-
-              requestId
+          for (const rail of statuses) {
+            if (
+              rail.authenticated === true
+            ) {
+              throw new Error(
+                `${rail.provider} unexpectedly claims authentication`
+              );
             }
-          );
-        }
 
-        if (
-          url.pathname ===
-          "/"
-        ) {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
-
-              message:
-                "SonoraPort Banking API",
-
-              version:
-                API_VERSION,
-
-              environment:
-                "production",
-
-              requestId
+            if (
+              rail.providerVerified === true
+            ) {
+              throw new Error(
+                `${rail.provider} unexpectedly claims provider verification`
+              );
             }
-          );
-        }
 
-        if (
-          url.pathname ===
-          "/api/health"
-        ) {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
-
-              status:
-                "healthy",
-
-              version:
-                API_VERSION,
-
-              environment:
-                "production",
-
-              runtime:
-                process.version,
-
-              timestamp:
-                new Date()
-                  .toISOString(),
-
-              requestId
+            if (
+              rail.settlementVerified === true
+            ) {
+              throw new Error(
+                `${rail.provider} unexpectedly claims settlement verification`
+              );
             }
-          );
-        }
 
-        if (
-          url.pathname ===
-          "/api/capabilities"
-        ) {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
-
-              capabilities:
-                bankingCapabilities(),
-
-              timestamp:
-                new Date()
-                  .toISOString(),
-
-              requestId
+            if (
+              rail.credentialsExposed === true
+            ) {
+              throw new Error(
+                `${rail.provider} exposes credentials`
+              );
             }
-          );
-        }
-
-        if (
-          url.pathname ===
-          "/api/production-rails"
-        ) {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
-
-              environment:
-                productionRails
-                  .environment,
-
-              executionAuthority:
-                productionRails
-                  .executionAuthority,
-
-              rails:
-                productionRailStatus(),
-
-              controls: {
-                realMoneyTarget:
-                  productionRails
-                    .controls
-                    ?.realMoneyTarget ===
-                  true,
-
-                credentialsStoredInRepository:
-                  productionRails
-                    .controls
-                    ?.credentialsStoredInRepository ===
-                  true,
-
-                providerConfirmationRequired:
-                  productionRails
-                    .controls
-                    ?.requireProviderConfirmation ===
-                  true,
-
-                reconciliationRequired:
-                  productionRails
-                    .controls
-                    ?.requireReconciliation ===
-                  true,
-
-                unverifiedSettlementAllowed:
-                  productionRails
-                    .controls
-                    ?.allowUnverifiedSettlement ===
-                  true
-              },
-
-              timestamp:
-                new Date()
-                  .toISOString(),
-
-              requestId
-            }
-          );
-        }
-
-        if (
-          url.pathname ===
-          "/api/world-sandbox/status"
-        ) {
-          return sendJSON(
-            res,
-            200,
-            {
-              service:
-                SERVICE_NAME,
-
-              bridge:
-                "worldsandbox13",
-
-              status:
-                "available",
-
-              authority: {
-                statusRead:
-                  true,
-
-                capabilityRead:
-                  true,
-
-                credentialRead:
-                  false,
-
-                unrestrictedTransfers:
-                  false
-              },
-
-              timestamp:
-                new Date()
-                  .toISOString(),
-
-              requestId
-            }
-          );
-        }
-
-        return sendJSON(
-          res,
-          404,
-          {
-            error:
-              "Endpoint not found",
-
-            requestId
           }
-        );
-      } catch (error) {
-        console.error(
-          "SONORAPORT BANKING ERROR:",
-          error
-        );
 
-        if (
-          error.message ===
-          "INVALID_JSON"
-        ) {
-          return sendJSON(
-            res,
-            400,
-            {
-              ok: false,
-
-              error:
-                "Invalid JSON request body.",
-
-              requestId
-            }
+          console.log(
+            "Unverified rail safety boundary PASS"
           );
-        }
+          NODE
 
-        if (
-          error.message ===
-          "BODY_TOO_LARGE"
-        ) {
-          return sendJSON(
-            res,
-            413,
-            {
-              ok: false,
+      - name: Generate temporary test authentication
+        run: |
+          echo "MATCHA_MANITA_BANKING_TOKEN=$(openssl rand -hex 32)" >> "$GITHUB_ENV"
+          echo "BANKING_REAL_SETTLEMENT_AUTHORIZED=false" >> "$GITHUB_ENV"
 
-              error:
-                "Request body too large.",
+      - name: Start SonoraPort Banking
+        run: |
+          node server.js > banking.log 2>&1 &
+          echo $! > banking.pid
+          sleep 2
 
-              requestId
-            }
-          );
-        }
+      - name: Test banking health
+        run: |
+          curl --fail --silent \
+            http://127.0.0.1:3100/api/health \
+            | tee health.json
 
-        if (
-          error.name ===
-          "PayPalProductionError"
-        ) {
-          return sendJSON(
-            res,
-            502,
-            {
-              ok: false,
+          grep -q '"status": "healthy"' health.json
 
-              error:
-                error.message,
+      - name: Test banking capabilities
+        run: |
+          curl --fail --silent \
+            http://127.0.0.1:3100/api/capabilities \
+            | tee capabilities.json
 
-              provider:
-                "paypal",
+          grep -q '"paymentIntents": true' capabilities.json
+          grep -q '"realSettlementAuthorized": false' capabilities.json
 
-              providerDetails:
-                error.details || {},
+      - name: Test World Sandbox boundary
+        run: |
+          curl --fail --silent \
+            http://127.0.0.1:3100/api/world-sandbox/status \
+            | tee world-sandbox.json
 
-              requestId
-            }
-          );
-        }
+          grep -q '"credentialRead": false' world-sandbox.json
+          grep -q '"unrestrictedTransfers": false' world-sandbox.json
 
-        return sendJSON(
-          res,
-          500,
-          {
-            ok: false,
+      - name: Reject unauthenticated MATCHA MANITA request
+        run: |
+          STATUS=$(curl --silent \
+            --output unauthorized.json \
+            --write-out "%{http_code}" \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: unauthorized-test-001" \
+            -d '{"amount":1250,"currency":"USD","orderId":"TEST-UNAUTHORIZED"}' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents)
 
-            error:
-              "Internal banking service error.",
+          test "$STATUS" = "401"
 
-            requestId
-          }
-        );
-      }
-    }
-  );
+      - name: Create sandbox payment intent
+        run: |
+          curl --fail --silent \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: matcha-test-intent-001" \
+            -d '{"amount":1250,"currency":"USD","orderId":"MATCHA-TEST-001","description":"MATCHA MANITA sandbox integration test"}' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents \
+            | tee payment-intent.json
 
-server.listen(
-  PORT,
-  HOST,
-  () => {
-    console.log(
-      `SONORAPORT BANKING ONLINE — ${HOST}:${PORT}`
-    );
-  }
-);
+          grep -q '"status": "requires_authorization"' payment-intent.json
+          grep -q '"mode": "sandbox"' payment-intent.json
+          grep -q '"settlementExecuted": false' payment-intent.json
 
-module.exports = {
-  server,
-  bankingCapabilities,
+          node -e "const x=require('./payment-intent.json'); if(!x.paymentIntent?.id) process.exit(1); require('fs').writeFileSync('payment-intent-id.txt',x.paymentIntent.id)"
 
-  authenticateMatchaManita:
-    authenticate,
+      - name: Test idempotency replay
+        run: |
+          curl --fail --silent \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: matcha-test-intent-001" \
+            -d '{"amount":1250,"currency":"USD","orderId":"MATCHA-TEST-001","description":"MATCHA MANITA sandbox integration test"}' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents \
+            | tee replay.json
 
-  handleMatchaManita:
-    handleMatcha,
+          grep -q '"idempotentReplay": true' replay.json
 
-  handlePayPalProduction,
-  loadProductionRails,
-  productionRailStatus
-};
+      - name: Verify payment intent status
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID" \
+            | tee payment-status.json
+
+          grep -q '"status": "requires_authorization"' payment-status.json
+
+      - name: Verify audit receipt
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID/receipt" \
+            | tee receipt.json
+
+          grep -q '"protocol": "SONORAPORT-AUDIT-1"' receipt.json
+          grep -q '"paymentStatus": "requires_authorization"' receipt.json
+
+      - name: Cancel sandbox payment intent
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID/cancel" \
+            | tee cancelled.json
+
+          grep -q '"status": "cancelled"' cancelled.json
+
+      - name: Verify cancelled status
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID" \
+            | tee cancelled-status.json
+
+          grep -q '"status": "cancelled"' cancelled-status.json
+
+      - name: Reject conflicting idempotency replay
+        run: |
+          STATUS=$(curl --silent \
+            --output conflict.json \
+            --write-out "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: matcha-test-intent-001" \
+            -d '{"amount":1300,"currency":"USD","orderId":"MATCHA-TEST-CHANGED"}' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents)
+
+          test "$STATUS" = "409"
+          grep -q 'different request' conflict.json
+
+      - name: Reject malformed JSON
+        run: |
+          STATUS=$(curl --silent \
+            --output malformed.json \
+            --write-out "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: malformed-json-001" \
+            --data-binary '{"amount":1250' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents)
+
+          test "$STATUS" = "400"
+          grep -q 'Invalid JSON request body' malformed.json
+
+      - name: Reject oversized JSON body
+        run: |
+          node -e "require('fs').writeFileSync('oversized.json', JSON.stringify({description:'x'.repeat(65537)}))"
+
+          STATUS=$(curl --silent \
+            --output oversized-response.json \
+            --write-out "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: oversized-json-001" \
+            --data-binary @oversized.json \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents)
+
+          test "$STATUS" = "413"
+          grep -q 'Request body too large' oversized-response.json
+
+      - name: Reject nonexistent payment intent
+        run: |
+          STATUS=$(curl --silent \
+            --output missing-intent.json \
+            --write-out "%{http_code}" \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents/pi_does-not-exist)
+
+          test "$STATUS" = "404"
+          grep -q 'Payment intent not found' missing-intent.json
+
+      - name: Verify cancellation replay is stable
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID/cancel" \
+            | tee cancel-replay.json
+
+          grep -q '"status": "cancelled"' cancel-replay.json
+
+      - name: Stop SonoraPort Banking
+        if: always()
+        run: |
+          if [ -f banking.pid ]; then
+            kill "$(cat banking.pid)" 2>/dev/null || true
+          fi
+
+          echo "=== Banking runtime log ==="
+          cat banking.log 2>/dev/null || true
