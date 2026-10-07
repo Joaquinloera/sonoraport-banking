@@ -226,6 +226,154 @@
         "analysis"
       ],
       "adapterStatus": "research"
+    },
+    {
+      "id": "google-gemini",
+      "name": "Google Gemini",
+      "sector": "ai",
+      "platform": "Gemini API",
+      "protocols": [
+        "HTTPS",
+        "REST"
+      ],
+      "sdkLanguages": [
+        "Python",
+        "JavaScript",
+        "Go",
+        "Java"
+      ],
+      "authentication": {
+        "strategies": [
+          "AUTHORIZATION_API_KEY",
+          "RESTRICTED_API_KEY"
+        ],
+        "credentialNames": [
+          "Gemini API key"
+        ],
+        "tokenType": "API key",
+        "tokenLifetime": null,
+        "scopes": [
+          "Generative Language API"
+        ],
+        "environmentVariables": [
+          "GEMINI_API_KEY",
+          "GOOGLE_API_KEY"
+        ]
+      },
+      "capabilities": [
+        "text-generation",
+        "multimodal-understanding",
+        "image-generation",
+        "structured-output",
+        "tool-calling",
+        "agents"
+      ],
+      "events": [
+        "background-execution"
+      ],
+      "audit": [
+        "project",
+        "usage",
+        "quota"
+      ],
+      "adapterStatus": "research"
+    },
+    {
+      "id": "nvidia-nim",
+      "name": "NVIDIA NIM",
+      "sector": "ai",
+      "platform": "NVIDIA NIM",
+      "protocols": [
+        "HTTPS",
+        "REST"
+      ],
+      "sdkLanguages": [],
+      "authentication": {
+        "strategies": [
+          "NGC_API_KEY",
+          "BEARER_API_TOKEN",
+          "TLS",
+          "MTLS"
+        ],
+        "credentialNames": [
+          "NGC Personal API key",
+          "API Catalog bearer token",
+          "TLS certificate",
+          "TLS private key",
+          "CA certificate"
+        ],
+        "tokenType": "Bearer",
+        "tokenLifetime": null,
+        "scopes": [
+          "service-specific"
+        ],
+        "environmentVariables": [
+          "NGC_API_KEY",
+          "NGC_CLI_API_KEY",
+          "NIM_SSL_KEY_PATH",
+          "NIM_SSL_CERTS_PATH",
+          "NIM_SSL_CA_CERTS_PATH"
+        ]
+      },
+      "capabilities": [
+        "foundation-model-inference",
+        "self-hosted-inference",
+        "model-artifact-download",
+        "structured-data-model-inference"
+      ],
+      "events": [],
+      "audit": [
+        "structured-logging",
+        "correlation-id"
+      ],
+      "adapterStatus": "research"
+    },
+    {
+      "id": "databricks",
+      "name": "Databricks",
+      "sector": "ai",
+      "platform": "Databricks REST API / Mosaic AI",
+      "protocols": [
+        "HTTPS",
+        "REST"
+      ],
+      "sdkLanguages": [
+        "Python",
+        "Go",
+        "Java"
+      ],
+      "authentication": {
+        "strategies": [
+          "OAUTH2_MACHINE_TO_MACHINE"
+        ],
+        "credentialNames": [
+          "OAuth client ID",
+          "OAuth client secret"
+        ],
+        "tokenType": "Bearer",
+        "tokenLifetime": "OAuth access token",
+        "scopes": [
+          "workspace-or-account-specific"
+        ],
+        "environmentVariables": [
+          "DATABRICKS_HOST",
+          "DATABRICKS_CLIENT_ID",
+          "DATABRICKS_CLIENT_SECRET"
+        ]
+      },
+      "capabilities": [
+        "data-platform",
+        "machine-learning",
+        "model-serving",
+        "automation"
+      ],
+      "events": [],
+      "audit": [
+        "identity",
+        "workspace",
+        "account"
+      ],
+      "adapterStatus": "research"
     }
   ]
 }
