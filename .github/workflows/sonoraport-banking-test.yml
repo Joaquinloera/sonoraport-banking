@@ -27,6 +27,148 @@ jobs:
       - name: Check server syntax
         run: node --check server.js
 
+      - name: Enforce production rail registry alignment
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+
+          const declared =
+            JSON.parse(
+              fs.readFileSync(
+                "production-payment-rails.json",
+                "utf8"
+              )
+            );
+
+          const runtime =
+            require("./production-rail-runtime");
+
+          const declaredRails =
+            Object.keys(
+              declared.rails || {}
+            ).sort();
+
+          const runtimeRails =
+            Object.keys(
+              runtime.RAIL_CONFIGURATION || {}
+            ).sort();
+
+          console.log(
+            "Declared rails:",
+            declaredRails.join(", ")
+          );
+
+          console.log(
+            "Runtime rails:",
+            runtimeRails.join(", ")
+          );
+
+          if (
+            JSON.stringify(declaredRails) !==
+            JSON.stringify(runtimeRails)
+          ) {
+            console.error(
+              "PRODUCTION RAIL DRIFT DETECTED"
+            );
+
+            console.error(
+              "Declared:",
+              declaredRails
+            );
+
+            console.error(
+              "Runtime:",
+              runtimeRails
+            );
+
+            process.exit(1);
+          }
+
+          for (const rail of declaredRails) {
+            const declaredRail =
+              declared.rails[rail];
+
+            const runtimeRail =
+              runtime.RAIL_CONFIGURATION[rail];
+
+            if (
+              Boolean(declaredRail.enabled) !==
+              Boolean(runtimeRail.enabled)
+            ) {
+              throw new Error(
+                `Enabled-state drift: ${rail}`
+              );
+            }
+
+            if (
+              declaredRail.mode !==
+              runtimeRail.mode
+            ) {
+              throw new Error(
+                `Mode drift: ${rail}`
+              );
+            }
+          }
+
+          console.log(
+            "Production rail registry alignment PASS"
+          );
+          NODE
+
+      - name: Enforce unverified rail safety boundary
+        run: |
+          node <<'NODE'
+          const runtime =
+            require("./production-rail-runtime");
+
+          const statuses =
+            runtime.allStatuses();
+
+          if (statuses.length !== 6) {
+            throw new Error(
+              `Expected 6 production rails, found ${statuses.length}`
+            );
+          }
+
+          for (const rail of statuses) {
+            if (
+              rail.authenticated === true
+            ) {
+              throw new Error(
+                `${rail.provider} unexpectedly claims authentication`
+              );
+            }
+
+            if (
+              rail.providerVerified === true
+            ) {
+              throw new Error(
+                `${rail.provider} unexpectedly claims provider verification`
+              );
+            }
+
+            if (
+              rail.settlementVerified === true
+            ) {
+              throw new Error(
+                `${rail.provider} unexpectedly claims settlement verification`
+              );
+            }
+
+            if (
+              rail.credentialsExposed === true
+            ) {
+              throw new Error(
+                `${rail.provider} exposes credentials`
+              );
+            }
+          }
+
+          console.log(
+            "Unverified rail safety boundary PASS"
+          );
+          NODE
+
       - name: Generate temporary test authentication
         run: |
           echo "MATCHA_MANITA_BANKING_TOKEN=$(openssl rand -hex 32)" >> "$GITHUB_ENV"
