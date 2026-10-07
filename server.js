@@ -261,10 +261,16 @@ function readJSON(req) {
     (resolve, reject) => {
       let body = "";
       let size = 0;
+      let settled = false;
+      let tooLarge = false;
 
       req.on(
         "data",
         chunk => {
+          if (tooLarge) {
+            return;
+          }
+
           size +=
             chunk.length;
 
@@ -272,13 +278,18 @@ function readJSON(req) {
             size >
             MAX_BODY_BYTES
           ) {
-            reject(
-              new Error(
-                "BODY_TOO_LARGE"
-              )
-            );
+            tooLarge = true;
 
-            req.destroy();
+            if (!settled) {
+              settled = true;
+
+              reject(
+                new Error(
+                  "BODY_TOO_LARGE"
+                )
+              );
+            }
+
             return;
           }
 
@@ -289,6 +300,15 @@ function readJSON(req) {
       req.on(
         "end",
         () => {
+          if (
+            settled ||
+            tooLarge
+          ) {
+            return;
+          }
+
+          settled = true;
+
           if (!body) {
             resolve({});
             return;
@@ -310,7 +330,14 @@ function readJSON(req) {
 
       req.on(
         "error",
-        reject
+        error => {
+          if (settled) {
+            return;
+          }
+
+          settled = true;
+          reject(error);
+        }
       );
     }
   );
@@ -1085,9 +1112,8 @@ async function handleMatcha(
         requestId
       }
     );
-  }
-
-  if (
+    }
+    if (
     req.method === "GET"
   ) {
     const receiptId =
@@ -1342,7 +1368,7 @@ const server =
               error:
                 "Method not allowed",
 
-                       requestId
+              requestId
             }
           );
         }
@@ -1645,4 +1671,4 @@ module.exports = {
   handlePayPalProduction,
   loadProductionRails,
   productionRailStatus
-};  
+};
