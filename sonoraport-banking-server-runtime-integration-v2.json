@@ -1,0 +1,177 @@
+{
+  "build": {
+    "id": "SONORAPORT_BANKING_SERVER_RUNTIME_002",
+    "system": "sonoraport-banking",
+    "branch": "main",
+    "environment": "production",
+    "phase": "SERVER_RUNTIME_INTEGRATION",
+    "status": "READY_FOR_IMPLEMENTATION"
+  },
+
+  "verifiedInputs": {
+    "server": {
+      "path": "server.js",
+      "blobSha": "e34fde550270621a3be7935577e0f9e360ddfc65"
+    },
+
+    "runtime": {
+      "path": "production-rail-runtime.js",
+      "blobSha": "48e5717acdd1b4a3ba59561d98386b4228b1e740"
+    },
+
+    "previousBuildContract": {
+      "path": "sonoraport-banking-server-runtime-build.json",
+      "blobSha": "dd682cef4d8d2f7c8ab2c6ad1ebdab9ab4843432"
+    }
+  },
+
+  "integration": {
+    "target": "server.js",
+
+    "imports": {
+      "preserve": [
+        "http",
+        "crypto",
+        "fs",
+        "path",
+        "./paypal-production-adapter"
+      ],
+
+      "add": {
+        "module": "./production-rail-runtime",
+        "variable": "productionRailRuntime",
+        "statement": "const productionRailRuntime = require(\"./production-rail-runtime\");"
+      }
+    },
+
+    "removeLegacyRuntime": {
+      "function": "railStatus",
+      "reason": "Rail readiness is now centralized in production-rail-runtime.js"
+    },
+
+    "replaceProductionRailStatus": {
+      "function": "productionRailStatus",
+      "implementation": "function productionRailStatus() {\n  return productionRailRuntime.publicRailSummary();\n}"
+    },
+
+    "capabilities": {
+      "productionRailsExpression": "productionRailStatus()"
+    },
+
+    "productionRailsEndpoint": {
+      "method": "GET",
+      "path": "/api/production-rails",
+
+      "response": {
+        "railsExpression": "productionRailStatus().rails",
+        "runtimeTotalsExpression": "productionRailStatus().totals"
+      },
+
+      "preserveControls": true,
+      "exposeSecretValues": false
+    },
+
+    "exports": {
+      "replace": {
+        "from": "railRuntimeStatus: railStatus",
+        "to": "railRuntimeStatus: productionRailRuntime.railStatus"
+      },
+
+      "preserve": [
+        "server",
+        "bankingCapabilities",
+        "authenticateMatchaManita",
+        "handleMatchaManita",
+        "handlePayPalProduction",
+        "loadProductionRails",
+        "productionRailStatus"
+      ]
+    }
+  },
+
+  "paymentRails": {
+    "paypal": {
+      "enabled": true,
+      "mode": "production",
+      "existingAdapter": "paypal-production-adapter.js",
+      "preserveExistingExecution": true
+    },
+
+    "visa": {
+      "enabled": true,
+      "mode": "production",
+      "adapter": "netlify/functions/lib/card-issuer-router.mjs"
+    },
+
+    "venmo": {
+      "enabled": true,
+      "mode": "production",
+      "upstreamProvider": "paypal"
+    },
+
+    "cashapp": {
+      "enabled": true,
+      "mode": "production"
+    },
+
+    "zelle": {
+      "enabled": true,
+      "mode": "production",
+      "provisioning": "authorized-partner"
+    }
+  },
+
+  "moneyMovement": {
+    "realMoneyTarget": true,
+    "targetState": "OPEN_ENABLED",
+    "executionAuthority": "sonoraport-banking"
+  },
+
+  "preserve": {
+    "bearerAuthentication": true,
+    "matchaAuthentication": true,
+    "paymentIntentOwnership": true,
+    "idempotency": true,
+    "auditReceipts": true,
+    "paypalCreateOrder": true,
+    "paypalGetOrder": true,
+    "paypalCaptureOrder": true,
+    "worldSandboxBridge": true,
+    "requestIds": true,
+    "bodySizeLimit": true
+  },
+
+  "repositorySecurity": {
+    "secretValuesAllowed": false,
+    "environmentVariableNamesAllowed": true,
+    "paypalClientSecretAllowed": false,
+    "visaPrivateKeyAllowed": false,
+    "cardPanAllowed": false,
+    "cvvAllowed": false,
+    "pinAllowed": false
+  },
+
+  "verification": {
+    "requiredChecks": [
+      "JSON_PARSE",
+      "VERIFIED_INPUT_SHA_MATCH",
+      "SERVER_SYNTAX",
+      "RUNTIME_MODULE_LOAD",
+      "NO_LEGACY_RAIL_STATUS_FUNCTION",
+      "CENTRAL_RUNTIME_IMPORT_PRESENT",
+      "PRODUCTION_RAIL_STATUS_USES_PUBLIC_SUMMARY",
+      "RAIL_RUNTIME_EXPORT_USES_CENTRAL_RUNTIME",
+      "PAYPAL_EXECUTION_PATHS_PRESERVED",
+      "BEARER_AUTH_PRESERVED",
+      "IDEMPOTENCY_PRESERVED",
+      "NO_SECRET_VALUES"
+    ],
+
+    "greenOnlyAfterVerification": true
+  },
+
+  "nextBuild": {
+    "target": "server.js",
+    "action": "IMPLEMENT_RUNTIME_INTEGRATION"
+  }
+}
