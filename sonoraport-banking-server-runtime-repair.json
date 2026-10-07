@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_BANKING_SERVER_RUNTIME_REPAIR",
+  "status": "ACTIVE",
+  "project": {
+    "name": "SonoraPort Banking",
+    "repository": "Joaquinloera/sonoraport-banking",
+    "branch": "main",
+    "runtime": "node",
+    "runtimeVersion": "20",
+    "primaryRuntimeFile": "server.js"
+  },
+  "repair": {
+    "targetFile": "server.js",
+    "repairType": "TRUNCATED_RUNTIME_RECOVERY",
+    "failure": {
+      "command": "node --check server.js",
+      "previousExitCode": 1,
+      "errorType": "SyntaxError",
+      "errorMessage": "Unexpected end of input",
+      "failureLocation": {
+        "approximateLine": 1316,
+        "truncatedToken": "requ"
+      }
+    },
+    "rootCause": {
+      "identified": true,
+      "description": "server.js was truncated inside the payment-intent cancellation route and was missing the remainder of the cancellation handler, main HTTP router, API endpoints, error handling, server listener and module exports.",
+      "recoverySource": {
+        "type": "git_history",
+        "damagedCommit": "00c7006cdb5e3e346286ff2da843f0b689f13f0d",
+        "recoveryStrategy": "Recover the known-good missing tail from Git history while preserving the newer centralized production rail runtime architecture."
+      }
+    },
+    "corrections": {
+      "restorePaymentIntentCancellation": true,
+      "restoreMainHttpRouter": true,
+      "restoreHealthEndpoint": true,
+      "restoreCapabilitiesEndpoint": true,
+      "restoreProductionRailsEndpoint": true,
+      "restoreWorldSandboxStatusEndpoint": true,
+      "restoreRuntimeErrorHandling": true,
+      "restoreServerListener": true,
+      "restoreModuleExports": true,
+      "preserveProductionRailRuntime": true,
+      "removeObsoleteRailStatusExport": true
+    }
+  },
+  "runtimeArchitecture": {
+    "productionRailRuntime": {
+      "module": "./production-rail-runtime",
+      "status": "PRESERVED",
+      "publicStatusFunction": "publicRailSummary"
+    },
+    "paypalProductionAdapter": {
+      "module": "./paypal-production-adapter",
+      "status": "PRESERVED"
+    },
+    "productionRailsConfiguration": {
+      "file": "production-payment-rails.json",
+      "status": "PRESERVED"
+    }
+  },
+  "apiContract": {
+    "health": {
+      "method": "GET",
+      "path": "/api/health",
+      "expectedStatus": "healthy"
+    },
+    "capabilities": {
+      "method": "GET",
+      "path": "/api/capabilities",
+      "paymentIntents": true,
+      "realSettlementAuthorizedDefault": false
+    },
+    "worldSandboxStatus": {
+      "method": "GET",
+      "path": "/api/world-sandbox/status",
+      "credentialRead": false,
+      "unrestrictedTransfers": false
+    },
+    "paymentIntents": {
+      "create": {
+        "method": "POST",
+        "path": "/api/matcha-manita/payment-intents",
+        "authenticationRequired": true,
+        "idempotencyRequired": true,
+        "defaultStatus": "requires_authorization",
+        "defaultMode": "sandbox",
+        "settlementExecuted": false
+      },
+      "retrieve": {
+        "method": "GET",
+        "path": "/api/matcha-manita/payment-intents/:id"
+      },
+      "receipt": {
+        "method": "GET",
+        "path": "/api/matcha-manita/payment-intents/:id/receipt",
+        "protocol": "SONORAPORT-AUDIT-1"
+      },
+      "cancel": {
+        "method": "POST",
+        "path": "/api/matcha-manita/payment-intents/:id/cancel",
+        "expectedStatus": "cancelled"
+      }
+    }
+  },
+  "security": {
+    "credentialsStoredInManifest": false,
+    "credentialsStoredInSource": false,
+    "authentication": {
+      "type": "bearer",
+      "environmentVariable": "MATCHA_MANITA_BANKING_TOKEN"
+    },
+    "settlement": {
+      "providerEnvironmentVariable": "BANKING_SETTLEMENT_PROVIDER",
+      "credentialEnvironmentVariable": "BANKING_SETTLEMENT_CREDENTIAL",
+      "authorizationEnvironmentVariable": "BANKING_REAL_SETTLEMENT_AUTHORIZED",
+      "defaultRealSettlementAuthorized": false
+    },
+    "controls": {
+      "providerConfirmationRequired": true,
+      "unverifiedSettlementAllowed": false,
+      "credentialReadThroughWorldSandbox": false,
+      "unrestrictedTransfersThroughWorldSandbox": false
+    }
+  },
+  "verification": {
+    "syntax": {
+      "command": "node --check server.js",
+      "executed": true,
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    "runtimeWorkflow": {
+      "status": "PENDING_GITHUB_ACTIONS",
+      "requiredBeforeFinalGreen": true
+    },
+    "finalStatus": "SYNTAX_GREEN_RUNTIME_PENDING"
+  },
+  "deployment": {
+    "productionModificationAuthorizedByManifest": false,
+    "automaticDeployment": false,
+    "productionSecretsIncluded": false
+  }
+}
