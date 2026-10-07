@@ -1,0 +1,323 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "GLOBAL-AI-DEFENSE-BIOTECH-PROVIDERS-V1",
+  "status": "ACTIVE",
+  "purpose": "Normalized provider capability and authentication registry for documented AI, defense AI, and life-science software integrations.",
+  "rules": {
+    "publicDocumentationOnly": true,
+    "storeSecretValues": false,
+    "credentialValues": "ENVIRONMENT_ONLY",
+    "normalizeProviderAuthentication": true,
+    "normalizeCapabilities": true
+  },
+
+  "providerSchema": {
+    "id": "string",
+    "name": "string",
+    "sector": "ai | defense_ai | life_science",
+    "platform": "string",
+    "protocols": [],
+    "sdkLanguages": [],
+    "authentication": {
+      "strategies": [],
+      "credentialNames": [],
+      "tokenType": null,
+      "tokenLifetime": null,
+      "scopes": [],
+      "environmentVariables": []
+    },
+    "capabilities": [],
+    "events": [],
+    "audit": [],
+    "adapterStatus": "research | planned | implemented | verified"
+  },
+
+  "providers": [
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "sector": "ai",
+      "platform": "Cohere API",
+      "protocols": [
+        "HTTPS",
+        "REST"
+      ],
+      "sdkLanguages": [
+        "Python",
+        "TypeScript"
+      ],
+      "authentication": {
+        "strategies": [
+          "BEARER_API_TOKEN"
+        ],
+        "credentialNames": [
+          "API token"
+        ],
+        "tokenType": "Bearer",
+        "tokenLifetime": null,
+        "scopes": [],
+        "environmentVariables": [
+          "COHERE_API_KEY"
+        ]
+      },
+      "capabilities": [
+        "text-generation",
+        "chat",
+        "embeddings",
+        "reranking"
+      ],
+      "events": [],
+      "audit": [
+        "request-id"
+      ],
+      "adapterStatus": "research"
+    },
+
+    {
+      "id": "anduril-lattice",
+      "name": "Anduril",
+      "sector": "defense_ai",
+      "platform": "Lattice Developer Platform",
+      "protocols": [
+        "HTTPS",
+        "REST",
+        "gRPC"
+      ],
+      "sdkLanguages": [
+        "Go",
+        "Java",
+        "Python",
+        "Rust",
+        "TypeScript"
+      ],
+      "authentication": {
+        "strategies": [
+          "OAUTH2_CLIENT_CREDENTIALS",
+          "BEARER_ENVIRONMENT_TOKEN"
+        ],
+        "credentialNames": [
+          "client_id",
+          "client_secret",
+          "environment token"
+        ],
+        "tokenType": "Bearer",
+        "tokenLifetime": "short-lived OAuth access token",
+        "scopes": [],
+        "environmentVariables": [
+          "ANDURIL_CLIENT_ID",
+          "ANDURIL_CLIENT_SECRET",
+          "ANDURIL_ENVIRONMENT_TOKEN"
+        ]
+      },
+      "capabilities": [
+        "entities",
+        "tasks",
+        "objects",
+        "video"
+      ],
+      "events": [],
+      "audit": [],
+      "adapterStatus": "research"
+    },
+
+    {
+      "id": "palantir-foundry",
+      "name": "Palantir",
+      "sector": "defense_ai",
+      "platform": "Foundry",
+      "protocols": [
+        "HTTPS",
+        "REST"
+      ],
+      "sdkLanguages": [],
+      "authentication": {
+        "strategies": [
+          "OAUTH2_AUTHORIZATION_CODE",
+          "OAUTH2_CLIENT_CREDENTIALS"
+        ],
+        "credentialNames": [
+          "client_id",
+          "client_secret"
+        ],
+        "tokenType": "Bearer",
+        "tokenLifetime": "OAuth access token",
+        "scopes": [
+          "read",
+          "write",
+          "application-specific"
+        ],
+        "environmentVariables": [
+          "PALANTIR_CLIENT_ID",
+          "PALANTIR_CLIENT_SECRET"
+        ]
+      },
+      "capabilities": [
+        "data-access",
+        "datasets",
+        "ontology",
+        "applications",
+        "automation"
+      ],
+      "events": [],
+      "audit": [
+        "identity",
+        "permissions"
+      ],
+      "adapterStatus": "research"
+    },
+
+    {
+      "id": "benchling",
+      "name": "Benchling",
+      "sector": "life_science",
+      "platform": "Benchling Developer Platform",
+      "protocols": [
+        "HTTPS",
+        "REST"
+      ],
+      "sdkLanguages": [],
+      "authentication": {
+        "strategies": [
+          "OAUTH2_CLIENT_CREDENTIALS",
+          "OAUTH2_AUTHORIZATION_CODE",
+          "API_KEY_BASIC_AUTH"
+        ],
+        "credentialNames": [
+          "client_id",
+          "client_secret",
+          "API key"
+        ],
+        "tokenType": "Bearer",
+        "tokenLifetime": "OAuth access token",
+        "scopes": [
+          "organization",
+          "team",
+          "project"
+        ],
+        "environmentVariables": [
+          "BENCHLING_CLIENT_ID",
+          "BENCHLING_CLIENT_SECRET",
+          "BENCHLING_API_KEY"
+        ]
+      },
+      "capabilities": [
+        "registry",
+        "inventory",
+        "projects",
+        "biological-data",
+        "workflow-integration"
+      ],
+      "events": [
+        "platform-events"
+      ],
+      "audit": [
+        "organization",
+        "team",
+        "project",
+        "identity"
+      ],
+      "adapterStatus": "research"
+    },
+
+    {
+      "id": "seven-bridges",
+      "name": "Seven Bridges",
+      "sector": "life_science",
+      "platform": "Seven Bridges Platform API",
+      "protocols": [
+        "HTTPS",
+        "REST"
+      ],
+      "sdkLanguages": [],
+      "authentication": {
+        "strategies": [
+          "API_TOKEN"
+        ],
+        "credentialNames": [
+          "X-SBG-Auth-Token"
+        ],
+        "tokenType": "API token",
+        "tokenLifetime": null,
+        "scopes": [
+          "project-permissions"
+        ],
+        "environmentVariables": [
+          "SEVEN_BRIDGES_AUTH_TOKEN"
+        ]
+      },
+      "capabilities": [
+        "projects",
+        "files",
+        "bioinformatics-workflows",
+        "computational-analysis"
+      ],
+      "events": [],
+      "audit": [
+        "project",
+        "workflow",
+        "analysis"
+      ],
+      "adapterStatus": "research"
+    }
+  ],
+
+  "normalizedAuthentication": {
+    "API_KEY": {
+      "secretStorage": "SERVER_ENVIRONMENT",
+      "browserExposure": false
+    },
+
+    "BEARER_TOKEN": {
+      "secretStorage": "SERVER_ENVIRONMENT",
+      "browserExposure": false
+    },
+
+    "OAUTH2_CLIENT_CREDENTIALS": {
+      "flow": [
+        "CLIENT_ID",
+        "CLIENT_SECRET",
+        "TOKEN_ENDPOINT",
+        "ACCESS_TOKEN",
+        "PROVIDER_API"
+      ]
+    },
+
+    "OAUTH2_AUTHORIZATION_CODE": {
+      "flow": [
+        "AUTHORIZATION_REQUEST",
+        "AUTHORIZATION_CODE",
+        "TOKEN_EXCHANGE",
+        "ACCESS_TOKEN",
+        "PROVIDER_API"
+      ]
+    },
+
+    "CERTIFICATE_AUTH": {
+      "materials": [
+        "X509_CERTIFICATE",
+        "PRIVATE_KEY"
+      ]
+    }
+  },
+
+  "adapterContract": {
+    "initialize": true,
+    "authenticate": true,
+    "healthCheck": true,
+    "capabilities": true,
+    "normalizeError": true,
+    "normalizeResponse": true
+  },
+
+  "architecture": {
+    "flow": [
+      "PROVIDER_REGISTRY",
+      "PROVIDER_ADAPTER",
+      "AUTHENTICATION",
+      "AUTHORIZED_API",
+      "NORMALIZED_RESPONSE",
+      "EVENT_OR_RESULT",
+      "AUDIT"
+    ]
+  }
+          }
