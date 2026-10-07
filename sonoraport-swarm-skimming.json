@@ -1,0 +1,319 @@
+{
+  "schemaVersion": "1.0.0",
+  "system": "SONORAPORT_SWARM_SKIMMING",
+  "mode": "ACTIVE",
+
+  "orchestrator": {
+    "agent": "AGENT_999_ISAAC_MICHEAL",
+    "role": "ORCHESTRATOR",
+    "strategy": "SWARM_AND_SKIM"
+  },
+
+  "scope": {
+    "primary": [
+      {
+        "name": "SONORAPORT_WEBSITE",
+        "target": "sonoraportaiholdingllc.com",
+        "mode": "ACTIVE"
+      },
+      {
+        "name": "SONORAPORT_BANKING",
+        "repository": "Joaquinloera/sonoraport-banking",
+        "branch": "main",
+        "mode": "ACTIVE"
+      },
+      {
+        "name": "WORLDSANBOX13",
+        "repository": "Joaquinloera/Worldsanbox13",
+        "branch": "main",
+        "mode": "ACTIVE"
+      }
+    ],
+
+    "protectedIntegrations": [
+      {
+        "name": "MATCHA_MANITA",
+        "mode": "READ_ONLY_INTEGRATION_BOUNDARY",
+        "modifyProject": false,
+        "deleteProject": false,
+        "deployProject": false,
+        "allowInterfaceValidation": true,
+        "allowContractValidation": true,
+        "allowBankingCompatibilityChecks": true,
+        "allowRegressionTests": true,
+        "purpose": "Preserve compatibility with existing SonoraPort Banking interfaces without modifying the MATCHA MANITA project."
+      }
+    ]
+  },
+
+  "skimming": {
+    "enabled": true,
+
+    "workflow": [
+      "SCAN",
+      "MAP",
+      "IDENTIFY",
+      "DEEP_INSPECT",
+      "VERIFY",
+      "PATCH",
+      "TEST",
+      "RESCAN"
+    ],
+
+    "inspect": [
+      "source_code",
+      "server_runtime",
+      "api_routes",
+      "authentication",
+      "authorization",
+      "ownership_boundaries",
+      "payment_flows",
+      "payment_rails",
+      "provider_adapters",
+      "webhooks",
+      "idempotency",
+      "ledger_logic",
+      "settlement_logic",
+      "reconciliation",
+      "registries",
+      "configuration",
+      "environment_references",
+      "deployment_configuration",
+      "integration_contracts",
+      "tests"
+    ],
+
+    "requirements": {
+      "inspectRealFiles": true,
+      "verifyBeforePatch": true,
+      "patchRealFiles": true,
+      "runTests": true,
+      "reskimAfterPatch": true,
+      "reportActualResultsOnly": true
+    }
+  },
+
+  "swarm": {
+    "enabled": true,
+    "strategy": "ORCHESTRATED_SPECIALISTS",
+
+    "workstreams": {
+      "CODE": {
+        "enabled": true,
+        "targets": [
+          "source_code",
+          "server_runtime",
+          "configuration"
+        ]
+      },
+
+      "BANKING": {
+        "enabled": true,
+        "targets": [
+          "payment_intents",
+          "payment_rails",
+          "ledger",
+          "settlement",
+          "reconciliation",
+          "receipts"
+        ]
+      },
+
+      "AUTH": {
+        "enabled": true,
+        "targets": [
+          "authentication",
+          "authorization",
+          "authenticated_principal",
+          "ownership",
+          "permissions"
+        ]
+      },
+
+      "SECURITY": {
+        "enabled": true,
+        "targets": [
+          "secret_references",
+          "signature_verification",
+          "replay_protection",
+          "input_validation",
+          "request_limits",
+          "credential_boundaries"
+        ]
+      },
+
+      "INTEGRATION": {
+        "enabled": true,
+        "targets": [
+          "provider_adapters",
+          "banking_api",
+          "worldsanbox_api",
+          "website_api",
+          "integration_contracts"
+        ]
+      },
+
+      "WORLDSANBOX13": {
+        "enabled": true,
+        "targets": [
+          "registries",
+          "api_boundaries",
+          "banking_integration",
+          "website_integration"
+        ]
+      },
+
+      "WEBSITE": {
+        "enabled": true,
+        "targets": [
+          "sonoraportaiholdingllc.com",
+          "frontend_api_boundary",
+          "banking_boundary",
+          "worldsanbox_boundary"
+        ]
+      },
+
+      "TEST_QA": {
+        "enabled": true,
+        "targets": [
+          "syntax",
+          "unit_tests",
+          "integration_tests",
+          "security_tests",
+          "contract_tests",
+          "regression_tests"
+        ]
+      }
+    }
+  },
+
+  "authentication": {
+    "authenticatedPrincipalRequired": true,
+    "authorizationRequired": true,
+    "ownershipVerificationRequired": true,
+    "timingSafeSecretComparison": true
+  },
+
+  "credentials": {
+    "commitSecretValues": false,
+    "serverSideOnly": true,
+    "environmentSeparation": true,
+    "rotationSupported": true,
+
+    "allowedSources": [
+      "environment_variables",
+      "secret_manager"
+    ],
+
+    "forbiddenSources": [
+      "browser_javascript",
+      "public_repository",
+      "client_bundle",
+      "hard_coded_source"
+    ]
+  },
+
+  "payments": {
+    "idempotencyRequired": true,
+    "providerConfirmationRequired": true,
+    "authenticatedOwnerRequired": true,
+    "ownershipVerificationRequired": true,
+    "receiptVerificationRequired": true,
+    "fabricatedSettlementAllowed": false,
+    "unverifiedSettlementAllowed": false
+  },
+
+  "webhooks": {
+    "signatureVerificationRequired": true,
+    "timestampVerificationRequired": true,
+    "replayProtectionRequired": true,
+    "eventDeduplicationRequired": true,
+    "constantTimeSignatureComparison": true,
+    "providerConfirmationRequired": true
+  },
+
+  "ledger": {
+    "enabled": true,
+    "immutableEntriesPreferred": true,
+    "directBalanceMutationAllowed": false,
+    "providerConfirmedSettlementRequired": true,
+    "reconciliationRequired": true
+  },
+
+  "integrationIsolation": {
+    "enabled": true,
+    "failClosed": true,
+    "crossProjectSecretSharing": false,
+    "sharedClientSecrets": false,
+    "independentAuthenticationBoundaries": true,
+    "independentDeploymentBoundaries": true,
+    "preserveExistingMatchaContracts": true,
+    "blockUnintendedMatchaWrites": true
+  },
+
+  "compatibility": {
+    "bankingChangesMustCheckWorldsanbox": true,
+    "bankingChangesMustCheckWebsite": true,
+    "bankingChangesMustCheckMatchaContracts": true,
+
+    "worldsanboxChangesMustCheckBanking": true,
+    "worldsanboxChangesMustCheckWebsite": true,
+
+    "websiteChangesMustCheckBanking": true,
+    "websiteChangesMustCheckWorldsanbox": true,
+
+    "matchaSourceChangesAllowed": false,
+    "matchaDeploymentAllowed": false
+  },
+
+  "providerArchitecture": {
+    "adapterRequired": true,
+
+    "supportedAuthenticationStrategies": [
+      "oauth2_client_credentials",
+      "api_key",
+      "api_key_shared_secret",
+      "hmac",
+      "signed_jwt",
+      "mtls"
+    ],
+
+    "providerCredentialsStoredInAdapter": false,
+    "providerSecretsStoredInRepository": false
+  },
+
+  "execution": {
+    "manualGithubUpload": true,
+    "automaticMainBranchWrites": false,
+
+    "workflow": [
+      "FETCH_MAIN",
+      "SKIM_FILES",
+      "MAP_DEPENDENCIES",
+      "IDENTIFY_FINDINGS",
+      "VERIFY_FINDINGS",
+      "PREPARE_PATCH",
+      "RUN_LOCAL_TESTS",
+      "OWNER_UPLOAD",
+      "FETCH_BACK_MAIN",
+      "VERIFY_UPLOADED_SOURCE",
+      "RUN_VERIFICATION",
+      "RESKIM",
+      "GREEN_GATE"
+    ]
+  },
+
+  "greenGate": {
+    "syntaxMustPass": true,
+    "authenticationMustPass": true,
+    "authorizationMustPass": true,
+    "ownershipMustPass": true,
+    "paymentTestsMustPass": true,
+    "idempotencyMustPass": true,
+    "webhookVerificationMustPass": true,
+    "integrationTestsMustPass": true,
+    "regressionTestsMustPass": true,
+    "uploadedSourceMustBeFetchedBack": true,
+    "claimGreenWithoutVerification": false
+  }
+}
