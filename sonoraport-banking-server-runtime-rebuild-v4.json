@@ -3,43 +3,57 @@
   "project": "SONORAPORT_BANKING",
   "repository": "Joaquinloera/sonoraport-banking",
   "branch": "main",
-  "status": "RED",
-  "target": {
-    "file": "server.js",
+  "buildMode": "SOURCE_RECOVERY_AND_RUNTIME_INTEGRATION",
+  "status": "RED_PENDING_OWNER_UPLOAD_AND_VERIFICATION",
+
+  "recovery": {
+    "targetFile": "server.js",
     "location": "/server.js",
-    "action": "REPLACE"
-  },
-  "recoverySource": {
-    "commit": "a2c11a384c0025ead9eceadc4ea2f200800e6081",
-    "blob": "e34fde550270621a3be7935577e0f9e360ddfc65"
-  },
-  "brokenMain": {
-    "blob": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
+    "action": "REPLACE",
+    "brokenMainBlob": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
+    "recoveryCommit": "a2c11a384c0025ead9eceadc4ea2f200800e6081",
+    "recoveryBlob": "e34fde550270621a3be7935577e0f9e360ddfc65",
     "failure": "SyntaxError: Unexpected end of input",
-    "cause": "server.js is physically truncated"
+    "failureCause": "main/server.js was physically truncated",
+    "reconstructedBytes": 22417
   },
-  "productionRailRuntime": {
-    "file": "production-rail-runtime.js",
-    "blob": "48e5717acdd1b4a3ba59561d98386b4228b1e740",
-    "requiredImport": "./production-rail-runtime",
-    "summaryFunction": "publicRailSummary",
-    "statusFunction": "railStatus",
-    "duplicateLocalRailStatusAllowed": false
+
+  "runtimeIntegration": {
+    "runtimeFile": "production-rail-runtime.js",
+    "runtimeBlob": "48e5717acdd1b4a3ba59561d98386b4228b1e740",
+    "runtimeImport": "./production-rail-runtime",
+    "publicSummary": "productionRailRuntime.publicRailSummary()",
+    "runtimeStatus": "productionRailRuntime.railStatus",
+    "duplicateLocalRailStatusRemoved": true,
+    "productionRailsRoute": "/api/production-rails",
+    "railsSource": "railSummary.rails",
+    "runtimeTotalsSource": "railSummary.totals"
   },
+
   "paypal": {
     "adapter": "paypal-production-adapter.js",
     "blob": "8c1c960e652d9a7cddb42659a1e9a22612b147c4",
     "credentialsServerSideOnly": true,
     "providerConfirmationRequired": true,
-    "fabricatedSettlementAllowed": false
+    "fabricatedSettlementAllowed": false,
+    "routes": [
+      "GET /api/paypal/status",
+      "POST /api/paypal/orders",
+      "GET /api/paypal/orders/:providerOrderId",
+      "POST /api/paypal/orders/:providerOrderId/capture"
+    ]
   },
+
   "paymentIntentBoundary": {
-    "authentication": "Bearer MATCHA_MANITA_BANKING_TOKEN",
+    "tokenEnvironmentVariable": "MATCHA_MANITA_BANKING_TOKEN",
+    "authentication": "Bearer",
     "timingSafeEqual": true,
     "idempotencyRequired": true,
     "requestFingerprint": "SHA-256",
-    "auditProtocol": "SONORAPORT-AUDIT-1",
     "receiptDigest": "SHA-256",
+    "auditProtocol": "SONORAPORT-AUDIT-1",
+    "providerConfirmationRequired": true,
+    "fabricatedSettlementAllowed": false,
     "routes": [
       "POST /api/matcha-manita/payment-intents",
       "GET /api/matcha-manita/payment-intents/:id",
@@ -47,52 +61,91 @@
       "GET /api/matcha-manita/payment-intents/:id/receipt"
     ]
   },
-  "paypalRoutes": [
-    "GET /api/paypal/status",
-    "POST /api/paypal/orders",
-    "GET /api/paypal/orders/:providerOrderId",
-    "POST /api/paypal/orders/:providerOrderId/capture"
-  ],
-  "requiredVerification": [
-    "node --check server.js",
-    "node --check production-rail-runtime.js",
-    "productionRailRuntime import",
-    "publicRailSummary()",
-    "railSummary.rails",
-    "railSummary.totals",
-    "PayPal routes",
-    "payment-intent routes",
-    "crypto.timingSafeEqual",
-    "idempotency",
-    "audit receipts",
-    "SONORAPORT-AUDIT-1",
-    "MAX_BODY_BYTES",
-    "INVALID_JSON",
-    "BODY_TOO_LARGE",
-    "/api/world-sandbox/status",
-    "server.listen",
-    "module.exports"
-  ],
+
+  "security": {
+    "maxBodyBytesPresent": true,
+    "invalidJsonHandlingPresent": true,
+    "bodyTooLargeHandlingPresent": true,
+    "timingSafeTokenComparisonPresent": true,
+    "credentialsCommittedToRepository": false,
+    "unverifiedSettlementAllowed": false,
+    "ownershipCheck": {
+      "required": true,
+      "verified": false,
+      "status": "SECURITY_GAP_REQUIRES_REVIEW"
+    }
+  },
+
+  "worldSandbox": {
+    "route": "/api/world-sandbox/status",
+    "statusRead": true,
+    "capabilityRead": true,
+    "credentialRead": false,
+    "unrestrictedTransfers": false
+  },
+
   "cardRuntime": {
     "router": "netlify/functions/lib/card-issuer-router.mjs",
     "routerBlob": "0d4447b56fe470788cb8c703b5a2fd95b6cb043d",
     "providerVerificationRequired": true,
     "fabricatedApprovalAllowed": false,
     "unverifiedSettlementAllowed": false,
-    "missingFromMain": "netlify/functions/card-transaction-webhook.mjs"
+    "webhook": {
+      "file": "netlify/functions/card-transaction-webhook.mjs",
+      "presentOnMain": false,
+      "status": "NEXT_SEPARATE_BUILD_TARGET"
+    }
   },
+
+  "swarm": {
+    "orchestrator": "ACTIVE",
+    "code": "RECOVERY_PATCH_PREPARED",
+    "auth": "REVIEWING",
+    "payment": "RECOVERY_PATH_VERIFIED",
+    "security": "OWNERSHIP_GAP_IDENTIFIED",
+    "integration": "RUNTIME_INTEGRATION_PREPARED",
+    "testQa": "AWAITING_MAIN_UPLOAD"
+  },
+
+  "preUploadVerification": {
+    "recoverySourceVerified": true,
+    "runtimeImportVerified": true,
+    "duplicateRailStatusRemoved": true,
+    "publicRailSummaryVerified": true,
+    "railSummaryRailsVerified": true,
+    "railSummaryTotalsVerified": true,
+    "paypalRoutesVerified": true,
+    "paymentIntentRoutesVerified": true,
+    "timingSafeEqualVerified": true,
+    "idempotencyVerified": true,
+    "auditProtocolVerified": true,
+    "maxBodyBytesVerified": true,
+    "invalidJsonVerified": true,
+    "bodyTooLargeVerified": true,
+    "worldSandboxStatusVerified": true,
+    "serverListenVerified": true,
+    "moduleExportsVerified": true
+  },
+
   "greenGate": {
-    "serverRestored": false,
-    "syntaxPassed": false,
-    "runtimeIntegrationPassed": false,
-    "paypalPassed": false,
-    "paymentIntentPassed": false,
-    "authenticationPassed": false,
-    "idempotencyPassed": false,
-    "auditPassed": false,
-    "securityPassed": false,
-    "uploadedToMain": false,
-    "mainFetchedBack": false,
-    "uploadedSourceVerified": false
+    "ownerUploadedServerJs": false,
+    "mainServerFetchedBack": false,
+    "uploadedBlobVerified": false,
+    "nodeCheckServerJs": false,
+    "nodeCheckProductionRailRuntime": false,
+    "authTestsPassed": false,
+    "paymentIntentTestsPassed": false,
+    "idempotencyTestsPassed": false,
+    "auditTestsPassed": false,
+    "ownershipSecurityPassed": false,
+    "paypalIntegrationPassed": false,
+    "productionRailRuntimePassed": false,
+    "finalStatus": "RED"
+  },
+
+  "nextAction": {
+    "owner": "UPLOAD_COMPLETE_RECOVERED_SERVER_JS",
+    "agent": "FETCH_BACK_MAIN_SERVER_JS_AND_VERIFY",
+    "greenAllowedBeforeVerification": false
   }
 }
