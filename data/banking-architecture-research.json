@@ -1,0 +1,401 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordType": "SONORAPORT_BANKING_ARCHITECTURE_RESEARCH",
+  "status": "ACTIVE",
+  "project": {
+    "name": "SonoraPort Banking",
+    "repository": "Joaquinloera/sonoraport-banking",
+    "domain": "sonoraportaiholdingllc.com"
+  },
+  "researchMode": {
+    "swarm": true,
+    "skim": true,
+    "crossVerification": true,
+    "publicDocumentationOnly": true
+  },
+  "purpose": "Public banking architecture research used to guide SonoraPort Banking authentication, payment, API, security, event, sandbox and production architecture.",
+  "securityPolicy": {
+    "storeSecretCredentialValues": false,
+    "storePrivateAPIKeys": false,
+    "storeClientSecrets": false,
+    "exposeSecretsToBrowser": false,
+    "serverSideCredentialResolution": true,
+    "environmentSpecificCredentials": true,
+    "leastPrivilege": true
+  },
+  "swarmLanes": [
+    "AUTH_IDENTITY",
+    "PAYMENTS",
+    "API_SDK",
+    "SECURITY",
+    "EVENTS_WEBHOOKS",
+    "SANDBOX_PRODUCTION",
+    "VERIFY_MERGE"
+  ],
+  "architecturePatterns": {
+    "authentication": [
+      "OAuth 2.0",
+      "OpenID Connect where applicable",
+      "mutual TLS",
+      "certificate authentication",
+      "signed JWT assertions",
+      "scoped access tokens",
+      "consent authorization",
+      "short-lived access tokens"
+    ],
+    "payments": [
+      "payment initiation",
+      "payment status tracking",
+      "payment cancellation where supported",
+      "idempotent payment operations",
+      "asynchronous processing",
+      "reconciliation",
+      "audit receipts"
+    ],
+    "events": [
+      "webhooks",
+      "callback verification",
+      "signed event delivery",
+      "event identifiers",
+      "duplicate-event protection",
+      "retry-safe processing"
+    ],
+    "environments": [
+      "mock",
+      "sandbox",
+      "development",
+      "UAT",
+      "production"
+    ],
+    "security": [
+      "server-side provider adapters",
+      "credential isolation",
+      "least privilege",
+      "TLS",
+      "certificate rotation",
+      "key rotation",
+      "audit logging",
+      "transaction reconciliation",
+      "request validation",
+      "idempotency controls"
+    ]
+  },
+  "providers": [
+    {
+      "name": "JPMorgan Chase",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.jpmorgan.com/",
+      "credentialArchitecture": [
+        "certificates",
+        "OAuth access tokens",
+        "signed JWT assertions",
+        "digital signatures"
+      ],
+      "environmentModel": [
+        "testing",
+        "production"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Bank of America",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.bankofamerica.com/",
+      "credentialArchitecture": [
+        "Client ID",
+        "Client Secret"
+      ],
+      "capabilityFamilies": [
+        "accounts",
+        "payments",
+        "commercial banking APIs"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Citi",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.citi.com/",
+      "credentialArchitecture": [
+        "Client ID",
+        "Client Secret",
+        "OAuth bearer token"
+      ],
+      "architecture": [
+        "OpenAPI",
+        "account reporting",
+        "sandbox APIs",
+        "production APIs"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Capital One",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.capitalone.com/",
+      "credentialArchitecture": [
+        "OAuth"
+      ],
+      "architecture": [
+        "developer APIs",
+        "sandbox",
+        "production onboarding"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Goldman Sachs",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.gs.com/",
+      "credentialArchitecture": [
+        "OAuth Client ID",
+        "OAuth Client Secret",
+        "bearer token",
+        "scoped sessions"
+      ],
+      "architecture": [
+        "developer APIs",
+        "SDKs"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Morgan Stanley",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.morganstanley.com/",
+      "credentialArchitecture": [
+        "OAuth 2.0",
+        "certificate exchange"
+      ],
+      "architecture": [
+        "REST",
+        "OpenAPI",
+        "institutional integration"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "PNC",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://www.pnc.com/",
+      "credentialArchitecture": [
+        "OAuth 2.0",
+        "client credentials",
+        "access tokens"
+      ],
+      "architecture": [
+        "treasury APIs",
+        "payment APIs"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Truist",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.truist.com/",
+      "credentialArchitecture": [
+        "OAuth 2.0",
+        "consent",
+        "dynamic client registration"
+      ],
+      "architecture": [
+        "accounts",
+        "transactions",
+        "payments",
+        "event notifications"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Deutsche Bank",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.db.com/",
+      "credentialArchitecture": [
+        "OAuth 2.0",
+        "OpenID Connect",
+        "Client ID",
+        "PKCE",
+        "bearer token",
+        "refresh token",
+        "scopes"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "UBS",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.ubs.com/",
+      "credentialArchitecture": [
+        "subscription key"
+      ],
+      "architecture": [
+        "accounts",
+        "payments",
+        "securities APIs",
+        "testing"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "HSBC",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://develop.hsbc.com/",
+      "credentialArchitecture": [
+        "OAuth 2.0",
+        "OpenID Connect",
+        "dynamic client registration",
+        "private_key_jwt",
+        "certificates",
+        "client credentials"
+      ],
+      "securityArchitecture": [
+        "PKI",
+        "TLS",
+        "signing",
+        "encryption"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Santander",
+      "category": "BANK",
+      "credentialArchitecture": [
+        "Client ID",
+        "Client Secret",
+        "OAuth 2.0 authorization code",
+        "bearer token",
+        "refresh token",
+        "scopes"
+      ],
+      "architecture": [
+        "payment initiation",
+        "payment status",
+        "payment cancellation",
+        "notifications",
+        "sandbox",
+        "production"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Standard Chartered",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://openbanking.sc.com/",
+      "credentialArchitecture": [
+        "mutual authentication",
+        "JWT verification"
+      ],
+      "securityArchitecture": [
+        "TLS",
+        "encrypted responses",
+        "encrypted webhook delivery",
+        "signature verification",
+        "WAF",
+        "DDoS controls"
+      ],
+      "architecture": [
+        "payment initiation",
+        "bulk payments",
+        "ISO 20022",
+        "sandbox",
+        "UAT"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Barclays",
+      "category": "BANK",
+      "credentialArchitecture": [
+        "Open Banking authorization",
+        "customer consent"
+      ],
+      "securityArchitecture": [
+        "third-party applications do not receive customer banking login credentials"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "BNY",
+      "category": "BANK",
+      "publicDeveloperPortal": "https://developer.bny.com/",
+      "architecture": [
+        "ACH",
+        "fund transfers",
+        "foreign exchange",
+        "account validation",
+        "transaction tracking",
+        "notifications",
+        "testing"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "U.S. Bank",
+      "category": "BANK",
+      "architecture": [
+        "Developer Alliance",
+        "registered developer documentation"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "NatWest",
+      "category": "BANK",
+      "credentialArchitecture": [
+        "OAuth",
+        "Client ID",
+        "bearer token",
+        "refresh token",
+        "mutual TLS",
+        "private_key_jwt",
+        "signing certificate",
+        "dynamic client registration"
+      ],
+      "architecture": [
+        "payment initiation",
+        "event notification APIs",
+        "testing",
+        "consent"
+      ],
+      "secretValuesStored": false
+    },
+    {
+      "name": "Lloyds Banking Group",
+      "category": "BANK",
+      "credentialArchitecture": [
+        "Open Banking credentials",
+        "TLS client authentication",
+        "dynamic client registration",
+        "access tokens"
+      ],
+      "architecture": [
+        "account APIs",
+        "consent APIs",
+        "read-write APIs",
+        "production-like sandbox"
+      ],
+      "secretValuesStored": false
+    }
+  ],
+  "sonoraportRuntime": {
+    "credentialStorage": "DEPLOYMENT_ENVIRONMENT",
+    "browserSecretAccess": false,
+    "providerAdapters": "SERVER_SIDE",
+    "observedEnvironmentVariableNames": [
+      "PAYPAL_CLIENT_ID",
+      "PAYPAL_CLIENT_SECRET",
+      "WORLDSANDBOX13_GITHUB_TOKEN",
+      "MATCHA_MANITA_BANKING_TOKEN",
+      "BANKING_SETTLEMENT_PROVIDER",
+      "BANKING_SETTLEMENT_CREDENTIAL",
+      "BANKING_REAL_SETTLEMENT_AUTHORIZED"
+    ],
+    "environmentVariableValuesStoredInThisFile": false
+  },
+  "verification": {
+    "privateCredentialsCollected": false,
+    "privateAPIKeysCollected": false,
+    "secretValuesCollected": false,
+    "unverifiedClaimsMayNotActivateProduction": true
+  }
+}
