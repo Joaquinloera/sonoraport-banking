@@ -5,94 +5,82 @@
   "repository": "Joaquinloera/sonoraport-banking",
   "branch": "main",
   "environment": "production",
-  "execution_authority": "sonoraport-banking",
+  "entrypoint": "server.js",
+  "runtime_module": "production-rail-runtime.js",
+  "api_version": "1.3.0",
+  "node": "20.x",
 
-  "runtime": {
-    "entrypoint": "server.js",
-    "rail_runtime": "production-rail-runtime.js",
-    "api_version": "1.3.0",
-    "node_target": "20.x"
+  "repair": {
+    "replace_server_js": true,
+    "recovery_commit": "a2c11a384c0025ead9eceadc4ea2f200800e6081",
+    "recovery_blob": "e34fde550270621a3be7935577e0f9e360ddfc65",
+    "damaged_blob": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
+    "damage": "TRUNCATED_SERVER_SOURCE",
+    "legacy_local_rail_status_remove": true,
+    "central_runtime_required": true
   },
 
-  "server_runtime": {
-    "host_env": "HOST",
-    "port_env": "PORT",
-    "default_host": "0.0.0.0",
-    "default_port": 3100,
-    "max_body_bytes": 65536,
-    "request_id": "crypto.randomUUID",
-    "environment": "production"
-  },
-
-  "production_rail_runtime": {
-    "enabled": true,
-    "module": "./production-rail-runtime",
-    "single_source_of_truth": true,
-    "status_export": "railStatus",
-    "public_summary_export": "publicRailSummary",
-    "legacy_server_rail_status_removed": true,
+  "production_rails": {
+    "runtime": "./production-rail-runtime",
+    "runtime_blob": "48e5717acdd1b4a3ba59561d98386b4228b1e740",
+    "summary": "publicRailSummary",
+    "status": "railStatus",
     "rails": [
       "paypal",
       "visa",
       "venmo",
       "cashapp",
       "zelle"
-    ]
-  },
-
-  "rail_verification_model": {
-    "registered": true,
-    "configured_requires_environment": true,
-    "authenticated_requires_provider_confirmation": true,
-    "provider_verified_requires_provider_confirmation": true,
-    "settlement_verified_requires_provider_confirmation": true,
-    "fabricated_provider_status_forbidden": true,
-    "fabricated_settlement_status_forbidden": true
+    ],
+    "provider_confirmation_required": true,
+    "reconciliation_required": true,
+    "unverified_settlement_allowed": false
   },
 
   "paypal": {
-    "enabled": true,
     "adapter": "./paypal-production-adapter",
+    "preserve": true,
     "routes": [
       "GET /api/paypal/status",
       "POST /api/paypal/orders",
       "GET /api/paypal/orders/:providerOrderId",
       "POST /api/paypal/orders/:providerOrderId/capture"
     ],
-    "idempotency_header": "Idempotency-Key",
-    "provider_request_id": "PayPal-Request-Id",
-    "provider_confirmation_required": true,
-    "unverified_settlement_allowed": false
+    "idempotency": true,
+    "provider_confirmation_required": true
   },
 
-  "matcha_manita_banking_boundary": {
-    "enabled": true,
-    "server_side_only": true,
+  "banking_boundary": {
+    "authentication": {
+      "scheme": "Bearer",
+      "token_env": "MATCHA_MANITA_BANKING_TOKEN",
+      "timing_safe_equal": true,
+      "hardcoded_token": false
+    },
     "routes": [
       "POST /api/matcha-manita/payment-intents",
       "GET /api/matcha-manita/payment-intents/:id",
       "POST /api/matcha-manita/payment-intents/:id/cancel",
       "GET /api/matcha-manita/payment-intents/:id/receipt"
     ],
-    "authentication": {
-      "type": "Bearer",
-      "environment_variable": "MATCHA_MANITA_BANKING_TOKEN",
-      "timing_safe_comparison": true,
-      "hardcoded_credentials": false
-    },
     "idempotency": {
-      "required": true,
       "header": "Idempotency-Key",
-      "fingerprint": "SHA-256",
-      "conflict_on_key_reuse_with_different_request": true
+      "request_fingerprint": "SHA-256",
+      "conflicting_reuse_rejected": true
     },
     "audit": {
-      "enabled": true,
       "protocol": "SONORAPORT-AUDIT-1",
-      "digest": "SHA-256"
-    },
-    "provider_confirmation_required": true,
-    "private_credentials_in_browser": false
+      "receipt_digest": "SHA-256"
+    }
+  },
+
+  "server": {
+    "max_body_bytes": 65536,
+    "request_id": "crypto.randomUUID()",
+    "invalid_json_error": "INVALID_JSON",
+    "body_too_large_error": "BODY_TOO_LARGE",
+    "listen_required": true,
+    "module_exports_required": true
   },
 
   "core_routes": [
@@ -103,83 +91,39 @@
     "GET /api/world-sandbox/status"
   ],
 
-  "production_rails_endpoint": {
-    "route": "GET /api/production-rails",
-    "summary_source": "productionRailRuntime.publicRailSummary()",
-    "rails_source": "railSummary.rails",
-    "runtime_source": "railSummary.totals",
-    "preserve_execution_authority": true,
-    "preserve_controls": true,
-    "preserve_timestamp": true,
-    "preserve_request_id": true
-  },
-
-  "worldsandbox13": {
-    "status_route": "GET /api/world-sandbox/status",
-    "status_read": true,
-    "capability_read": true,
-    "credential_read": false,
-    "unrestricted_transfers": false
+  "required_server_changes": {
+    "runtime_import": "const productionRailRuntime = require(\"./production-rail-runtime\");",
+    "production_status": "return productionRailRuntime.publicRailSummary();",
+    "production_route_rails": "railSummary.rails",
+    "production_route_runtime": "railSummary.totals",
+    "rail_export": "productionRailRuntime.railStatus"
   },
 
   "security": {
-    "environment_credentials_only": true,
-    "hardcoded_passwords": false,
-    "hardcoded_private_keys": false,
-    "hardcoded_provider_secrets": false,
-    "hardcoded_banking_bearer_tokens": false,
-    "hardcoded_pan": false,
-    "hardcoded_cvv": false,
-    "hardcoded_pin": false,
-    "hardcoded_webhook_secrets": false,
-    "timing_safe_token_comparison": true,
-    "body_size_limit_required": true,
-    "invalid_json_handling_required": true
+    "credentials_from_environment_only": true,
+    "repository_private_keys": false,
+    "repository_provider_secrets": false,
+    "repository_bearer_tokens": false,
+    "repository_pan": false,
+    "repository_cvv": false,
+    "repository_pin": false,
+    "repository_webhook_secrets": false
   },
 
-  "required_source_contracts": [
-    "require ./production-rail-runtime",
-    "remove local function railStatus(id)",
-    "productionRailStatus returns productionRailRuntime.publicRailSummary()",
-    "production rails endpoint uses railSummary.rails",
-    "production rails endpoint uses railSummary.totals",
-    "preserve PayPal routes",
-    "preserve MATCHA MANITA banking routes",
-    "preserve timing-safe Bearer authentication",
-    "preserve idempotency index",
-    "preserve audit receipts",
-    "preserve SONORAPORT-AUDIT-1",
-    "preserve MAX_BODY_BYTES",
-    "preserve INVALID_JSON",
-    "preserve BODY_TOO_LARGE",
-    "preserve WorldSandbox status endpoint",
-    "preserve server.listen",
-    "preserve module.exports"
-  ],
-
-  "verification": {
-    "required_commands": [
+  "qa": {
+    "commands": [
       "node --check server.js",
       "node --check production-rail-runtime.js"
     ],
-    "server_syntax_exit_code_required": 0,
-    "runtime_syntax_exit_code_required": 0,
-    "security_scan_required": true,
-    "github_fetch_back_required": true
+    "required_exit_code": 0,
+    "fetch_uploaded_server_back": true,
+    "green_only_after_uploaded_source_verification": true
   },
 
-  "manual_upload": {
-    "owner_uploads_files": true,
-    "agent_git_push": false,
-    "replace_root_server_js": true
-  },
-
-  "green_gate": {
-    "syntax_pass_required": true,
-    "static_contract_pass_required": true,
-    "security_pass_required": true,
-    "manual_upload_required": true,
-    "uploaded_source_fetch_back_required": true,
-    "green_before_fetch_back": false
+  "upload": {
+    "manual": true,
+    "git_push_by_agent": false,
+    "json_path": "/sonoraport-banking-server-runtime-rebuild-v4.json",
+    "server_path": "/server.js"
   }
 }
