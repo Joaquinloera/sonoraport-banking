@@ -142,6 +142,53 @@ jobs:
 
           grep -q '"status": "cancelled"' cancelled-status.json
 
+      - name: Reject conflicting idempotency replay
+        run: |
+          STATUS=$(curl --silent --output conflict.json --write-out "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: matcha-test-intent-001" \
+            -d '{"amount":1300,"currency":"USD","orderId":"MATCHA-TEST-CHANGED"}' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents)
+
+          test "$STATUS" = "409"
+          grep -q 'different request' conflict.json
+
+      - name: Reject malformed JSON
+        run: |
+          STATUS=$(curl --silent --output malformed.json --write-out "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: malformed-json-001" \
+            --data-binary '{"amount":1250' \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents)
+
+          test "$STATUS" = "400"
+          grep -q 'Invalid JSON request body' malformed.json
+
+      - name: Reject nonexistent payment intent
+        run: |
+          STATUS=$(curl --silent --output missing-intent.json --write-out "%{http_code}" \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents/pi_does-not-exist)
+
+          test "$STATUS" = "404"
+          grep -q 'Payment intent not found' missing-intent.json
+
+      - name: Verify cancellation replay is stable
+        run: |
+          INTENT_ID=$(cat payment-intent-id.txt)
+
+          curl --fail --silent \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            "http://127.0.0.1:3100/api/matcha-manita/payment-intents/$INTENT_ID/cancel" \
+            | tee cancel-replay.json
+
+          grep -q '"status": "cancelled"' cancel-replay.json
+
       - name: Stop SonoraPort Banking
         if: always()
         run: |
