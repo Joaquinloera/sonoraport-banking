@@ -1,0 +1,157 @@
+{
+  "buildId": "SONORAPORT_BANKING_SERVER_RUNTIME_005",
+  "project": "SONORAPORT_BANKING",
+  "repository": "Joaquinloera/sonoraport-banking",
+  "branch": "main",
+  "buildMode": "SOURCE_RECOVERY_AND_RUNTIME_INTEGRATION",
+  "status": "RED_PENDING_SERVER_JS_UPLOAD_AND_CI_VERIFICATION",
+
+  "repair": {
+    "manifestIsExecutableRepair": false,
+    "actualRepairFile": "server.js",
+    "actualRepairPath": "/server.js",
+    "actualRepairAction": "REPLACE",
+    "completeRecoveredServerAvailable": true,
+    "completeRecoveredServerBytes": 22416,
+    "reason": "The GitHub Actions failure is caused by truncated JavaScript. This JSON records the repair state but does not replace or execute server.js."
+  },
+
+  "recovery": {
+    "targetFile": "server.js",
+    "location": "/server.js",
+    "action": "REPLACE",
+    "brokenMainBlob": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
+    "recoveryCommit": "a2c11a384c0025ead9eceadc4ea2f200800e6081",
+    "recoveryBlob": "e34fde550270621a3be7935577e0f9e360ddfc65",
+    "failure": "SyntaxError: Unexpected end of input",
+    "failureCause": "main/server.js was physically truncated",
+    "recoveredAndIntegratedBytes": 22416
+  },
+
+  "runtimeIntegration": {
+    "runtimeFile": "production-rail-runtime.js",
+    "runtimeImport": "./production-rail-runtime",
+    "publicSummaryFunction": "productionRailRuntime.publicRailSummary()",
+    "runtimeStatusFunction": "productionRailRuntime.railStatus",
+    "duplicateLocalRailStatusRemoved": true,
+    "productionRailsRoute": "/api/production-rails",
+    "railsSource": "railSummary.rails",
+    "runtimeTotalsSource": "railSummary.totals",
+    "integrationPresentInRecoveredServer": true
+  },
+
+  "serverRuntime": {
+    "service": "sonoraport-banking",
+    "apiVersion": "1.3.0",
+    "nodeMinimum": "20",
+    "healthRoute": "/api/health",
+    "capabilitiesRoute": "/api/capabilities",
+    "productionRailsRoute": "/api/production-rails",
+    "worldSandboxRoute": "/api/world-sandbox/status",
+    "serverListenPresent": true,
+    "moduleExportsPresent": true
+  },
+
+  "paypal": {
+    "adapter": "paypal-production-adapter.js",
+    "credentialsServerSideOnly": true,
+    "providerConfirmationRequired": true,
+    "unverifiedSettlementAllowed": false,
+    "routes": [
+      "GET /api/paypal/status",
+      "POST /api/paypal/orders",
+      "GET /api/paypal/orders/:providerOrderId",
+      "POST /api/paypal/orders/:providerOrderId/capture"
+    ]
+  },
+
+  "security": {
+    "maxBodyBytes": 65536,
+    "invalidJsonHandlingPresent": true,
+    "bodyTooLargeHandlingPresent": true,
+    "timingSafeTokenComparisonPresent": true,
+    "idempotencyRequired": true,
+    "requestFingerprint": "SHA-256",
+    "auditReceiptDigest": "SHA-256",
+    "auditProtocol": "SONORAPORT-AUDIT-1",
+    "credentialsCommittedToRepository": false,
+    "providerConfirmationRequired": true,
+    "unverifiedSettlementAllowed": false
+  },
+
+  "worldSandbox": {
+    "bridge": "worldsandbox13",
+    "route": "/api/world-sandbox/status",
+    "statusRead": true,
+    "capabilityRead": true,
+    "credentialRead": false,
+    "unrestrictedTransfers": false
+  },
+
+  "scope": {
+    "sonoraportBanking": true,
+    "worldsanbox13": true,
+    "sonoraportAiHoldingWebsite": true,
+    "matchaManitaBuildWork": false
+  },
+
+  "swarmSkim": {
+    "orchestrator": "ACTIVE",
+    "banking": "SERVER_RECOVERY_READY",
+    "worldSandbox": "WAITING_FOR_BANKING_GREEN_GATE",
+    "website": "WAITING_FOR_BANKING_GREEN_GATE",
+    "auth": "REVIEW_REQUIRED",
+    "security": "REVIEW_REQUIRED",
+    "integration": "SERVER_RUNTIME_MERGED",
+    "testQa": "AWAITING_GITHUB_UPLOAD"
+  },
+
+  "verification": {
+    "recoverySourceLocated": true,
+    "completeServerRecovered": true,
+    "productionRailRuntimeLocated": true,
+    "runtimeImportPresent": true,
+    "duplicateRailStatusRemoved": true,
+    "publicRailSummaryPresent": true,
+    "productionRailsResponseIntegrated": true,
+    "paypalRoutesPresent": true,
+    "worldSandboxRoutePresent": true,
+    "serverListenPresent": true,
+    "moduleExportsPresent": true
+  },
+
+  "githubGreenGate": {
+    "correctedServerJsPrepared": true,
+    "ownerUploadedServerJsToMain": false,
+    "mainServerFetchedBackAfterUpload": false,
+    "uploadedBlobVerified": false,
+    "githubActionsRerunObserved": false,
+    "nodeCheckServerJsPassedOnMain": false,
+    "nodeCheckProductionRailRuntimePassed": false,
+    "integrationTestsPassed": false,
+    "securityTestsPassed": false,
+    "finalStatus": "RED"
+  },
+
+  "requiredUploadOrder": [
+    {
+      "order": 1,
+      "file": "server.js",
+      "path": "/server.js",
+      "action": "REPLACE",
+      "purpose": "ACTUAL_RUNTIME_REPAIR"
+    },
+    {
+      "order": 2,
+      "file": "sonoraport-banking-server-runtime-rebuild-v5.json",
+      "action": "CREATE_OR_REPLACE",
+      "purpose": "BUILD_STATE_MANIFEST"
+    }
+  ],
+
+  "nextAction": {
+    "owner": "UPLOAD_COMPLETE_CORRECTED_SERVER_JS_TO_MAIN",
+    "agent": "FETCH_SERVER_JS_BACK_FROM_MAIN_AND_RUN_VERIFICATION",
+    "doNotCallGreenBeforeMainVerification": true
+  }
+}
