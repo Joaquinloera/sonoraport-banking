@@ -41,12 +41,6 @@ const railsFile =
     "production-payment-rails.json"
   );
 
-/*
- * -------------------------------------------------------
- * PRODUCTION RAIL CONFIGURATION
- * -------------------------------------------------------
- */
-
 function loadProductionRails() {
   const config =
     JSON.parse(
@@ -59,8 +53,7 @@ function loadProductionRails() {
   if (
     config.environment !== "production" ||
     config.system !== SERVICE_NAME ||
-    config.executionAuthority !==
-      SERVICE_NAME ||
+    config.executionAuthority !== SERVICE_NAME ||
     !config.rails ||
     Array.isArray(config.rails)
   ) {
@@ -75,51 +68,21 @@ function loadProductionRails() {
 const productionRails =
   loadProductionRails();
 
-/*
- * Centralized production rail runtime.
- *
- * Individual environment inspection and
- * runtime state calculation now belong to:
- *
- * production-rail-runtime.js
- */
-
 function productionRailStatus() {
   return productionRailRuntime
     .publicRailSummary();
 }
 
-/*
- * -------------------------------------------------------
- * HTTP UTILITIES
- * -------------------------------------------------------
- */
-
-function sendJSON(
-  res,
-  status,
-  data
-) {
-  res.writeHead(
-    status,
-    {
-      "Content-Type":
-        "application/json; charset=utf-8",
-
-      "Cache-Control":
-        "no-store",
-
-      "X-Content-Type-Options":
-        "nosniff"
-    }
-  );
+function sendJSON(res, status, data) {
+  res.writeHead(status, {
+    "Content-Type":
+      "application/json; charset=utf-8",
+    "Cache-Control": "no-store",
+    "X-Content-Type-Options": "nosniff"
+  });
 
   res.end(
-    JSON.stringify(
-      data,
-      null,
-      2
-    )
+    JSON.stringify(data, null, 2)
   );
 }
 
@@ -127,35 +90,681 @@ function newRequestId() {
   return crypto.randomUUID();
 }
 
-function safeEqual(
-  a,
-  b
-) {
+function safeEqual(a, b) {
   const left =
-    Buffer.from(
-      String(a || "")
-    );
-
+    Buffer.from(String(a || ""));
   const right =
-    Buffer.from(
-      String(b || "")
-    );
+    Buffer.from(String(b || ""));
 
   return (
-    left.length ===
-      right.length &&
+    left.length === right.length &&
+    crypto.timingSafeEqual(left, right)
+  );
+}
+
+function settlementConfigured() {
+  return Boolean(
+    process.env.BANKING_SETTLEMENT_PROVIDER &&
+    process.env.BANKING_SETTLEMENT_CREDENTIAL
+  );
+}
+
+function realSettlementAuthorized() {
+  return (
+    process.env.BANKING_REAL_SETTLEMENT_AUTHORIZED ===
+      "true" &&
+    settlementConfigured()
+  );
+}
+
+function bankingCapabilities() {
+  return {
+    accounts: true,
+    transactions: true,
+    cards: true,
+    transfers: true,
+    statements: true,
+    disputes: true,
+
+    environment: "production",
+
+    productionTarget:
+      productionRails.controls
+        ?.realMoneyTarget === true,
+
+    productionRails:
+      productionRailStatus(),
+
+    paypalProduction:
+      paypalProduction
+        .configurationStatus(),
+
+    worldSandboxBridge: {
+      enabled: true,
+      authenticated: true
+    },
+
+    matchaManita: {
+      paymentIntents: true,
+      sandboxMode:
+        !realSettlementAuthorized(),
+      realSettlementAuthorized:
+        realSettlementAuthorized(),
+      providerConfirmationRequired: true
+    },
+
+    externalSettlement: {
+      configured:
+        settlementConfigured(),
+      authorized:
+        realSettlementAuthorized(),
+      providerConfirmationRequired: true,
+      unverifiedSettlementAllowed: false
+    }
+  };
+}
+
+function authenticate(req) {
+  const expected =
+    process.env.MATCHA_MANITA_BANKING_TOKEN;
+
+  if (!expected) {
+    return {
+      ok: false,
+      code: 503,
+      error:
+        "MATCHA MANITA banking authentication is not configured."
+    };
+  }
+
+  const header =
+    req.headers.authorization || "";
+
+  if (!header.startsWith("Bearer ")) {
+    return {
+      ok: false,
+      code: 401,
+      error:
+        "Authentication required."
+    };
+  }
+
+  if (
+    !safeEqual(
+      header.slice(7),
+      expected
+    )
+  ) {
+    return {
+      ok: false,
+      code: 403,
+      error:
+        "Invalid banking authorization."
+    };
+  }
+
+  return { ok: true };
+}
+
+function readJSON(req) {
+  return new Promise(
+    (resolve, reject) => {
+      let body = "";
+      let size = 0;
+
+      req.on("data", chunk => {
+        size += chunk.length;
+
+        if (size > MAX_BODY_BYTES) {
+          reject(
+            new Error("BODY_TOO_LARGE")
+          );
+          req.destroy();
+          return;
+        }
+
+        body += chunk;
+      });
+
+      req.on("end", () => {
+        if (!body) {
+          resolve({});
+          return;
+        }
+
+        try {
+          resolve(
+            JSON.parse(body)
+          );
+        } catch {
+          reject(
+            new Error("INVALID_JSON")
+          );
+        }
+      });
+
+      req.on("error", reject);
+    }
+  );
+}
+
+function validateIntent(body) {
+  const errors = [];
+
+  if (
+    !Number.isInteger(body.amount) ||
+    body.amount <= 0
+  ) {
+    errors.push(
+      "amount must be a positive integer."
+    );
+  }
+
+  if (
+    typeof body.currency !== "string" ||
+    !/^[A-Za-z]{3}$/.test(
+      body.currency
+    )
+  ) {
+    errors.push(
+      "currency must be a three-letter currency code."
+    );
+  }
+
+  if (
+    body.orderId !== undefined &&
+    (
+      typeof body.orderId !== "string" ||
+      body.orderId.length > 128
+    )
+  ) {
+    errors.push("invalid orderId.");
+  }
+
+  if (
+    body.description !== undefined &&
+    (
+      typeof body.description !== "string" ||
+      body.description.length > 500
+    )
+  ) {
+    errors.push(
+      "invalid description."
+    );
+  }
+
+  return errors;
+}
+
+function digest(value) {
+  return crypto
+    .createHash("sha256")
+    .update(JSON.stringify(value))
+    .digest("hex");
+}
+
+function publicIntent(intent) {
+  return {
+    id: intent.id,
+    object: "payment_intent",
+    amount: intent.amount,
+    currency: intent.currency,
+    orderId: intent.orderId,
+    description: intent.description,
+    status: intent.status,
+    mode: intent.mode,
+    environment: intent.environment,
+    settlementStatus:
+      intent.settlementStatus,
+    createdAt: intent.createdAt,
+    updatedAt: intent.updatedAt
+  };
+}
+
+function createReceipt(
+  action,
+  intent,
+  requestId
+) {
+  const receipt = {
+    receiptId:
+      `rcpt_${crypto.randomUUID()}`,
+    protocol:
+      "SONORAPORT-AUDIT-1",
+    action,
+    paymentIntentId: intent.id,
+    paymentStatus: intent.status,
+    mode: intent.mode,
+    environment: intent.environment,
+    settlementStatus:
+      intent.settlementStatus,
+    requestId,
+    createdAt:
+      new Date().toISOString()
+  };
+
+  receipt.digest =
+    digest(receipt);
+
+  auditReceipts.set(
+    intent.id,
+    receipt
+  );
+
+  return receipt;
+}
+
+function intentIdFromPath(
+  pathname,
+  suffix = ""
+) {
+  const base =
+    "/api/matcha-manita/payment-intents/";
+
+  if (!pathname.startsWith(base)) {
+    return null;
+  }
+
+  let rest =
+    pathname.slice(base.length);
+
+  if (suffix) {
+    if (!rest.endsWith(suffix)) {
+      return null;
+    }
+
+    rest =
+      rest.slice(
+        0,
+        rest.length - suffix.length
+      );
+  }
+
+  if (!rest || rest.includes("/")) {
+    return null;
+  }
+
+  return decodeURIComponent(rest);
+}
+
+async function handlePayPalProduction(
+  req,
+  res,
+  url,
+  requestId
+) {
+  const auth = authenticate(req);
+
+  if (!auth.ok) {
+    return sendJSON(
+      res,
+      auth.code,
+      {
+        ok: false,
+        error: auth.error,
+        requestId
+      }
+    );
+  }
+
+  if (
+    req.method === "GET" &&
+    url.pathname ===
+      "/api/paypal/status"
+  ) {
+    return sendJSON(
+      res,
+      200,
+      {
+        ok: true,
+        paypal:
+          paypalProduction
+            .configurationStatus(),
+        requestId
+      }
+    );
+  }
+
+  if (
+    req.method === "POST" &&
+    url.pathname ===
+      "/api/paypal/orders"
+  ) {
+    const key =
+      req.headers[
+        "idempotency-key"
+      ];
+
+    if (
+      typeof key !== "string" ||
+      key.length < 8 ||
+      key.length > 255
+    ) {
+      return sendJSON(
+        res,
+        400,
+        {
+          ok: false,
+          error:
+            "A valid Idempotency-Key header is required.",
+          requestId
+        }
+      );
+    }
+
+    const body =
+      await readJSON(req);
+
+    if (
+      !Number.isInteger(
+        body.amount
+      ) ||
+      body.amount <= 0
+    ) {
+      return sendJSON(
+        res,
+        400,
+        {
+          ok: false,
+          error:
+            "amount must be a positive integer in minor currency units.",
+          requestId
+        }
+      );
+    }
+
+    if (
+      typeof body.currency !==
+        "string" ||
+      !/^[A-Za-z]{3}$/.test(
+        body.currency
+      )
+    ) {
+      return sendJSON(
+        res,
+        400,
+        {
+          ok: false,
+          error:
+            "currency must be a three-letter currency code.",
+          requestId
+        }
+      );
+    }
+
+    const result =
+      await paypalProduction
+        .createOrder({
+          amount:
+            (
+              body.amount / 100
+            ).toFixed(2),
+          currency:
+            body.currency
+              .toUpperCase(),
+          referenceId:
+            body.orderId || null,
+          description:
+            body.description || null,
+          idempotencyKey: key
+        });
+
+    return sendJSON(
+      res,
+      201,
+      {
+        ok: true,
+        paypalOrder: result,
+        settlementExecuted: false,
+        providerConfirmed: false,
+        requestId
+      }
+    );
+  }
+
+  const orderPrefix =
+    "/api/paypal/orders/";
+
+  if (
+    url.pathname.startsWith(
+      orderPrefix
+    )
+  ) {
+    const rest =
+      url.pathname.slice(
+        orderPrefix.length
+      );
+
+    if (
+      req.method === "POST" &&
+      rest.endsWith("/capture")
+    ) {
+      const providerOrderId =
+        decodeURIComponent(
+          rest.slice(
+            0,
+            -"/capture".length
+          )
+        );
+
+      if (
+        !providerOrderId ||
+        providerOrderId.includes("/")
+      ) {
+        return sendJSON(
+          res,
+          400,
+          {
+            ok: false,
+            error:
+              "Invalid PayPal order ID.",
+            requestId
+          }
+        );
+      }
+
+      const key =
+        req.headers[
+          "idempotency-key"
+        ];
+
+      if (
+        typeof key !== "string" ||
+        key.length < 8 ||
+        key.length > 255
+      ) {
+        return sendJSON(
+          res,
+          400,
+          {
+            ok: false,
+            error:
+              "A valid Idempotency-Key header is required.",
+            requestId
+          }
+        );
+      }
+
+      const result =
+        await paypalProduction
+          .captureOrder({
+            providerOrderId,
+            idempotencyKey: key
+          });
+
+      return sendJSON(
+        res,
+        200,
+        {
+          ok: true,
+          paypalCapture: result,
+          settlementExecuted:
+            result
+              .settlementExecuted ===
+            true,
+          providerConfirmed:
+            result
+              .providerConfirmed ===
+            true,
+          requestId
+        }
+      );
+    }
+
+    if (
+      req.method === "GET" &&
+      rest &&
+      !rest.includes("/")
+    ) {
+      const providerOrderId =
+        decodeURIComponent(rest);
+
+      const result =
+        await paypalProduction
+          .getOrder(
+            providerOrderId
+          );
+
+      return sendJSON(
+        res,
+        200,
+        {
+          ok: true,
+          paypalOrder: result,
+          requestId
+        }
+      );
+    }
+  }
+
+  return sendJSON(
+    res,
+    404,
+    {
+      ok: false,
+      error:
+        "PayPal production endpoint not found.",
+      requestId
+    }
+  );
+}
+
+async function handleMatcha(
+  req,
+  res,
+  url,
+  requestId
+) {
+  const auth = authenticate(req);
+
+  if (!auth.ok) {
+    "use strict";
+
+const http = require("http");
+const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
+
+const paypalProduction =
+  require("./paypal-production-adapter");
+
+const productionRailRuntime =
+  require("./production-rail-runtime");
+
+const PORT =
+  Number(process.env.PORT) || 3100;
+
+const HOST =
+  process.env.HOST || "0.0.0.0";
+
+const SERVICE_NAME =
+  "sonoraport-banking";
+
+const API_VERSION =
+  "1.3.0";
+
+const MAX_BODY_BYTES =
+  65536;
+
+const paymentIntents =
+  new Map();
+
+const idempotencyIndex =
+  new Map();
+
+const auditReceipts =
+  new Map();
+
+const railsFile =
+  path.join(
+    __dirname,
+    "production-payment-rails.json"
+  );
+
+function loadProductionRails() {
+  const config =
+    JSON.parse(
+      fs.readFileSync(
+        railsFile,
+        "utf8"
+      )
+    );
+
+  if (
+    config.environment !== "production" ||
+    config.system !== SERVICE_NAME ||
+    config.executionAuthority !== SERVICE_NAME ||
+    !config.rails ||
+    Array.isArray(config.rails)
+  ) {
+    throw new Error(
+      "Invalid production payment rails configuration."
+    );
+  }
+
+  return config;
+}
+
+const productionRails =
+  loadProductionRails();
+
+function productionRailStatus() {
+  return productionRailRuntime
+    .publicRailSummary();
+}
+
+function sendJSON(res, status, data) {
+  res.writeHead(status, {
+    "Content-Type":
+      "application/json; charset=utf-8",
+    "Cache-Control": "no-store",
+    "X-Content-Type-Options": "nosniff"
+  });
+
+  res.end(
+    JSON.stringify(data, null, 2)
+  );
+}
+
+function newRequestId() {
+  return crypto.randomUUID();
+}
+
+function safeEqual(a, b) {
+  const left =
+    Buffer.from(String(a || ""));
+
+  const right =
+    Buffer.from(String(b || ""));
+
+  return (
+    left.length === right.length &&
     crypto.timingSafeEqual(
       left,
       right
     )
   );
 }
-
-/*
- * -------------------------------------------------------
- * SETTLEMENT CONFIGURATION
- * -------------------------------------------------------
- */
 
 function settlementConfigured() {
   return Boolean(
@@ -175,12 +784,6 @@ function realSettlementAuthorized() {
   );
 }
 
-/*
- * -------------------------------------------------------
- * BANKING CAPABILITIES
- * -------------------------------------------------------
- */
-
 function bankingCapabilities() {
   return {
     accounts: true,
@@ -194,10 +797,8 @@ function bankingCapabilities() {
       "production",
 
     productionTarget:
-      productionRails
-        .controls
-        ?.realMoneyTarget ===
-      true,
+      productionRails.controls
+        ?.realMoneyTarget === true,
 
     productionRails:
       productionRailStatus(),
@@ -240,12 +841,6 @@ function bankingCapabilities() {
   };
 }
 
-/*
- * -------------------------------------------------------
- * AUTHENTICATION
- * -------------------------------------------------------
- */
-
 function authenticate(req) {
   const expected =
     process.env
@@ -262,8 +857,7 @@ function authenticate(req) {
   }
 
   const header =
-    req.headers.authorization ||
-    "";
+    req.headers.authorization || "";
 
   if (
     !header.startsWith(
@@ -273,6 +867,7 @@ function authenticate(req) {
     return {
       ok: false,
       code: 401,
+
       error:
         "Authentication required."
     };
@@ -287,6 +882,7 @@ function authenticate(req) {
     return {
       ok: false,
       code: 403,
+
       error:
         "Invalid banking authorization."
     };
@@ -297,18 +893,9 @@ function authenticate(req) {
   };
 }
 
-/*
- * -------------------------------------------------------
- * REQUEST BODY
- * -------------------------------------------------------
- */
-
 function readJSON(req) {
   return new Promise(
-    (
-      resolve,
-      reject
-    ) => {
+    (resolve, reject) => {
       let body = "";
       let size = 0;
 
@@ -346,9 +933,7 @@ function readJSON(req) {
 
           try {
             resolve(
-              JSON.parse(
-                body
-              )
+              JSON.parse(body)
             );
           } catch {
             reject(
@@ -368,15 +953,7 @@ function readJSON(req) {
   );
 }
 
-/*
- * -------------------------------------------------------
- * PAYMENT INTENT VALIDATION
- * -------------------------------------------------------
- */
-
-function validateIntent(
-  body
-) {
+function validateIntent(body) {
   const errors = [];
 
   if (
@@ -439,16 +1016,12 @@ function digest(value) {
   return crypto
     .createHash("sha256")
     .update(
-      JSON.stringify(
-        value
-      )
+      JSON.stringify(value)
     )
     .digest("hex");
 }
 
-function publicIntent(
-  intent
-) {
+function publicIntent(intent) {
   return {
     id:
       intent.id,
@@ -487,12 +1060,6 @@ function publicIntent(
       intent.updatedAt
   };
 }
-
-/*
- * -------------------------------------------------------
- * AUDIT RECEIPTS
- * -------------------------------------------------------
- */
 
 function createReceipt(
   action,
@@ -540,12 +1107,6 @@ function createReceipt(
 
   return receipt;
 }
-
-/*
- * -------------------------------------------------------
- * PAYMENT INTENT PATH PARSER
- * -------------------------------------------------------
- */
 
 function intentIdFromPath(
   pathname,
@@ -596,12 +1157,6 @@ function intentIdFromPath(
   );
 }
 
-/*
- * -------------------------------------------------------
- * PAYPAL PRODUCTION ROUTES
- * -------------------------------------------------------
- */
-
 async function handlePayPalProduction(
   req,
   res,
@@ -625,8 +1180,7 @@ async function handlePayPalProduction(
   }
 
   if (
-    req.method ===
-      "GET" &&
+    req.method === "GET" &&
     url.pathname ===
       "/api/paypal/status"
   ) {
@@ -646,8 +1200,7 @@ async function handlePayPalProduction(
   }
 
   if (
-    req.method ===
-      "POST" &&
+    req.method === "POST" &&
     url.pathname ===
       "/api/paypal/orders"
   ) {
@@ -677,9 +1230,7 @@ async function handlePayPalProduction(
     }
 
     const body =
-      await readJSON(
-        req
-      );
+      await readJSON(req);
 
     if (
       !Number.isInteger(
@@ -873,8 +1424,7 @@ async function handlePayPalProduction(
     }
 
     if (
-      req.method ===
-        "GET" &&
+      req.method === "GET" &&
       rest &&
       !rest.includes("/")
     ) {
@@ -918,12 +1468,6 @@ async function handlePayPalProduction(
   );
 }
 
-/*
- * -------------------------------------------------------
- * MATCHA MANITA PAYMENT INTENTS
- * -------------------------------------------------------
- */
-
 async function handleMatcha(
   req,
   res,
@@ -949,8 +1493,7 @@ async function handleMatcha(
   }
 
   if (
-    req.method ===
-      "POST" &&
+    req.method === "POST" &&
     url.pathname ===
       "/api/matcha-manita/payment-intents"
   ) {
@@ -980,18 +1523,12 @@ async function handleMatcha(
     }
 
     const body =
-      await readJSON(
-        req
-      );
+      await readJSON(req);
 
     const errors =
-      validateIntent(
-        body
-      );
+      validateIntent(body);
 
-    if (
-      errors.length
-    ) {
+    if (errors.length) {
       return sendJSON(
         res,
         400,
@@ -1028,13 +1565,13 @@ async function handleMatcha(
       });
 
     const previous =
-      idempotencyIndex
-        .get(key);
+      idempotencyIndex.get(
+        key
+      );
 
     if (previous) {
       if (
-        previous
-          .fingerprint !==
+        previous.fingerprint !==
         fingerprint
       ) {
         return sendJSON(
@@ -1182,8 +1719,7 @@ async function handleMatcha(
   }
 
   if (
-    req.method ===
-      "GET"
+    req.method === "GET"
   ) {
     const receiptId =
       intentIdFromPath(
@@ -1237,7 +1773,9 @@ async function handleMatcha(
         200,
         {
           ok: true,
+
           receipt,
+
           requestId
         }
       );
@@ -1287,8 +1825,7 @@ async function handleMatcha(
   }
 
   if (
-    req.method ===
-      "POST"
+    req.method === "POST"
   ) {
     const intentId =
       intentIdFromPath(
@@ -1312,4 +1849,137 @@ async function handleMatcha(
             error:
               "Payment intent not found.",
 
-            requ
+            requestId
+          }
+        );
+      }
+
+      if (
+        intent.status ===
+        "succeeded"
+      ) {
+        return sendJSON(
+          res,
+          409,
+          {
+            ok: false,
+
+            error:
+              "A succeeded payment intent cannot be cancelled.",
+
+            requestId
+          }
+        );
+      }
+
+      if (
+        intent.status !==
+        "cancelled"
+      ) {
+        intent.status =
+          "cancelled";
+
+        intent.updatedAt =
+          new Date()
+            .toISOString();
+
+        createReceipt(
+          "payment_intent.cancelled",
+          intent,
+          requestId
+        );
+      }
+
+      return sendJSON(
+        res,
+        200,
+        {
+          ok: true,
+
+          paymentIntent:
+            publicIntent(
+              intent
+            ),
+
+          requestId
+        }
+      );
+    }
+  }
+
+  return sendJSON(
+    res,
+    404,
+    {
+      ok: false,
+
+      error:
+        "MATCHA MANITA banking endpoint not found.",
+
+      requestId
+    }
+  );
+}
+
+const server =
+  http.createServer(
+    async (req, res) => {
+      const requestId =
+        newRequestId();
+
+      try {
+        const url =
+          new URL(
+            req.url,
+            `http://${req.headers.host || "localhost"}`
+          );
+
+        if (
+          url.pathname
+            .startsWith(
+              "/api/paypal/"
+            )
+        ) {
+          return await handlePayPalProduction(
+            req,
+            res,
+            url,
+            requestId
+          );
+        }
+
+        if (
+          url.pathname
+            .startsWith(
+              "/api/matcha-manita/"
+            )
+        ) {
+          return await handleMatcha(
+            req,
+            res,
+            url,
+            requestId
+          );
+        }
+
+        if (
+          req.method !==
+          "GET"
+        ) {
+          return sendJSON(
+            res,
+            405,
+            {
+              error:
+                "Method not allowed",
+
+              requestId
+            }
+          );
+        }
+
+        if (
+          url.pathname ===
+          "/"
+        ) {
+          retu
