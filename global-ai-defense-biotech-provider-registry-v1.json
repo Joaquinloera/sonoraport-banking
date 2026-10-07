@@ -2,36 +2,12 @@
   "schemaVersion": "1.0.0",
   "registryId": "GLOBAL-AI-DEFENSE-BIOTECH-PROVIDERS-V1",
   "status": "ACTIVE",
-  "purpose": "Normalized provider capability and authentication registry for documented AI, defense AI, and life-science software integrations.",
+  "purpose": "Normalized public provider integration metadata for AI, defense-AI, and life-science providers. Secret credential values are prohibited.",
   "rules": {
     "publicDocumentationOnly": true,
     "storeSecretValues": false,
-    "credentialValues": "ENVIRONMENT_ONLY",
-    "normalizeProviderAuthentication": true,
-    "normalizeCapabilities": true
+    "credentialValues": "ENVIRONMENT_NAMES_ONLY"
   },
-
-  "providerSchema": {
-    "id": "string",
-    "name": "string",
-    "sector": "ai | defense_ai | life_science",
-    "platform": "string",
-    "protocols": [],
-    "sdkLanguages": [],
-    "authentication": {
-      "strategies": [],
-      "credentialNames": [],
-      "tokenType": null,
-      "tokenLifetime": null,
-      "scopes": [],
-      "environmentVariables": []
-    },
-    "capabilities": [],
-    "events": [],
-    "audit": [],
-    "adapterStatus": "research | planned | implemented | verified"
-  },
-
   "providers": [
     {
       "id": "cohere",
@@ -72,10 +48,9 @@
       ],
       "adapterStatus": "research"
     },
-
     {
       "id": "anduril-lattice",
-      "name": "Anduril",
+      "name": "Anduril Lattice",
       "sector": "defense_ai",
       "platform": "Lattice Developer Platform",
       "protocols": [
@@ -119,10 +94,9 @@
       "audit": [],
       "adapterStatus": "research"
     },
-
     {
       "id": "palantir-foundry",
-      "name": "Palantir",
+      "name": "Palantir Foundry",
       "sector": "defense_ai",
       "platform": "Foundry",
       "protocols": [
@@ -142,8 +116,6 @@
         "tokenType": "Bearer",
         "tokenLifetime": "OAuth access token",
         "scopes": [
-          "read",
-          "write",
           "application-specific"
         ],
         "environmentVariables": [
@@ -165,7 +137,6 @@
       ],
       "adapterStatus": "research"
     },
-
     {
       "id": "benchling",
       "name": "Benchling",
@@ -190,9 +161,7 @@
         "tokenType": "Bearer",
         "tokenLifetime": "OAuth access token",
         "scopes": [
-          "organization",
-          "team",
-          "project"
+          "app-permissions"
         ],
         "environmentVariables": [
           "BENCHLING_CLIENT_ID",
@@ -218,7 +187,6 @@
       ],
       "adapterStatus": "research"
     },
-
     {
       "id": "seven-bridges",
       "name": "Seven Bridges",
@@ -259,65 +227,5 @@
       ],
       "adapterStatus": "research"
     }
-  ],
-
-  "normalizedAuthentication": {
-    "API_KEY": {
-      "secretStorage": "SERVER_ENVIRONMENT",
-      "browserExposure": false
-    },
-
-    "BEARER_TOKEN": {
-      "secretStorage": "SERVER_ENVIRONMENT",
-      "browserExposure": false
-    },
-
-    "OAUTH2_CLIENT_CREDENTIALS": {
-      "flow": [
-        "CLIENT_ID",
-        "CLIENT_SECRET",
-        "TOKEN_ENDPOINT",
-        "ACCESS_TOKEN",
-        "PROVIDER_API"
-      ]
-    },
-
-    "OAUTH2_AUTHORIZATION_CODE": {
-      "flow": [
-        "AUTHORIZATION_REQUEST",
-        "AUTHORIZATION_CODE",
-        "TOKEN_EXCHANGE",
-        "ACCESS_TOKEN",
-        "PROVIDER_API"
-      ]
-    },
-
-    "CERTIFICATE_AUTH": {
-      "materials": [
-        "X509_CERTIFICATE",
-        "PRIVATE_KEY"
-      ]
-    }
-  },
-
-  "adapterContract": {
-    "initialize": true,
-    "authenticate": true,
-    "healthCheck": true,
-    "capabilities": true,
-    "normalizeError": true,
-    "normalizeResponse": true
-  },
-
-  "architecture": {
-    "flow": [
-      "PROVIDER_REGISTRY",
-      "PROVIDER_ADAPTER",
-      "AUTHENTICATION",
-      "AUTHORIZED_API",
-      "NORMALIZED_RESPONSE",
-      "EVENT_OR_RESULT",
-      "AUDIT"
-    ]
-  }
-          }
+  ]
+}
