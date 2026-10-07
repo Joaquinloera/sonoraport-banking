@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "4.0.0",
+  "buildId": "SONORAPORT_BANKING_SERVER_RUNTIME_004",
+  "project": "SONORAPORT_BANKING",
+  "repository": "Joaquinloera/sonoraport-banking",
+  "branch": "main",
+  "runtime": {
+    "service": "sonoraport-banking",
+    "entrypoint": "server.js",
+    "node": ">=20",
+    "hostEnvironmentVariable": "HOST",
+    "portEnvironmentVariable": "PORT",
+    "defaultHost": "0.0.0.0",
+    "defaultPort": 3100,
+    "apiVersion": "1.3.0",
+    "maxBodyBytes": 65536
+  },
+  "sourceRecovery": {
+    "target": "server.js",
+    "strategy": "RECOVER_COMPLETE_SOURCE_AND_INTEGRATE_CURRENT_RUNTIME",
+    "recoveryCommit": "a2c11a384c0025ead9eceadc4ea2f200800e6081",
+    "recoveryBlob": "e34fde550270621a3be7935577e0f9e360ddfc65",
+    "replaceTruncatedSource": true,
+    "preserveCompleteHttpRuntime": true,
+    "preservePayPalRuntime": true,
+    "preserveWorldSandboxBridge": true
+  },
+  "modules": {
+    "productionRails": {
+      "module": "./production-rail-runtime",
+      "configuration": "./production-payment-rails.json",
+      "summaryFunction": "publicRailSummary",
+      "statusFunction": "railStatus",
+      "centralizedRuntime": true,
+      "allowDuplicateLocalRailRuntime": false
+    },
+    "paypal": {
+      "module": "./paypal-production-adapter",
+      "environment": "production",
+      "authentication": "oauth2",
+      "credentialsSource": "environment",
+      "requiredEnvironment": [
+        "PAYPAL_CLIENT_ID",
+        "PAYPAL_CLIENT_SECRET"
+      ],
+      "providerConfirmationRequired": true
+    }
+  },
+  "productionRails": {
+    "route": "/api/production-rails",
+    "runtimeSource": "productionRailRuntime.publicRailSummary()",
+    "response": {
+      "rails": "railSummary.rails",
+      "runtime": "railSummary.totals"
+    },
+    "credentialsStoredInRepository": false,
+    "providerAuthenticationRequired": true,
+    "providerConfirmationRequired": true,
+    "reconciliationRequired": true,
+    "allowUnverifiedSettlement": false
+  },
+  "paypalRoutes": {
+    "status": {
+      "method": "GET",
+      "path": "/api/paypal/status"
+    },
+    "createOrder": {
+      "method": "POST",
+      "path": "/api/paypal/orders",
+      "idempotencyRequired": true
+    },
+    "getOrder": {
+      "method": "GET",
+      "path": "/api/paypal/orders/:providerOrderId"
+    },
+    "captureOrder": {
+      "method": "POST",
+      "path": "/api/paypal/orders/:providerOrderId/capture",
+      "idempotencyRequired": true,
+      "providerConfirmationRequired": true
+    }
+  },
+  "security": {
+    "authorization": {
+      "scheme": "Bearer",
+      "timingSafeComparison": true
+    },
+    "requestBody": {
+      "jsonRequired": true,
+      "maxBytes": 65536,
+      "rejectInvalidJson": true,
+      "rejectOversizedBody": true
+    },
+    "idempotency": {
+      "requiredForMoneyMovement": true,
+      "minimumKeyLength": 8,
+      "maximumKeyLength": 255,
+      "requestFingerprint": "SHA-256",
+      "rejectKeyReuseWithDifferentPayload": true
+    },
+    "audit": {
+      "enabled": true,
+      "protocol": "SONORAPORT-AUDIT-1",
+      "digest": "SHA-256",
+      "requestId": "UUID"
+    },
+    "settlement": {
+      "providerConfirmationRequired": true,
+      "allowFabricatedSettlement": false,
+      "allowUnverifiedSettlement": false
+    },
+    "secrets": {
+      "source": "environment",
+      "commitSecretsToRepository": false
+    }
+  },
+  "worldSandbox": {
+    "enabled": true,
+    "bridge": "worldsandbox13",
+    "route": "/api/world-sandbox/status",
+    "permissions": {
+      "statusRead": true,
+      "capabilityRead": true,
+      "credentialRead": false,
+      "unrestrictedTransfers": false
+    }
+  },
+  "health": {
+    "root": "/",
+    "health": "/api/health",
+    "capabilities": "/api/capabilities",
+    "productionRails": "/api/production-rails",
+    "worldSandbox": "/api/world-sandbox/status"
+  },
+  "cardRuntime": {
+    "router": "netlify/functions/lib/card-issuer-router.mjs",
+    "credentialsSource": "environment",
+    "providerVerificationRequired": true,
+    "allowFabricatedApproval": false,
+    "allowUnverifiedSettlement": false
+  },
+  "requiredSourceIntegration": {
+    "server": {
+      "file": "server.js",
+      "requireModules": [
+        "./paypal-production-adapter",
+        "./production-rail-runtime"
+      ],
+      "productionRailSummary": "productionRailRuntime.publicRailSummary()",
+      "productionRailStatusExport": "productionRailRuntime.railStatus"
+    },
+    "productionRailRuntime": {
+      "file": "production-rail-runtime.js",
+      "requiredExports": [
+        "REQUIRED_ENVIRONMENT",
+        "RAIL_CONFIGURATION",
+        "configured",
+        "environmentStatus",
+        "railStatus",
+        "allStatuses",
+        "productionRailSummary",
+        "publicRailStatus",
+        "publicRailSummary",
+        "assertRailEnabled",
+        "assertRailConfigured",
+        "assertRailAdapterPresent"
+      ]
+    },
+    "paypalAdapter": {
+      "file": "paypal-production-adapter.js",
+      "requiredExports": [
+        "PayPalProductionError",
+        "configurationStatus",
+        "createOrder",
+        "getOrder",
+        "captureOrder"
+      ]
+    }
+  },
+  "validation": {
+    "commands": [
+      "node --check server.js",
+      "node --check production-rail-runtime.js",
+      "npm test"
+    ],
+    "requireAllCommandsToPass": true,
+    "requireServerEntrypoint": true,
+    "requireRuntimeModule": true,
+    "requirePayPalAdapter": true,
+    "requireProductionRailsConfiguration": true
+  }
+}
