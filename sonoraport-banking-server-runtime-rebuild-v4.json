@@ -5,7 +5,6 @@
   "environment": "production",
   "buildMode": "SOURCE_REPAIR",
   "status": "READY_FOR_SOURCE_REPAIR",
-
   "sourceRecovery": {
     "target": "server.js",
     "knownGoodBlobSha": "e34fde550270621a3be7935577e0f9e360ddfc65",
@@ -13,7 +12,6 @@
     "damagedBlobSha": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
     "strategy": "RESTORE_KNOWN_GOOD_THEN_APPLY_RUNTIME_INTEGRATION"
   },
-
   "runtime": {
     "file": "production-rail-runtime.js",
     "verifiedBlobSha": "48e5717acdd1b4a3ba59561d98386b4228b1e740",
@@ -21,7 +19,6 @@
     "summaryFunction": "publicRailSummary",
     "railStatusFunction": "railStatus"
   },
-
   "integration": {
     "productionRailStatus": {
       "source": "productionRailRuntime.publicRailSummary()"
@@ -36,7 +33,6 @@
       "productionRailStatus": "productionRailStatus"
     }
   },
-
   "preserve": [
     "HTTP_SERVER",
     "PAYPAL_PRODUCTION_ROUTES",
@@ -49,7 +45,6 @@
     "SERVER_LISTEN",
     "MODULE_EXPORTS"
   ],
-
   "verification": {
     "syntaxCheck": "node --check server.js",
     "requireRuntimeImport": true,
@@ -61,14 +56,12 @@
     "requireNoCredentialValuesInSource": true,
     "requireNoTruncatedSource": true
   },
-
   "execution": {
     "phase": "MANIFEST_UPLOAD_ONLY",
     "modifyServerDuringUpload": false,
     "deleteExistingFiles": false,
     "replaceExistingJson": false
   },
-
   "next": {
     "action": "VERIFY_MANIFEST_THEN_REBUILD_SERVER",
     "target": "server.js",
