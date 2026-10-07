@@ -1977,9 +1977,272 @@ const server =
             }
           );
         }
+if (
+  url.pathname ===
+  "/"
+) {
+        module.exports = {
+  server,
+            return sendJSON(
+            res,
+            200,
+            {
+              service:
+                SERVICE_NAME,
+              message:
+                "SonoraPort Banking API",
+              version:
+                API_VERSION,
+              environment:
+                "production",
+              requestId
+            }
+          );
+        }
 
         if (
           url.pathname ===
-          "/"
+          "/api/health"
         ) {
-          retu
+          return sendJSON(
+            res,
+            200,
+            {
+              service:
+                SERVICE_NAME,
+              status:
+                "healthy",
+              version:
+                API_VERSION,
+              environment:
+                "production",
+              runtime:
+                process.version,
+              timestamp:
+                new Date().toISOString(),
+              requestId
+            }
+          );
+        }
+
+        if (
+          url.pathname ===
+          "/api/capabilities"
+        ) {
+          return sendJSON(
+            res,
+            200,
+            {
+              service:
+                SERVICE_NAME,
+              capabilities:
+                bankingCapabilities(),
+              timestamp:
+                new Date().toISOString(),
+              requestId
+            }
+          );
+        }
+
+        if (
+          url.pathname ===
+          "/api/production-rails"
+        ) {
+          return sendJSON(
+            res,
+            200,
+            {
+              service:
+                SERVICE_NAME,
+
+              environment:
+                productionRails.environment,
+
+              executionAuthority:
+                productionRails.executionAuthority,
+
+              rails:
+                productionRailStatus(),
+
+              controls: {
+                realMoneyTarget:
+                  productionRails
+                    .controls
+                    ?.realMoneyTarget ===
+                  true,
+
+                credentialsStoredInRepository:
+                  productionRails
+                    .controls
+                    ?.credentialsStoredInRepository ===
+                  true,
+
+                providerConfirmationRequired:
+                  productionRails
+                    .controls
+                    ?.requireProviderConfirmation ===
+                  true,
+
+                reconciliationRequired:
+                  productionRails
+                    .controls
+                    ?.requireReconciliation ===
+                  true,
+
+                unverifiedSettlementAllowed:
+                  productionRails
+                    .controls
+                    ?.allowUnverifiedSettlement ===
+                  true
+              },
+
+              timestamp:
+                new Date().toISOString(),
+
+              requestId
+            }
+          );
+        }
+
+        if (
+          url.pathname ===
+          "/api/world-sandbox/status"
+        ) {
+          return sendJSON(
+            res,
+            200,
+            {
+              service:
+                SERVICE_NAME,
+
+              bridge:
+                "worldsandbox13",
+
+              status:
+                "available",
+
+              authority: {
+                statusRead:
+                  true,
+
+                capabilityRead:
+                  true,
+
+                credentialRead:
+                  false,
+
+                unrestrictedTransfers:
+                  false
+              },
+
+              timestamp:
+                new Date().toISOString(),
+
+              requestId
+            }
+          );
+        }
+
+        return sendJSON(
+          res,
+          404,
+          {
+            error:
+              "Endpoint not found",
+            requestId
+          }
+        );
+
+      } catch (error) {
+        console.error(
+          "SONORAPORT BANKING ERROR:",
+          error
+        );
+
+        if (
+          error.message ===
+          "INVALID_JSON"
+        ) {
+          return sendJSON(
+            res,
+            400,
+            {
+              ok: false,
+              error:
+                "Invalid JSON request body.",
+              requestId
+            }
+          );
+        }
+
+        if (
+          error.message ===
+          "BODY_TOO_LARGE"
+        ) {
+          return sendJSON(
+            res,
+            413,
+            {
+              ok: false,
+              error:
+                "Request body too large.",
+              requestId
+            }
+          );
+        }
+
+        if (
+          error.name ===
+          "PayPalProductionError"
+        ) {
+          return sendJSON(
+            res,
+            502,
+            {
+              ok: false,
+              error:
+                error.message,
+              provider:
+                "paypal",
+              providerDetails:
+                error.details || {},
+              requestId
+            }
+          );
+        }
+
+        return sendJSON(
+          res,
+          500,
+          {
+            ok: false,
+            error:
+              "Internal banking service error.",
+            requestId
+          }
+        );
+      }
+    }
+  );
+
+server.listen(
+  PORT,
+  HOST,
+  () => {
+    console.log(
+      `SONORAPORT BANKING ONLINE — ${HOST}:${PORT}`
+    );
+  }
+);
+
+module.exports = {
+  server,
+  bankingCapabilities,
+  authenticateMatchaManita:
+    authenticate,
+  handleMatchaManita:
+    handleMatcha,
+  handlePayPalProduction,
+  loadProductionRails,
+  productionRailStatus
+};
