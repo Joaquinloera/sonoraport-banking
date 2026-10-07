@@ -1,129 +1,98 @@
 {
-  "build_id": "SONORAPORT_BANKING_SERVER_RUNTIME_004",
-  "version": 4,
-  "project": "SONORAPORT BANKING",
+  "buildId": "SONORAPORT_BANKING_SERVER_RUNTIME_004",
+  "project": "SONORAPORT_BANKING",
   "repository": "Joaquinloera/sonoraport-banking",
   "branch": "main",
-  "environment": "production",
-  "entrypoint": "server.js",
-  "runtime_module": "production-rail-runtime.js",
-  "api_version": "1.3.0",
-  "node": "20.x",
-
-  "repair": {
-    "replace_server_js": true,
-    "recovery_commit": "a2c11a384c0025ead9eceadc4ea2f200800e6081",
-    "recovery_blob": "e34fde550270621a3be7935577e0f9e360ddfc65",
-    "damaged_blob": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
-    "damage": "TRUNCATED_SERVER_SOURCE",
-    "legacy_local_rail_status_remove": true,
-    "central_runtime_required": true
+  "status": "RED",
+  "target": {
+    "file": "server.js",
+    "location": "/server.js",
+    "action": "REPLACE"
   },
-
-  "production_rails": {
-    "runtime": "./production-rail-runtime",
-    "runtime_blob": "48e5717acdd1b4a3ba59561d98386b4228b1e740",
-    "summary": "publicRailSummary",
-    "status": "railStatus",
-    "rails": [
-      "paypal",
-      "visa",
-      "venmo",
-      "cashapp",
-      "zelle"
-    ],
-    "provider_confirmation_required": true,
-    "reconciliation_required": true,
-    "unverified_settlement_allowed": false
+  "recoverySource": {
+    "commit": "a2c11a384c0025ead9eceadc4ea2f200800e6081",
+    "blob": "e34fde550270621a3be7935577e0f9e360ddfc65"
   },
-
+  "brokenMain": {
+    "blob": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
+    "failure": "SyntaxError: Unexpected end of input",
+    "cause": "server.js is physically truncated"
+  },
+  "productionRailRuntime": {
+    "file": "production-rail-runtime.js",
+    "blob": "48e5717acdd1b4a3ba59561d98386b4228b1e740",
+    "requiredImport": "./production-rail-runtime",
+    "summaryFunction": "publicRailSummary",
+    "statusFunction": "railStatus",
+    "duplicateLocalRailStatusAllowed": false
+  },
   "paypal": {
-    "adapter": "./paypal-production-adapter",
-    "preserve": true,
-    "routes": [
-      "GET /api/paypal/status",
-      "POST /api/paypal/orders",
-      "GET /api/paypal/orders/:providerOrderId",
-      "POST /api/paypal/orders/:providerOrderId/capture"
-    ],
-    "idempotency": true,
-    "provider_confirmation_required": true
+    "adapter": "paypal-production-adapter.js",
+    "blob": "8c1c960e652d9a7cddb42659a1e9a22612b147c4",
+    "credentialsServerSideOnly": true,
+    "providerConfirmationRequired": true,
+    "fabricatedSettlementAllowed": false
   },
-
-  "banking_boundary": {
-    "authentication": {
-      "scheme": "Bearer",
-      "token_env": "MATCHA_MANITA_BANKING_TOKEN",
-      "timing_safe_equal": true,
-      "hardcoded_token": false
-    },
+  "paymentIntentBoundary": {
+    "authentication": "Bearer MATCHA_MANITA_BANKING_TOKEN",
+    "timingSafeEqual": true,
+    "idempotencyRequired": true,
+    "requestFingerprint": "SHA-256",
+    "auditProtocol": "SONORAPORT-AUDIT-1",
+    "receiptDigest": "SHA-256",
     "routes": [
       "POST /api/matcha-manita/payment-intents",
       "GET /api/matcha-manita/payment-intents/:id",
       "POST /api/matcha-manita/payment-intents/:id/cancel",
       "GET /api/matcha-manita/payment-intents/:id/receipt"
-    ],
-    "idempotency": {
-      "header": "Idempotency-Key",
-      "request_fingerprint": "SHA-256",
-      "conflicting_reuse_rejected": true
-    },
-    "audit": {
-      "protocol": "SONORAPORT-AUDIT-1",
-      "receipt_digest": "SHA-256"
-    }
+    ]
   },
-
-  "server": {
-    "max_body_bytes": 65536,
-    "request_id": "crypto.randomUUID()",
-    "invalid_json_error": "INVALID_JSON",
-    "body_too_large_error": "BODY_TOO_LARGE",
-    "listen_required": true,
-    "module_exports_required": true
-  },
-
-  "core_routes": [
-    "GET /",
-    "GET /api/health",
-    "GET /api/capabilities",
-    "GET /api/production-rails",
-    "GET /api/world-sandbox/status"
+  "paypalRoutes": [
+    "GET /api/paypal/status",
+    "POST /api/paypal/orders",
+    "GET /api/paypal/orders/:providerOrderId",
+    "POST /api/paypal/orders/:providerOrderId/capture"
   ],
-
-  "required_server_changes": {
-    "runtime_import": "const productionRailRuntime = require(\"./production-rail-runtime\");",
-    "production_status": "return productionRailRuntime.publicRailSummary();",
-    "production_route_rails": "railSummary.rails",
-    "production_route_runtime": "railSummary.totals",
-    "rail_export": "productionRailRuntime.railStatus"
+  "requiredVerification": [
+    "node --check server.js",
+    "node --check production-rail-runtime.js",
+    "productionRailRuntime import",
+    "publicRailSummary()",
+    "railSummary.rails",
+    "railSummary.totals",
+    "PayPal routes",
+    "payment-intent routes",
+    "crypto.timingSafeEqual",
+    "idempotency",
+    "audit receipts",
+    "SONORAPORT-AUDIT-1",
+    "MAX_BODY_BYTES",
+    "INVALID_JSON",
+    "BODY_TOO_LARGE",
+    "/api/world-sandbox/status",
+    "server.listen",
+    "module.exports"
+  ],
+  "cardRuntime": {
+    "router": "netlify/functions/lib/card-issuer-router.mjs",
+    "routerBlob": "0d4447b56fe470788cb8c703b5a2fd95b6cb043d",
+    "providerVerificationRequired": true,
+    "fabricatedApprovalAllowed": false,
+    "unverifiedSettlementAllowed": false,
+    "missingFromMain": "netlify/functions/card-transaction-webhook.mjs"
   },
-
-  "security": {
-    "credentials_from_environment_only": true,
-    "repository_private_keys": false,
-    "repository_provider_secrets": false,
-    "repository_bearer_tokens": false,
-    "repository_pan": false,
-    "repository_cvv": false,
-    "repository_pin": false,
-    "repository_webhook_secrets": false
-  },
-
-  "qa": {
-    "commands": [
-      "node --check server.js",
-      "node --check production-rail-runtime.js"
-    ],
-    "required_exit_code": 0,
-    "fetch_uploaded_server_back": true,
-    "green_only_after_uploaded_source_verification": true
-  },
-
-  "upload": {
-    "manual": true,
-    "git_push_by_agent": false,
-    "json_path": "/sonoraport-banking-server-runtime-rebuild-v4.json",
-    "server_path": "/server.js"
+  "greenGate": {
+    "serverRestored": false,
+    "syntaxPassed": false,
+    "runtimeIntegrationPassed": false,
+    "paypalPassed": false,
+    "paymentIntentPassed": false,
+    "authenticationPassed": false,
+    "idempotencyPassed": false,
+    "auditPassed": false,
+    "securityPassed": false,
+    "uploadedToMain": false,
+    "mainFetchedBack": false,
+    "uploadedSourceVerified": false
   }
 }
