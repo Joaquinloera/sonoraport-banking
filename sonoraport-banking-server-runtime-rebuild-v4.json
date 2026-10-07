@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "buildId": "SONORAPORT_BANKING_SERVER_RUNTIME_004",
+  "system": "sonoraport-banking",
+  "environment": "production",
+  "branch": "main",
+  "status": "READY_FOR_REBUILD",
+  "repair": {
+    "target": "server.js",
+    "strategy": "RESTORE_KNOWN_GOOD_AND_APPLY_RUNTIME_INTEGRATION",
+    "knownGoodServerBlobSha": "e34fde550270621a3be7935577e0f9e360ddfc65",
+    "damagedServerBlobSha": "f42117476b517f3a0232b2a1b46b80e144f5daeb",
+    "preserve": [
+      "paypal-production-adapter",
+      "paypal-status-route",
+      "paypal-create-order-route",
+      "paypal-capture-route",
+      "matcha-manita-payment-intents",
+      "bearer-authentication",
+      "timing-safe-token-comparison",
+      "idempotency",
+      "audit-receipts",
+      "worldsandbox-status-route"
+    ]
+  },
+  "runtimeIntegration": {
+    "runtimeFile": "production-rail-runtime.js",
+    "runtimeBlobSha": "48e5717acdd1b4a3ba59561d98386b4228b1e740",
+    "requiredChanges": [
+      {
+        "operation": "IMPORT_RUNTIME",
+        "module": "./production-rail-runtime"
+      },
+      {
+        "operation": "REPLACE_LEGACY_RAIL_STATUS",
+        "function": "productionRailStatus",
+        "implementation": "productionRailRuntime.publicRailSummary()"
+      },
+      {
+        "operation": "RESTORE_PRODUCTION_RAILS_ENDPOINT",
+        "path": "/api/production-rails",
+        "railsExpression": "productionRailStatus().rails",
+        "totalsExpression": "productionRailStatus().totals"
+      },
+      {
+        "operation": "RESTORE_RUNTIME_EXPORT",
+        "export": "railRuntimeStatus",
+        "implementation": "productionRailRuntime.railStatus"
+      }
+    ]
+  },
+  "verification": {
+    "requireSyntaxCheck": true,
+    "requireRuntimeImport": true,
+    "requireHttpServer": true,
+    "requireServerListen": true,
+    "requireModuleExports": true,
+    "requireProductionRailsEndpoint": true,
+    "requirePayPalRoutes": true,
+    "requireMatchaPaymentIntentRoutes": true,
+    "requireAuthentication": true,
+    "requireIdempotency": true,
+    "requireAuditReceipts": true,
+    "allowCredentialValuesInRepository": false
+  },
+  "next": {
+    "target": "server.js",
+    "action": "APPLY_REBUILD_AND_VERIFY",
+    "expectedResult": "CENTRALIZED_PRODUCTION_RAIL_RUNTIME_RESTORED"
+  }
+}
