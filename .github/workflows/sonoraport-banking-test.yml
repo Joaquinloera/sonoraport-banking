@@ -182,24 +182,35 @@ jobs:
 
       - name: Test banking health
         run: |
-          curl --fail --silent http://127.0.0.1:3100/api/health | tee health.json
+          curl --fail --silent \
+            http://127.0.0.1:3100/api/health \
+            | tee health.json
+
           grep -q '"status": "healthy"' health.json
 
       - name: Test banking capabilities
         run: |
-          curl --fail --silent http://127.0.0.1:3100/api/capabilities | tee capabilities.json
+          curl --fail --silent \
+            http://127.0.0.1:3100/api/capabilities \
+            | tee capabilities.json
+
           grep -q '"paymentIntents": true' capabilities.json
           grep -q '"realSettlementAuthorized": false' capabilities.json
 
       - name: Test World Sandbox boundary
         run: |
-          curl --fail --silent http://127.0.0.1:3100/api/world-sandbox/status | tee world-sandbox.json
+          curl --fail --silent \
+            http://127.0.0.1:3100/api/world-sandbox/status \
+            | tee world-sandbox.json
+
           grep -q '"credentialRead": false' world-sandbox.json
           grep -q '"unrestrictedTransfers": false' world-sandbox.json
 
       - name: Reject unauthenticated MATCHA MANITA request
         run: |
-          STATUS=$(curl --silent --output unauthorized.json --write-out "%{http_code}" \
+          STATUS=$(curl --silent \
+            --output unauthorized.json \
+            --write-out "%{http_code}" \
             -X POST \
             -H "Content-Type: application/json" \
             -H "Idempotency-Key: unauthorized-test-001" \
@@ -286,7 +297,9 @@ jobs:
 
       - name: Reject conflicting idempotency replay
         run: |
-          STATUS=$(curl --silent --output conflict.json --write-out "%{http_code}" \
+          STATUS=$(curl --silent \
+            --output conflict.json \
+            --write-out "%{http_code}" \
             -X POST \
             -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
             -H "Content-Type: application/json" \
@@ -299,7 +312,9 @@ jobs:
 
       - name: Reject malformed JSON
         run: |
-          STATUS=$(curl --silent --output malformed.json --write-out "%{http_code}" \
+          STATUS=$(curl --silent \
+            --output malformed.json \
+            --write-out "%{http_code}" \
             -X POST \
             -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
             -H "Content-Type: application/json" \
@@ -310,9 +325,28 @@ jobs:
           test "$STATUS" = "400"
           grep -q 'Invalid JSON request body' malformed.json
 
+      - name: Reject oversized JSON body
+        run: |
+          node -e "require('fs').writeFileSync('oversized.json', JSON.stringify({description:'x'.repeat(65537)}))"
+
+          STATUS=$(curl --silent \
+            --output oversized-response.json \
+            --write-out "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: oversized-json-001" \
+            --data-binary @oversized.json \
+            http://127.0.0.1:3100/api/matcha-manita/payment-intents)
+
+          test "$STATUS" = "413"
+          grep -q 'Request body too large' oversized-response.json
+
       - name: Reject nonexistent payment intent
         run: |
-          STATUS=$(curl --silent --output missing-intent.json --write-out "%{http_code}" \
+          STATUS=$(curl --silent \
+            --output missing-intent.json \
+            --write-out "%{http_code}" \
             -H "Authorization: Bearer $MATCHA_MANITA_BANKING_TOKEN" \
             http://127.0.0.1:3100/api/matcha-manita/payment-intents/pi_does-not-exist)
 
