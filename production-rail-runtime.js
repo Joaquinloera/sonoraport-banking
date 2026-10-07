@@ -5,27 +5,34 @@
  * Production Rail Runtime
  *
  * Purpose:
- * - Central production-rail registry
+ * - Runtime representation of the declared production payment rails
  * - Environment/configuration inspection
  * - Server-side runtime gating
  * - No credentials or secret values are stored here
+ *
+ * IMPORTANT:
+ * - Registered/enabled does NOT mean authenticated.
+ * - Configured does NOT mean provider verified.
+ * - Provider verified does NOT mean settlement verified.
  */
 
 const REQUIRED_ENVIRONMENT = Object.freeze({
-  paypal: Object.freeze([
-    "PAYPAL_CLIENT_ID",
-    "PAYPAL_CLIENT_SECRET"
-  ]),
-
   visa: Object.freeze([
     "VISA_API_KEY",
     "VISA_SHARED_SECRET",
     "VISA_CLIENT_CERT_PATH",
-    "VISA_PRIVATE_KEY_PATH",
-    "CARD_ISSUER_NAME",
-    "CARD_ISSUER_PRIORITY",
-    "CARD_ISSUER_TIMEOUT_MS",
-    "CARD_ISSUER_WEBHOOK_SECRET"
+    "VISA_PRIVATE_KEY_PATH"
+  ]),
+
+  mastercard: Object.freeze([
+    "MASTERCARD_CONSUMER_KEY",
+    "MASTERCARD_SIGNING_KEY_PATH",
+    "MASTERCARD_SIGNING_KEY_PASSWORD"
+  ]),
+
+  paypal: Object.freeze([
+    "PAYPAL_CLIENT_ID",
+    "PAYPAL_CLIENT_SECRET"
   ]),
 
   venmo: Object.freeze([
@@ -33,35 +40,39 @@ const REQUIRED_ENVIRONMENT = Object.freeze({
     "PAYPAL_CLIENT_SECRET"
   ]),
 
-  cashapp: Object.freeze([
-    "CASH_APP_CLIENT_ID",
-    "CASH_APP_CLIENT_SECRET"
-  ]),
+  zelle: Object.freeze([]),
 
-  zelle: Object.freeze([
-    "ZELLE_PARTNER_ID",
-    "ZELLE_API_BASE_URL"
-  ])
+  jpmorganChase: Object.freeze([])
 });
 
 const RAIL_CONFIGURATION = Object.freeze({
-  paypal: Object.freeze({
-    id: "paypal",
-    name: "PayPal",
-    enabled: true,
-    mode: "production",
-    adapter: "paypal-production-adapter.js",
-    upstreamProvider: "paypal"
-  }),
-
   visa: Object.freeze({
     id: "visa",
-    name: "Visa Debit",
+    name: "Visa",
     enabled: true,
     mode: "production",
     adapter:
       "netlify/functions/lib/card-issuer-router.mjs",
     upstreamProvider: "visa"
+  }),
+
+  mastercard: Object.freeze({
+    id: "mastercard",
+    name: "Mastercard",
+    enabled: true,
+    mode: "production",
+    adapter: null,
+    upstreamProvider: "mastercard"
+  }),
+
+  paypal: Object.freeze({
+    id: "paypal",
+    name: "PayPal",
+    enabled: true,
+    mode: "production",
+    adapter:
+      "paypal-production-adapter.js",
+    upstreamProvider: "paypal"
   }),
 
   venmo: Object.freeze({
@@ -73,72 +84,96 @@ const RAIL_CONFIGURATION = Object.freeze({
     upstreamProvider: "paypal"
   }),
 
-  cashapp: Object.freeze({
-    id: "cashapp",
-    name: "Cash App",
-    enabled: true,
-    mode: "production",
-    adapter: null,
-    upstreamProvider: "cashapp"
-  }),
-
   zelle: Object.freeze({
     id: "zelle",
     name: "Zelle",
     enabled: true,
     mode: "production",
     adapter: null,
-    upstreamProvider: "authorized-partner",
-    provisioning: "authorized-partner"
+    upstreamProvider:
+      "authorized-partner",
+    provisioning:
+      "authorized-partner"
+  }),
+
+  jpmorganChase: Object.freeze({
+    id: "jpmorganChase",
+    name: "JPMorgan Chase",
+    enabled: true,
+    mode: "production",
+    adapter: null,
+    upstreamProvider:
+      "bank-provisioned",
+    provisioning:
+      "bank-provisioned"
   })
 });
 
 function configured(name) {
-  const value = process.env[name];
+  const value =
+    process.env[name];
 
-  if (typeof value !== "string") {
+  if (
+    typeof value !== "string"
+  ) {
     return false;
   }
 
-  const normalized = value.trim();
+  const normalized =
+    value.trim();
 
   if (!normalized) {
     return false;
   }
 
-  const placeholders = new Set([
-    "CONFIGURE_IN_NETLIFY",
-    "SET_IN_NETLIFY_NOT_GITHUB",
-    "CHANGE_ME",
-    "REPLACE_ME",
-    "TODO"
-  ]);
+  const placeholders =
+    new Set([
+      "CONFIGURE_IN_NETLIFY",
+      "SET_IN_NETLIFY_NOT_GITHUB",
+      "CHANGE_ME",
+      "REPLACE_ME",
+      "TODO"
+    ]);
 
-  return !placeholders.has(normalized);
+  return !placeholders.has(
+    normalized
+  );
 }
 
-function environmentStatus(names = []) {
-  const required = [...names];
+function environmentStatus(
+  names = []
+) {
+  const required =
+    [...names];
 
-  const present = required.filter(
-    name => configured(name)
-  );
+  const present =
+    required.filter(
+      name =>
+        configured(name)
+    );
 
-  const missing = required.filter(
-    name => !configured(name)
-  );
+  const missing =
+    required.filter(
+      name =>
+        !configured(name)
+    );
 
   return {
     required,
     present,
     missing,
-    configured: missing.length === 0
+
+    configured:
+      required.length > 0 &&
+      missing.length === 0
   };
 }
 
 function railStatus(provider) {
   const configuration =
-    RAIL_CONFIGURATION[provider];
+    RAIL_CONFIGURATION[
+      provider
+    ];
 
   if (!configuration) {
     return {
@@ -153,17 +188,40 @@ function railStatus(provider) {
     };
   }
 
+  const requiredEnvironment =
+    REQUIRED_ENVIRONMENT[
+      provider
+    ] || [];
+
   const environment =
     environmentStatus(
-      REQUIRED_ENVIRONMENT[provider] || []
+      requiredEnvironment
     );
 
-  let state = "ENABLED";
+  const requiresProvisioning =
+    Boolean(
+      configuration
+        .provisioning
+    );
 
-  if (!environment.configured) {
+  let state;
+
+  if (
+    requiredEnvironment.length >
+      0 &&
+    !environment.configured
+  ) {
     state =
       "ENABLED_AWAITING_CONFIGURATION";
-  } else if (!configuration.adapter) {
+  } else if (
+    requiresProvisioning &&
+    !configuration.adapter
+  ) {
+    state =
+      "ENABLED_AWAITING_PROVISIONING";
+  } else if (
+    !configuration.adapter
+  ) {
     state =
       "CONFIGURED_AWAITING_ADAPTER";
   } else {
@@ -179,7 +237,8 @@ function railStatus(provider) {
       configuration.name,
 
     enabled:
-      configuration.enabled === true,
+      configuration.enabled ===
+      true,
 
     mode:
       configuration.mode,
@@ -188,38 +247,47 @@ function railStatus(provider) {
       configuration.adapter,
 
     upstreamProvider:
-      configuration.upstreamProvider,
+      configuration
+        .upstreamProvider,
 
     provisioning:
-      configuration.provisioning || null,
+      configuration
+        .provisioning ||
+      null,
 
     configured:
       environment.configured,
 
     environment,
 
-    authenticated: false,
+    authenticated:
+      false,
 
-    providerVerified: false,
+    providerVerified:
+      false,
 
-    settlementVerified: false,
+    settlementVerified:
+      false,
 
     state,
 
-    credentialsExposed: false
+    credentialsExposed:
+      false
   };
 }
 
 function allStatuses() {
   return Object.keys(
     RAIL_CONFIGURATION
-  ).map(provider =>
-    railStatus(provider)
+  ).map(
+    provider =>
+      railStatus(provider)
   );
 }
 
 function productionRailSummary() {
-  const rails = allStatuses();
+  const rails =
+    allStatuses();
 
   return {
     service:
@@ -245,17 +313,20 @@ function productionRailSummary() {
 
       enabled:
         rails.filter(
-          rail => rail.enabled
+          rail =>
+            rail.enabled
         ).length,
 
       configured:
         rails.filter(
-          rail => rail.configured
+          rail =>
+            rail.configured
         ).length,
 
       authenticated:
         rails.filter(
-          rail => rail.authenticated
+          rail =>
+            rail.authenticated
         ).length,
 
       providerVerified:
@@ -273,14 +344,17 @@ function productionRailSummary() {
   };
 }
 
-function assertRailEnabled(provider) {
+function assertRailEnabled(
+  provider
+) {
   const status =
     railStatus(provider);
 
   if (!status.enabled) {
-    const error = new Error(
-      `Production rail is not enabled: ${provider}`
-    );
+    const error =
+      new Error(
+        `Production rail is not enabled: ${provider}`
+      );
 
     error.code =
       "PRODUCTION_RAIL_NOT_ENABLED";
@@ -294,14 +368,19 @@ function assertRailEnabled(provider) {
   return status;
 }
 
-function assertRailConfigured(provider) {
+function assertRailConfigured(
+  provider
+) {
   const status =
-    assertRailEnabled(provider);
+    assertRailEnabled(
+      provider
+    );
 
   if (!status.configured) {
-    const error = new Error(
-      `Production rail configuration incomplete: ${provider}`
-    );
+    const error =
+      new Error(
+        `Production rail configuration incomplete: ${provider}`
+      );
 
     error.code =
       "PRODUCTION_RAIL_NOT_CONFIGURED";
@@ -309,8 +388,10 @@ function assertRailConfigured(provider) {
     error.provider =
       provider;
 
-    error.missingEnvironmentVariables =
-      status.environment.missing;
+    error
+      .missingEnvironmentVariables =
+      status.environment
+        .missing;
 
     throw error;
   }
@@ -318,14 +399,19 @@ function assertRailConfigured(provider) {
   return status;
 }
 
-function assertRailAdapterPresent(provider) {
+function assertRailAdapterPresent(
+  provider
+) {
   const status =
-    assertRailConfigured(provider);
+    assertRailConfigured(
+      provider
+    );
 
   if (!status.adapter) {
-    const error = new Error(
-      `Production rail adapter is not implemented: ${provider}`
-    );
+    const error =
+      new Error(
+        `Production rail adapter is not implemented: ${provider}`
+      );
 
     error.code =
       "PRODUCTION_RAIL_ADAPTER_NOT_IMPLEMENTED";
@@ -339,7 +425,9 @@ function assertRailAdapterPresent(provider) {
   return status;
 }
 
-function publicRailStatus(provider) {
+function publicRailStatus(
+  provider
+) {
   const status =
     railStatus(provider);
 
@@ -372,10 +460,12 @@ function publicRailStatus(provider) {
       status.state,
 
     upstreamProvider:
-      status.upstreamProvider || null,
+      status.upstreamProvider ||
+      null,
 
     provisioning:
-      status.provisioning || null
+      status.provisioning ||
+      null
   };
 }
 
@@ -394,7 +484,8 @@ function publicRailSummary() {
       summary.realMoneyTarget,
 
     moneyMovementTarget:
-      summary.moneyMovementTarget,
+      summary
+        .moneyMovementTarget,
 
     rails:
       summary.rails.map(
