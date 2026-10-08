@@ -1,0 +1,10 @@
+"use strict";
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const {reconcile} = require("./reconciliation");
+const base = {eventId:"e1",orderId:"o1",paymentReference:"p1",providerId:"authorized-provider",currency:"USD",amountMinor:2500,status:"pending",providerVerified:false};
+test("deduplicates event IDs",()=>assert.equal(reconcile([base,base]).orders.length,1));
+test("rejects unverified settlement",()=>assert.throws(()=>reconcile([{...base,status:"settled"}]),/verified provider/));
+test("flags conflicting order payment references",()=>assert.equal(reconcile([base,{...base,eventId:"e2",paymentReference:"other"}]).exceptions.length,1));
+test("does not allow terminal status rollback",()=>assert.equal(reconcile([{...base,status:"settled",providerVerified:true},{...base,eventId:"e2",status:"pending"}]).exceptions.length,1));
+test("rejects invalid amounts",()=>assert.throws(()=>reconcile([{...base,amountMinor:1.5}]),/amountMinor/));
