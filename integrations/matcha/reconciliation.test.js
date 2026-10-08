@@ -8,3 +8,7 @@ test("rejects unverified settlement",()=>assert.throws(()=>reconcile([{...base,s
 test("flags conflicting order payment references",()=>assert.equal(reconcile([base,{...base,eventId:"e2",paymentReference:"other"}]).exceptions.length,1));
 test("does not allow terminal status rollback",()=>assert.equal(reconcile([{...base,status:"settled",providerVerified:true},{...base,eventId:"e2",status:"pending"}]).exceptions.length,1));
 test("rejects invalid amounts",()=>assert.throws(()=>reconcile([{...base,amountMinor:1.5}]),/amountMinor/));
+test("detects conflicting payload for reused event ID",()=>assert.equal(reconcile([base,{...base,amountMinor:2600}]).exceptions[0].reason,"duplicate_event_id_conflict"));
+test("rejects unverified refund and reversal",()=>{for(const status of ["refunded","reversed"]) assert.throws(()=>reconcile([{...base,status}]),/verified provider/)});
+test("rejects backward authorized to pending transition",()=>assert.equal(reconcile([{...base,status:"authorized"},{...base,eventId:"e2",status:"pending"}]).exceptions[0].reason,"invalid_status_transition"));
+test("allows verified settlement then verified refund",()=>assert.equal(reconcile([{...base,status:"settled",providerVerified:true},{...base,eventId:"e2",status:"refunded",providerVerified:true}]).orders[0].status,"refunded"));
