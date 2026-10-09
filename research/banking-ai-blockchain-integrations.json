@@ -1,0 +1,49 @@
+{
+  "title": "SonoraPort Banking: verified public API research",
+  "updated": "2026-10-09",
+  "status": "Research only; no live bank connections or credentials",
+  "providers": [
+    {
+      "name": "OpenAI",
+      "category": "AI",
+      "documentation": "https://developers.openai.com/api/reference/overview/",
+      "architecture": "Server-side authenticated API requests; do not expose API keys in browser code."
+    },
+    {
+      "name": "Plaid",
+      "category": "Bank account connectivity",
+      "documentation": "https://plaid.com/docs/api/",
+      "architecture": "Authorized account linking and access tokens managed by protected backend; no banking credentials stored in frontend."
+    },
+    {
+      "name": "Stripe Financial Connections",
+      "category": "Bank account data",
+      "documentation": "https://docs.stripe.com/financial-connections/fundamentals",
+      "architecture": "Consent-based connections and server-side secret keys."
+    },
+    {
+      "name": "Federal Reserve FedNow",
+      "category": "US instant payments",
+      "documentation": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "architecture": "Access restricted to eligible participating institutions and authorized providers; documentation is not permission to send payments."
+    },
+    {
+      "name": "NIST SP 800-63B",
+      "category": "Digital identity",
+      "documentation": "https://pages.nist.gov/800-63-4/sp800-63b.html",
+      "architecture": "Phishing-resistant authentication, verifier controls and credential lifecycle guidance."
+    },
+    {
+      "name": "Fireblocks",
+      "category": "Blockchain infrastructure",
+      "documentation": "https://developers.fireblocks.com/reference/signing-a-request-jwt-structure",
+      "architecture": "Signed JWT requests with protected signing keys; custody, approval and transfer workflows require separately authorized backend."
+    }
+  ],
+  "controls": {
+    "clientSecrets": "never",
+    "liveTransfers": "disabled",
+    "claims": "research does not establish provider integration",
+    "production": "no deployment without authorization"
+  }
+}
