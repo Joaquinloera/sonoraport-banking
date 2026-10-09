@@ -38,6 +38,24 @@
       "category": "Blockchain infrastructure",
       "documentation": "https://developers.fireblocks.com/reference/signing-a-request-jwt-structure",
       "architecture": "Signed JWT requests with protected signing keys; custody, approval and transfer workflows require separately authorized backend."
+    },
+    {
+      "name": "Google Gemini",
+      "category": "AI",
+      "documentation": "https://ai.google.dev/gemini-api/docs/api-key",
+      "architecture": "Use project-issued API keys in protected server environments; never expose keys in public frontend source."
+    },
+    {
+      "name": "Anthropic Claude",
+      "category": "AI",
+      "documentation": "https://platform.claude.com/docs/en/api/overview",
+      "architecture": "Authenticated server-side model API; restrict and rotate credentials."
+    },
+    {
+      "name": "FDIC third-party risk guidance",
+      "category": "US banking supervision",
+      "documentation": "https://www.fdic.gov/banker-resource-center/third-party-relationships",
+      "architecture": "Review vendor due diligence, contract controls, operational resilience and ongoing monitoring before integrations."
     }
   ],
   "controls": {
