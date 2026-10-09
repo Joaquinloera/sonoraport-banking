@@ -1,0 +1,136 @@
+{
+  "updated": "2026-10-09",
+  "notice": "Public research only. No SonoraPort provider authorization, deposit insurance, payment execution, wallet custody or active banking integration is implied.",
+  "schema": [
+    "organization",
+    "country",
+    "category",
+    "officialDeveloperDocumentation",
+    "authentication",
+    "software",
+    "paymentServices",
+    "verificationStatus"
+  ],
+  "entries": [
+    {
+      "organization": "OpenAI",
+      "country": "United States",
+      "category": "AI",
+      "officialDeveloperDocumentation": "https://developers.openai.com/api/reference/overview/",
+      "authentication": "Bearer API key",
+      "software": "SDKs / Responses API",
+      "paymentServices": "Not a payment rail",
+      "verificationStatus": "Official API documented; not integrated"
+    },
+    {
+      "organization": "Anthropic",
+      "country": "United States",
+      "category": "AI",
+      "officialDeveloperDocumentation": "https://platform.claude.com/docs/en/api/overview",
+      "authentication": "API key headers",
+      "software": "Claude API / tools",
+      "paymentServices": "Not a payment rail",
+      "verificationStatus": "Official API documented; not integrated"
+    },
+    {
+      "organization": "Google Gemini",
+      "country": "United States",
+      "category": "AI",
+      "officialDeveloperDocumentation": "https://ai.google.dev/gemini-api/docs/api-key",
+      "authentication": "Project API key",
+      "software": "Gemini SDKs",
+      "paymentServices": "Not a payment rail",
+      "verificationStatus": "Official API documented; not integrated"
+    },
+    {
+      "organization": "Amazon Bedrock",
+      "country": "United States",
+      "category": "AI",
+      "officialDeveloperDocumentation": "https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html",
+      "authentication": "AWS IAM / SigV4",
+      "software": "AWS SDKs",
+      "paymentServices": "Not a payment rail",
+      "verificationStatus": "Official IAM docs; not integrated"
+    },
+    {
+      "organization": "AI.gov",
+      "country": "United States",
+      "category": "Government AI",
+      "officialDeveloperDocumentation": "https://www.ai.gov/",
+      "authentication": "Not applicable: public portal",
+      "software": "Government public information",
+      "paymentServices": "Not a payment rail",
+      "verificationStatus": "Public portal; no private access"
+    },
+    {
+      "organization": "NIST",
+      "country": "United States",
+      "category": "Government standards",
+      "officialDeveloperDocumentation": "https://pages.nist.gov/800-63-4/sp800-63.html",
+      "authentication": "Standards, not API credentials",
+      "software": "Identity assurance guidance",
+      "paymentServices": "Not a payment rail",
+      "verificationStatus": "Published standard"
+    },
+    {
+      "organization": "JPMorgan Payments",
+      "country": "United States",
+      "category": "Banking",
+      "officialDeveloperDocumentation": "https://developer.jpmorgan.com/products/orbital-api",
+      "authentication": "Provider onboarding required; verify per API",
+      "software": "Orbital Gateway API",
+      "paymentServices": "Payment gateway",
+      "verificationStatus": "Official product docs; no SonoraPort access"
+    },
+    {
+      "organization": "Plaid",
+      "country": "United States",
+      "category": "Banking infrastructure",
+      "officialDeveloperDocumentation": "https://plaid.com/docs/api/",
+      "authentication": "Client credentials / scoped access tokens",
+      "software": "REST APIs and SDKs",
+      "paymentServices": "Account linking / bank data",
+      "verificationStatus": "Official docs; not integrated"
+    },
+    {
+      "organization": "Stripe Financial Connections",
+      "country": "United States",
+      "category": "Banking infrastructure",
+      "officialDeveloperDocumentation": "https://docs.stripe.com/financial-connections/fundamentals",
+      "authentication": "Server secret key / user consent",
+      "software": "API / client SDK",
+      "paymentServices": "Bank data connections",
+      "verificationStatus": "Official docs; not integrated"
+    },
+    {
+      "organization": "FedNow",
+      "country": "United States",
+      "category": "Payment infrastructure",
+      "officialDeveloperDocumentation": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "authentication": "Eligible participant onboarding",
+      "software": "FedNow API specifications",
+      "paymentServices": "Instant payments",
+      "verificationStatus": "Official docs; no participation verified"
+    },
+    {
+      "organization": "Fireblocks",
+      "country": "Global",
+      "category": "Blockchain infrastructure",
+      "officialDeveloperDocumentation": "https://developers.fireblocks.com/reference/signing-a-request-jwt-structure",
+      "authentication": "RS256-signed JWT / private key",
+      "software": "REST API / SDKs",
+      "paymentServices": "Digital asset infrastructure",
+      "verificationStatus": "Official docs; no wallet access"
+    },
+    {
+      "organization": "FDIC",
+      "country": "United States",
+      "category": "Government banking oversight",
+      "officialDeveloperDocumentation": "https://www.fdic.gov/banker-resource-center/third-party-relationships",
+      "authentication": "Not applicable: guidance",
+      "software": "Third-party risk guidance",
+      "paymentServices": "Not a payment rail",
+      "verificationStatus": "Official guidance"
+    }
+  ]
+}
