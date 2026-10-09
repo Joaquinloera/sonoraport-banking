@@ -1,0 +1,14 @@
+"use strict";
+const test=require("node:test");
+const assert=require("node:assert/strict");
+const crypto=require("node:crypto");
+const {verifySignedEvent}=require("./synthetic-webhook-auth");
+const secret="a".repeat(40), rawBody=Buffer.from('{"eventId":"synthetic-1"}'), now=1760000000000, timestamp=String(now);
+const signature=crypto.createHmac("sha256",secret).update(timestamp).update(".").update(rawBody).digest("hex");
+const good={rawBody,signature,timestamp,secret,now};
+test("accepts valid signed synthetic event",()=>assert.equal(verifySignedEvent(good),true));
+test("rejects tampered payload",()=>assert.throws(()=>verifySignedEvent({...good,rawBody:Buffer.from("tampered")}),/signature mismatch/));
+test("rejects expired timestamp",()=>assert.throws(()=>verifySignedEvent({...good,now:now+300001}),/expired timestamp/));
+test("rejects malformed signature",()=>assert.throws(()=>verifySignedEvent({...good,signature:"bad"}),/invalid signature/));
+test("rejects short secret",()=>assert.throws(()=>verifySignedEvent({...good,secret:"short"}),/missing webhook secret/));
+test("rejects oversized body",()=>assert.throws(()=>verifySignedEvent({...good,rawBody:Buffer.alloc(1048577)}),/invalid raw body/));
