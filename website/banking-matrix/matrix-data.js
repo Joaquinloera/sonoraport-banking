@@ -367,6 +367,26 @@ window.SONORAPORT_MATRIX = {
       "status": "official-source-identified-integration-unverified",
       "credentialsVerified": false,
       "connected": false
+    },
+    {
+      "name": "Supabase Row Level Security",
+      "region": "Global",
+      "category": "security",
+      "url": "https://supabase.com/docs/guides/database/postgres/row-level-security",
+      "auth": "RLS policies and minimum necessary grants; never expose secret/service-role keys",
+      "status": "official-docs-verified-implementation-audit-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Netlify Manual Deploy Workflow",
+      "region": "Global",
+      "category": "internet",
+      "url": "https://docs.netlify.com/deploy/create-deploys/",
+      "auth": "authorized CLI/API deploy to existing site; preview and rollback validation required",
+      "status": "official-docs-verified-production-release-pending",
+      "credentialsVerified": false,
+      "connected": false
     }
   ],
   "lastResearchDate": "2026-10-10"
