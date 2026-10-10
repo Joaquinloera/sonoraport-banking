@@ -1,0 +1,10 @@
+'use strict';
+const assert=require('node:assert/strict');const {getRail,listRails,validateConfig}=require('./rail-registry');
+assert.equal(listRails().length,7);assert.equal(getRail('pix').liveConnection,false);assert.equal(getRail('__proto__'),null);
+assert.deepEqual(validateConfig('missing',{}).errors,['Unknown rail']);
+assert.equal(validateConfig('pix',{environment:'production',oauthTokenUrl:'https://example.invalid',mtlsConfigured:true}).ok,false);
+assert.equal(validateConfig('pix',{environment:'sandbox',oauthTokenUrl:'https://example.invalid',mtlsConfigured:true,enableTransfers:true}).ok,false);
+assert.equal(validateConfig('pix',{environment:'sandbox',oauthTokenUrl:'https://example.invalid',mtlsConfigured:true}).ok,true);
+assert.equal(validateConfig('spei',{environment:'sandbox'}).ok,true);
+for(const r of listRails())assert.ok(r.source.startsWith('https://'));
+console.log('PASS: rail-registry assertions');
