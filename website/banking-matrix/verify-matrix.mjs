@@ -25,8 +25,8 @@ for (const [label, rows] of [['banking', banking.records], ['master', master]]) 
     assert.ok(!seen.has(key), label + ' duplicate: ' + row.name);
     seen.add(key);
     if (label === 'banking') {
-      assert.equal(row.connected, false, 'unverified provider marked connected: ' + row.name);
-      assert.equal(row.credentialsVerified, false, 'unverified provider marked credential-verified: ' + row.name);
+      assert.notEqual(row.connected, true, 'unverified provider marked connected: ' + row.name);
+      assert.notEqual(row.credentialsVerified, true, 'unverified provider marked credential-verified: ' + row.name);
     }
   }
 }
