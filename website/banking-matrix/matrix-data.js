@@ -357,6 +357,16 @@ window.SONORAPORT_MATRIX = {
       "status": "official-source-identified-integration-unverified",
       "credentialsVerified": false,
       "connected": false
+    },
+    {
+      "name": "Circle CCTP V2",
+      "region": "Global",
+      "category": "blockchain",
+      "url": "https://developers.circle.com/cctp",
+      "auth": "onchain USDC burn/mint and attestation; chain-specific contract verification",
+      "status": "official-source-identified-integration-unverified",
+      "credentialsVerified": false,
+      "connected": false
     }
   ],
   "lastResearchDate": "2026-10-10"
