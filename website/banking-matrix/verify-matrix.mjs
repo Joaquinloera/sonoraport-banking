@@ -31,3 +31,13 @@ for (const [label, rows] of [['banking', banking.records], ['master', master]]) 
   }
 }
 console.log('SonoraPort matrix validation passed:', banking.records.length, 'banking /', master.length, 'master records');
+
+// Research agents are independent labels, never military credentials.
+const agents = JSON.parse(readFileSync(new URL('banking-matrix/research-agents.json', root), 'utf8'));
+assert.equal(agents.productionDeployed, false);
+assert.deepEqual(agents.agents.map(a => a.id), [88, 2222, 1111]);
+for (const agent of agents.agents) {
+  assert.ok(/^https:\/\//.test(agent.source), 'Agent official source required');
+  assert.equal(agent.militaryAccess, false, 'No military access may be asserted');
+  assert.equal(agent.providerCredentials, 'not-issued', 'No credentials may be invented');
+}
