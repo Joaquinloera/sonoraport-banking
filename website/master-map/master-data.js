@@ -299,5 +299,61 @@ window.SONORAPORT_MASTER = [
     "auth": "participating-bank scheme; enrollment required",
     "url": "https://www.payshap.co.za/",
     "status": "official source identified / integration unverified"
+  },
+  {
+    "name": "Ethereum ethers.js v6",
+    "workstream": "blockchain SDK",
+    "auth": "JSON-RPC provider and wallet library; keys and signing require secure configuration",
+    "url": "https://docs.ethers.org/v6/getting-started/",
+    "status": "official documentation found / implementation unverified"
+  },
+  {
+    "name": "Solana Kit SDK",
+    "workstream": "blockchain SDK",
+    "auth": "@solana/kit recommended TypeScript SDK; RPC and signing require setup",
+    "url": "https://solana.com/docs/clients/official/javascript",
+    "status": "official documentation found / implementation unverified"
+  },
+  {
+    "name": "XRPL JavaScript SDK",
+    "workstream": "blockchain SDK",
+    "auth": "xrpl JavaScript client and test network tutorials",
+    "url": "https://xrpl.org/docs/tutorials/get-started/get-started-javascript",
+    "status": "official documentation found / implementation unverified"
+  },
+  {
+    "name": "OpenAI Codex SDK",
+    "workstream": "AI and Codex",
+    "auth": "SDK documentation; installation and credential setup unverified",
+    "url": "https://learn.chatgpt.com/docs/codex-sdk",
+    "status": "official documentation found / implementation unverified"
+  },
+  {
+    "name": "Itaú Unibanco Developers",
+    "workstream": "Brazil banking",
+    "auth": "bank developer portal; API enrollment and credentials unverified",
+    "url": "https://devportal.itau.com.br/",
+    "status": "official documentation found / implementation unverified"
+  },
+  {
+    "name": "Bradesco Developers",
+    "workstream": "Brazil banking",
+    "auth": "bank developer APIs and sandbox; credentials unverified",
+    "url": "https://developers.bradesco.com.br/",
+    "status": "official documentation found / implementation unverified"
+  },
+  {
+    "name": "BBVA API Market",
+    "workstream": "Mexico banking",
+    "auth": "banking API catalog; Mexican product availability must be checked",
+    "url": "https://www.bbvaapimarket.com/en/banking-apis/",
+    "status": "official documentation found / implementation unverified"
+  },
+  {
+    "name": "Banorte Developer Portal",
+    "workstream": "Mexico banking",
+    "auth": "bank developer test and production API environments; enrollment unverified",
+    "url": "https://developers.banorte.com/",
+    "status": "official documentation found / implementation unverified"
   }
 ];
