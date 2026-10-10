@@ -257,5 +257,47 @@ window.SONORAPORT_MASTER = [
     "auth": "partner access / SDK",
     "url": "https://github.com/blackrock/aladdinsdk",
     "status": "research / integration unverified"
+  },
+  {
+    "name": "Brazil Pix OpenAPI",
+    "workstream": "blockchain and payments",
+    "auth": "OpenAPI 3.0 functional specification; security manuals separately",
+    "url": "https://github.com/bacen/pix-api",
+    "status": "official source identified / integration unverified"
+  },
+  {
+    "name": "PayPal OAuth Token API",
+    "workstream": "payments",
+    "auth": "OAuth 2.0 client ID and secret exchanged server-side for bearer token",
+    "url": "https://developer.paypal.com/api/rest/authentication",
+    "status": "official source identified / integration unverified"
+  },
+  {
+    "name": "W3C WebAuthn Level 3",
+    "workstream": "identity and security",
+    "auth": "public-key credential registration and authentication; relying-party verification",
+    "url": "https://www.w3.org/TR/webauthn-3/",
+    "status": "official source identified / integration unverified"
+  },
+  {
+    "name": "OpenAI Developer API Reference",
+    "workstream": "AI and Codex",
+    "auth": "API documentation; server-side API keys and permissions required",
+    "url": "https://developers.openai.com/api/docs",
+    "status": "official source identified / integration unverified"
+  },
+  {
+    "name": "China CIPS Participant Portal",
+    "workstream": "BRICS and global settlement",
+    "auth": "participant and business rules; no public production access verified",
+    "url": "https://www.cips.com.cn/kjjqgsyyingw/index/index.shtml",
+    "status": "official source identified / integration unverified"
+  },
+  {
+    "name": "South Africa PayShap Network",
+    "workstream": "Africa payments",
+    "auth": "participating-bank scheme; enrollment required",
+    "url": "https://www.payshap.co.za/",
+    "status": "official source identified / integration unverified"
   }
 ];
