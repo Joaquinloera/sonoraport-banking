@@ -1,0 +1,47 @@
+{
+  "schema": "sonoraport.integration-registry.v1",
+  "updated": "2026-10-10",
+  "policy": {
+    "scope": "four authorized GitHub repositories only",
+    "excluded": [
+      "Joaquinloera/Josh",
+      "Joaquinloera/Kayleengpt13"
+    ],
+    "secrets": "never embed backend credentials or private user records in public source",
+    "crossProjectAccess": "explicit service-to-service authorization required; repository visibility alone does not establish connectivity"
+  },
+  "projects": [
+    {
+      "id": "sonoraport",
+      "repository": "Joaquinloera/sonoraport-banking",
+      "netlifySite": "sonoraportaiholdingllc13",
+      "siteUrl": "https://sonoraportaiholdingllc.com",
+      "supabaseProject": "utnassdlhanlxbcovjmc",
+      "status": "repository and platform resources verified; live cross-service connection not tested"
+    },
+    {
+      "id": "worldclock13",
+      "repository": "Joaquinloera/Sonoraportworldclock-hive",
+      "status": "repository verified; deployment and backend binding unverified"
+    },
+    {
+      "id": "sandbox13",
+      "repository": "Joaquinloera/Worldsanbox13",
+      "status": "repository and Node.js package verified; deployment and backend binding unverified"
+    },
+    {
+      "id": "matcha-manita",
+      "repository": "Joaquinloera/matcha-manita",
+      "netlifySite": "kayleenllc",
+      "siteUrl": "https://kayleenllc.netlify.app",
+      "supabaseProject": "xbzxzdcfrhsxrqlpqzdw",
+      "status": "repository and platform resources verified; live cross-service connection not tested"
+    }
+  ],
+  "validation": {
+    "source": "GitHub list_repositories + package.json and master-data.js",
+    "netlify": "Netlify project list",
+    "supabase": "Supabase project list",
+    "warning": "Do not treat this registry as proof of network-level links or payment-provider activation"
+  }
+}
