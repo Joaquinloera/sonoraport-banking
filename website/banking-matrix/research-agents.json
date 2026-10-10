@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "release": "v20.5-research-agents",
+  "productionDeployed": false,
+  "affiliation": "Independent SonoraPort research labels only; no US military affiliation or access",
+  "agents": [
+    {
+      "id": 88,
+      "label": "CYBERCOM",
+      "scope": "Public defensive cybersecurity and industry partnership research",
+      "source": "https://www.cybercom.mil/Partnerships-and-Outreach/Private-Sector-Partnerships/",
+      "providerCredentials": "not-issued",
+      "militaryAccess": false
+    },
+    {
+      "id": 2222,
+      "label": "SOUTHCOM",
+      "scope": "Public procurement and regional financial infrastructure research",
+      "source": "https://www.southcom.mil/Work-With-Us/",
+      "providerCredentials": "not-issued",
+      "militaryAccess": false
+    },
+    {
+      "id": 1111,
+      "label": "CENTCOM",
+      "scope": "Public innovation, technology and regional fintech research",
+      "source": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4312394/centcom-launches-innovation-joint-task-force-to-rapidly-equip-warfighters/",
+      "providerCredentials": "not-issued",
+      "militaryAccess": false
+    }
+  ]
+}
