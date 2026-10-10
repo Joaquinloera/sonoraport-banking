@@ -287,6 +287,76 @@ window.SONORAPORT_MATRIX = {
       "status": "source-identified-technical-verification-pending",
       "credentialsVerified": false,
       "connected": false
+    },
+    {
+      "name": "Banco do Brasil Developers",
+      "region": "South America",
+      "category": "banking",
+      "url": "https://developers.bb.com.br/",
+      "auth": "developer portal; Pix API registration",
+      "status": "official-source-identified-integration-unverified",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Eastern Caribbean DCash",
+      "region": "Caribbean",
+      "category": "digital currency",
+      "url": "https://www.eccb-centralbank.org/d-cash",
+      "auth": "central-bank project; current operating status must be verified",
+      "status": "official-source-identified-integration-unverified",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Circle USDC and CCTP",
+      "region": "Global",
+      "category": "blockchain",
+      "url": "https://developers.circle.com/",
+      "auth": "developer onboarding; network-specific contracts and keys",
+      "status": "official-source-identified-integration-unverified",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Coinbase Developer Platform",
+      "region": "Global",
+      "category": "blockchain",
+      "url": "https://docs.cdp.coinbase.com/",
+      "auth": "SDK/API access and wallet policies",
+      "status": "official-source-identified-integration-unverified",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Fireblocks Developer API",
+      "region": "Global",
+      "category": "blockchain",
+      "url": "https://developers.fireblocks.com/reference/signing-a-request-jwt-structure",
+      "auth": "API user and signed JWT requests",
+      "status": "official-source-identified-integration-unverified",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "OpenAI Codex SDK",
+      "region": "Global",
+      "category": "AI",
+      "url": "https://learn.chatgpt.com/docs/codex-sdk",
+      "auth": "SDK runtime and authorization requirements",
+      "status": "official-source-identified-integration-unverified",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "SWIFT APIs",
+      "region": "Global",
+      "category": "banking",
+      "url": "https://www.swift.com/products/swift-apis",
+      "auth": "developer portal and API sandbox enrollment",
+      "status": "official-source-identified-integration-unverified",
+      "credentialsVerified": false,
+      "connected": false
     }
   ],
   "lastResearchDate": "2026-10-10"
