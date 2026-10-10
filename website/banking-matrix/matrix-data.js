@@ -1,5 +1,5 @@
 window.SONORAPORT_MATRIX = {
-  "build": "v19-website-continuous",
+  "build": "v20-continuous-website-matrix",
   "release": "integration-in-progress",
   "website": "https://sonoraportaiholdingllc.com",
   "productionDeployed": false,
@@ -135,6 +135,156 @@ window.SONORAPORT_MATRIX = {
       "status": "official-document-identified",
       "auth": "technical-document",
       "category": "blockchain",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "OpenAI API and Codex",
+      "region": "Global",
+      "category": "AI",
+      "url": "https://developers.openai.com/api/reference/overview/",
+      "auth": "bearer-api-key-or-workload-identity",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Cloudflare Workers and Internet",
+      "region": "Global",
+      "category": "internet",
+      "url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+      "auth": "scoped-api-token",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Circle Programmable Wallets",
+      "region": "Global",
+      "category": "digital-assets",
+      "url": "https://developers.circle.com/wallets",
+      "auth": "wallet-api-credentials",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Banco do Brasil Pix",
+      "region": "BRICS",
+      "category": "banking",
+      "url": "https://developers.bb.com.br/",
+      "auth": "developer-enrollment",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "JPMorgan Chase Developer",
+      "region": "Global",
+      "category": "banking",
+      "url": "https://developer.jpmorgan.com/",
+      "auth": "partner-enrollment",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Itaú Unibanco",
+      "region": "BRICS",
+      "category": "banking",
+      "url": "https://devportal.itau.com.br/",
+      "auth": "partner-enrollment",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Bradesco Developers",
+      "region": "BRICS",
+      "category": "banking",
+      "url": "https://developers.bradesco.com.br/",
+      "auth": "developer-enrollment",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "BBVA API Market",
+      "region": "Mexico",
+      "category": "banking",
+      "url": "https://www.bbvaapimarket.com/en/",
+      "auth": "developer-enrollment",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Banorte",
+      "region": "Mexico",
+      "category": "banking",
+      "url": "https://www.banorte.com/",
+      "auth": "technical-contract-pending",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "New Development Bank",
+      "region": "BRICS",
+      "category": "banking",
+      "url": "https://www.ndb.int/",
+      "auth": "public-api-unverified",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "BIS mBridge",
+      "region": "Global",
+      "category": "digital-currency",
+      "url": "https://www.bis.org/project/mbridge",
+      "auth": "participation-restricted",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Ethereum Developers",
+      "region": "Global",
+      "category": "blockchain",
+      "url": "https://ethereum.org/en/developers/docs/",
+      "auth": "rpc-provider-dependent",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Visa Developer",
+      "region": "Global",
+      "category": "payments",
+      "url": "https://developer.visa.com/",
+      "auth": "developer-enrollment",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "Mastercard Developers",
+      "region": "Global",
+      "category": "payments",
+      "url": "https://developer.mastercard.com/",
+      "auth": "developer-enrollment",
+      "status": "source-identified-technical-verification-pending",
+      "credentialsVerified": false,
+      "connected": false
+    },
+    {
+      "name": "FIDO Alliance Passkeys",
+      "region": "Global",
+      "category": "security",
+      "url": "https://fidoalliance.org/passkeys/",
+      "auth": "webauthn-rp-registration",
+      "status": "source-identified-technical-verification-pending",
       "credentialsVerified": false,
       "connected": false
     }
