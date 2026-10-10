@@ -387,6 +387,16 @@ window.SONORAPORT_MATRIX = {
       "status": "official-docs-verified-production-release-pending",
       "credentialsVerified": false,
       "connected": false
+    },
+    {
+      "name": "OpenAI Codex TypeScript SDK",
+      "region": "Global",
+      "category": "AI",
+      "url": "https://developers.openai.com/codex/codex-sdk",
+      "auth": "server-side Node.js 18+; local Codex threads; runtime credentials required",
+      "status": "official-source-identified-implementation-unverified",
+      "credentialsVerified": false,
+      "connected": false
     }
   ],
   "lastResearchDate": "2026-10-10"
