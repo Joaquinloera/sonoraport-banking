@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "release": "v20.7-swarm-skim-payments",
+  "productionDeployed": false,
+  "records": [
+    {
+      "name": "Stripe",
+      "region": "Payments",
+      "url": "https://docs.stripe.com/webhooks",
+      "evidenceType": "webhook-signature-verification",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only"
+    },
+    {
+      "name": "PayPal",
+      "region": "Payments",
+      "url": "https://developer.paypal.com/api/rest/authentication",
+      "evidenceType": "oauth2-api",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only"
+    },
+    {
+      "name": "Apple Pay",
+      "region": "Payments",
+      "url": "https://developer.apple.com/documentation/applepayontheweb/providing-merchant-validation",
+      "evidenceType": "merchant-validation",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only"
+    },
+    {
+      "name": "Circle CCTP",
+      "region": "Digital assets",
+      "url": "https://developers.circle.com/cctp",
+      "evidenceType": "cross-chain-protocol",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only"
+    },
+    {
+      "name": "Netlify ZIP deploy",
+      "region": "Deployment",
+      "url": "https://docs.netlify.com/deploy/create-deploys/",
+      "evidenceType": "deployment-api",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only"
+    }
+  ]
+}
