@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "created": "2026-10-11",
+  "project": "SonoraPort AI Holding LLC",
+  "batch": "cross-division-api-research-12",
+  "researchMethod": "12 regular TinyFish searches",
+  "scope": "public technical references; no authenticated connectivity",
+  "records": [
+    {
+      "name": "Stripe",
+      "division": "Payments",
+      "url": "https://docs.stripe.com/api/idempotent_requests",
+      "skim": "Secret server-side API key; idempotency keys on mutation requests",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "PayPal",
+      "division": "Payments",
+      "url": "https://developer.paypal.com/api/rest/authentication",
+      "skim": "OAuth 2.0 REST access token; separate sandbox/live credentials",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "Apple Pay",
+      "division": "Wallets",
+      "url": "https://developer.apple.com/documentation/applepayontheweb/providing-merchant-validation",
+      "skim": "Merchant identity validation and approved payment processor",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "Google Pay",
+      "division": "Wallets",
+      "url": "https://developers.google.com/pay/api/web/overview",
+      "skim": "Browser payment token; processor integration required",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "Circle CCTP V2",
+      "division": "Digital assets",
+      "url": "https://developers.circle.com/cctp/references/technical-guide",
+      "skim": "Iris attestation; contract and API integration, chain-specific safeguards",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "Fireblocks",
+      "division": "Digital assets",
+      "url": "https://developers.fireblocks.com/reference/signing-a-request-jwt-structure",
+      "skim": "Signed JWT API requests; credentials required",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "OpenAI Agents",
+      "division": "AI software",
+      "url": "https://platform.openai.com/docs/",
+      "skim": "Developer docs; agents and tracing require specific SDK version verification",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "Anthropic Messages",
+      "division": "AI software",
+      "url": "https://docs.anthropic.com/en/api/messages",
+      "skim": "Messages API; API key and tool use",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "Gemini Function Calling",
+      "division": "AI software",
+      "url": "https://ai.google.dev/gemini-api/docs/function-calling",
+      "skim": "Function calling API schema and execution control",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "AWS Bedrock Agents",
+      "division": "AI software",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-action-create.html",
+      "skim": "Action groups use Lambda or API schemas and IAM",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "Cloudflare Zero Trust",
+      "division": "Network security",
+      "url": "https://developers.cloudflare.com/cloudflare-one/access-controls/policies/",
+      "skim": "Identity access policies; least-privilege and avoid permanent bypass",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    },
+    {
+      "name": "Cisco Meraki",
+      "division": "Network infrastructure",
+      "url": "https://developer.cisco.com/meraki/",
+      "skim": "Developer documentation link requires direct verification; API keys and organization permissions",
+      "connected": false,
+      "credentialsVerified": false,
+      "reviewStatus": "needs engineering cross-check"
+    }
+  ]
+}
