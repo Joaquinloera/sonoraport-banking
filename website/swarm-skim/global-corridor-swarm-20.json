@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "project": "SonoraPort AI Holding LLC",
+  "method": "20 coordinated regular TinyFish searches; 10 official-page fetch attempts (9 returned content, 1 empty)",
+  "status": "public-source research; not proof of bank connectivity",
+  "created": "2026-10-10",
+  "records": [
+    {
+      "name": "China CIPS",
+      "region": "China",
+      "division": "BRICS / Cross-border",
+      "url": "https://www.cips.com.cn/kjjqgsyyingw/jrcips/index.shtml",
+      "skim": "Participation, settlement and technical integration guidance; institutional onboarding required",
+      "type": "participation",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Bank of China Austria PSD2",
+      "region": "China / EU",
+      "division": "BRICS / Banking",
+      "url": "https://www.bankofchina.com/at/en/custserv/201903/t20190307_14902791.html",
+      "skim": "PSD2 AIS/PIS/FCS sandbox for eligible third-party providers",
+      "type": "developer",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "ICBC Europe",
+      "region": "China / EU",
+      "division": "BRICS / Banking",
+      "url": "https://open.icbc.com.cn/icbc/apip/europe/index.html",
+      "skim": "Regulated TPP open banking; account information and payments subject to consent",
+      "type": "developer",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "New Development Bank",
+      "region": "BRICS",
+      "division": "Development Finance",
+      "url": "https://www.ndb.int/about-ndb/",
+      "skim": "Infrastructure project financing; no public transaction API verified",
+      "type": "institutional",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "PayShap",
+      "region": "South Africa",
+      "division": "Instant Payments",
+      "url": "https://www.payshap.co.za/",
+      "skim": "Interbank instant payment through participating banks; no direct public API verified",
+      "type": "payment",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Standard Bank",
+      "region": "South Africa",
+      "division": "Bank API",
+      "url": "https://developer.standardbank.co.za/",
+      "skim": "REST/GraphQL/SOAP, OAuth2, mTLS, webhooks and OpenAPI 3.0 publicly listed",
+      "type": "developer",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Banco do Brasil Pix",
+      "region": "Brazil",
+      "division": "BRICS / Pix",
+      "url": "https://apoio.developers.bb.com.br/apis/28",
+      "skim": "Corporate Pix collection and reconciliation API; bank onboarding",
+      "type": "developer",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Itaú",
+      "region": "Brazil",
+      "division": "BRICS / Pix",
+      "url": "https://devportal.itau.com.br/autenticacao-documentacao",
+      "skim": "REST/JSON OAuth2 client credentials, mutual TLS, certificate onboarding",
+      "type": "developer",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Bradesco",
+      "region": "Brazil",
+      "division": "BRICS / Pix",
+      "url": "https://developers.bradesco.com.br/",
+      "skim": "Developer portal; sandbox and product authorization must be confirmed",
+      "type": "developer",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Banxico SPEI",
+      "region": "Mexico",
+      "division": "Mexico Corridor",
+      "url": "https://www.banxico.org.mx/services/interbanking-electronic-payme.html",
+      "skim": "Interbank payments infrastructure; institutional participation, not a public retail API",
+      "type": "payment",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "BBVA Mexico",
+      "region": "Mexico",
+      "division": "Mexico Corridor",
+      "url": "https://www.bbvaapimarket.com/en/banking-apis/mx-business-api-collections/",
+      "skim": "Business Collections API; access eligibility and sandbox need confirmation",
+      "type": "developer",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Banorte",
+      "region": "Mexico",
+      "division": "Mexico Corridor",
+      "url": "https://developers.banorte.com/es/primeros-pasos",
+      "skim": "Developer registration, sandbox and product API catalog",
+      "type": "developer",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "NPCI UPI",
+      "region": "India",
+      "division": "BRICS / Instant Payments",
+      "url": "https://www.npci.org.in/product/upi/about-upi",
+      "skim": "Payer PSP, remitter and beneficiary bank ecosystem; integration via authorized participants",
+      "type": "payment",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "ECCB DCash",
+      "region": "Eastern Caribbean",
+      "division": "Caribbean Corridor",
+      "url": "https://www.eccb-centralbank.org/d-cash",
+      "skim": "Pilot program; current availability and API eligibility unverified",
+      "type": "pilot",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Banco Central do Brasil Pix",
+      "region": "Brazil",
+      "division": "BRICS / Pix",
+      "url": "https://github.com/bacen/pix-api",
+      "skim": "Public OpenAPI 3.0 functional specification; security standards in separate manuals",
+      "type": "spec",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Bank of Russia SPFS",
+      "region": "Russia",
+      "division": "BRICS / Messaging",
+      "url": "https://www.cbr.ru/eng/development/mcirabis/fin_msg_transfer_system/",
+      "skim": "Institutional financial messaging; sanctions and eligibility screening required",
+      "type": "institutional",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Egypt IPN",
+      "region": "Egypt",
+      "division": "Instant Payments",
+      "url": "https://www.cbe.org.eg/en/payment-systems-and-services/instant-payment-network",
+      "skim": "National bank network; institutional onboarding",
+      "type": "payment",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "UAE Aani",
+      "region": "United Arab Emirates",
+      "division": "Instant Payments",
+      "url": "https://aep.ae/en/services/aani/",
+      "skim": "Instant payments through participating institutions; no direct public API verified",
+      "type": "payment",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "Saudi SARIE",
+      "region": "Saudi Arabia",
+      "division": "Instant Payments",
+      "url": "https://rulebook.sama.gov.sa/en/instant-payments-launch-sarie",
+      "skim": "Saudi instant payments infrastructure; participant onboarding",
+      "type": "payment",
+      "connection": "not connected",
+      "review": "public docs only"
+    },
+    {
+      "name": "EthSwitch",
+      "region": "Ethiopia",
+      "division": "Payments Interoperability",
+      "url": "https://ethswitch.com/",
+      "skim": "Interoperability infrastructure; developer API eligibility unverified",
+      "type": "institutional",
+      "connection": "not connected",
+      "review": "public docs only"
+    }
+  ]
+}
