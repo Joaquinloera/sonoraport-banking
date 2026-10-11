@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "project": "SonoraPort AI Holding LLC",
+  "batch": "global-americas-africa-china-20",
+  "created": "2026-10-10",
+  "method": "20 regular TinyFish searches and 10 official-page fetches",
+  "productionConnections": 0,
+  "notes": "Research evidence only; never treat search result as authorization or operational API",
+  "records": [
+    {
+      "name": "China Construction Bank Asia",
+      "region": "China / Hong Kong",
+      "division": "China banking",
+      "url": "https://www.asia.ccb.com/hongkong/personal/banking_channels/open_api.html",
+      "skim": "Open API and IADS product information; institution-specific permissions",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Agricultural Bank of China",
+      "region": "China",
+      "division": "China banking",
+      "url": "https://www.abchina.com/en/",
+      "skim": "Official institution; public developer API not verified",
+      "status": "institutional",
+      "connected": false
+    },
+    {
+      "name": "China Development Bank",
+      "region": "China",
+      "division": "Development finance",
+      "url": "https://www.cdb.com.cn/English/",
+      "skim": "Official institution; public developer API not verified",
+      "status": "institutional",
+      "connected": false
+    },
+    {
+      "name": "Absa Access",
+      "region": "South Africa",
+      "division": "African banking",
+      "url": "https://developer.absa.africa/",
+      "skim": "Swagger API documentation, OAuth 2.0 and mTLS indicated by portal",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "FirstRand FNB",
+      "region": "South Africa",
+      "division": "African banking",
+      "url": "https://www.fnb.co.za/integration-channel/index.html",
+      "skim": "Business API and host-to-host advertised; fetch blocked by CAPTCHA; no bypass",
+      "status": "access-blocked",
+      "connected": false
+    },
+    {
+      "name": "Nedbank API Marketplace",
+      "region": "South Africa",
+      "division": "African banking",
+      "url": "https://apim.nedbank.co.za/",
+      "skim": "OAuth 2.0, API subscriptions, Customers and Accounts API catalog",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Brazil Open Finance",
+      "region": "Brazil",
+      "division": "South America",
+      "url": "https://www.bcb.gov.br/en/financialstability/open_finance",
+      "skim": "Regulated institution customer-consented data and service sharing APIs",
+      "status": "regulatory",
+      "connected": false
+    },
+    {
+      "name": "Banxico CoDi",
+      "region": "Mexico",
+      "division": "Mexico corridor",
+      "url": "https://www.banxico.org.mx/",
+      "skim": "Official bank; direct CoDi API documentation not verified in this pass",
+      "status": "needs-verification",
+      "connected": false
+    },
+    {
+      "name": "Jamaica JAM-DEX",
+      "region": "Jamaica",
+      "division": "Caribbean corridor",
+      "url": "https://boj.org.jm/core-functions/currency/cbdc/",
+      "skim": "Official CBDC program information; direct developer API not verified",
+      "status": "institutional",
+      "connected": false
+    },
+    {
+      "name": "Bahamas Sand Dollar",
+      "region": "Bahamas",
+      "division": "Caribbean corridor",
+      "url": "https://www.centralbankbahamas.com/news/public-notices/the-sand-dollar-is-on-schedule-for-gradual-national-release-to-the-bahamas-in-mid-october-2020",
+      "skim": "CBDC program history; current integration eligibility not verified",
+      "status": "institutional",
+      "connected": false
+    },
+    {
+      "name": "Trinidad and Tobago NPS",
+      "region": "Trinidad and Tobago",
+      "division": "Caribbean corridor",
+      "url": "https://www.central-bank.org.tt/fintech-and-payments/payment-system-landscape/",
+      "skim": "RTGS and national payment systems; institutional access",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Colombia Bre-B",
+      "region": "Colombia",
+      "division": "South America",
+      "url": "https://www.banrep.gov.co/en/news/events/learn-more-about-bre-b",
+      "skim": "Interoperable instant payment ecosystem; bank/PSP onboarding",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Peru Yape / Plin interoperability",
+      "region": "Peru",
+      "division": "South America",
+      "url": "https://www.bcrp.gob.pe/",
+      "skim": "Central bank official site; direct integration docs not verified",
+      "status": "needs-verification",
+      "connected": false
+    },
+    {
+      "name": "Argentina Transfers 3.0",
+      "region": "Argentina",
+      "division": "South America",
+      "url": "https://www.bcra.gob.ar/en/transfers-3-0/",
+      "skim": "Interoperable QR and immediate transfers; bank/PSP access",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Chile Central Bank",
+      "region": "Chile",
+      "division": "South America",
+      "url": "https://www.bcentral.cl/",
+      "skim": "Official central bank; developer API not verified",
+      "status": "needs-verification",
+      "connected": false
+    },
+    {
+      "name": "SWIFT Developer",
+      "region": "Global",
+      "division": "Global networks",
+      "url": "https://developer.swift.com/",
+      "skim": "Developer portal identified via SWIFT references; exact API entitlement requires review",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Visa Developer",
+      "region": "Global",
+      "division": "Global networks",
+      "url": "https://developer.visa.com/pages/working-with-visa-apis/visa-developer-quick-start-guide",
+      "skim": "Sandbox, credentials, certification and production onboarding",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Mastercard Developers",
+      "region": "Global",
+      "division": "Global networks",
+      "url": "https://developer.mastercard.com/mastercard-processing-digital/documentation/sandbox-testing/",
+      "skim": "Sandbox mock APIs; certification and product eligibility separately",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "BIS Project mBridge",
+      "region": "Global",
+      "division": "CBDC research",
+      "url": "https://www.bis.org/project/mbridge",
+      "skim": "BIS project status CONCLUDED; no claim of current public production access",
+      "status": "concluded",
+      "connected": false
+    },
+    {
+      "name": "Brazil Open Finance ecosystem",
+      "region": "Brazil",
+      "division": "South America",
+      "url": "https://www.bcb.gov.br/en/financialstability/open_finance",
+      "skim": "Open Finance regulation and institution consent; same primary source as Brazil Open Finance",
+      "status": "regulatory",
+      "connected": false
+    }
+  ]
+}
