@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "project": "SonoraPort AI Holding LLC",
+  "created": "2026-10-10",
+  "method": "20 regular TinyFish searches; 10 official-document fetch attempts; 9 returned content",
+  "notes": "Research evidence; credentials and regulated provider approval not implied",
+  "records": [
+    {
+      "name": "Barbados payments",
+      "region": "Barbados",
+      "division": "Caribbean",
+      "url": "https://www.centralbank.org.bb/news/general-press-release/overview-of-payment-systems-in-barbados",
+      "skim": "RTGS and payment rails; BiMPay transition needs current-date verification",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Dominican Republic SIPARD",
+      "region": "Dominican Republic",
+      "division": "Caribbean",
+      "url": "https://www.bancentral.gov.do/",
+      "skim": "RTGS and instant payment plans; direct API unverified",
+      "status": "institutional",
+      "connected": false
+    },
+    {
+      "name": "Haiti SPIH",
+      "region": "Haiti",
+      "division": "Caribbean",
+      "url": "https://www.brh.ht/",
+      "skim": "Interbank payment system; direct API unverified",
+      "status": "institutional",
+      "connected": false
+    },
+    {
+      "name": "Bank of Guyana NPS",
+      "region": "Guyana",
+      "division": "Caribbean",
+      "url": "https://bankofguyana.org.gy/bog3/images/national_payment_systems/NPS%20FAQs.pdf",
+      "skim": "National payments modernization and regulation",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Suriname SNEPS",
+      "region": "Suriname",
+      "division": "Caribbean",
+      "url": "https://www.cbvs.sr/en/financial-system/payments-systems",
+      "skim": "Central-bank-operated national electronic payments",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Ecuador SPI",
+      "region": "Ecuador",
+      "division": "South America",
+      "url": "https://www.bce.fin.ec/sistema-de-pagos/sistema-central-de-pagos/sistema-de-pagos-interbancarios-spi/",
+      "skim": "Official payment system; fetch timed out",
+      "status": "timeout",
+      "connected": false
+    },
+    {
+      "name": "Bolivia payment systems",
+      "region": "Bolivia",
+      "division": "South America",
+      "url": "https://www.bcb.gob.bo/?q=informe-vigilancia-sistema-pagos",
+      "skim": "Payment system oversight; direct API unverified",
+      "status": "institutional",
+      "connected": false
+    },
+    {
+      "name": "Uruguay payment system",
+      "region": "Uruguay",
+      "division": "South America",
+      "url": "https://www.bcu.gub.uy/Ingles/Paginas/About-us.aspx",
+      "skim": "Central bank payment modernization; integration eligibility unverified",
+      "status": "institutional",
+      "connected": false
+    },
+    {
+      "name": "Paraguay SPI",
+      "region": "Paraguay",
+      "division": "South America",
+      "url": "https://www.bcp.gov.py/en/web/institucional/w/comunicado-sobre-sistema-de-pagos-instant%C3%A1neos-spi-",
+      "skim": "Instant payment system; institutional access",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Venezuela PagoMóvil",
+      "region": "Venezuela",
+      "division": "South America",
+      "url": "https://www.bancodevenezuela.com/index.html@p=3457.html",
+      "skim": "Bank-provided instant interbank mobile payments; compliance review required",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Mexico CoDi",
+      "region": "Mexico",
+      "division": "Mexico",
+      "url": "https://www.banxico.org.mx/sistemas-de-pago/codi-cobro-digital-banco-me.html",
+      "skim": "QR/NFC payment requests 24/7; participant integration requirements",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Mexico DiMo",
+      "region": "Mexico",
+      "division": "Mexico",
+      "url": "https://www.dimo.org.mx/",
+      "skim": "Phone-number transfer through participating financial institutions",
+      "status": "payment",
+      "connected": false
+    },
+    {
+      "name": "Wise Platform",
+      "region": "Global",
+      "division": "Global payments",
+      "url": "https://docs.wise.com/guides/developer/environments",
+      "skim": "Sandbox and production endpoints; mTLS options",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Airwallex",
+      "region": "Global",
+      "division": "Global payments",
+      "url": "https://www.airwallex.com/docs/api/introduction",
+      "skim": "REST global accounts, acceptance and spend management; webhook docs",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Adyen",
+      "region": "Global",
+      "division": "Global payments",
+      "url": "https://docs.adyen.com/api-explorer/",
+      "skim": "API Explorer, checkout and webhook integration",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Plaid",
+      "region": "Global",
+      "division": "Global payments",
+      "url": "https://plaid.com/docs/sandbox/",
+      "skim": "Sandbox and test institutions for Link and API",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Treasury Prime",
+      "region": "United States",
+      "division": "Embedded banking",
+      "url": "https://www.treasuryprime.com/developers",
+      "skim": "Accounts and payments API; sandbox advertised",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Goldman Sachs TxB",
+      "region": "United States",
+      "division": "Global banking",
+      "url": "https://developer.gs.com/docs/services/transaction-banking/auth-connection/",
+      "skim": "mTLS and IP allowlisting; approved developer user required",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Fireblocks",
+      "region": "Global",
+      "division": "Digital assets",
+      "url": "https://developers.fireblocks.com/reference/signing-a-request-jwt-structure",
+      "skim": "API key identity and signed JWT; sandbox base URL published",
+      "status": "developer",
+      "connected": false
+    },
+    {
+      "name": "Hyperledger Besu",
+      "region": "Global",
+      "division": "Blockchain",
+      "url": "https://docs.besu-eth.org/public-networks/reference/api",
+      "skim": "JSON-RPC ETH/NET/ADMIN namespaces; node and permission configuration",
+      "status": "developer",
+      "connected": false
+    }
+  ]
+}
