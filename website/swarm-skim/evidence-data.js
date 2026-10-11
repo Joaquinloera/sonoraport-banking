@@ -1,0 +1,163 @@
+window.SONORAPORT_SWARM_EVIDENCE = {
+  "schemaVersion": 1,
+  "release": "v20.6-swarm-skim",
+  "productionDeployed": false,
+  "records": [
+    {
+      "name": "CIPS",
+      "region": "China",
+      "url": "https://www.cips.com.cn/kjjqgsyyingw/index/index.shtml",
+      "evidenceType": "participation-information",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "Bank of China",
+      "region": "China",
+      "url": "https://www.bankofchina.com/at/en/custserv/201903/t20190307_14902791.html",
+      "evidenceType": "developer-portal",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "ICBC",
+      "region": "China",
+      "url": "https://open.icbc.com.cn/icbc/apip/europe/index.html",
+      "evidenceType": "developer-portal",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "New Development Bank",
+      "region": "BRICS",
+      "url": "https://www.ndb.int/",
+      "evidenceType": "institutional-information",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "PayShap",
+      "region": "South Africa",
+      "url": "https://www.bankservafrica.com/website/services/rapid-payments-programme",
+      "evidenceType": "payment-system-information",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "Standard Bank",
+      "region": "South Africa",
+      "url": "https://developer.standardbank.co.za/",
+      "evidenceType": "developer-portal",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "Banco do Brasil",
+      "region": "Brazil",
+      "url": "https://developers.bb.com.br/",
+      "evidenceType": "developer-portal",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "Itaú",
+      "region": "Brazil",
+      "url": "https://devportal.itau.com.br/",
+      "evidenceType": "developer-portal",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "Bradesco",
+      "region": "Brazil",
+      "url": "https://developers.bradesco.com.br/",
+      "evidenceType": "developer-portal",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "Banco de México SPEI",
+      "region": "Mexico",
+      "url": "https://www.banxico.org.mx/services/interbanking-electronic-payme.html",
+      "evidenceType": "payment-system-information",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "BBVA México",
+      "region": "Mexico",
+      "url": "https://www.bbvaapimarket.com/en/",
+      "evidenceType": "developer-portal",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "Banorte",
+      "region": "Mexico",
+      "url": "https://investors.banorte.com/en/company/innovation",
+      "evidenceType": "institutional-api-information",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    },
+    {
+      "name": "NPCI UPI",
+      "region": "India",
+      "url": "https://github.com/NPCI",
+      "evidenceType": "official-code-organization",
+      "researchTool": "TinyFish",
+      "researchDate": "2026-10-10",
+      "credentialsVerified": false,
+      "connected": false,
+      "implementationStatus": "research-only",
+      "note": "Public source identified; provider eligibility, production credentials and integration unverified."
+    }
+  ]
+};
