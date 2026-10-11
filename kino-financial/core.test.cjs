@@ -1,0 +1,12 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const {provider,route,Ledger,IntentStore,verifyWebhook,ReplayGuard}=require('./core.cjs');
+test('provider rejects unverified live state',()=>assert.throws(()=>provider({id:'x',state:'VERIFIED_LIVE'}),/authorization/));
+test('provider accepts research state',()=>assert.equal(provider({id:'x',state:'RESEARCH'}).state,'RESEARCH'));
+test('route remains simulation-only',()=>{const r=route({origin:'US',destination:'MX',currency:'USD',amountMinor:1000},[{id:'sandbox',state:'SANDBOX',countries:['US','MX'],currencies:['USD']}]);assert.equal(r.mode,'SIMULATION_ONLY');assert.equal(r.candidates[0].eligibleForLive,false);assert.equal(r.candidates[0].estimatedFee,null)});
+test('rejects fractional money',()=>assert.throws(()=>route({origin:'US',destination:'MX',currency:'USD',amountMinor:1.2},[]),/Invalid/));
+test('ledger posts balanced double-entry amounts',()=>{const l=new Ledger();l.post('t1',[{account:'cash',currency:'USD',deltaMinor:500},{account:'payable',currency:'USD',deltaMinor:-500}]);assert.equal(l.balance('cash','USD'),500);assert.throws(()=>l.post('t1',[]),/Duplicate/)});
+test('ledger rejects imbalance and cross-currency netting',()=>{const l=new Ledger();assert.throws(()=>l.post('x',[{account:'a',currency:'USD',deltaMinor:10},{account:'b',currency:'EUR',deltaMinor:-10}]),/Unbalanced/)});
+test('intent cannot initiate real transfer',()=>{const s=new IntentStore();assert.equal(s.create({id:'a',actor:'test',routePlan:{mode:'SIMULATION_ONLY'}}).status,'SIMULATED');assert.throws(()=>s.create({id:'b',actor:'test',routePlan:{mode:'LIVE'}}),/Invalid/)});
+test('signed webhook validates and rejects tampering',()=>{const body=Buffer.from('hello'),timestamp=12345,secret='testsecret';const signature=crypto.createHmac('sha256',secret).update(String(timestamp)).update('.').update(body).digest('hex');assert.equal(verifyWebhook({body,signature,secret,timestamp,now:12345}),true);assert.equal(verifyWebhook({body:Buffer.from('changed'),signature,secret,timestamp,now:12345}),false)});
+test('replay guard rejects duplicate events',()=>{const g=new ReplayGuard();assert.equal(g.accept('event-1'),true);assert.equal(g.accept('event-1'),false)});
