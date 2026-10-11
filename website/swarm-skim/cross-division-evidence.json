@@ -1,0 +1,56 @@
+{
+  "release": "v20.8-cross-division",
+  "productionDeployed": false,
+  "researchDate": "2026-10-10",
+  "targets": [
+    {
+      "division": "Dispensary",
+      "name": "Arizona marijuana licensing",
+      "source": "https://www.azdhs.gov/licensing/marijuana/",
+      "status": "official-source-identified",
+      "connection": "not-verified"
+    },
+    {
+      "division": "Property",
+      "name": "870 S Tusa Rd, Maricopa, AZ 85139",
+      "source": "https://www.pinal.gov/686/Parcel-Search",
+      "status": "parcel-search-source-identified",
+      "ownership": "not-verified"
+    },
+    {
+      "division": "AI",
+      "name": "OpenAI developer APIs",
+      "source": "https://developers.openai.com/api/docs",
+      "status": "documentation-identified",
+      "connection": "not-verified"
+    },
+    {
+      "division": "Banking",
+      "name": "J.P. Morgan Payments",
+      "source": "https://developer.payments.jpmorgan.com/",
+      "status": "developer-portal-identified",
+      "connection": "not-verified"
+    },
+    {
+      "division": "Brazil",
+      "name": "Pix API",
+      "source": "https://github.com/bacen/pix-api",
+      "status": "openapi-specification-identified",
+      "connection": "not-verified"
+    },
+    {
+      "division": "Payments",
+      "name": "Stripe API",
+      "source": "https://docs.stripe.com/api",
+      "status": "documentation-identified",
+      "connection": "not-verified"
+    },
+    {
+      "division": "Deployment",
+      "name": "Netlify ZIP deployment",
+      "source": "https://docs.netlify.com/deploy/create-deploys/",
+      "status": "documentation-identified",
+      "connection": "site-inspection-only"
+    }
+  ]
+}
