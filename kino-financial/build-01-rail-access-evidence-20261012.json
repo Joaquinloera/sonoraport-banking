@@ -1,0 +1,50 @@
+{
+  "build": "BANKING_BUILD_01",
+  "method": "KINO SWARM + SKIM + CROSS-CHECK",
+  "sources": [
+    "TinyFish",
+    "Exa",
+    "Parallel Search"
+  ],
+  "reviewed_at": "2026-10-12",
+  "status": "EVIDENCE_RESEARCHED_NOT_CONNECTED",
+  "rails": [
+    {
+      "id": "PIX",
+      "country": "BR",
+      "official_sources": [
+        "https://github.com/bacen/pix-api",
+        "https://www.bcb.gov.br/content/estabilidadefinanceira/cedsfn/Manual_de_Seguranca_PIX.pdf"
+      ],
+      "security_requirements": [
+        "encrypted communication",
+        "mutual authentication",
+        "digital certificates",
+        "audit logging"
+      ],
+      "connection_status": "ACCESS_PENDING",
+      "note": "Official API repository and security manual; participant authorization not verified"
+    },
+    {
+      "id": "SPEI",
+      "country": "MX",
+      "official_sources": [
+        "https://www.banxico.org.mx/services/spei_-transfers-banco-mexico.html",
+        "https://www.banxico.org.mx/payment-systems/d/%7B90965A55-8F44-7DD2-45CF-2BF1D7C0B75B%7D.pdf"
+      ],
+      "security_requirements": [
+        "regulated participant eligibility",
+        "technical requirements",
+        "information security",
+        "operational risk management"
+      ],
+      "connection_status": "ACCESS_PENDING",
+      "note": "Direct institutional participation not verified"
+    }
+  ],
+  "guardrails": {
+    "real_transfers": false,
+    "real_bank_connections_verified": 0,
+    "simulation_only": true
+  }
+}
