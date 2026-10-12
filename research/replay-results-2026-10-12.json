@@ -1,0 +1,60 @@
+{
+  "mode": "LOCAL_EVIDENCE_REPLAY_ONLY",
+  "hostedAgentsDeployed": false,
+  "liveBankingIntegrationsVerified": 0,
+  "liveTinyFishBrowserAgentsUsed": 0,
+  "logicalAgentsDefined": 144,
+  "reviewedSourcePages": 8,
+  "receipts": 112,
+  "maxConcurrencyObserved": 8,
+  "results": [
+    {
+      "jobId": "public-research-001",
+      "lane": "CHINA",
+      "provider": "CIPS",
+      "status": "RESEARCH_REPLAY_PASSED"
+    },
+    {
+      "jobId": "public-research-002",
+      "lane": "MEXICO",
+      "provider": "Banxico SPEI",
+      "status": "RESEARCH_REPLAY_PASSED"
+    },
+    {
+      "jobId": "public-research-003",
+      "lane": "SOUTH_AFRICA",
+      "provider": "PayShap / PayInc",
+      "status": "RESEARCH_REPLAY_PASSED"
+    },
+    {
+      "jobId": "public-research-004",
+      "lane": "SAUDI_ARABIA",
+      "provider": "SAMA SARIE",
+      "status": "RESEARCH_REPLAY_PASSED"
+    },
+    {
+      "jobId": "public-research-005",
+      "lane": "UAE",
+      "provider": "CBUAE Payment Infrastructure",
+      "status": "RESEARCH_REPLAY_PASSED"
+    },
+    {
+      "jobId": "public-research-006",
+      "lane": "RUSSIA",
+      "provider": "Bank of Russia National Payment System",
+      "status": "RESEARCH_REPLAY_PASSED"
+    },
+    {
+      "jobId": "public-research-007",
+      "lane": "EGYPT",
+      "provider": "InstaPay Egypt",
+      "status": "RESEARCH_REPLAY_PASSED"
+    },
+    {
+      "jobId": "public-research-008",
+      "lane": "CARIBBEAN",
+      "provider": "ECCB DCash",
+      "status": "RESEARCH_REPLAY_PASSED"
+    }
+  ]
+}
