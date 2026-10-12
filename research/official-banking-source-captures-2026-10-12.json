@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1.0.0",
+  "researchDate": "2026-10-12",
+  "project": "SonoraPort AI Holding LLC",
+  "method": "KINO-coordinated TinyFish public-domain searches and direct official-page fetches; not hosted autonomous agent executions",
+  "objective": "API access, SDK, OAuth, sandbox and institutional participation evidence for global banking / BRICS research lanes",
+  "scope": "Public official sources only; no private credentials, no bank connection, no payment authority",
+  "connectionStatus": "NOT_VERIFIED_CONNECTED",
+  "liveBrowserAgentStatus": "NOT_RUN_WALLET_NOT_FUNDED",
+  "cases": [
+    {
+      "lane": "CHINA", "provider": "CIPS", "url": "https://www.cips.com.cn/kjjqgsyyingw/2026-07/17/article_2026071715440043702.shtml", "title": "Announcement on Launch of Public Portal Upgrade", "checkedDate": "2026-10-12", "status": "OFFICIAL_PAGE_FETCHED",
+      "findings": {
+        "DISCOVERY": "Official CIPS portal updated with Applying to Join, Onboarding and Access navigation.",
+        "API_AUTH_SKIM": "Institutional onboarding and access guidance; no public API key or OAuth scope verified on this page.",
+        "SDK_ENDPOINT_SKIM": "No executable API endpoint, OpenAPI document, or SDK verified from this source.",
+        "SECURITY_PERMISSIONS": "Participant credentials and settlement authority were not obtained.",
+        "CROSS_CHECK_EVIDENCE": "Official CIPS domain; review participant rules independently before implementation.",
+        "INTEGRATION_TEST": "No live CIPS connection or sandbox call performed."
+      }
+    },
+    {
+      "lane": "MEXICO", "provider": "Banxico SPEI", "url": "https://www.banxico.org.mx/services/interbanking-electronic-payme.html", "title": "SPEI information, Banco de México", "checkedDate": "2026-10-12", "status": "OFFICIAL_PAGE_FETCHED",
+      "findings": {
+        "DISCOVERY": "Banco de México describes SPEI electronic transfers made through banks and mobile banking.",
+        "API_AUTH_SKIM": "No general public bank-settlement API key documented on this page.",
+        "SDK_ENDPOINT_SKIM": "No production payment API endpoint or SDK verified on this page.",
+        "SECURITY_PERMISSIONS": "Provider-bank relationship and regulated access need independent verification.",
+        "CROSS_CHECK_EVIDENCE": "Bank of Mexico official domain; end-user description is not developer onboarding.",
+        "INTEGRATION_TEST": "No live SPEI transfer or sandbox request performed."
+      }
+    },
+    {
+      "lane": "SOUTH_AFRICA", "provider": "PayShap / PayInc", "url": "https://www.bankservafrica.com/website/our-reach", "title": "PayInc Our Reach", "checkedDate": "2026-10-12", "status": "OFFICIAL_PAGE_FETCHED",
+      "findings": {
+        "DISCOVERY": "Payments clearing infrastructure serves member institutions, mostly banks.",
+        "API_AUTH_SKIM": "No open credential issuance process verified from this page.",
+        "SDK_ENDPOINT_SKIM": "No payment initiation API SDK or endpoint verified from this page.",
+        "SECURITY_PERMISSIONS": "Access to clearing should not be assumed from public information.",
+        "CROSS_CHECK_EVIDENCE": "Official operator public overview; needs separate member onboarding documents.",
+        "INTEGRATION_TEST": "No PayShap sandbox or live transaction performed."
+      }
+    },
+    {
+      "lane": "SAUDI_ARABIA", "provider": "SAMA SARIE", "url": "https://rulebook.sama.gov.sa/en/implementation-account-verification-service-through-instant-payments-system-ips-and-saudi-rapid", "title": "SAMA Account Verification Service Implementation Rule", "checkedDate": "2026-10-12", "status": "OFFICIAL_PAGE_FETCHED",
+      "findings": {
+        "DISCOVERY": "SAMA rulebook covers beneficiary account verification through IPS and RTGS.",
+        "API_AUTH_SKIM": "Regulatory instruction addressed to banks/financial institutions, not a public API token issuance process.",
+        "SDK_ENDPOINT_SKIM": "No public endpoint or SDK verified from this rulebook entry.",
+        "SECURITY_PERMISSIONS": "Financial institutions must follow applicable account verification requirements.",
+        "CROSS_CHECK_EVIDENCE": "Official SAMA rulebook; separate technical and authorized access research required.",
+        "INTEGRATION_TEST": "No payment initiation or sandbox call performed."
+      }
+    },
+    {
+      "lane": "UAE", "provider": "CBUAE Payment Infrastructure", "url": "https://centralbank.ae/en/our-operations/payments-and-settlements/", "title": "CBUAE Payments and Settlements", "checkedDate": "2026-10-12", "status": "OFFICIAL_PAGE_FETCHED",
+      "findings": {
+        "DISCOVERY": "Central Bank of the UAE publishes payment and settlement infrastructure information.",
+        "API_AUTH_SKIM": "No merchant/public settlement API key issuance verified from this page.",
+        "SDK_ENDPOINT_SKIM": "No SDK or API endpoint independently verified here.",
+        "SECURITY_PERMISSIONS": "Institutional participation details require separate official verification.",
+        "CROSS_CHECK_EVIDENCE": "Official central bank overview, not confirmation of Aani API access.",
+        "INTEGRATION_TEST": "No Aani live or sandbox call performed."
+      }
+    },
+    {
+      "lane": "RUSSIA", "provider": "Bank of Russia National Payment System", "url": "https://www.cbr.ru/eng/psystem/", "title": "Bank of Russia National Payment System", "checkedDate": "2026-10-12", "status": "OFFICIAL_PAGE_FETCHED",
+      "findings": {
+        "DISCOVERY": "Official overview describes national payment system and SBP retail fast payments.",
+        "API_AUTH_SKIM": "No SWIFT/SPFS or SBP public developer credentials verified from this page.",
+        "SDK_ENDPOINT_SKIM": "No production API endpoint or SDK verified from this page.",
+        "SECURITY_PERMISSIONS": "Applicable provider access and legal restrictions must be reviewed before integration.",
+        "CROSS_CHECK_EVIDENCE": "Bank of Russia official public payment-system overview only.",
+        "INTEGRATION_TEST": "No Russian rail or settlement API connected."
+      }
+    },
+    {
+      "lane": "EGYPT", "provider": "InstaPay Egypt", "url": "https://www.instapay.eg/", "title": "InstaPay Egypt official website", "checkedDate": "2026-10-12", "status": "OFFICIAL_PAGE_FETCHED",
+      "findings": {
+        "DISCOVERY": "Consumer app documents instant transfers among bank accounts, wallets and cards.",
+        "API_AUTH_SKIM": "Consumer app onboarding is not evidence of an open merchant/API developer key.",
+        "SDK_ENDPOINT_SKIM": "No third-party developer SDK or endpoint verified from this page.",
+        "SECURITY_PERMISSIONS": "Bank-account access not authorized or connected.",
+        "CROSS_CHECK_EVIDENCE": "Consumer site only; verify operator/participating-bank technical channel separately.",
+        "INTEGRATION_TEST": "No transaction, linked account or test call performed."
+      }
+    },
+    {
+      "lane": "CARIBBEAN", "provider": "ECCB DCash", "url": "https://www.eccb-centralbank.org/blogs/dcash-towards-a-digitally-inclusive-future", "title": "DCASH: Towards A Digitally Inclusive Future", "checkedDate": "2026-10-12", "status": "OFFICIAL_PAGE_FETCHED",
+      "findings": {
+        "DISCOVERY": "ECCB article describes the DCash pilot and payments-modernization context.",
+        "API_AUTH_SKIM": "No public API credential application verified from this historical program article.",
+        "SDK_ENDPOINT_SKIM": "No executable API endpoint or SDK verified.",
+        "SECURITY_PERMISSIONS": "Do not assume the past pilot is live production service.",
+        "CROSS_CHECK_EVIDENCE": "Official central bank source; current product status requires fresh confirmation.",
+        "INTEGRATION_TEST": "No DCash API or wallet connection made."
+      }
+    }
+  ],
+  "searchOnlyFollowUps": [
+    {"lane":"INDIA","provider":"NPCI UPI Partner Portal","url":"https://partner.npci.org.in/","reason":"Tool returned empty_content on page fetch; onboarding not independently extracted","status":"RESEARCH_ONLY_UNVERIFIED"},
+    {"lane":"INDONESIA","provider":"Bank Indonesia BI-FAST","url":"https://www.bi.go.id/en/publikasi/ruang-media/news-release/Pages/sp_2327021.aspx","reason":"Official URL search result found; page fetch timed out","status":"RESEARCH_ONLY_UNVERIFIED"},
+    {"lane":"ETHIOPIA","provider":"EthSwitch","url":"https://ethswitch.com/","reason":"Official search result found; direct onboarding documentation not verified","status":"RESEARCH_ONLY_UNVERIFIED"},
+    {"lane":"IRAN","provider":"Central Bank of Iran","url":"https://www.cbi.ir/simplelist/1462.aspx","reason":"Official public overview only; technical access and legal review needed","status":"RESEARCH_ONLY_UNVERIFIED"}
+  ]
+}
