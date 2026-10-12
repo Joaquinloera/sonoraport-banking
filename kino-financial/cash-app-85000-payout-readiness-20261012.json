@@ -1,0 +1,55 @@
+{
+  "build": "01C",
+  "objective": {
+    "amount_minor": 8500000,
+    "currency": "USD",
+    "destination": "$sonoraport13",
+    "transfer_authorized": false
+  },
+  "provider": "cash_app_pay",
+  "api": {
+    "method": "POST",
+    "sandbox_url": "https://sandbox.api.cash.app/network/v1/payouts",
+    "production_url": "https://api.cash.app/network/v1/payouts",
+    "scope": "PAYOUTS_WRITE",
+    "required_headers": [
+      "Authorization",
+      "X-Region",
+      "X-Signature",
+      "User-Agent",
+      "Content-Type"
+    ],
+    "request_template": {
+      "idempotency_key": "GENERATE_UUID_PER_PAYOUT",
+      "payout": {
+        "amount": 8500000,
+        "currency": "USD",
+        "merchant_id": "APPROVED_MERCHANT_ID_REQUIRED",
+        "grant_id": "CUSTOMER_APPROVED_ON_FILE_PAYOUT_GRANT_REQUIRED",
+        "purpose": "SERVICES",
+        "capture": true,
+        "note": "Only if supported by the genuine underlying transaction"
+      }
+    }
+  },
+  "eligibility": {
+    "psp_partner_approved": false,
+    "registered_funding_bank_verified": false,
+    "recipient_grant_obtained": false,
+    "amount_limit_verified": false,
+    "fees_verified": false
+  },
+  "blockchain": {
+    "bitcoin_is_not_usd_balance_funding": true,
+    "private_keys_in_repo": false
+  },
+  "execution": {
+    "enabled": false,
+    "reason": "Requires authorized funding source, PSP partner approval, verified grant, limits and transaction-specific approval"
+  },
+  "sources": [
+    "https://developers.cash.app/cash-app-pay-partner-api/guides/technical-guides/payouts/about",
+    "https://developers.cash.app/cash-app-pay-partner-api/api-reference/network-api/create-payout",
+    "https://developers.cash.app/cash-app-pay-partner-api/guides/technical-guides/api-fundamentals/requests/making-requests"
+  ]
+}
