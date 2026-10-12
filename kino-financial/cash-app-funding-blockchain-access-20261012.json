@@ -1,0 +1,45 @@
+{
+  "build": "01C",
+  "mode": "RESEARCH_AND_SIMULATION",
+  "updated": "2026-10-12",
+  "cash_app": {
+    "personal_account_topup": {
+      "status": "NOT_INTEGRATED",
+      "funding_method": "LINKED_BANK_OR_DEBIT_CARD_IN_CASH_APP",
+      "developer_api_verified": false,
+      "source": "https://cash.app/legal/us/en-us/tos"
+    },
+    "cash_app_pay": {
+      "status": "PARTNER_APPROVAL_REQUIRED",
+      "network_api": "https://api.cash.app/network/v1",
+      "sandbox_api": "https://sandbox.api.cash.app/network/v1",
+      "auth": "API_KEY_AND_SIGNED_REQUESTS",
+      "sdk": "Pay Kit",
+      "operations": [
+        "create_payment",
+        "retrieve_payment",
+        "refund",
+        "payout_beta",
+        "balance_read_beta"
+      ],
+      "payment_scope": "PAYMENTS_WRITE",
+      "balance_scope": "BALANCES_READ",
+      "documentation": "https://developers.cash.app/cash-app-pay-partner-api/guides/technical-guides/api-fundamentals/network-api"
+    }
+  },
+  "blockchain": {
+    "status": "RESEARCH_PENDING",
+    "custody": "NOT_CONFIGURED",
+    "wallet_private_keys": "NEVER_STORE_IN_REPOSITORY",
+    "onchain_transfers": "DISABLED"
+  },
+  "providers": [
+    "cash_app_pay",
+    "zelle",
+    "venmo",
+    "paypal",
+    "apple_pay"
+  ],
+  "secrets_policy": "SERVER_SIDE_ONLY",
+  "live_money_movement": "DISABLED"
+}
