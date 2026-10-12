@@ -1,0 +1,309 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedOn": "2026-10-12",
+  "purpose": "Conservative exact-normalized company-name crosswalk between existing live Supabase research registry and GitHub global banking research; statuses and account data not copied",
+  "supabase": {
+    "projectName": "Sonorportaiholdingllc",
+    "table": "public.kino_research_registry",
+    "rowsReviewed": 82,
+    "queryReadOnly": true
+  },
+  "github": {
+    "repository": "Joaquinloera/sonoraport-banking",
+    "path": "data/global-banking-all-providers-registry.json",
+    "totalRecords": 178,
+    "coreResearchEntries": 160
+  },
+  "method": "Unicode case-folded punctuation-insensitive EXACT names only, not fuzzy matches; unmatched does not mean absent provider",
+  "statistics": {
+    "supabaseRowsReviewed": 82,
+    "exactMatchedSupabaseRows": 17,
+    "unmatchedSupabaseRows": 65,
+    "categories": {
+      "banking": {
+        "rows": 30,
+        "exactMatches": 11
+      },
+      "brics": {
+        "rows": 1,
+        "exactMatches": 1
+      },
+      "ai": {
+        "rows": 8,
+        "exactMatches": 0
+      },
+      "payments": {
+        "rows": 8,
+        "exactMatches": 4
+      },
+      "government": {
+        "rows": 4,
+        "exactMatches": 0
+      },
+      "internet": {
+        "rows": 7,
+        "exactMatches": 0
+      },
+      "dispensary": {
+        "rows": 7,
+        "exactMatches": 0
+      },
+      "blockchain": {
+        "rows": 7,
+        "exactMatches": 1
+      },
+      "assets": {
+        "rows": 1,
+        "exactMatches": 0
+      },
+      "biometrics": {
+        "rows": 1,
+        "exactMatches": 0
+      },
+      "biocomputing": {
+        "rows": 1,
+        "exactMatches": 0
+      },
+      "property": {
+        "rows": 2,
+        "exactMatches": 0
+      },
+      "AI": {
+        "rows": 1,
+        "exactMatches": 0
+      },
+      "software": {
+        "rows": 1,
+        "exactMatches": 0
+      },
+      "public-sector research": {
+        "rows": 3,
+        "exactMatches": 0
+      }
+    }
+  },
+  "exactMatches": [
+    {
+      "supabaseRowId": 1,
+      "company": "JPMorgan Chase",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "commercial_bank_api_research-jpmorgan-chase-001",
+          "sourcePath": "data/banking-architecture-research.json",
+          "kind": "commercial_bank_api_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 3,
+      "company": "New Development Bank",
+      "category": "brics",
+      "githubEntries": [
+        {
+          "id": "corridor_research-new-development-bank-004",
+          "sourcePath": "website/swarm-skim/global-corridor-swarm-20.json",
+          "kind": "corridor_research"
+        },
+        {
+          "id": "international_financial_institution-new-development-bank-008",
+          "sourcePath": "global-institutions.json",
+          "kind": "international_financial_institution"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 12,
+      "company": "Goldman Sachs",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "commercial_bank_api_research-goldman-sachs-005",
+          "sourcePath": "data/banking-architecture-research.json",
+          "kind": "commercial_bank_api_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 13,
+      "company": "Morgan Stanley",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "commercial_bank_api_research-morgan-stanley-006",
+          "sourcePath": "data/banking-architecture-research.json",
+          "kind": "commercial_bank_api_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 14,
+      "company": "HSBC",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "commercial_bank_api_research-hsbc-011",
+          "sourcePath": "data/banking-architecture-research.json",
+          "kind": "commercial_bank_api_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 15,
+      "company": "Barclays",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "commercial_bank_api_research-barclays-014",
+          "sourcePath": "data/banking-architecture-research.json",
+          "kind": "commercial_bank_api_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 16,
+      "company": "Deutsche Bank",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "commercial_bank_api_research-deutsche-bank-009",
+          "sourcePath": "data/banking-architecture-research.json",
+          "kind": "commercial_bank_api_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 22,
+      "company": "Zelle",
+      "category": "payments",
+      "githubEntries": [
+        {
+          "id": "payment_network_reference-zelle-004",
+          "sourcePath": "data/global-payment-networks-registry.json",
+          "kind": "payment_network_reference"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 23,
+      "company": "Venmo",
+      "category": "payments",
+      "githubEntries": [
+        {
+          "id": "payment_network_reference-venmo-002",
+          "sourcePath": "data/global-payment-networks-registry.json",
+          "kind": "payment_network_reference"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 24,
+      "company": "PayPal",
+      "category": "payments",
+      "githubEntries": [
+        {
+          "id": "payment_network_reference-paypal-001",
+          "sourcePath": "data/global-payment-networks-registry.json",
+          "kind": "payment_network_reference"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 25,
+      "company": "Apple Pay",
+      "category": "payments",
+      "githubEntries": [
+        {
+          "id": "payment_network_reference-apple-pay-005",
+          "sourcePath": "data/global-payment-networks-registry.json",
+          "kind": "payment_network_reference"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 53,
+      "company": "Fireblocks",
+      "category": "blockchain",
+      "githubEntries": [
+        {
+          "id": "corridor_research-fireblocks-019",
+          "sourcePath": "website/swarm-skim/global-corridor-swarm-20-c.json",
+          "kind": "corridor_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 63,
+      "company": "Bradesco",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "corridor_research-bradesco-009",
+          "sourcePath": "website/swarm-skim/global-corridor-swarm-20.json",
+          "kind": "corridor_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 65,
+      "company": "BBVA México",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "corridor_research-bbva-mexico-011",
+          "sourcePath": "website/swarm-skim/global-corridor-swarm-20.json",
+          "kind": "corridor_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 72,
+      "company": "UAE Aani",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "corridor_research-uae-aani-018",
+          "sourcePath": "website/swarm-skim/global-corridor-swarm-20.json",
+          "kind": "corridor_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 73,
+      "company": "Saudi SARIE",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "corridor_research-saudi-sarie-019",
+          "sourcePath": "website/swarm-skim/global-corridor-swarm-20.json",
+          "kind": "corridor_research"
+        }
+      ]
+    },
+    {
+      "supabaseRowId": 77,
+      "company": "Banco Central do Brasil Pix",
+      "category": "banking",
+      "githubEntries": [
+        {
+          "id": "corridor_research-banco-central-do-brasil-pix-015",
+          "sourcePath": "website/swarm-skim/global-corridor-swarm-20.json",
+          "kind": "corridor_research"
+        }
+      ]
+    }
+  ],
+  "security": {
+    "liveBankingConnectionsInferred": false,
+    "credentialsCopied": false,
+    "balancesCopied": false,
+    "otherBankingTablesModified": false,
+    "productionDatabaseModified": false
+  },
+  "nextActions": [
+    "Manually cross-check aliases such as Citi versus Citigroup, ICBC versus Industrial and Commercial Bank of China",
+    "Keep category and provider research provenance distinct",
+    "Review 144-agent lane assignments against combined research sources",
+    "Use official developer documentation and authorized keys before API tests"
+  ]
+}
