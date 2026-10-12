@@ -1,0 +1,45 @@
+name: KINO Banking Build 01B Verification
+on:
+  push:
+    branches: [kino/integrated-six-repo-20261011]
+    paths:
+      - 'website/banking/**'
+      - 'kino-financial/**'
+      - '.github/workflows/kino-banking-build-01b.yml'
+  pull_request:
+    paths:
+      - 'website/banking/**'
+      - 'kino-financial/**'
+      - '.github/workflows/kino-banking-build-01b.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  banking-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check banking runtime syntax
+        run: |
+          node --check server.js
+          node --check kino-financial/core.cjs
+          node --check kino-financial/research-registry-adapter.cjs
+      - name: Run banking module tests
+        run: node --test kino-financial/*.test.cjs
+      - name: Verify banking page structure and security disclaimers
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const assert=require('node:assert/strict');
+          const html=fs.readFileSync('website/banking/index.html','utf8');
+          for(const id of ['institutions','rails','treasury','security','institutionsBody','railsBody','simulate'])assert.match(html,new RegExp('id="'+id+'"'));
+          for(const phrase of ['No bank or payment network is connected','SIMULATION ONLY','NOT CONNECTED'])assert.ok(html.includes(phrase),'Missing disclaimer: '+phrase);
+          assert.ok(!html.includes('service_role'),'Service role must never be in client');
+          assert.ok(!html.includes('sk_live_'),'Live secret must never be in client');
+          assert.match(html,/<meta name="viewport"/);
+          console.log('Banking page structure and security checks passed');
+          NODE
