@@ -1,0 +1,279 @@
+{
+  "generated_from": "SonoraPort Supabase public.kino_research_registry",
+  "note": "Public reference snapshot only; no provider access or transfer capability implied.",
+  "institutions": [
+    {
+      "name": "Apple Pay",
+      "category": "payments",
+      "official_url": "https://developer.apple.com/documentation/applepayontheweb",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Banco Central do Brasil Pix",
+      "category": "banking",
+      "official_url": "https://www.bcb.gov.br/estabilidadefinanceira/pagamentosinstantaneos",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Banco de México SPEI",
+      "category": "banking",
+      "official_url": "https://www.banxico.org.mx/services/interbanking-electronic-payme.html",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Banco do Brasil",
+      "category": "banking",
+      "official_url": "https://www.bb.com.br/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Banorte México",
+      "category": "banking",
+      "official_url": "https://investors.banorte.com/en/company/innovation",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Barclays",
+      "category": "banking",
+      "official_url": "https://developer.barclays.com/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "BBVA México",
+      "category": "banking",
+      "official_url": "https://www.bbvaapimarket.com/en/banking-apis/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "BlackRock Aladdin",
+      "category": "assets",
+      "official_url": "https://www.blackrock.com/aladdin/platforms/products/apis",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "BNP Paribas",
+      "category": "banking",
+      "official_url": "https://group.bnpparibas/en/psd2-apis",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Bradesco",
+      "category": "banking",
+      "official_url": "https://developers.bradesco.com.br/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Cash App Pay",
+      "category": "payments",
+      "official_url": "https://developers.cash.app/cash-app-pay-partner-api/guides/welcome",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "CIPS China",
+      "category": "banking",
+      "official_url": "https://www.cips.com.cn/kjjqgsyyingw/index/index.shtml",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Citigroup",
+      "category": "banking",
+      "official_url": "https://developer.citi.com/apidocs/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Deutsche Bank",
+      "category": "banking",
+      "official_url": "https://developer.db.com/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Egypt Instant Payment Network",
+      "category": "banking",
+      "official_url": null,
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Ethiopia EthSwitch",
+      "category": "banking",
+      "official_url": null,
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Goldman Sachs",
+      "category": "banking",
+      "official_url": "https://developer.gs.com/docs/services/transaction-banking/auth-connection/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "HDFC Bank",
+      "category": "banking",
+      "official_url": "https://developer.hdfc.bank.in/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "HSBC",
+      "category": "banking",
+      "official_url": "https://develop.hsbc.com/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "ICBC",
+      "category": "banking",
+      "official_url": "https://open.icbc.com.cn/icbc/apip/europe/index.html",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "ICICI Bank",
+      "category": "banking",
+      "official_url": "https://www.icici.bank.in/business-banking/cms/corporate-api-suite",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Indonesia QRIS",
+      "category": "banking",
+      "official_url": null,
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Itaú Unibanco",
+      "category": "banking",
+      "official_url": "https://www.itau.com.br/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "JPMorgan Chase",
+      "category": "banking",
+      "official_url": "https://developer.jpmorgan.com/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Mastercard",
+      "category": "payments",
+      "official_url": "https://developer.mastercard.com/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Morgan Stanley",
+      "category": "banking",
+      "official_url": "https://developer.morganstanley.com/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "New Development Bank BRICS",
+      "category": "banking",
+      "official_url": "https://www.ndb.int/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "NPCI UPI India",
+      "category": "banking",
+      "official_url": "https://www.npci.org.in/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "PayPal",
+      "category": "payments",
+      "official_url": "https://developer.paypal.com/api/rest",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Saudi SARIE",
+      "category": "banking",
+      "official_url": null,
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "South Africa PayShap",
+      "category": "banking",
+      "official_url": "https://www.payshap.co.za/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Standard Bank South Africa",
+      "category": "banking",
+      "official_url": null,
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "State Bank of India",
+      "category": "banking",
+      "official_url": "https://developerzone.sb.ob.globalbank.sbi/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Stripe",
+      "category": "payments",
+      "official_url": "https://docs.stripe.com/api",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "UAE Aani",
+      "category": "banking",
+      "official_url": null,
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Venmo",
+      "category": "payments",
+      "official_url": "https://developer.paypal.com/braintree/docs/guides/venmo/overview",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Visa",
+      "category": "payments",
+      "official_url": "https://developer.visa.com/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Wells Fargo",
+      "category": "banking",
+      "official_url": "https://developer.wellsfargo.com/",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    },
+    {
+      "name": "Zelle",
+      "category": "payments",
+      "official_url": "https://www.zelle.com/join-zelle-network/partners",
+      "integration_state": "researched",
+      "live_transfers_enabled": false
+    }
+  ]
+}
