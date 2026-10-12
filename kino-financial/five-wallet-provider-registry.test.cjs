@@ -1,0 +1,12 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict');
+const {PROVIDERS,providerRecord,createSimulationIntent,safeProviderSummary}=require('./five-wallet-provider-registry.cjs');
+test('five providers registered',()=>assert.deepEqual(Object.keys(PROVIDERS).sort(),['apple_pay','cash_app_pay','paypal','venmo','zelle']));
+test('all providers default to researched and disabled',()=>{for(const id of Object.keys(PROVIDERS)){const p=providerRecord(id);assert.equal(p.state,'RESEARCHED');assert.equal(p.liveTransactionsEnabled,false)}});
+test('Zelle requires bank partner access',()=>assert.equal(providerRecord('zelle').mode,'BANK_PARTNER_ONLY'));
+test('rejects unsupported provider',()=>assert.throws(()=>providerRecord('unlisted'),/Unknown/));
+test('cannot claim connected without authorization evidence',()=>assert.throws(()=>providerRecord('paypal',{state:'CONNECTED'}),/Verification evidence/));
+test('simulated payment never submits',()=>{const p=createSimulationIntent({providerId:'paypal',amountMinor:1000,currency:'USD',reference:'test-1'});assert.equal(p.status,'NOT_SUBMITTED');assert.equal(p.providerPaymentId,null)});
+test('rejects invalid amount',()=>assert.throws(()=>createSimulationIntent({providerId:'venmo',amountMinor:-1,currency:'USD',reference:'t'}),/Invalid amount/));
+test('rejects malformed currency',()=>assert.throws(()=>createSimulationIntent({providerId:'apple_pay',amountMinor:100,currency:'US$',reference:'t'}),/Invalid currency/));
+test('public metadata excludes credential material',()=>{const summary=safeProviderSummary(providerRecord('cash_app_pay'));assert.equal(JSON.stringify(summary).includes('api_key'),false)});
