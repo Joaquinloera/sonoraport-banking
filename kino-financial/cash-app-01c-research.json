@@ -1,0 +1,39 @@
+{
+  "build": "01C",
+  "reviewed_on": "2026-10-12",
+  "destination": "$sonoraport13",
+  "amount_minor": 8600000,
+  "currency": "USD",
+  "live_money_movement": "DISABLED",
+  "documentation": [
+    {
+      "feature": "Network API",
+      "url": "https://developers.cash.app/cash-app-pay-partner-api/guides/technical-guides/api-fundamentals/network-api",
+      "verified": "server-side API key and X-Region header; payments and payouts; partner access required"
+    },
+    {
+      "feature": "Sandbox",
+      "url": "https://developers.cash.app/cash-app-pay-partner-api/guides/technical-guides/sandbox/developer-sandbox",
+      "verified": "separate sandbox credentials, no real money"
+    },
+    {
+      "feature": "Pay Kit and customer grants",
+      "url": "https://developers.cash.app/cash-app-pay-partner-api/guides/technical-guides/api-fundamentals/introduction-to-cash-app-pay-ap-is",
+      "verified": "customer-approved grant precedes payment"
+    },
+    {
+      "feature": "Partner approval",
+      "url": "https://developers.cash.app/cash-app-pay-partner-api/guides/partnerships/partner-with-cash-app-pay",
+      "verified": "approval required"
+    }
+  ],
+  "unverified": [
+    "exact endpoint methods and schemas",
+    "merchant credentials",
+    "account eligibility",
+    "personal balance funding API",
+    "webhook signing configuration",
+    "transaction limits"
+  ],
+  "integration_status": "LOCAL_ADMIN_SIMULATION_ONLY"
+}
