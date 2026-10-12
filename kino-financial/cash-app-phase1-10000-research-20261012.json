@@ -1,0 +1,55 @@
+{
+  "project": "CASH_APP_ONLY",
+  "phase": 1,
+  "recipient": {
+    "account": "PERSONAL",
+    "cashtag": "$sonoraport13"
+  },
+  "target": {
+    "currency": "USD",
+    "amount_minor": 1000000
+  },
+  "research": {
+    "tinyfish": "Cash App official webhook signature generation located",
+    "exa": "Official USDC receiving guide: $10000 per week for eligible verified accounts, potentially lower for accounts under 90 days",
+    "parallel_search": "Cash App official signed requests guide confirms X-Signature and API credentials"
+  },
+  "rails": [
+    {
+      "type": "USDC_DEPOSIT",
+      "supported_networks": [
+        "Solana",
+        "Ethereum",
+        "Polygon",
+        "Arbitrum"
+      ],
+      "requirements": [
+        "verified Cash App identity",
+        "deposit stablecoins feature enabled",
+        "matching network and wallet address obtained in Cash App",
+        "existing legitimate USDC funding"
+      ],
+      "limit_usd_per_week": 10000,
+      "ready": false
+    },
+    {
+      "type": "PARTNER_PAYOUT",
+      "requirements": [
+        "approved PSP",
+        "authorized bank-funded settlement",
+        "recipient payout grant",
+        "API credentials"
+      ],
+      "ready": false
+    }
+  ],
+  "transfer": {
+    "initiated": false,
+    "live_enabled": false
+  },
+  "official_sources": [
+    "https://cash.app/help/us/en-US/31115-stablecoins",
+    "https://developers.cash.app/cash-app-pay-partner-api/guides/technical-guides/webhooks/webhook-signature-generation",
+    "https://developers.cash.app/cash-app-pay-partner-api/guides/technical-guides/api-fundamentals/requests/signing-requests"
+  ]
+}
