@@ -1,0 +1,10 @@
+'use strict';
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const {createWebhookIngress} = require('./cash-app-webhook-ingress-01e.cjs');
+const headers = {'X-Signature':'example','X-Signed-Headers':'example'};
+test('rejects missing verifier', () => assert.throws(() => createWebhookIngress(), /VERIFIER_REQUIRED/));
+test('rejects unsigned requests', async () => assert.rejects(createWebhookIngress({verifySignature:async()=>true})({rawBody:Buffer.from('{}')}), /SIGNATURE_HEADERS_REQUIRED/));
+test('rejects invalid signature', async () => assert.rejects(createWebhookIngress({verifySignature:async()=>false})({rawBody:Buffer.from('{}'),headers}), /INVALID_SIGNATURE/));
+test('rejects invalid JSON', async () => assert.rejects(createWebhookIngress({verifySignature:async()=>true})({rawBody:Buffer.from('{'),headers}), /INVALID_JSON/));
+test('deduplicates verified events', async () => {const ingress=createWebhookIngress({verifySignature:async()=>true});const req={rawBody:Buffer.from('{"type":"grant.status.updated"}'),headers};assert.deepEqual(await ingress(req),{accepted:true,duplicate:false});assert.deepEqual(await ingress(req),{accepted:true,duplicate:true});});
