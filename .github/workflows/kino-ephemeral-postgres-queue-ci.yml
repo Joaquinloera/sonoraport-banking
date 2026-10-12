@@ -1,0 +1,47 @@
+name: KINO BUILD04 Ephemeral PostgreSQL Research Queue Integration
+on:
+  push:
+    paths:
+      - 'migrations/20261012_sonoraport_swarm_research_queue.sql'
+      - 'tests/kino-research-queue-ephemeral*'
+      - '.github/workflows/kino-ephemeral-postgres-queue-ci.yml'
+  pull_request:
+    paths:
+      - 'migrations/20261012_sonoraport_swarm_research_queue.sql'
+      - 'tests/kino-research-queue-ephemeral*'
+      - '.github/workflows/kino-ephemeral-postgres-queue-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-real-postgresql-queue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: kino_research_ci
+          POSTGRES_PASSWORD: ephemeral-ci-password-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d kino_research_ci"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: '5432'
+      PGDATABASE: kino_research_ci
+      PGUSER: postgres
+      PGPASSWORD: ephemeral-ci-password-only
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install psql client on disposable runner
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Create only test roles
+        run: psql -X -v ON_ERROR_STOP=1 -f tests/kino-research-queue-ephemeral-setup.sql
+      - name: Apply staged research-only queue migration to disposable Postgres 16
+        run: psql -X -v ON_ERROR_STOP=1 -f migrations/20261012_sonoraport_swarm_research_queue.sql
+      - name: Execute real SQL integration, RLS, lease, receipt, security, and retry tests
+        run: psql -X -v ON_ERROR_STOP=1 -f tests/kino-research-queue-ephemeral.test.sql
