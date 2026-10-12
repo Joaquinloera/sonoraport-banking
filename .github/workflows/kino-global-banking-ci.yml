@@ -1,0 +1,30 @@
+name: KINO Global Banking Source and Catalog CI
+on:
+  push:
+    paths:
+      - 'data/global-banking-all-providers-registry.json'
+      - 'integrations/global-banking/**'
+      - 'tests/global-banking-registry.test.mjs'
+      - 'research/official-19-lane-execution-manifest-2026-10-12.json'
+      - 'research/official-lane-coverage.test.mjs'
+      - '.github/workflows/kino-global-banking-ci.yml'
+  pull_request:
+    paths:
+      - 'integrations/global-banking/**'
+      - 'data/global-banking-all-providers-registry.json'
+      - 'tests/global-banking-registry.test.mjs'
+      - '.github/workflows/kino-global-banking-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  research-catalog-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate complete read-only global banking inventory
+        run: node --test tests/global-banking-registry.test.mjs integrations/global-banking/provider-catalog.test.mjs research/official-lane-coverage.test.mjs
