@@ -30,4 +30,4 @@ jobs:
         with:
           node-version: '22'
       - name: Validate complete read-only global banking inventory and research queue contract
-        run: node --test tests/global-banking-registry.test.mjs integrations/global-banking/provider-catalog.test.mjs research/*.test.mjs migrations/research-queue-security.test.mjs
+        run: node --test tests/global-banking-registry.test.mjs integrations/global-banking/*.test.mjs research/*.test.mjs migrations/research-queue-security.test.mjs
