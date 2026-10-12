@@ -1,0 +1,75 @@
+{
+  "build": "01D",
+  "target": {
+    "account_type": "PERSONAL_CASH_APP",
+    "cashtag": "$sonoraport13",
+    "amount_usd": 85000,
+    "amount_minor": 8500000
+  },
+  "research_methods": [
+    "TinyFish",
+    "Exa",
+    "Parallel Search",
+    "official Cash App docs"
+  ],
+  "routes": [
+    {
+      "name": "PSP_PAYOUT",
+      "endpoint": "POST https://api.cash.app/network/v1/payouts",
+      "requirements": [
+        "approved PSP partner",
+        "registered funded partner bank",
+        "customer ON_FILE_PAYOUT grant",
+        "PAYOUTS_WRITE permission",
+        "limits and fees approval"
+      ],
+      "eligible": "NOT_VERIFIED"
+    },
+    {
+      "name": "ACH_DIRECT_DEPOSIT",
+      "limits": {
+        "per_deposit_usd": 25000,
+        "per_24_hours_usd": 50000
+      },
+      "requirements": [
+        "eligible personal account",
+        "legitimate ACH originator and funds",
+        "provider approval"
+      ],
+      "eligible": "NOT_VERIFIED"
+    },
+    {
+      "name": "STABLECOIN_DEPOSIT",
+      "published_weekly_receive_limit_usd": 10000,
+      "requirements": [
+        "verified identity",
+        "enabled feature",
+        "supported USDC asset and chain",
+        "owned stablecoin funds"
+      ],
+      "eligible": "NOT_VERIFIED"
+    },
+    {
+      "name": "BITCOIN_DEPOSIT_AND_SELL",
+      "requirements": [
+        "owned bitcoin",
+        "supported deposit",
+        "sell functionality",
+        "conversion and transfer limits"
+      ],
+      "eligible": "NOT_VERIFIED"
+    }
+  ],
+  "safety": {
+    "execute": false,
+    "do_not_bypass_limits": true,
+    "no_keys_or_secrets_in_repository": true,
+    "no_claim_of_funds": true
+  },
+  "sources": [
+    "https://developers.cash.app/cash-app-pay-partner-api/guides/technical-guides/payouts/about",
+    "https://cash.app/help/us/en-US/6570-cash-app--ach-direct-deposits",
+    "https://cash.app/help/us/en-us/31115-stablecoins",
+    "https://cash.app/legal/us/en-us/tos"
+  ]
+}
