@@ -1,0 +1,585 @@
+{
+  "schemaVersion": "1.1.0",
+  "researchDate": "2026-10-12",
+  "program": "SonoraPort AI Holding LLC — KINO #281102",
+  "scope": "Public official banking documentation: 144 logical agents; 18 two-document research jobs, Iran source fetches pending",
+  "liveAgentExecution": false,
+  "bankingProductionConnected": false,
+  "allowedHosts": [
+    "centralbank.ae",
+    "developer.visa.com",
+    "ethswitch.com",
+    "ghipss.net",
+    "nibss-plc.com.ng",
+    "rulebook.sama.gov.sa",
+    "www.abs.org.sg",
+    "www.bankservafrica.com",
+    "www.banrep.gov.co",
+    "www.banxico.org.mx",
+    "www.bcb.gov.br",
+    "www.bi.go.id",
+    "www.cbe.org.eg",
+    "www.cbr.ru",
+    "www.cips.com.cn",
+    "www.ecb.europa.eu",
+    "www.eccb-centralbank.org",
+    "www.frbservices.org",
+    "www.mas.gov.sg",
+    "www.npci.org.in",
+    "www.payments.ca",
+    "www.swift.com"
+  ],
+  "jobs": [
+    {
+      "id": "official-china-20261012",
+      "lane": "CHINA",
+      "provider": "CIPS onboarding / participants",
+      "sourceUrls": [
+        "https://www.cips.com.cn/kjjqgsyyingw/2025-12/10/article_2025121011242061513.shtml",
+        "https://www.cips.com.cn/kjjqgsyyingw/2025-12/11/article_2025121115151515220.shtml"
+      ]
+    },
+    {
+      "id": "official-india-20261012",
+      "lane": "INDIA",
+      "provider": "NPCI UPI participation",
+      "sourceUrls": [
+        "https://www.npci.org.in/product/upi/all-members",
+        "https://www.npci.org.in/circulars/upi"
+      ]
+    },
+    {
+      "id": "official-brazil-20261012",
+      "lane": "BRAZIL",
+      "provider": "Brazil Pix / participation",
+      "sourceUrls": [
+        "https://www.bcb.gov.br/en/financialstability/pix_en",
+        "https://www.bcb.gov.br/en/financialstability/pixparticipants"
+      ]
+    },
+    {
+      "id": "official-south-africa-20261012",
+      "lane": "SOUTH_AFRICA",
+      "provider": "PayInc PayShap",
+      "sourceUrls": [
+        "https://www.bankservafrica.com/website/services/rapid-payments-programme",
+        "https://www.bankservafrica.com/website/our-reach"
+      ]
+    },
+    {
+      "id": "official-uae-20261012",
+      "lane": "UAE",
+      "provider": "CBUAE Aani",
+      "sourceUrls": [
+        "https://centralbank.ae/en/news-and-publications/news-and-insights/press-release/al-etihad-payments-launches-aani-an-instant-payments-platform-for-digital-transactions-in-the-uae/",
+        "https://centralbank.ae/media/eccjvuib/al-etihad-payments-launches-aani-a-instant-payments-platform-for-digital-transactions-in-the-uae-en.pdf"
+      ]
+    },
+    {
+      "id": "official-saudi-arabia-20261012",
+      "lane": "SAUDI_ARABIA",
+      "provider": "SAMA SARIE participation",
+      "sourceUrls": [
+        "https://rulebook.sama.gov.sa/en/instant-payments-launch-sarie",
+        "https://rulebook.sama.gov.sa/en/rules-saudi-arabian-riyal-interbank-express-indirect-participation"
+      ]
+    },
+    {
+      "id": "official-indonesia-20261012",
+      "lane": "INDONESIA",
+      "provider": "Bank Indonesia BI-FAST",
+      "sourceUrls": [
+        "https://www.bi.go.id/en/publikasi/ruang-media/news-release/Pages/sp_2327021.aspx",
+        "https://www.bi.go.id/en/fungsi-utama/sistem-pembayaran/default.aspx"
+      ]
+    },
+    {
+      "id": "official-mexico-20261012",
+      "lane": "MEXICO",
+      "provider": "Banxico SPEI and CoDi",
+      "sourceUrls": [
+        "https://www.banxico.org.mx/services/interbanking-electronic-payme.html",
+        "https://www.banxico.org.mx/sistemas-de-pago/codi-cobro-digital-banco-me.html"
+      ]
+    },
+    {
+      "id": "official-caribbean-20261012",
+      "lane": "CARIBBEAN",
+      "provider": "ECCB payment and settlement infrastructure",
+      "sourceUrls": [
+        "https://www.eccb-centralbank.org/blogs/payment-system-integration",
+        "https://www.eccb-centralbank.org/payment-and-settlement-operations"
+      ]
+    },
+    {
+      "id": "official-russia-20261012",
+      "lane": "RUSSIA",
+      "provider": "Bank of Russia SBP / national payments",
+      "sourceUrls": [
+        "https://www.cbr.ru/eng/psystem/",
+        "https://www.cbr.ru/eng/psystem/sfp/"
+      ]
+    },
+    {
+      "id": "official-egypt-20261012",
+      "lane": "EGYPT",
+      "provider": "Central Bank of Egypt IPN / InstaPay",
+      "sourceUrls": [
+        "https://www.cbe.org.eg/en/payment-systems-and-services/instant-payment-network",
+        "https://www.cbe.org.eg/en/financial-literacy/learn/what-is-instapay"
+      ]
+    },
+    {
+      "id": "official-ethiopia-20261012",
+      "lane": "ETHIOPIA",
+      "provider": "EthSwitch national switch interoperability",
+      "sourceUrls": [
+        "https://ethswitch.com/",
+        "https://ethswitch.com/2025/04/10/interoperability-in-digital-payments/"
+      ]
+    },
+    {
+      "id": "official-us-canada-20261012",
+      "lane": "US_CANADA",
+      "provider": "FedNow and Payments Canada RTR participation",
+      "sourceUrls": [
+        "https://www.frbservices.org/financial-services/fednow-service/",
+        "https://www.payments.ca/connect/membership/payment-service-provider-participation"
+      ]
+    },
+    {
+      "id": "official-south-america-20261012",
+      "lane": "SOUTH_AMERICA",
+      "provider": "Colombia Banco de la Republica Bre-B",
+      "sourceUrls": [
+        "https://www.banrep.gov.co/es/bre-b",
+        "https://www.banrep.gov.co/es/bre-b/que-es"
+      ]
+    },
+    {
+      "id": "official-europe-20261012",
+      "lane": "EUROPE",
+      "provider": "ECB TIPS and participant developer documentation",
+      "sourceUrls": [
+        "https://www.ecb.europa.eu/paym/target/tips/html/index.en.html",
+        "https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/tips/html/index.en.html"
+      ]
+    },
+    {
+      "id": "official-africa-other-20261012",
+      "lane": "AFRICA_OTHER",
+      "provider": "Ghana GhIPSS and Nigeria NIBSS payment infrastructure",
+      "sourceUrls": [
+        "https://ghipss.net/",
+        "https://nibss-plc.com.ng/nibss-instant-payment/"
+      ]
+    },
+    {
+      "id": "official-asia-pacific-20261012",
+      "lane": "ASIA_PACIFIC",
+      "provider": "Singapore MAS payments and PayNow",
+      "sourceUrls": [
+        "https://www.mas.gov.sg/regulation/payments/payment-systems",
+        "https://www.abs.org.sg/e-payments/pay-now"
+      ]
+    },
+    {
+      "id": "official-global-rails-20261012",
+      "lane": "GLOBAL_RAILS",
+      "provider": "SWIFT and Visa official API developer resources",
+      "sourceUrls": [
+        "https://www.swift.com/products/swift-apis",
+        "https://developer.visa.com/pages/working-with-visa-apis/visa-developer-quick-start-guide"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "lane": "CHINA",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.cips.com.cn/kjjqgsyyingw/2025-12/10/article_2025121011242061513.shtml",
+        "https://www.cips.com.cn/kjjqgsyyingw/2025-12/11/article_2025121115151515220.shtml"
+      ]
+    },
+    {
+      "lane": "INDIA",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.npci.org.in/product/upi/all-members",
+        "https://www.npci.org.in/circulars/upi"
+      ]
+    },
+    {
+      "lane": "BRAZIL",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.bcb.gov.br/en/financialstability/pix_en",
+        "https://www.bcb.gov.br/en/financialstability/pixparticipants"
+      ]
+    },
+    {
+      "lane": "RUSSIA",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.cbr.ru/eng/psystem/",
+        "https://www.cbr.ru/eng/psystem/sfp/"
+      ],
+      "sourceCheckDate": "2026-10-12",
+      "technicalSkimStatus": "PUBLIC_SOURCE_VERIFIED_API_ACCESS_NOT_GRANTED"
+    },
+    {
+      "lane": "SOUTH_AFRICA",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.bankservafrica.com/website/services/rapid-payments-programme",
+        "https://www.bankservafrica.com/website/our-reach"
+      ]
+    },
+    {
+      "lane": "EGYPT",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.cbe.org.eg/en/payment-systems-and-services/instant-payment-network",
+        "https://www.cbe.org.eg/en/financial-literacy/learn/what-is-instapay"
+      ],
+      "sourceCheckDate": "2026-10-12",
+      "technicalSkimStatus": "PUBLIC_SOURCE_VERIFIED_API_ACCESS_NOT_GRANTED"
+    },
+    {
+      "lane": "ETHIOPIA",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://ethswitch.com/",
+        "https://ethswitch.com/2025/04/10/interoperability-in-digital-payments/"
+      ],
+      "sourceCheckDate": "2026-10-12",
+      "technicalSkimStatus": "PUBLIC_SOURCE_VERIFIED_API_ACCESS_NOT_GRANTED"
+    },
+    {
+      "lane": "IRAN",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "OFFICIAL_DOCS_RESEARCH_PENDING",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "gap": "Find and fetch at least two relevant primary official sources; extract API auth, issuance, endpoints, SDK, scopes, sandbox and partner requirements"
+    },
+    {
+      "lane": "UAE",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://centralbank.ae/en/news-and-publications/news-and-insights/press-release/al-etihad-payments-launches-aani-an-instant-payments-platform-for-digital-transactions-in-the-uae/",
+        "https://centralbank.ae/media/eccjvuib/al-etihad-payments-launches-aani-a-instant-payments-platform-for-digital-transactions-in-the-uae-en.pdf"
+      ]
+    },
+    {
+      "lane": "SAUDI_ARABIA",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://rulebook.sama.gov.sa/en/instant-payments-launch-sarie",
+        "https://rulebook.sama.gov.sa/en/rules-saudi-arabian-riyal-interbank-express-indirect-participation"
+      ]
+    },
+    {
+      "lane": "INDONESIA",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.bi.go.id/en/publikasi/ruang-media/news-release/Pages/sp_2327021.aspx",
+        "https://www.bi.go.id/en/fungsi-utama/sistem-pembayaran/default.aspx"
+      ]
+    },
+    {
+      "lane": "US_CANADA",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.frbservices.org/financial-services/fednow-service/",
+        "https://www.payments.ca/connect/membership/payment-service-provider-participation"
+      ],
+      "sourceCheckDate": "2026-10-12",
+      "technicalSkimStatus": "PUBLIC_SOURCE_VERIFIED_API_ACCESS_NOT_GRANTED"
+    },
+    {
+      "lane": "MEXICO",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.banxico.org.mx/services/interbanking-electronic-payme.html",
+        "https://www.banxico.org.mx/sistemas-de-pago/codi-cobro-digital-banco-me.html"
+      ]
+    },
+    {
+      "lane": "SOUTH_AMERICA",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.banrep.gov.co/es/bre-b",
+        "https://www.banrep.gov.co/es/bre-b/que-es"
+      ],
+      "sourceCheckDate": "2026-10-12",
+      "technicalSkimStatus": "PUBLIC_SOURCE_VERIFIED_API_ACCESS_NOT_GRANTED"
+    },
+    {
+      "lane": "CARIBBEAN",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.eccb-centralbank.org/blogs/payment-system-integration",
+        "https://www.eccb-centralbank.org/payment-and-settlement-operations"
+      ]
+    },
+    {
+      "lane": "EUROPE",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.ecb.europa.eu/paym/target/tips/html/index.en.html",
+        "https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/tips/html/index.en.html"
+      ],
+      "sourceCheckDate": "2026-10-12",
+      "technicalSkimStatus": "PUBLIC_SOURCE_VERIFIED_API_ACCESS_NOT_GRANTED"
+    },
+    {
+      "lane": "AFRICA_OTHER",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://ghipss.net/",
+        "https://nibss-plc.com.ng/nibss-instant-payment/"
+      ],
+      "sourceCheckDate": "2026-10-12",
+      "technicalSkimStatus": "PUBLIC_SOURCE_VERIFIED_API_ACCESS_NOT_GRANTED"
+    },
+    {
+      "lane": "ASIA_PACIFIC",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.mas.gov.sg/regulation/payments/payment-systems",
+        "https://www.abs.org.sg/e-payments/pay-now"
+      ],
+      "sourceCheckDate": "2026-10-12",
+      "technicalSkimStatus": "PUBLIC_SOURCE_VERIFIED_API_ACCESS_NOT_GRANTED"
+    },
+    {
+      "lane": "GLOBAL_RAILS",
+      "roles": [
+        "DISCOVERY",
+        "API_AUTH_SKIM",
+        "SDK_ENDPOINT_SKIM",
+        "SECURITY_PERMISSIONS",
+        "CROSS_CHECK_EVIDENCE",
+        "INTEGRATION_TEST"
+      ],
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "liveProviderConnected": false,
+      "officialApiKeyVerified": false,
+      "sandboxAuthorized": false,
+      "sourceUrls": [
+        "https://www.swift.com/products/swift-apis",
+        "https://developer.visa.com/pages/working-with-visa-apis/visa-developer-quick-start-guide"
+      ],
+      "sourceCheckDate": "2026-10-12",
+      "technicalSkimStatus": "PUBLIC_SOURCE_VERIFIED_API_ACCESS_NOT_GRANTED"
+    }
+  ],
+  "sourceVerificationDate": "2026-10-12",
+  "pendingSourceLanes": [
+    "IRAN"
+  ],
+  "importantLimitations": [
+    "Official payment system public pages are not authorization to access settlement systems",
+    "API issuance, SDK, OAuth permissions and sandbox access must be verified provider by provider",
+    "Iran central bank official pages timed out; Iran lane remains pending",
+    "No 144 independently hosted AI agent deployments or live bank transfers",
+    "Two verified documents in the same organization are not independent bank onboarding authorization"
+  ]
+}
