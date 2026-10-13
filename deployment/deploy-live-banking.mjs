@@ -77,15 +77,36 @@ async function main(){
  if(!oldId)throw Error('NO_PUBLISHED_DEPLOY_TO_PRESERVE');
  const old=await api('/sites/'+SITE_ID+'/deploys/'+oldId);
  if(old.state!=='ready'||!Array.isArray(old.available_functions))throw Error('UNABLE_TO_PRESERVE_PUBLISHED_FUNCTIONS');
- const files=[];let next='/sites/'+SITE_ID+'/files?per_page=100';
- for(let p=0;next&&p<100;p++){
-  const response=await api(next,{raw:true}),chunk=await response.json();
-  if(!Array.isArray(chunk))throw Error('FILE_LIST_NOT_ARRAY');
-  files.push(...chunk);
-  const links=response.headers.get('link')||'',match=links.match(/<([^>]+)>;\s*rel="next"/);
-  next=match?new URL(match[1]).pathname+new URL(match[1]).search:null;
-  if(p===99&&next)throw Error('FILE_LIST_PAGINATION_TRUNCATED');
+ // A manually uploaded published deploy may not expose the site-level file index.
+ // Fall back to the published deploy's file manifest, never to a new/blank site.
+ const inventories=[
+  '/sites/'+SITE_ID+'/files?per_page=100',
+  '/deploys/'+oldId+'/files?per_page=100',
+  '/sites/'+SITE_ID+'/deploys/'+oldId+'/files?per_page=100'
+ ];
+ let files=null,inventoryUsed='';
+ for(const first of inventories){
+  const found=[];let next=first,missing=false;
+  for(let p=0;next&&p<100;p++){
+   let response;
+   try{response=await api(next,{raw:true});}
+   catch(error){
+    if(String(error.message).includes('NETLIFY_API_404_GET_')){missing=true;break;}
+    throw error;
+   }
+   const chunk=await response.json();
+   if(!Array.isArray(chunk))throw Error('FILE_LIST_NOT_ARRAY:'+first);
+   found.push(...chunk);
+   const links=response.headers.get('link')||'',match=links.match(/<([^>]+)>;\s*rel="next"/);
+   next=match?new URL(match[1]).pathname+new URL(match[1]).search:null;
+   if(p===99&&next)throw Error('FILE_LIST_PAGINATION_TRUNCATED');
+  }
+  if(!missing&&found.length&&found.some(f=>(f.path??f.id)==='/index.html')){
+   files=found;inventoryUsed=first.split('?')[0];break;
+  }
  }
+ if(!files)throw Error('PUBLISHED_SITE_FILE_MANIFEST_UNAVAILABLE_NO_DEPLOY');
+ console.log('Verified existing production static file manifest:',files.length,'via',inventoryUsed);
  const root=resolve(process.env.GITHUB_WORKSPACE||'.');
  const assets=ASSETS.map(path=>({path,bytes:readFileSync(join(root,path))}));
  const plan=deploymentPlan({files,functions:old.available_functions,assets});
