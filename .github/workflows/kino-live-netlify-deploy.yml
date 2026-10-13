@@ -24,6 +24,19 @@ jobs:
         run: |
           node website/global-banking/build-public-snapshot.mjs --check
           node --test deployment/deploy-live-banking.test.mjs deployment/build-banking-preview.test.mjs website/global-banking/*.test.mjs website/home/*.test.mjs website/master-map/*.test.mjs
+      - name: Verify required every-build lanes and provider evidence contract
+        run: node research/every-build-public-skim.mjs --check
+      - name: SWARM and SKIM official public developer documentation across all mapped banking regions
+        run: node research/every-build-public-skim.mjs
+        timeout-minutes: 5
+      - name: Save per-build public-source research receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kino-global-brics-every-build-research-${{ github.run_id }}
+          path: research/output/kino-every-build-public-skim-receipts.json
+          if-no-files-found: warn
+          retention-days: 90
       - name: Ensure deployment permission exists for live Netlify website
         run: |
           if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
