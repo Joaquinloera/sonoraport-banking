@@ -10,7 +10,7 @@ test('adds banking pages while preserving the live homepage, other static routes
  assert.equal(p.functions['jpmorgan-balances'],'c'.repeat(64));
  assert.equal(p.previousFunctionCount,2);
  assert.equal(p.previousFileCount,2);
- assert.equal(Object.keys(p.payloads).length,6);
+ assert.equal(Object.keys(p.payloads).length,ASSETS.length);
 });
 test('fails closed if the prior site files or financial functions cannot be verified',()=>{
  for(const change of [{files:[]},{functions:[{n:'jpmorgan-balances'}]},{files:[{path:'/other',sha:'a'.repeat(40)}]}])
