@@ -1,0 +1,1499 @@
+{
+  "title": "KINO 281102 COMPLETE APPROVED REPO PATH INVENTORY",
+  "capturedAt": "2026-10-13",
+  "scope": "All files on main branch of exactly four authorized/read-only repos; protected Josh and Kayleengpt13 deliberately excluded",
+  "disclaimer": "File inventory only; does NOT assert every file's content was read, tested, deployed, or admitted as authentic evidence",
+  "repositories": [
+    {
+      "repository": "Joaquinloera/Sonoraportworldclock-hive",
+      "branch": "main",
+      "treeSha": "785f204e5e78fb63b3562d09b5f7f3e7c985c98b",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/workflows/android-apk-build.yml",
+          "sha": "5d3f76c7fb2b3cec15e21ee1da554412e1736870",
+          "size": 849
+        },
+        {
+          "path": ".github/workflows/kino-public-document-swarm-ci.yml",
+          "sha": "d4917c87ad10c507ecb5f0b90419f3b888a248cc",
+          "size": 1402
+        },
+        {
+          "path": ".github/workflows/kino-research-engine-ci.yml",
+          "sha": "c41afde40ac3e828efc787f60e051d9ca0428049",
+          "size": 632
+        },
+        {
+          "path": ".github/workflows/rc3444-watch.yml",
+          "sha": "b34c60938fe1d592773ed5ecffeb7e419f7ddbf4",
+          "size": 4341
+        },
+        {
+          "path": "agent-system/README-QUEUED-RESEARCH-WORKER.md",
+          "sha": "8c2745012c2e177522cac62ba3e1f14503a030e2",
+          "size": 3725
+        },
+        {
+          "path": "agent-system/README-SWARM-SKIM.md",
+          "sha": "ab6d6e19c995dde87c2378132dbe5eac6a180448",
+          "size": 4266
+        },
+        {
+          "path": "agent-system/README-TINYFISH-OFFICIAL-DOCS.md",
+          "sha": "8ff2120c28a4e752e90c0ba5b5a5ea39eddb62f2",
+          "size": 4286
+        },
+        {
+          "path": "agent-system/dispatcher.mjs",
+          "sha": "655ad5a24541ddf9319a833ea306aa5b9956ba76",
+          "size": 2065
+        },
+        {
+          "path": "agent-system/public-document-swarm-targets.json",
+          "sha": "6263292c7e63805735bd64ceee8ca6a721906a4a",
+          "size": 1829
+        },
+        {
+          "path": "agent-system/public-document-swarm.mjs",
+          "sha": "84fa3ae8da07fa7ccc0a693a78ad1396ca1e767e",
+          "size": 9502
+        },
+        {
+          "path": "agent-system/public-document-swarm.test.mjs",
+          "sha": "56268f09fddff915030c3635e4328cb72d35603f",
+          "size": 5212
+        },
+        {
+          "path": "agent-system/research-engine.mjs",
+          "sha": "0d02236952c1e4be2aab17fd09ca405f0882888d",
+          "size": 9226
+        },
+        {
+          "path": "agent-system/research-engine.test.mjs",
+          "sha": "3ee524ed18cfcab1df2f08d52ea8ee3298c312e3",
+          "size": 3854
+        },
+        {
+          "path": "agent-system/research-fleet-supervisor.mjs",
+          "sha": "48cc72cd020a4ea94796b0fd8f0cf5c1d80f2984",
+          "size": 5762
+        },
+        {
+          "path": "agent-system/research-fleet-supervisor.test.mjs",
+          "sha": "c9c84d50c074310c49ea527c43a1a4f92217d3f8",
+          "size": 4050
+        },
+        {
+          "path": "agent-system/roster-integrity.test.mjs",
+          "sha": "baa9fd399ed9a55d4abb9949a5d4cd53f540ff0b",
+          "size": 1549
+        },
+        {
+          "path": "agent-system/run-evidence-replay.mjs",
+          "sha": "d47492a410c0316ffe339b1d10e1f03eea7ff0e7",
+          "size": 1879
+        },
+        {
+          "path": "agent-system/run-live-official-doc-research.mjs",
+          "sha": "f51b7cca996181d01439410e8a8fb67b8d6bbcaa",
+          "size": 3241
+        },
+        {
+          "path": "agent-system/run-live-official-doc-research.test.mjs",
+          "sha": "04d5ad1a81a2cbe345604e4a37afbe727b812ab8",
+          "size": 1724
+        },
+        {
+          "path": "agent-system/run-queued-official-doc-research.mjs",
+          "sha": "08699575a67efa354f9121c0e0514fa1231e80f1",
+          "size": 7404
+        },
+        {
+          "path": "agent-system/run-queued-official-doc-research.test.mjs",
+          "sha": "eee159b225c7baf1d8c14e1071633d38d49294ff",
+          "size": 5094
+        },
+        {
+          "path": "agent-system/sonoraport-144-agent-roster.json",
+          "sha": "0a04a803281f56c6da6d2fed59f5c59a766d45a0",
+          "size": 74954
+        },
+        {
+          "path": "agent-system/sonoraport-30-agent-roster.json",
+          "sha": "a5edac9415d62c20b2c5a8858c55020b044b9018",
+          "size": 7395
+        },
+        {
+          "path": "agent-system/supabase-job-store.mjs",
+          "sha": "d4f6022058adc2c1b8a892d0946183e794d47621",
+          "size": 4732
+        },
+        {
+          "path": "agent-system/supabase-job-store.test.mjs",
+          "sha": "f04b20fd8241778f354f6e69013167d7c2017052",
+          "size": 3202
+        },
+        {
+          "path": "agent-system/tinyfish-research-adapter.mjs",
+          "sha": "13455dc4728076488d78fa7b0222846194a6a691",
+          "size": 8048
+        },
+        {
+          "path": "agent-system/tinyfish-research-adapter.test.mjs",
+          "sha": "cefe3ca9142a561f8699b5d3545262b609516ef9",
+          "size": 4727
+        },
+        {
+          "path": "apk-ai-swarm-registry.json",
+          "sha": "9ecf4f93833dd400f75df2096e4200a1d3a01dad",
+          "size": 3497
+        },
+        {
+          "path": "app/build.gradle.kts",
+          "sha": "0a450ae0b2ca1b8c2ad4128781f7220775ce5f5e",
+          "size": 651
+        },
+        {
+          "path": "app/src/main/AndroidManifest.xml",
+          "sha": "d0d7a0d7567c561e09d5e0e58c801572c65e5e17",
+          "size": 659
+        },
+        {
+          "path": "app/src/main/java/com/sonoraport/worldclock/MainActivity.kt",
+          "sha": "978dfed12875435e755fe80f098e7c038369dc48",
+          "size": 481
+        },
+        {
+          "path": "app/src/main/java/com/sonoraport/worldclock/swarm/SkimmingEngine.kt",
+          "sha": "a9a7b0a5d299fef0d6fa9528c3401c415c981a52",
+          "size": 1097
+        },
+        {
+          "path": "app/src/main/java/com/sonoraport/worldclock/swarm/SwarmCoordinator.kt",
+          "sha": "286c1e89da1a99b06935db8fe5071c921b912f82",
+          "size": 259
+        },
+        {
+          "path": "app/src/main/res/layout/activity_main.xml",
+          "sha": "c56c023b7530414f958ff1994a08d7518c597f57",
+          "size": 3176
+        },
+        {
+          "path": "app/src/main/res/values/styles.xml",
+          "sha": "acbf5c3254c4590b84d7b5e809fb4e89f20ecbca",
+          "size": 301
+        },
+        {
+          "path": "biocore-wormwood-manifest.json",
+          "sha": "6c0eb38d0ab1730a49778a52b884fb595d825bd2",
+          "size": 6615
+        },
+        {
+          "path": "biocore_agent/agent.json",
+          "sha": "22432930e2061140f0e5d9a5aec10b78e6af8341",
+          "size": 5451
+        },
+        {
+          "path": "build.gradle.kts",
+          "sha": "c7ad7549e74f63b6958ba4e171cc08161976da49",
+          "size": 142
+        },
+        {
+          "path": "gradle.properties",
+          "sha": "d0b31161286a803aa1a9549a256114cf6bf2bf33",
+          "size": 133
+        },
+        {
+          "path": "rc3444-agents.json",
+          "sha": "26c6bedd117c0cb81bf3c6661f8405c146c19e0d",
+          "size": 1835
+        },
+        {
+          "path": "rc3444-offline-registry.json",
+          "sha": "898b732771d27aa5a2d81c5f9023f586136cd1bd",
+          "size": 3989
+        },
+        {
+          "path": "rc3444-watch.json",
+          "sha": "60c9b6e411da7398bf02f3ac0a24731ae2bded7e",
+          "size": 2520
+        },
+        {
+          "path": "settings.gradle.kts",
+          "sha": "ecd1dbf45e7eb4fc95bbea77aedf730c261ff8cb",
+          "size": 340
+        },
+        {
+          "path": "world-clock-apk.json",
+          "sha": "532c7e09b5dc66a73c7d37cbd59f8dffd2f942ea",
+          "size": 2760
+        }
+      ],
+      "readPermission": "AUTHORIZED"
+    },
+    {
+      "repository": "Joaquinloera/sonoraport-banking",
+      "branch": "main",
+      "treeSha": "5566489f9bae86579b1a07bf6815c50246903db6",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/workflows/kino-build06-netlify-draft-preview.yml",
+          "sha": "bfd53a5084fbe5c8cf8f268e8d03cd758c9d22ed",
+          "size": 3205
+        },
+        {
+          "path": ".github/workflows/kino-build06-public-registry-artifact.yml",
+          "sha": "114796c880b4aad0653d9e736ca07af09e159aef",
+          "size": 1399
+        },
+        {
+          "path": ".github/workflows/kino-ephemeral-postgres-queue-ci.yml",
+          "sha": "7b29b3d8efd66a59341129090a342433aab03413",
+          "size": 1839
+        },
+        {
+          "path": ".github/workflows/kino-global-banking-ci.yml",
+          "sha": "5fc125a60f0aa27053089a899988cf11f4352796",
+          "size": 1654
+        },
+        {
+          "path": ".github/workflows/sonoraport-banking-test.yml",
+          "sha": "01ae083f1b85f631dc45a27a526e8a92679d6b4e",
+          "size": 11989
+        },
+        {
+          "path": "MATCHA_MANITA_PAYMENT_API.md",
+          "sha": "aac30a887d88170508ab5846aa5826d73d80caf8",
+          "size": 14953
+        },
+        {
+          "path": "TMM_SONORAPORT_BANKING_SYSTEM_BUILD_098.zip",
+          "sha": "77075556873b07c8fa200a3b55eaea50fc750bef",
+          "size": 1633604
+        },
+        {
+          "path": "TMM_SONORAPORT_BANKING_SYSTEM_BUILD_108_SECURITY_GATE.zip",
+          "sha": "22a9e20a13b5a2e28e70747e65b33ad8ac9756fa",
+          "size": 1590820
+        },
+        {
+          "path": "config/matcha-banking-integration.json",
+          "sha": "bdb154cad50408b99aa1ced903956a92dc632a32",
+          "size": 1438
+        },
+        {
+          "path": "data/banking-architecture-research.json",
+          "sha": "9df2aa2d0c625b4d0c9cf9514bfb848bfab4bf19",
+          "size": 10034
+        },
+        {
+          "path": "data/global-banking-all-providers-registry.json",
+          "sha": "b0b99caf1021c0a07f616400e296454a9a9af3d2",
+          "size": 209079
+        },
+        {
+          "path": "data/kino-supabase-github-banking-crosswalk-2026-10-12.json",
+          "sha": "6b71c5222ca2cd60591d31e71f890a251b1633a9",
+          "size": 8391
+        },
+        {
+          "path": "data/production-payment-rails.json",
+          "sha": "8c9dc61652d39a0a3f8a5a43f89a43d1c964ec90",
+          "size": 13544
+        },
+        {
+          "path": "data/sonoraport-banking-bridge.json",
+          "sha": "cb1dbd87adcc19818be6668cae216d9858842eaf",
+          "size": 1231
+        },
+        {
+          "path": "deployment/README-BUILD06-NETLIFY-DRAFT.md",
+          "sha": "594aab5835d6aded2b3956b4eb155e50af9263db",
+          "size": 3300
+        },
+        {
+          "path": "deployment/build-banking-preview.mjs",
+          "sha": "e6731712e8843dab6e9547d6609469fc2cdcea4f",
+          "size": 6437
+        },
+        {
+          "path": "deployment/build-banking-preview.test.mjs",
+          "sha": "972dbf49cc0b090fcb1d6a2ccf1753a076a788a9",
+          "size": 4059
+        },
+        {
+          "path": "global-ai-defense-biotech-provider-registry-v1.json",
+          "sha": "5199128067c44733c3b0bd13d908df74fdb116b4",
+          "size": 8615
+        },
+        {
+          "path": "index.html",
+          "sha": "0b46c6bcfcfa554c741a603d44be325f2d3644c5",
+          "size": 5659
+        },
+        {
+          "path": "integrations/global-banking/README-PUBLIC-PORTAL.md",
+          "sha": "d009bdfe1a2b399deb127cf5e228e17f2ec67c53",
+          "size": 2934
+        },
+        {
+          "path": "integrations/global-banking/README-RESEARCH-API.md",
+          "sha": "ace1f2ad002f92b9c66c93da120f6d08efab216b",
+          "size": 1475
+        },
+        {
+          "path": "integrations/global-banking/official-source-evidence.mjs",
+          "sha": "f9896e6bb55dfa27fc629768f4326c3930c4357f",
+          "size": 4800
+        },
+        {
+          "path": "integrations/global-banking/official-source-evidence.test.mjs",
+          "sha": "79c2a20d121a2d5595dbdf29533086225ab34b7d",
+          "size": 4033
+        },
+        {
+          "path": "integrations/global-banking/provider-catalog.mjs",
+          "sha": "aba7ac5b114b1949c2ea70f07400878373deab98",
+          "size": 4630
+        },
+        {
+          "path": "integrations/global-banking/provider-catalog.test.mjs",
+          "sha": "7aec5892b892a76d2e42043a78da7b6a9455b41a",
+          "size": 2905
+        },
+        {
+          "path": "integrations/global-banking/provider-credential-intelligence.integration.test.mjs",
+          "sha": "b32c8759b2a710dc769017b453d53ebd5d24d0a3",
+          "size": 727
+        },
+        {
+          "path": "integrations/global-banking/provider-credential-intelligence.mjs",
+          "sha": "d4223154a99d3ec3113380b7a6ece8c6153905fc",
+          "size": 3908
+        },
+        {
+          "path": "integrations/global-banking/provider-credential-intelligence.test.mjs",
+          "sha": "d27582d30e9a75d9e05edfc060696181aa78da38",
+          "size": 2902
+        },
+        {
+          "path": "integrations/global-banking/public-research-core.mjs",
+          "sha": "6460b0726582bd701911ecbf85cc720062318e98",
+          "size": 6715
+        },
+        {
+          "path": "integrations/global-banking/public-research-core.test.mjs",
+          "sha": "0477cedd2b2a17d918a4500d5d69fd97425c6e2c",
+          "size": 4497
+        },
+        {
+          "path": "integrations/global-banking/research-http-gateway.mjs",
+          "sha": "5054f2d2a28a41b3b46979ed7eb92d60b6cd2291",
+          "size": 4558
+        },
+        {
+          "path": "integrations/global-banking/research-http-gateway.test.mjs",
+          "sha": "c698a9af01c03bd67a6f5c641a6885d7e93266c8",
+          "size": 4558
+        },
+        {
+          "path": "integrations/matcha/reconciliation.js",
+          "sha": "8588015f6f8bf1b2b0499fd6df16420dbf84b822",
+          "size": 3119
+        },
+        {
+          "path": "integrations/matcha/reconciliation.test.js",
+          "sha": "fc973f60cadc224ab725ee1152b340224fb0abfc",
+          "size": 1754
+        },
+        {
+          "path": "integrations/matcha/synthetic-webhook-auth.js",
+          "sha": "b61ace0fc89ac1cc96bf5585dc68732a746114a1",
+          "size": 1167
+        },
+        {
+          "path": "integrations/matcha/synthetic-webhook-auth.test.js",
+          "sha": "63a9b9cd26de7d704ec2a2c8509e68a7a4833f3d",
+          "size": 1211
+        },
+        {
+          "path": "kino-financial/funding-gate.cjs",
+          "sha": "8324e3e762b222d35bfddd1dd4cff9a5a5db88b6",
+          "size": 941
+        },
+        {
+          "path": "kino-financial/funding-gate.test.cjs",
+          "sha": "7cff97f160b57219787cf4215bc73f8c954a72c3",
+          "size": 1194
+        },
+        {
+          "path": "matcha-manita-netlify-deploy-v1.json",
+          "sha": "7c61aa860f22b704750ca2cb9ee704c49e35b87c",
+          "size": 1565
+        },
+        {
+          "path": "migrations/20261012_sonoraport_swarm_research_queue.sql",
+          "sha": "76c59c2e7a6de74d48b769d4bf74ee0b6ac6ac79",
+          "size": 5838
+        },
+        {
+          "path": "migrations/research-queue-security.test.mjs",
+          "sha": "ce768cd86a0e8bcb2e687aa35a053009fb6535fb",
+          "size": 1474
+        },
+        {
+          "path": "netlify/functions/banking-official-docs.mjs",
+          "sha": "566f4dbf6ac1a623d59f9d6f24b12dde38843622",
+          "size": 660
+        },
+        {
+          "path": "netlify/functions/banking-official-docs.test.mjs",
+          "sha": "033638a12a135dd4c8295339232735640b0a27a8",
+          "size": 1127
+        },
+        {
+          "path": "netlify/functions/global-banking-research.mjs",
+          "sha": "5a06e40c326ca2f9cd54c9bd2decb30b4568f1fb",
+          "size": 975
+        },
+        {
+          "path": "netlify/functions/global-banking-research.test.mjs",
+          "sha": "8aacb4aa6a9705406420d87763cd4e27eb0c4c20",
+          "size": 1475
+        },
+        {
+          "path": "netlify/functions/lib/card-issuer-router.mjs",
+          "sha": "0d4447b56fe470788cb8c703b5a2fd95b6cb043d",
+          "size": 2426
+        },
+        {
+          "path": "netlify/functions/research-status.mjs",
+          "sha": "5bcd748fd5f0309fe919bfe5aed5dc6fbeeab27e",
+          "size": 1574
+        },
+        {
+          "path": "package.json",
+          "sha": "1ed4bb5a54e295c3376e4424ccec5c3e39c04566",
+          "size": 593
+        },
+        {
+          "path": "paypal-production-adapter.js",
+          "sha": "8c1c960e652d9a7cddb42659a1e9a22612b147c4",
+          "size": 7283
+        },
+        {
+          "path": "production-payment-rails.json",
+          "sha": "0d7bfd9235ddd9fd3bbec41678091d0c07a87a5e",
+          "size": 2192
+        },
+        {
+          "path": "production-rail-runtime.js",
+          "sha": "0cf8afbf6f84549bc0b1fb3dd235674aa9f6ca83",
+          "size": 8397
+        },
+        {
+          "path": "research/BANKING-PROVIDER-PRODUCTION-APIS.md",
+          "sha": "3d812fa6f160f33e09d28feb99867ab2d401fd8a",
+          "size": 2688
+        },
+        {
+          "path": "research/BRICS-BANKING-INSTITUTIONS-API-INTELLIGENCE-2026-10-09.md",
+          "sha": "40e8c7670d11bad1d0229630b43d4d14fbc37fa9",
+          "size": 5817
+        },
+        {
+          "path": "research/BUILD05-TEST-AND-CANPAY-VERIFICATION-2026-10-08.md",
+          "sha": "37c003b4187261a2d5a45c750414e6a67ab9ae30",
+          "size": 2889
+        },
+        {
+          "path": "research/KINO-CANNABIS-BANKING-HANDOFF-2026-10-08.md",
+          "sha": "dfffca462e4a393b073a0135dd8ebe26bcedde57",
+          "size": 6688
+        },
+        {
+          "path": "research/KINO_SWARM_SKIM_REGISTRY.md",
+          "sha": "a6bb12cbac1427063ffb512cb63d9f8c37fefc4f",
+          "size": 2345
+        },
+        {
+          "path": "research/KINO_SWARM_SKIM_RUN_20261009.md",
+          "sha": "72f08a94ddd6f1c0da8774ed75cd741a89521299",
+          "size": 2511
+        },
+        {
+          "path": "research/MATCHA-MANITA-BANKING-INTEGRATION-AUDIT.md",
+          "sha": "6e08c28a4400fec3678402394e131554513c8ce3",
+          "size": 9315
+        },
+        {
+          "path": "research/PRODUCTION-INTEGRATION-STATUS.md",
+          "sha": "d01239a762b82231195d8993c7e9e0186eab6508",
+          "size": 1366
+        },
+        {
+          "path": "research/V10_RECOVERY_BUILD_REPORT.md",
+          "sha": "7af3285b326d9b8aee855d5bc99dc1c772aee55c",
+          "size": 1779
+        },
+        {
+          "path": "research/V11_NUMERIC_COMMAND_BUILD_REPORT.md",
+          "sha": "37a92cfc2368d717c1bfd41629b3a9387a680a34",
+          "size": 1303
+        },
+        {
+          "path": "research/ai-banking-blockchain/index.html",
+          "sha": "6b1ad00ee1ccabf487738df9b31c4cd93084f2bb",
+          "size": 4149
+        },
+        {
+          "path": "research/brics-banking-api/index.html",
+          "sha": "5b25d993928ecf49b0d851a97ce65354697ee2d6",
+          "size": 5342
+        },
+        {
+          "path": "research/build05-official-api-onboarding-evidence-2026-10-12.json",
+          "sha": "607590c1eed3bb9382cc168f1ca55e94dc32c594",
+          "size": 2840
+        },
+        {
+          "path": "research/build05-official-api-onboarding-evidence.test.mjs",
+          "sha": "26c370c0049340c0f37ee9c4ea125a5044c0cd5f",
+          "size": 1044
+        },
+        {
+          "path": "research/build06-official-payment-systems-skim.json",
+          "sha": "f784594e71bf408ecbe89507065260d56485924b",
+          "size": 4557
+        },
+        {
+          "path": "research/build06-official-payment-systems-skim.test.mjs",
+          "sha": "789e752fd4613afa2a6742f85456bcb9369f7c2c",
+          "size": 1640
+        },
+        {
+          "path": "research/corridors/V13_BANKING_CORRIDOR_TECHNICAL_MATRIX.md",
+          "sha": "952a440e5fd0fcad668d56aef6830cb843552255",
+          "size": 2417
+        },
+        {
+          "path": "research/corridors/brazil-pix-dict-technical-20261010.md",
+          "sha": "84ec1d5e4f9f97421947765353b0222d1f746843",
+          "size": 1524
+        },
+        {
+          "path": "research/corridors/v14/rail-registry.js",
+          "sha": "e0baa02cfabcdb7b04e8d4d3e6ecefea24667478",
+          "size": 2259
+        },
+        {
+          "path": "research/corridors/v14/rail-registry.test.js",
+          "sha": "9167e1072cbe4cea45361883cf5bfa99cae3e8e9",
+          "size": 925
+        },
+        {
+          "path": "research/global-ai-intelligence/index.html",
+          "sha": "d1f382f250e78744f56ed01c4151e38689656dda",
+          "size": 3818
+        },
+        {
+          "path": "research/global-provider-api-auth-skim-2026-10-12.json",
+          "sha": "9a07308fecfeea9227500b441f7bbe1ff63fcce0",
+          "size": 13738
+        },
+        {
+          "path": "research/global-provider-api-auth-skim.test.mjs",
+          "sha": "ec09606be66713f512dc9ea5451f2eb06d98529e",
+          "size": 1979
+        },
+        {
+          "path": "research/kino-build06-global-api-skim-followup-2026-10-12.json",
+          "sha": "0d339092592afab8589bf8a60799b14bd6c353d0",
+          "size": 4789
+        },
+        {
+          "path": "research/kino-build06-global-api-skim-followup.test.mjs",
+          "sha": "d1ede27cef6df0bffe7ef08d721b3b9ff2c98990",
+          "size": 1957
+        },
+        {
+          "path": "research/kino-official-api-source-intelligence-2026-10-13.json",
+          "sha": "63db200a4d2672440571afacfd791cd331c6509e",
+          "size": 6798
+        },
+        {
+          "path": "research/kino-official-api-source-intelligence.test.mjs",
+          "sha": "0855a868cddd09a6f70dba84fe3a03b4a6d9f285",
+          "size": 1071
+        },
+        {
+          "path": "research/official-19-lane-execution-manifest-2026-10-12-v2.json",
+          "sha": "0b1f8a3e75c9c03d907c0b029be8a811f6edf88c",
+          "size": 19468
+        },
+        {
+          "path": "research/official-19-lane-execution-manifest-2026-10-12.json",
+          "sha": "630d93064a4cdb8d91596dc3eb70abd92524ba44",
+          "size": 14815
+        },
+        {
+          "path": "research/official-19-lane-v2.test.mjs",
+          "sha": "95b8508283fc9cdce6b59232fd10345b6cd2ceec",
+          "size": 1936
+        },
+        {
+          "path": "research/official-banking-source-captures-2026-10-12.json",
+          "sha": "fe20f9548244a1fb065dd3b8f484e493689fcb75",
+          "size": 8687
+        },
+        {
+          "path": "research/official-lane-coverage.test.mjs",
+          "sha": "24dacb86fe1da0fa3aae1ba246801f29ffd6e34b",
+          "size": 1538
+        },
+        {
+          "path": "research/official-provider-api-intelligence-2026-10-12.json",
+          "sha": "06af30d2d2d47a60a9daaec35ffc5d4249988749",
+          "size": 5974
+        },
+        {
+          "path": "research/official-provider-api-intelligence.test.mjs",
+          "sha": "6acbdef90bd591d641e8ed23a98cf0733aab45e2",
+          "size": 1429
+        },
+        {
+          "path": "research/payment-rails-atlas/index.html",
+          "sha": "080c31481c883fdd0a0a08d883f67f7b08233538",
+          "size": 2905
+        },
+        {
+          "path": "research/properties/870-S-Tusa-Rd-Maricopa-Lot-203-regroup.md",
+          "sha": "c825049892ad06efb6ab5cd1989d84686722caa7",
+          "size": 1614
+        },
+        {
+          "path": "research/properties/tusa-admin/evidence.js",
+          "sha": "4766e5dcda0feeee5f3e1e5dcb7d2c82dcacfdde",
+          "size": 1229
+        },
+        {
+          "path": "research/properties/tusa-admin/index.html",
+          "sha": "eb7e946624e13542b2912876f91e6bd4a5c530e9",
+          "size": 3528
+        },
+        {
+          "path": "research/replay-results-2026-10-12.json",
+          "sha": "97eb4e909084a33eb29bc186587b7f16db7fad1c",
+          "size": 1527
+        },
+        {
+          "path": "research/v12-numeric-command/app.js",
+          "sha": "5a5947111ad7908643f3ba4bc355afc97e3a79bf",
+          "size": 2940
+        },
+        {
+          "path": "research/v12-numeric-command/index.html",
+          "sha": "8a41853326e9bb71d04f6bec538175234818d11d",
+          "size": 1499
+        },
+        {
+          "path": "server.js",
+          "sha": "c72b9b24eb5d8efdf1a7da2b022b759f68ee921a",
+          "size": 26158
+        },
+        {
+          "path": "sonoraport-banking-bridge.json",
+          "sha": "f1029a59667e2160a3763fa352edaf87b507a686",
+          "size": 1822
+        },
+        {
+          "path": "sonoraport-banking-server-runtime-build.json",
+          "sha": "dd682cef4d8d2f7c8ab2c6ad1ebdab9ab4843432",
+          "size": 3060
+        },
+        {
+          "path": "sonoraport-banking-server-runtime-implementation-v3.json",
+          "sha": "6bd94a162f0126cb117f99196c2007e4c0209480",
+          "size": 4247
+        },
+        {
+          "path": "sonoraport-banking-server-runtime-integration-v2.json",
+          "sha": "1ce981d0ada6d318297b3f89709afac3b3502cc2",
+          "size": 4268
+        },
+        {
+          "path": "sonoraport-banking-server-runtime-rebuild-v4.json",
+          "sha": "19c2740bb231a762274ab3a3f1b367fef50f78d1",
+          "size": 6355
+        },
+        {
+          "path": "sonoraport-banking-server-runtime-rebuild-v5.json",
+          "sha": "2eb9cefdaa76bf96ad42380160a1eb9cf8ea3e08",
+          "size": 9839
+        },
+        {
+          "path": "sonoraport-banking-server-runtime-repair.json",
+          "sha": "6e1675f57480449312f6be0fabf83ba13b4bc5d6",
+          "size": 4644
+        },
+        {
+          "path": "sonoraport-card-dispute-chargeback-control.json",
+          "sha": "d0a173f76823931ba2111616888732bd5b77fc3e",
+          "size": 3221
+        },
+        {
+          "path": "sonoraport-card-payment-integration-control.json",
+          "sha": "859e5c9405aef053a4b4cc7eb1cd0c242f7edd55",
+          "size": 2516
+        },
+        {
+          "path": "sonoraport-card-provider-api-manifest.json",
+          "sha": "957166b8bf1ec802dfb4114db14fb92117df56ce",
+          "size": 2955
+        },
+        {
+          "path": "sonoraport-card-provider-discovery-index.json",
+          "sha": "0e80b503cdf37f214bf835f6115e0d6535a9ab10",
+          "size": 3350
+        },
+        {
+          "path": "sonoraport-card-provider-environment-map.json",
+          "sha": "32c3079387703161459b3e409c764ce87911e010",
+          "size": 2756
+        },
+        {
+          "path": "sonoraport-card-provider-source-evidence.json",
+          "sha": "5b25a5e652dd0b8136f0277109bdfdd3608c7acb",
+          "size": 2441
+        },
+        {
+          "path": "sonoraport-card-runtime-verification.json",
+          "sha": "5a5ea7e75abc9f1672be0c822a2912a1336ae78e",
+          "size": 3040
+        },
+        {
+          "path": "sonoraport-card-settlement-reconciliation-control.json",
+          "sha": "977db61de5db9d588b10ca488eac4421bd1eeffc",
+          "size": 3784
+        },
+        {
+          "path": "sonoraport-card-tokenization-data-boundary.json",
+          "sha": "c735b23297b4cc89c5d834299ad3915ac0506eb6",
+          "size": 3073
+        },
+        {
+          "path": "sonoraport-card-webhook-transaction-control.json",
+          "sha": "5a53cd865cdaaadb8d6c62f7aa47c236460ca406",
+          "size": 3048
+        },
+        {
+          "path": "sonoraport-mastercard-runtime-control.json",
+          "sha": "993a526529cb2e3e3f5f85409315c07f1ced1b4b",
+          "size": 2889
+        },
+        {
+          "path": "sonoraport-paypal-runtime-control.json",
+          "sha": "ed316eeefd26769df9de8991e00cfec06fbb127b",
+          "size": 2685
+        },
+        {
+          "path": "sonoraport-swarm-skimming.json",
+          "sha": "8b7e95db1932ac5037066a55a26ba81417e51a0b",
+          "size": 7381
+        },
+        {
+          "path": "sonoraport-visa-debit-card-issuer.json",
+          "sha": "f8b9d16ebcc37d6ac91c8026353b35a51c140eed",
+          "size": 1542
+        },
+        {
+          "path": "sonoraport-visa-debit-runtime-control.json",
+          "sha": "377d1219bcf79dfd0f669cb90024d951f091e2ad",
+          "size": 3397
+        },
+        {
+          "path": "sonoraport-visa-implementation-gap.json",
+          "sha": "9e0da4e4eaf3989acf35dfcf0cc923d2a84691d0",
+          "size": 2859
+        },
+        {
+          "path": "tests/global-banking-registry.test.mjs",
+          "sha": "16a2b0fa05e9e067bf005e830708842dc77eaff4",
+          "size": 1991
+        },
+        {
+          "path": "tests/kino-research-queue-ephemeral-setup.sql",
+          "sha": "70f5e38dbedce0cff6cc11363952c36edbaebc5e",
+          "size": 299
+        },
+        {
+          "path": "tests/kino-research-queue-ephemeral.test.sql",
+          "sha": "19c788a0c581cd412aaf2a465522ff0840808f5a",
+          "size": 6034
+        },
+        {
+          "path": "website/banking-matrix/index.html",
+          "sha": "097f29ccb8cc42f99b06d5fe711a6b5757b4fe1f",
+          "size": 2796
+        },
+        {
+          "path": "website/banking-matrix/matrix-data.js",
+          "sha": "02b71a45b7dd10c4e626a5d9316e2094e05e184b",
+          "size": 13381
+        },
+        {
+          "path": "website/banking-matrix/matrix.test.js",
+          "sha": "3a59495070c223e4974dd407bdb2d6762db277f6",
+          "size": 1101
+        },
+        {
+          "path": "website/banking-matrix/research-agents.json",
+          "sha": "bb5f1a81443e449e3af05e9e0fd40a5310e17ebe",
+          "size": 1162
+        },
+        {
+          "path": "website/banking-matrix/verify-matrix.mjs",
+          "sha": "659f7a7de7da0cb38a4655873a44fca8029b8c3d",
+          "size": 2330
+        },
+        {
+          "path": "website/global-banking/README-BUILD06-SNAPSHOT.md",
+          "sha": "e407040ee1f93290856a90f250404b452f3b7118",
+          "size": 1345
+        },
+        {
+          "path": "website/global-banking/build-public-snapshot.mjs",
+          "sha": "fa6f9c976226bd607d13084113d60fa34911a9fc",
+          "size": 3292
+        },
+        {
+          "path": "website/global-banking/index.html",
+          "sha": "24d16d43a1f04b162efd089f2fb55bc2c68d27e7",
+          "size": 4680
+        },
+        {
+          "path": "website/global-banking/portal-registry-fallback.mjs",
+          "sha": "79c28d81435aa32b9f5462b64ad386b1c47df23a",
+          "size": 2242
+        },
+        {
+          "path": "website/global-banking/portal.css",
+          "sha": "1a06b7322dab581d015f7ac78639a15aecd50f29",
+          "size": 4564
+        },
+        {
+          "path": "website/global-banking/portal.js",
+          "sha": "9c4426eceab86b3755e92f097c05af488f89f005",
+          "size": 7524
+        },
+        {
+          "path": "website/global-banking/portal.test.mjs",
+          "sha": "e8a7a169420e96224bcc3c7bd9a0be9a455009f0",
+          "size": 1766
+        },
+        {
+          "path": "website/global-banking/public-registry-snapshot.json",
+          "sha": "c084ff0baf9294c321a2e150779f38e796cd2dd3",
+          "size": 91723
+        },
+        {
+          "path": "website/global-banking/public-registry-snapshot.test.mjs",
+          "sha": "8253d6c246ee8365664264998ccb784255161b8a",
+          "size": 2688
+        },
+        {
+          "path": "website/global-banking/research-seed.json",
+          "sha": "ecd8d7bafa67373b8c360af0835321e008ef44d8",
+          "size": 10365
+        },
+        {
+          "path": "website/home/index.html",
+          "sha": "1618d73ea0f3bad9c362e592a050388d4ae9ff02",
+          "size": 13916
+        },
+        {
+          "path": "website/master-map/index.html",
+          "sha": "64f126ef6ba80fb1e4f71f36bf5c31c3f10134e4",
+          "size": 5662
+        },
+        {
+          "path": "website/master-map/integration-registry.json",
+          "sha": "f5ceab78321c3958b82372ac9188b06840742623",
+          "size": 1832
+        },
+        {
+          "path": "website/master-map/master-data.js",
+          "sha": "21505b08eb00687feb84d7277db9ef2ed2641add",
+          "size": 12170
+        },
+        {
+          "path": "website/swarm-skim/command-center.html",
+          "sha": "6114a09ee582ce7227e85508656b459691f9a88d",
+          "size": 7371
+        },
+        {
+          "path": "website/swarm-skim/corridor-workbench.html",
+          "sha": "9dc60d63e60fb50b72c316c368084128f1cf36b5",
+          "size": 8786
+        },
+        {
+          "path": "website/swarm-skim/cross-division-api-research-12.json",
+          "sha": "c14a38229f2ec5ecb310e2a6eac27bfe621eb055",
+          "size": 4447
+        },
+        {
+          "path": "website/swarm-skim/cross-division-evidence.json",
+          "sha": "7ecef0044fba4c0adfd7f19aa8639cc96eac18b2",
+          "size": 1669
+        },
+        {
+          "path": "website/swarm-skim/evidence-data.js",
+          "sha": "c3c0996faf2235da790ae4b567103802713f83bc",
+          "size": 6258
+        },
+        {
+          "path": "website/swarm-skim/evidence.json",
+          "sha": "bb43a59a5ed5d5988da1d536bc75b7b8c2e1a69f",
+          "size": 6222
+        },
+        {
+          "path": "website/swarm-skim/global-corridor-swarm-20-b.json",
+          "sha": "b9fc7b58c09f42c99f068700ef00337a181678d0",
+          "size": 6880
+        },
+        {
+          "path": "website/swarm-skim/global-corridor-swarm-20-c.json",
+          "sha": "154fa3fdf581b8a77796dc49d42e7d905c2697ac",
+          "size": 6489
+        },
+        {
+          "path": "website/swarm-skim/global-corridor-swarm-20.json",
+          "sha": "4578585192daef796fba3bcfe03f6b8a7194d463",
+          "size": 7600
+        },
+        {
+          "path": "website/swarm-skim/index.html",
+          "sha": "82cd303bec181d5a8f812545090d94cd60c33126",
+          "size": 2535
+        },
+        {
+          "path": "website/swarm-skim/payments-evidence.json",
+          "sha": "c6eef6636b220b5fdbf77d48310f587b379f4225",
+          "size": 1921
+        },
+        {
+          "path": "website/swarm-skim/verify-command-center.mjs",
+          "sha": "727dcbdf22047e9f21abf9a9b99e4683633813eb",
+          "size": 1512
+        },
+        {
+          "path": "website/swarm-skim/verify-evidence.mjs",
+          "sha": "cac51441b0f9ff33a0a90e2ff08a1aa751e227e2",
+          "size": 719
+        },
+        {
+          "path": "worldsandbox13-asset-lookup-control.json",
+          "sha": "6007fc1bce35208d7a0f7332d3ae7800fcadfdfa",
+          "size": 2984
+        },
+        {
+          "path": "worldsandbox13-banking-access-manifest.json",
+          "sha": "abf7bd092a8973bd4f7ecb95596a95aefe5064d3",
+          "size": 4205
+        },
+        {
+          "path": "worldsandbox13-banking-bridge-status.json",
+          "sha": "7c39b612243770afd805efff1d496881c67219a0",
+          "size": 3549
+        },
+        {
+          "path": "worldsandbox13-banking-reader-control.json",
+          "sha": "9a117d092b6883be622b811aedda1813819dbac0",
+          "size": 2662
+        },
+        {
+          "path": "worldsandbox13-banking-record-lookup-control.json",
+          "sha": "b7e6d8280fdb3953c8b33070fe48e32f6beabccb",
+          "size": 3408
+        },
+        {
+          "path": "worldsandbox13-banking-registry-verification.json",
+          "sha": "cd3eeeaee1380d199383ef8235ba68d75285c422",
+          "size": 4156
+        },
+        {
+          "path": "worldsandbox13-github-source.json",
+          "sha": "5a11a1c8739724f54a2b3e0b009ff6f03f1dd7e1",
+          "size": 1090
+        },
+        {
+          "path": "worldsandbox13-new-registry-admission-control.json",
+          "sha": "412e6c1058b73450954f7d88d1df141aad26b8ef",
+          "size": 3002
+        },
+        {
+          "path": "worldsandbox13-reader.js",
+          "sha": "e085cd313cb947b1ecba44f8e093e2c5a11b7279",
+          "size": 4392
+        },
+        {
+          "path": "worldsandbox13-reader.js:",
+          "sha": "91ea4ba04a0dbd5abbe52d57c613aae1451ccb73",
+          "size": 3509
+        },
+        {
+          "path": "worldsandbox13-reader.test.js.",
+          "sha": "4d99da80b62ddf8d3018b0e3d8ef7f009eeb41ca",
+          "size": 1801
+        },
+        {
+          "path": "worldsandbox13-registry-audit-receipt-control.json",
+          "sha": "c0cc486c8762ab30eb2c16d4384cb48ae9a3f6d7",
+          "size": 2812
+        },
+        {
+          "path": "worldsandbox13-registry-discovery-control.json",
+          "sha": "faeecf666c54a407a592cf254fa33fa40fa7a97c",
+          "size": 2306
+        },
+        {
+          "path": "worldsandbox13-registry-index.json",
+          "sha": "0c46aa2da8b7f081a8dad027b57e2f076315969b",
+          "size": 2334
+        },
+        {
+          "path": "worldsandbox13-registry-integrity-control.json",
+          "sha": "f7fdaf62ad8414ea5a9676b1294f58883221dc8f",
+          "size": 2736
+        },
+        {
+          "path": "worldsandbox13-registry-lookup-control.json",
+          "sha": "a1e8abc057215236cbddf0828fec0bf9bd37c9f7",
+          "size": 3420
+        },
+        {
+          "path": "worldsandbox13-registry-normalization-control.json",
+          "sha": "a9eb39882aa3574927032dfcfea6ee460ef0055e",
+          "size": 3558
+        },
+        {
+          "path": "worldsandbox13-runtime-authorization-control.json",
+          "sha": "cf488f478b38e31a391777230235f08494ac5daa",
+          "size": 3099
+        },
+        {
+          "path": "worldsandbox13-runtime-cache-control.json",
+          "sha": "17ab7bc60a25ce68b91512684d5cc9e6d051ebc2",
+          "size": 2628
+        },
+        {
+          "path": "worldsandbox13-runtime-failure-recovery-control.json",
+          "sha": "e2e22ab7d354d06740fca5032bf65b2dde83d3da",
+          "size": 2936
+        },
+        {
+          "path": "worldsandbox13-runtime-wiring-control.json",
+          "sha": "4df04f5bf6271060f62abf9f0b0337807933d08c",
+          "size": 2981
+        },
+        {
+          "path": "worldsandbox13-sonoraport-banking-master.json",
+          "sha": "9ea56ad4350eb48a4301d1fe7c9123cbb0d3777d",
+          "size": 3504
+        },
+        {
+          "path": "worldsandbox13-status-endpoint-contract.json",
+          "sha": "fe23c15e52b272a5c97d3f05a3099cee6b3ebeab",
+          "size": 3219
+        }
+      ],
+      "readPermission": "AUTHORIZED"
+    },
+    {
+      "repository": "Joaquinloera/Worldsanbox13",
+      "branch": "main",
+      "treeSha": "a68baf578500908bcac2cb92c6b2017b9f2e2a0f",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/workflows/worldsandbox-test.yml",
+          "sha": "b530626affdefa51fe4da05e73f36178d4d4d023",
+          "size": 9521
+        },
+        {
+          "path": "README.md",
+          "sha": "39a6dc0a85415f0080b6e83b8d2fef784365dc8f",
+          "size": 179
+        },
+        {
+          "path": "agent-system/README.md",
+          "sha": "1359fedee7a39174b6db6607a13b76f3c3060f97",
+          "size": 665
+        },
+        {
+          "path": "agent-system/core.cjs",
+          "sha": "951929931c55bc65386d86c5cdee89620b6842c9",
+          "size": 1088
+        },
+        {
+          "path": "agent-system/core.test.cjs",
+          "sha": "91964747ee942507ede1c646774dafb99e784044",
+          "size": 926
+        },
+        {
+          "path": "agent-system/roster.json",
+          "sha": "84d1273f6812d3114052d7969a2de2a879d94f3b",
+          "size": 5718
+        },
+        {
+          "path": "agent-system/server.cjs",
+          "sha": "2b93cdd2f4c4b5cb40ed49dc54ab395bbd03f693",
+          "size": 1171
+        },
+        {
+          "path": "ai-technology.json",
+          "sha": "07efe2bb6c6c338fe2b2e419988eddc8f7e0e9c2",
+          "size": 3621
+        },
+        {
+          "path": "america-gov.connector.json",
+          "sha": "0f88226164497ef94d9d48824fce53d95da828d4",
+          "size": 1335
+        },
+        {
+          "path": "app.js",
+          "sha": "a4dde50b6c3d1ad3b1d17b69c83b3ccb1d432a92",
+          "size": 7074
+        },
+        {
+          "path": "cash-app/cash-app-access-map-01i.json",
+          "sha": "a280cc2da12156120eae30f410bfdfe83dab5bb5",
+          "size": 1952
+        },
+        {
+          "path": "cash-app/cash-app-sandbox-client.cjs",
+          "sha": "4d6a81b782ca346934077dab14f9e7652355b2c9",
+          "size": 1308
+        },
+        {
+          "path": "cash-app/funding-gate.cjs",
+          "sha": "8324e3e762b222d35bfddd1dd4cff9a5a5db88b6",
+          "size": 941
+        },
+        {
+          "path": "cash-app/funding-gate.test.cjs",
+          "sha": "7cff97f160b57219787cf4215bc73f8c954a72c3",
+          "size": 1194
+        },
+        {
+          "path": "cash-app/research-swarm.cjs",
+          "sha": "14c354a45235d5176888fea99f7bc601fa909472",
+          "size": 4018
+        },
+        {
+          "path": "cash-app/research-swarm.test.cjs",
+          "sha": "c8db502df73e6dcc05f27c3957d30d265c4a02c8",
+          "size": 1298
+        },
+        {
+          "path": "cash-app/security-audit-01h.json",
+          "sha": "614523407801c8892a8cc7fa2f32d6fa118644aa",
+          "size": 1767
+        },
+        {
+          "path": "cash-app/signing.cjs",
+          "sha": "ec42d26bc547a7941d193d9031f13f61449c8e12",
+          "size": 1261
+        },
+        {
+          "path": "cash-app/signing.test.cjs",
+          "sha": "4457fbb1f82db522062691296cad83d5f536de72",
+          "size": 1054
+        },
+        {
+          "path": "cash-app/swarm_coordinator.py",
+          "sha": "f9f2ecf93c98e6a5d3e19c917034ed96f43e3933",
+          "size": 1711
+        },
+        {
+          "path": "cash-app/test_swarm_coordinator.py",
+          "sha": "a8d177cc5987aff2c8a2b4d38bf52c9616d18478",
+          "size": 1192
+        },
+        {
+          "path": "data/global-dispensary-registry.json",
+          "sha": "c4f28a2d54e184ed63a499e505aac0aaa170e686",
+          "size": 3176
+        },
+        {
+          "path": "data/global-financial-institutions-registry.json",
+          "sha": "c1ea191319a69bf3d80052b064e922e0afe54797",
+          "size": 4336
+        },
+        {
+          "path": "data/global-infrastructure-registry.json",
+          "sha": "7e6fd8f7513c2c447aad2138f01c174eac623e9d",
+          "size": 6530
+        },
+        {
+          "path": "data/global-payment-networks-registry.json",
+          "sha": "18e05f07992c1ec88acfe2e3ec6cb46bfd991693",
+          "size": 4234
+        },
+        {
+          "path": "data/global-shipping-agriculture-registry.json",
+          "sha": "c9441c762de54beccdc645782dea825fafd8528f",
+          "size": 5563
+        },
+        {
+          "path": "data/sonoraport-banking-bridge.json",
+          "sha": "c65ae04079767c289fe2d8dd2660fa3f2d5e2e63",
+          "size": 1362
+        },
+        {
+          "path": "global-institutions.json",
+          "sha": "d3974591b95059a4414c7d2bafe5140a42cf3acd",
+          "size": 6495
+        },
+        {
+          "path": "global-security.json",
+          "sha": "6ab9f394b730fd6638d5297705c80941f6b54363",
+          "size": 2046
+        },
+        {
+          "path": "hazard-sources.js",
+          "sha": "753072c8d0fc7bb99e0ea0eea605781cdb1726bc",
+          "size": 5067
+        },
+        {
+          "path": "package.json",
+          "sha": "e96ae42db710ed33c04c7f13d9bec8f4c8f08533",
+          "size": 548
+        },
+        {
+          "path": "public/index.html",
+          "sha": "3ea64e724bc795e2bea0aa9e4f5854cc5888c2b1",
+          "size": 16062
+        },
+        {
+          "path": "server.js",
+          "sha": "2c761b84da74df0b230fbbb7755a144773d865ac",
+          "size": 13229
+        },
+        {
+          "path": "worldsandbox.config.json",
+          "sha": "1cf7bc6f2ca33f47db496ed42bb76ce40970d2f7",
+          "size": 1622
+        },
+        {
+          "path": "worldsandbox13-airplanes-master-281102.json",
+          "sha": "7190618acbd211a8fdfe968b930c929aa7e96678",
+          "size": 12251
+        },
+        {
+          "path": "worldsandbox13-banking-281102-kino.json",
+          "sha": "588bb206329c280cd46f9a3c2f8d1ca19c171c30",
+          "size": 17562
+        },
+        {
+          "path": "worldsandbox13-banking-liquidity-master-281102.json",
+          "sha": "b90fa11f119b809357d1d1bfb8201deed1c0821b",
+          "size": 13703
+        },
+        {
+          "path": "worldsandbox13-banking-master-v5.json",
+          "sha": "1a9aa32c45e4b4b55ec058795b9b46e06bd07a60",
+          "size": 16354
+        },
+        {
+          "path": "worldsandbox13-blackrock-assets-281102-kino.json",
+          "sha": "ab5faf0f3456ce8d44631e6186c2d035f0efc42d",
+          "size": 1469
+        },
+        {
+          "path": "worldsandbox13-cannabis-licenses-281102-kino.json",
+          "sha": "20bce62777b5ed220c330670e9af611f05ee8afb",
+          "size": 1261
+        },
+        {
+          "path": "worldsandbox13-companies-281102-kino.json",
+          "sha": "fb71e8a781cb0e7d19ae930ad6c716e7ac0f4b66",
+          "size": 3752
+        },
+        {
+          "path": "worldsandbox13-hard-assets-blackrock-281102-kino.json",
+          "sha": "4cf390b30224bc5a337c89a46b9206e1d226ede7",
+          "size": 2552
+        },
+        {
+          "path": "worldsandbox13-helicopters-281102.json",
+          "sha": "c074b174cc59086e0765ae9400014e3a020c8bbc",
+          "size": 2879
+        },
+        {
+          "path": "worldsandbox13-law-licenses-281102-kino.json",
+          "sha": "bfa8886829042f0673ff4db0b90c5e44f1259067",
+          "size": 1260
+        },
+        {
+          "path": "worldsandbox13-licensing-records-1335-kayleen.json",
+          "sha": "6ab5876fbbc435de54f042ad6896ecf2081ad12d",
+          "size": 1838
+        },
+        {
+          "path": "worldsandbox13-licensing-records-281102-kino.json",
+          "sha": "3418fb27e4a85cc78986213a83c8914c3ff3ea8e",
+          "size": 2872
+        },
+        {
+          "path": "worldsandbox13-properties-281102-kino.json",
+          "sha": "dcab32a92bc4e3a7e50f23e1a740a3176ea64d61",
+          "size": 7377
+        },
+        {
+          "path": "worldsandbox13-property-870-s-tusa-rd.json",
+          "sha": "bb6262f2b841886a48c3ccffe640f26fdc655cc7",
+          "size": 743
+        },
+        {
+          "path": "worldsandbox13-vehicles-281102-kino.json",
+          "sha": "807bb0a8defc0372d964c34ce4a6a99edd7989c6",
+          "size": 7846
+        },
+        {
+          "path": "worldsandbox13-yachts-maritime-master-281102.json",
+          "sha": "81331a684bdf5e55a2d0ebe968f588f46f432ac2",
+          "size": 5391
+        },
+        {
+          "path": "worldsandbox13.config.json",
+          "sha": "06eea6f4ab8dadc26c5c013dc5d48255080e80fc",
+          "size": 459
+        }
+      ],
+      "readPermission": "AUTHORIZED"
+    },
+    {
+      "repository": "Joaquinloera/matcha-manita",
+      "branch": "main",
+      "treeSha": "cbcb464d90cd014e1a1841612dd1f9f7e34e1070",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/workflows/matcha-manita-validation.yml",
+          "sha": "6b7a0aa16e43d3e41684b617940ceb5c34ec9d01",
+          "size": 15047
+        },
+        {
+          "path": ".github/workflows/worldsandbox13-banking-1335-kayleen-v1.json",
+          "sha": "6207865167fa850fcdfd14cc014b2e061fce0779",
+          "size": 4022
+        },
+        {
+          "path": "MATCHA_MANITA_BUILD_010.zip",
+          "sha": "5081e55a7bf54c013d043875c6b915e982d12d66",
+          "size": 621908
+        },
+        {
+          "path": "app.js",
+          "sha": "a2f052aa47f995740f5a79f763dda47bf6c8356c",
+          "size": 20010
+        },
+        {
+          "path": "config/matcha-banking-integration.json",
+          "sha": "590e5e412a56e3f9f6c80621c19e5c5c4400f865",
+          "size": 3221
+        },
+        {
+          "path": "index.html",
+          "sha": "870be4f3ca823233ce14e81d712ba293899c5d72",
+          "size": 6243
+        },
+        {
+          "path": "matcha-manita-assets-required-v1.json",
+          "sha": "1443e0b24fdfd02963556db535ca81e7300a867a",
+          "size": 768
+        },
+        {
+          "path": "matcha-manita-auth-production-v1.json",
+          "sha": "f0358ef5fffcfc65ae0a0eeecaf46291c998ebcd",
+          "size": 4449
+        },
+        {
+          "path": "matcha-manita-checkout-swarm-v1.json",
+          "sha": "108918e83098658f46528d3f071df6053ccee29f",
+          "size": 3875
+        },
+        {
+          "path": "matcha-manita-main.zip",
+          "sha": "44f001559c1268ca367b7490a75da0ec38f985a1",
+          "size": 2580
+        },
+        {
+          "path": "matcha-manita-netlify-deploy-v1.json",
+          "sha": "27d5b16724400e39d6c79d7509d9abb3ccfaf182",
+          "size": 4734
+        },
+        {
+          "path": "matcha-manita-runtime-build-011.json",
+          "sha": "c070bdccbc7d5d117d2c31e9569cfc26d3f7a65c",
+          "size": 2645
+        },
+        {
+          "path": "matcha-manita-runtime-build-012.json",
+          "sha": "c45fa42fafadb8ac24c1bc09a4716755daa80f75",
+          "size": 2836
+        },
+        {
+          "path": "matcha-manita-runtime-build-013.json",
+          "sha": "7dfce89cb4d1da544b3dc48cdb543b7caf7d8518",
+          "size": 2999
+        },
+        {
+          "path": "matcha-manita-sku-catalog-v1.json",
+          "sha": "5cf6a7703faf13a472065e5d73c90f091cec012a",
+          "size": 3401
+        },
+        {
+          "path": "netlify.toml",
+          "sha": "9a057cc23a74ab8bc78d8768ca0171949c5280c5",
+          "size": 382
+        },
+        {
+          "path": "netlify/functions/create-order-session.js",
+          "sha": "82977607f9b2b86bd4c678640004569cf8d2e5fc",
+          "size": 2753
+        },
+        {
+          "path": "netlify/functions/create-payment-intent.js",
+          "sha": "b7578090cb8872f7780e519b0e9d624b4dc1181b",
+          "size": 4104
+        },
+        {
+          "path": "sonoraport-banking-compatibility-v1.json",
+          "sha": "8e6ba6dff4104041070805d0f88c6116d25b4d14",
+          "size": 2723
+        },
+        {
+          "path": "styles.css",
+          "sha": "229b3f48ba9cf028d74ec605a6ffcd4bccd1f05d",
+          "size": 12166
+        },
+        {
+          "path": "worldsandbox13-banking-1335-kayleen-v1.json",
+          "sha": "8ddfe4053cadcb54eab9d17142a2145cfb77065a",
+          "size": 4394
+        },
+        {
+          "path": "worldsandbox13-matcha-manita-homebase-1335.json",
+          "sha": "b80340765bbfc947b71137d59dd3a2ad01e51b4f",
+          "size": 5273
+        }
+      ],
+      "readPermission": "READ_ONLY"
+    }
+  ]
+}
