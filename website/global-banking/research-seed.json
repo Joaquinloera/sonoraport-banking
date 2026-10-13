@@ -1,0 +1,311 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "OFFLINE_REPOSITORY_PUBLIC_RESEARCH_SEED",
+  "sourceRegistry": "research/global-provider-api-auth-skim-2026-10-12.json",
+  "reviewedDeveloperProviders": 19,
+  "regions": [
+    {
+      "lane": "CHINA",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "INDIA",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "BRAZIL",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "RUSSIA",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "SOUTH_AFRICA",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "EGYPT",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "ETHIOPIA",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "IRAN",
+      "sourceVerificationStatus": "OFFICIAL_DOCS_RESEARCH_PENDING",
+      "sourcesFetched": 0
+    },
+    {
+      "lane": "UAE",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "SAUDI_ARABIA",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "INDONESIA",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "US_CANADA",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "MEXICO",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "SOUTH_AMERICA",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "CARIBBEAN",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "EUROPE",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "AFRICA_OTHER",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "ASIA_PACIFIC",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    },
+    {
+      "lane": "GLOBAL_RAILS",
+      "sourceVerificationStatus": "TWO_OFFICIAL_DOCS_FETCHED",
+      "sourcesFetched": 2
+    }
+  ],
+  "providers": [
+    {
+      "name": "JPMorgan Chase Orbital Gateway",
+      "category": "merchant_payments_bank",
+      "region": "US_CANADA",
+      "sourceUrl": "https://developer.jpmorgan.com/products/orbital-api",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [
+        "Basic Authentication connection username/password documented"
+      ],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Citi Developer APIs",
+      "category": "commercial_bank_api",
+      "region": "US_CANADA",
+      "sourceUrl": "https://developer.citi.com/apidocs/",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [
+        "OAuth 2.0",
+        "mutual two-way TLS certificate authentication",
+        "client ID and client secret"
+      ],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "HSBC Developer Portal",
+      "category": "commercial_bank_api",
+      "region": "EUROPE",
+      "sourceUrl": "https://developer.hsbc.com/",
+      "sourceStatus": "SEARCH_LEAD_FETCH_EMPTY",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Deutsche Bank API Program",
+      "category": "commercial_bank_api",
+      "region": "EUROPE",
+      "sourceUrl": "https://developer.db.com/faq",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED_INSUFFICIENT_AUTH_DETAIL",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Wells Fargo Gateway",
+      "category": "commercial_bank_api",
+      "region": "US_CANADA",
+      "sourceUrl": "https://developer.wellsfargo.com/developertools/api-references/hello-wellsfargo/v1/hello-wellsfargo-api-ref-v1",
+      "sourceStatus": "SEARCH_LEAD_FETCH_EMPTY",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Goldman Sachs Transaction Banking",
+      "category": "commercial_bank_api",
+      "region": "US_CANADA",
+      "sourceUrl": "https://developer.gs.com/docs/services/transaction-banking/auth-connection/",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [
+        "mutual TLS",
+        "IP CIDR allowlisting",
+        "API application and certificate"
+      ],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Stripe",
+      "category": "merchant_payments",
+      "region": "GLOBAL_RAILS",
+      "sourceUrl": "https://docs.stripe.com/keys",
+      "sourceStatus": "TWO_OFFICIAL_PAGES_FETCHED",
+      "documentedAuthentication": [
+        "publishable API keys",
+        "secret server API keys",
+        "restricted API keys"
+      ],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "PayPal REST APIs",
+      "category": "merchant_payments",
+      "region": "GLOBAL_RAILS",
+      "sourceUrl": "https://developer.paypal.com/api/rest",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [
+        "OAuth 2.0",
+        "client ID",
+        "client secret",
+        "access token via OAuth token endpoint"
+      ],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Adyen",
+      "category": "merchant_payments",
+      "region": "GLOBAL_RAILS",
+      "sourceUrl": "https://docs.adyen.com/development-resources/api-credentials",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [
+        "API key",
+        "role-based API credential permissions"
+      ],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Wise Platform",
+      "category": "international_payment_provider",
+      "region": "GLOBAL_RAILS",
+      "sourceUrl": "https://docs.wise.com/guides/developer/auth-and-security",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [
+        "partner OAuth 2.0",
+        "client credentials",
+        "mTLS for authorized partners"
+      ],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "ICBC European Open Banking",
+      "category": "commercial_bank_api",
+      "region": "CHINA",
+      "sourceUrl": "https://open.icbc.com.cn/icbc/apip/europe/index.html",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [
+        "regulated TPP registration",
+        "client ID and client secret after SSA validation",
+        "eIDAS certificate",
+        "access token"
+      ],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Bank of China Australia public API notice",
+      "category": "commercial_bank_api",
+      "region": "ASIA_PACIFIC",
+      "sourceUrl": "https://www.boc.cn/au/en/bocinfo/bi1/202302/t20230201_22480146.html",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED_NO_CREDENTIAL_DETAIL",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Bank of America CashPro",
+      "category": "commercial_bank_api",
+      "region": "US_CANADA",
+      "sourceUrl": "https://developer.bankofamerica.com/",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED_NO_CREDENTIAL_DETAIL",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Visa Developer",
+      "category": "card_network",
+      "region": "GLOBAL_RAILS",
+      "sourceUrl": "https://developer.visa.com/pages/working-with-visa-apis/visa-developer-quick-start-guide",
+      "sourceStatus": "TWO_OFFICIAL_PAGES_FETCHED",
+      "documentedAuthentication": [
+        "two-way SSL/mutual authentication",
+        "X-Pay-Token shared-secret API authentication"
+      ],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Swift API Channel",
+      "category": "global_payment_network",
+      "region": "GLOBAL_RAILS",
+      "sourceUrl": "https://www.swift.com/products/swift-apis",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "CIPS Direct Participant",
+      "category": "financial_market_infrastructure",
+      "region": "CHINA",
+      "sourceUrl": "https://www.cips.com.cn/kjjqgsyyingw/2025-12/10/article_2025121011242061513.shtml",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Payments Canada Real-Time Rail",
+      "category": "financial_market_infrastructure",
+      "region": "US_CANADA",
+      "sourceUrl": "https://www.payments.ca/connect/membership/payment-service-provider-participation",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Mexico SPEI",
+      "category": "financial_market_infrastructure",
+      "region": "MEXICO",
+      "sourceUrl": "https://www.banxico.org.mx/services/interbanking-electronic-payme.html",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    },
+    {
+      "name": "Brazil Pix",
+      "category": "financial_market_infrastructure",
+      "region": "BRAZIL",
+      "sourceUrl": "https://www.bcb.gov.br/en/financialstability/pixparticipants",
+      "sourceStatus": "OFFICIAL_PAGE_FETCHED",
+      "documentedAuthentication": [],
+      "integrationStatus": "DOCS_ONLY_NOT_CONNECTED"
+    }
+  ],
+  "notice": "Public documentation only. No bank access, private credentials, live AI worker deployments, or transfer operations verified."
+}
