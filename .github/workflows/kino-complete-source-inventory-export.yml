@@ -1,0 +1,23 @@
+name: KINO Complete Repository Inventory Export
+on:
+  push:
+    paths:
+      - '.github/workflows/kino-complete-source-inventory-export.yml'
+      - 'handoffs/kino-2026-10-13-four-repo-complete-file-inventory.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify full 291-file inventory provenance
+        run: |
+          node -e "const m=require('./handoffs/kino-2026-10-13-four-repo-complete-file-inventory.json');const a=m.repositories||[];if(a.length!==4||a.reduce((x,r)=>x+r.files.length,0)!==291)process.exit(1);console.log('FOUR_REPOS_291_FILES_VERIFIED')"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kino-complete-291-file-github-tree-inventory
+          path: handoffs/kino-2026-10-13-four-repo-complete-file-inventory.json
+          retention-days: 30
