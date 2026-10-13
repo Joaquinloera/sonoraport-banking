@@ -20,7 +20,7 @@
       "kind": "corridor_research",
       "region": "China",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.cips.com.cn/kjjqgsyyingw/jrcips/index.shtml",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -36,7 +36,7 @@
       "kind": "corridor_research",
       "region": "China / EU",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bankofchina.com/at/en/custserv/201903/t20190307_14902791.html",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -52,7 +52,7 @@
       "kind": "corridor_research",
       "region": "China / EU",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://open.icbc.com.cn/icbc/apip/europe/index.html",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -68,7 +68,7 @@
       "kind": "corridor_research",
       "region": "BRICS",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.ndb.int/about-ndb/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -84,7 +84,7 @@
       "kind": "corridor_research",
       "region": "South Africa",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.payshap.co.za/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -100,7 +100,7 @@
       "kind": "corridor_research",
       "region": "South Africa",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.standardbank.co.za/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -116,7 +116,7 @@
       "kind": "corridor_research",
       "region": "Brazil",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://apoio.developers.bb.com.br/apis/28",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -132,7 +132,7 @@
       "kind": "corridor_research",
       "region": "Brazil",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://devportal.itau.com.br/autenticacao-documentacao",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -148,7 +148,7 @@
       "kind": "corridor_research",
       "region": "Brazil",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developers.bradesco.com.br/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -164,7 +164,7 @@
       "kind": "corridor_research",
       "region": "Mexico",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.banxico.org.mx/services/interbanking-electronic-payme.html",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -180,7 +180,7 @@
       "kind": "corridor_research",
       "region": "Mexico",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bbvaapimarket.com/en/banking-apis/mx-business-api-collections/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -196,7 +196,7 @@
       "kind": "corridor_research",
       "region": "Mexico",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developers.banorte.com/es/primeros-pasos",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -212,7 +212,7 @@
       "kind": "corridor_research",
       "region": "India",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.npci.org.in/product/upi/about-upi",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -228,7 +228,7 @@
       "kind": "corridor_research",
       "region": "Eastern Caribbean",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.eccb-centralbank.org/d-cash",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -244,7 +244,7 @@
       "kind": "corridor_research",
       "region": "Brazil",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://github.com/bacen/pix-api",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -260,7 +260,7 @@
       "kind": "corridor_research",
       "region": "Russia",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.cbr.ru/eng/development/mcirabis/fin_msg_transfer_system/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -276,7 +276,7 @@
       "kind": "corridor_research",
       "region": "Egypt",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.cbe.org.eg/en/payment-systems-and-services/instant-payment-network",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -292,7 +292,7 @@
       "kind": "corridor_research",
       "region": "United Arab Emirates",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://aep.ae/en/services/aani/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -308,7 +308,7 @@
       "kind": "corridor_research",
       "region": "Saudi Arabia",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://rulebook.sama.gov.sa/en/instant-payments-launch-sarie",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -324,7 +324,7 @@
       "kind": "corridor_research",
       "region": "Ethiopia",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://ethswitch.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -340,7 +340,7 @@
       "kind": "corridor_research",
       "region": "China / Hong Kong",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.asia.ccb.com/hongkong/personal/banking_channels/open_api.html",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -356,7 +356,7 @@
       "kind": "corridor_research",
       "region": "China",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.abchina.com/en/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -372,7 +372,7 @@
       "kind": "corridor_research",
       "region": "China",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.cdb.com.cn/English/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -388,7 +388,7 @@
       "kind": "corridor_research",
       "region": "South Africa",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.absa.africa/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -404,7 +404,7 @@
       "kind": "corridor_research",
       "region": "South Africa",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.fnb.co.za/integration-channel/index.html",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -420,7 +420,7 @@
       "kind": "corridor_research",
       "region": "South Africa",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://apim.nedbank.co.za/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -436,7 +436,7 @@
       "kind": "corridor_research",
       "region": "Brazil",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bcb.gov.br/en/financialstability/open_finance",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -452,7 +452,7 @@
       "kind": "corridor_research",
       "region": "Mexico",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.banxico.org.mx/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -468,7 +468,7 @@
       "kind": "corridor_research",
       "region": "Jamaica",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://boj.org.jm/core-functions/currency/cbdc/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -484,7 +484,7 @@
       "kind": "corridor_research",
       "region": "Bahamas",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.centralbankbahamas.com/news/public-notices/the-sand-dollar-is-on-schedule-for-gradual-national-release-to-the-bahamas-in-mid-october-2020",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -500,7 +500,7 @@
       "kind": "corridor_research",
       "region": "Trinidad and Tobago",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.central-bank.org.tt/fintech-and-payments/payment-system-landscape/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -516,7 +516,7 @@
       "kind": "corridor_research",
       "region": "Colombia",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.banrep.gov.co/en/news/events/learn-more-about-bre-b",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -532,7 +532,7 @@
       "kind": "corridor_research",
       "region": "Peru",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bcrp.gob.pe/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -548,7 +548,7 @@
       "kind": "corridor_research",
       "region": "Argentina",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bcra.gob.ar/en/transfers-3-0/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -564,7 +564,7 @@
       "kind": "corridor_research",
       "region": "Chile",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bcentral.cl/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -580,7 +580,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.swift.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -596,7 +596,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.visa.com/pages/working-with-visa-apis/visa-developer-quick-start-guide",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -612,7 +612,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.mastercard.com/mastercard-processing-digital/documentation/sandbox-testing/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -628,7 +628,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bis.org/project/mbridge",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -644,7 +644,7 @@
       "kind": "corridor_research",
       "region": "Brazil",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bcb.gov.br/en/financialstability/open_finance",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -660,7 +660,7 @@
       "kind": "corridor_research",
       "region": "Barbados",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.centralbank.org.bb/news/general-press-release/overview-of-payment-systems-in-barbados",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -676,7 +676,7 @@
       "kind": "corridor_research",
       "region": "Dominican Republic",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bancentral.gov.do/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -692,7 +692,7 @@
       "kind": "corridor_research",
       "region": "Haiti",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.brh.ht/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -708,7 +708,7 @@
       "kind": "corridor_research",
       "region": "Guyana",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://bankofguyana.org.gy/bog3/images/national_payment_systems/NPS%20FAQs.pdf",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -724,7 +724,7 @@
       "kind": "corridor_research",
       "region": "Suriname",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.cbvs.sr/en/financial-system/payments-systems",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -740,7 +740,7 @@
       "kind": "corridor_research",
       "region": "Ecuador",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bce.fin.ec/sistema-de-pagos/sistema-central-de-pagos/sistema-de-pagos-interbancarios-spi/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -756,7 +756,7 @@
       "kind": "corridor_research",
       "region": "Bolivia",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bcb.gob.bo/?q=informe-vigilancia-sistema-pagos",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -772,7 +772,7 @@
       "kind": "corridor_research",
       "region": "Uruguay",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bcu.gub.uy/Ingles/Paginas/About-us.aspx",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -788,7 +788,7 @@
       "kind": "corridor_research",
       "region": "Paraguay",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bcp.gov.py/en/web/institucional/w/comunicado-sobre-sistema-de-pagos-instant%C3%A1neos-spi-",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -804,7 +804,7 @@
       "kind": "corridor_research",
       "region": "Venezuela",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bancodevenezuela.com/index.html@p=3457.html",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -820,7 +820,7 @@
       "kind": "corridor_research",
       "region": "Mexico",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.banxico.org.mx/sistemas-de-pago/codi-cobro-digital-banco-me.html",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -836,7 +836,7 @@
       "kind": "corridor_research",
       "region": "Mexico",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.dimo.org.mx/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -852,7 +852,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://docs.wise.com/guides/developer/environments",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -868,7 +868,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.airwallex.com/docs/api/introduction",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -884,7 +884,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://docs.adyen.com/api-explorer/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -900,7 +900,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://plaid.com/docs/sandbox/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -916,7 +916,7 @@
       "kind": "corridor_research",
       "region": "United States",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.treasuryprime.com/developers",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -932,7 +932,7 @@
       "kind": "corridor_research",
       "region": "United States",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.gs.com/docs/services/transaction-banking/auth-connection/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -948,7 +948,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developers.fireblocks.com/reference/signing-a-request-jwt-structure",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -964,7 +964,7 @@
       "kind": "corridor_research",
       "region": "Global",
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://docs.besu-eth.org/public-networks/reference/api",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -980,7 +980,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.jpmorgan.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -996,7 +996,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.bankofamerica.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1012,7 +1012,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.citi.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1028,7 +1028,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.capitalone.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1044,7 +1044,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.gs.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1060,7 +1060,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.morganstanley.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1076,7 +1076,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.pnc.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1092,7 +1092,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.truist.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1108,7 +1108,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.db.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1124,7 +1124,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.ubs.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1140,7 +1140,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://develop.hsbc.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1172,7 +1172,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://openbanking.sc.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -1204,7 +1204,7 @@
       "kind": "commercial_bank_api_research",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://developer.bny.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2276,7 +2276,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.bis.org",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2292,7 +2292,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.imf.org",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2308,7 +2308,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.worldbank.org",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2324,7 +2324,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.adb.org",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2340,7 +2340,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.afdb.org",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2356,7 +2356,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.iadb.org",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2372,7 +2372,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.ebrd.com",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2388,7 +2388,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.ndb.int",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2404,7 +2404,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": null,
+      "publicReferenceUrl": "https://www.aiib.org",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
