@@ -1,0 +1,2578 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "REPOSITORY_PUBLIC_RESEARCH_SNAPSHOT",
+  "source": {
+    "registry": "data/global-banking-all-providers-registry.json",
+    "skim": "research/global-provider-api-auth-skim-2026-10-12.json"
+  },
+  "status": "OFFLINE_DOCUMENTATION_SNAPSHOT_NOT_LIVE_BANKING",
+  "sourceEntries": 178,
+  "publicResearchEntries": 160,
+  "historicalEntriesExcluded": 18,
+  "agentRolesDefined": 144,
+  "hostedAIAgentsVerified": 0,
+  "liveBankingConnectionsVerified": 0,
+  "transfersEnabled": false,
+  "records": [
+    {
+      "id": "corridor_research-china-cips-001",
+      "name": "China CIPS",
+      "kind": "corridor_research",
+      "region": "China",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-bank-of-china-austria-psd2-002",
+      "name": "Bank of China Austria PSD2",
+      "kind": "corridor_research",
+      "region": "China / EU",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-icbc-europe-003",
+      "name": "ICBC Europe",
+      "kind": "corridor_research",
+      "region": "China / EU",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-new-development-bank-004",
+      "name": "New Development Bank",
+      "kind": "corridor_research",
+      "region": "BRICS",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-payshap-005",
+      "name": "PayShap",
+      "kind": "corridor_research",
+      "region": "South Africa",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-standard-bank-006",
+      "name": "Standard Bank",
+      "kind": "corridor_research",
+      "region": "South Africa",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-banco-do-brasil-pix-007",
+      "name": "Banco do Brasil Pix",
+      "kind": "corridor_research",
+      "region": "Brazil",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-itau-008",
+      "name": "Itaú",
+      "kind": "corridor_research",
+      "region": "Brazil",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-bradesco-009",
+      "name": "Bradesco",
+      "kind": "corridor_research",
+      "region": "Brazil",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-banxico-spei-010",
+      "name": "Banxico SPEI",
+      "kind": "corridor_research",
+      "region": "Mexico",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-bbva-mexico-011",
+      "name": "BBVA Mexico",
+      "kind": "corridor_research",
+      "region": "Mexico",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-banorte-012",
+      "name": "Banorte",
+      "kind": "corridor_research",
+      "region": "Mexico",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-npci-upi-013",
+      "name": "NPCI UPI",
+      "kind": "corridor_research",
+      "region": "India",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-eccb-dcash-014",
+      "name": "ECCB DCash",
+      "kind": "corridor_research",
+      "region": "Eastern Caribbean",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-banco-central-do-brasil-pix-015",
+      "name": "Banco Central do Brasil Pix",
+      "kind": "corridor_research",
+      "region": "Brazil",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-bank-of-russia-spfs-016",
+      "name": "Bank of Russia SPFS",
+      "kind": "corridor_research",
+      "region": "Russia",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-egypt-ipn-017",
+      "name": "Egypt IPN",
+      "kind": "corridor_research",
+      "region": "Egypt",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-uae-aani-018",
+      "name": "UAE Aani",
+      "kind": "corridor_research",
+      "region": "United Arab Emirates",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-saudi-sarie-019",
+      "name": "Saudi SARIE",
+      "kind": "corridor_research",
+      "region": "Saudi Arabia",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-ethswitch-020",
+      "name": "EthSwitch",
+      "kind": "corridor_research",
+      "region": "Ethiopia",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-china-construction-bank-asia-001",
+      "name": "China Construction Bank Asia",
+      "kind": "corridor_research",
+      "region": "China / Hong Kong",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-agricultural-bank-of-china-002",
+      "name": "Agricultural Bank of China",
+      "kind": "corridor_research",
+      "region": "China",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-china-development-bank-003",
+      "name": "China Development Bank",
+      "kind": "corridor_research",
+      "region": "China",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-absa-access-004",
+      "name": "Absa Access",
+      "kind": "corridor_research",
+      "region": "South Africa",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-firstrand-fnb-005",
+      "name": "FirstRand FNB",
+      "kind": "corridor_research",
+      "region": "South Africa",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-nedbank-api-marketplace-006",
+      "name": "Nedbank API Marketplace",
+      "kind": "corridor_research",
+      "region": "South Africa",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-brazil-open-finance-007",
+      "name": "Brazil Open Finance",
+      "kind": "corridor_research",
+      "region": "Brazil",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-banxico-codi-008",
+      "name": "Banxico CoDi",
+      "kind": "corridor_research",
+      "region": "Mexico",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-jamaica-jam-dex-009",
+      "name": "Jamaica JAM-DEX",
+      "kind": "corridor_research",
+      "region": "Jamaica",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-bahamas-sand-dollar-010",
+      "name": "Bahamas Sand Dollar",
+      "kind": "corridor_research",
+      "region": "Bahamas",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-trinidad-and-tobago-nps-011",
+      "name": "Trinidad and Tobago NPS",
+      "kind": "corridor_research",
+      "region": "Trinidad and Tobago",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-colombia-bre-b-012",
+      "name": "Colombia Bre-B",
+      "kind": "corridor_research",
+      "region": "Colombia",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-peru-yape-plin-interoperability-013",
+      "name": "Peru Yape / Plin interoperability",
+      "kind": "corridor_research",
+      "region": "Peru",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-argentina-transfers-3-0-014",
+      "name": "Argentina Transfers 3.0",
+      "kind": "corridor_research",
+      "region": "Argentina",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-chile-central-bank-015",
+      "name": "Chile Central Bank",
+      "kind": "corridor_research",
+      "region": "Chile",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-swift-developer-016",
+      "name": "SWIFT Developer",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-visa-developer-017",
+      "name": "Visa Developer",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-mastercard-developers-018",
+      "name": "Mastercard Developers",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-bis-project-mbridge-019",
+      "name": "BIS Project mBridge",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-brazil-open-finance-ecosystem-020",
+      "name": "Brazil Open Finance ecosystem",
+      "kind": "corridor_research",
+      "region": "Brazil",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-b.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-barbados-payments-001",
+      "name": "Barbados payments",
+      "kind": "corridor_research",
+      "region": "Barbados",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-dominican-republic-sipard-002",
+      "name": "Dominican Republic SIPARD",
+      "kind": "corridor_research",
+      "region": "Dominican Republic",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-haiti-spih-003",
+      "name": "Haiti SPIH",
+      "kind": "corridor_research",
+      "region": "Haiti",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-bank-of-guyana-nps-004",
+      "name": "Bank of Guyana NPS",
+      "kind": "corridor_research",
+      "region": "Guyana",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-suriname-sneps-005",
+      "name": "Suriname SNEPS",
+      "kind": "corridor_research",
+      "region": "Suriname",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-ecuador-spi-006",
+      "name": "Ecuador SPI",
+      "kind": "corridor_research",
+      "region": "Ecuador",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-bolivia-payment-systems-007",
+      "name": "Bolivia payment systems",
+      "kind": "corridor_research",
+      "region": "Bolivia",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-uruguay-payment-system-008",
+      "name": "Uruguay payment system",
+      "kind": "corridor_research",
+      "region": "Uruguay",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-paraguay-spi-009",
+      "name": "Paraguay SPI",
+      "kind": "corridor_research",
+      "region": "Paraguay",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-venezuela-pagomovil-010",
+      "name": "Venezuela PagoMóvil",
+      "kind": "corridor_research",
+      "region": "Venezuela",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-mexico-codi-011",
+      "name": "Mexico CoDi",
+      "kind": "corridor_research",
+      "region": "Mexico",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-mexico-dimo-012",
+      "name": "Mexico DiMo",
+      "kind": "corridor_research",
+      "region": "Mexico",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-wise-platform-013",
+      "name": "Wise Platform",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-airwallex-014",
+      "name": "Airwallex",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-adyen-015",
+      "name": "Adyen",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-plaid-016",
+      "name": "Plaid",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-treasury-prime-017",
+      "name": "Treasury Prime",
+      "kind": "corridor_research",
+      "region": "United States",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-goldman-sachs-txb-018",
+      "name": "Goldman Sachs TxB",
+      "kind": "corridor_research",
+      "region": "United States",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-fireblocks-019",
+      "name": "Fireblocks",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "corridor_research-hyperledger-besu-020",
+      "name": "Hyperledger Besu",
+      "kind": "corridor_research",
+      "region": "Global",
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "website/swarm-skim/global-corridor-swarm-20-c.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-jpmorgan-chase-001",
+      "name": "JPMorgan Chase",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-bank-of-america-002",
+      "name": "Bank of America",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-citi-003",
+      "name": "Citi",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-capital-one-004",
+      "name": "Capital One",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-goldman-sachs-005",
+      "name": "Goldman Sachs",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-morgan-stanley-006",
+      "name": "Morgan Stanley",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-pnc-007",
+      "name": "PNC",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-truist-008",
+      "name": "Truist",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-deutsche-bank-009",
+      "name": "Deutsche Bank",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-ubs-010",
+      "name": "UBS",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-hsbc-011",
+      "name": "HSBC",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-santander-012",
+      "name": "Santander",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-standard-chartered-013",
+      "name": "Standard Chartered",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-barclays-014",
+      "name": "Barclays",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-bny-015",
+      "name": "BNY",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-u-s-bank-016",
+      "name": "U.S. Bank",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-natwest-017",
+      "name": "NatWest",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "commercial_bank_api_research-lloyds-banking-group-018",
+      "name": "Lloyds Banking Group",
+      "kind": "commercial_bank_api_research",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/sonoraport-banking",
+        "path": "data/banking-architecture-research.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-algeria-001",
+      "name": "Bank of Algeria",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Algeria",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-argentina-002",
+      "name": "Central Bank of Argentina",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Argentina",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-reserve-bank-of-australia-003",
+      "name": "Reserve Bank of Australia",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Australia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-the-republic-of-austria-004",
+      "name": "Central Bank of the Republic of Austria",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Austria",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-national-bank-of-belgium-005",
+      "name": "National Bank of Belgium",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Belgium",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-bosnia-and-herzegovina-006",
+      "name": "Central Bank of Bosnia and Herzegovina",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Bosnia and Herzegovina",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-brazil-007",
+      "name": "Central Bank of Brazil",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Brazil",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bulgarian-national-bank-008",
+      "name": "Bulgarian National Bank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Bulgaria",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-canada-009",
+      "name": "Bank of Canada",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Canada",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-chile-010",
+      "name": "Central Bank of Chile",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Chile",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-people-s-bank-of-china-011",
+      "name": "People's Bank of China",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "China",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-colombia-012",
+      "name": "Central Bank of Colombia",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Colombia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-croatian-national-bank-013",
+      "name": "Croatian National Bank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Croatia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-czech-national-bank-014",
+      "name": "Czech National Bank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Czech Republic",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-danmarks-nationalbank-015",
+      "name": "Danmarks Nationalbank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Denmark",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-estonia-016",
+      "name": "Bank of Estonia",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Estonia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-european-central-bank-017",
+      "name": "European Central Bank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "European Union",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-finland-018",
+      "name": "Bank of Finland",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Finland",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-france-019",
+      "name": "Bank of France",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "France",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-deutsche-bundesbank-020",
+      "name": "Deutsche Bundesbank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Germany",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-greece-021",
+      "name": "Bank of Greece",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Greece",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-hong-kong-monetary-authority-022",
+      "name": "Hong Kong Monetary Authority",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Hong Kong",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-hungary-023",
+      "name": "Central Bank of Hungary",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Hungary",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-iceland-024",
+      "name": "Central Bank of Iceland",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Iceland",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-reserve-bank-of-india-025",
+      "name": "Reserve Bank of India",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "India",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-indonesia-026",
+      "name": "Bank Indonesia",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Indonesia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-ireland-027",
+      "name": "Central Bank of Ireland",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Ireland",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-israel-028",
+      "name": "Bank of Israel",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Israel",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-italy-029",
+      "name": "Bank of Italy",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Italy",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-japan-030",
+      "name": "Bank of Japan",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Japan",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-korea-031",
+      "name": "Bank of Korea",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Korea",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-kuwait-032",
+      "name": "Central Bank of Kuwait",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Kuwait",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-latvia-033",
+      "name": "Bank of Latvia",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Latvia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-lithuania-034",
+      "name": "Bank of Lithuania",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Lithuania",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-luxembourg-035",
+      "name": "Central Bank of Luxembourg",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Luxembourg",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-malaysia-036",
+      "name": "Central Bank of Malaysia",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Malaysia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-mexico-037",
+      "name": "Bank of Mexico",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Mexico",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-al-maghrib-038",
+      "name": "Bank Al-Maghrib",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Morocco",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-de-nederlandsche-bank-039",
+      "name": "De Nederlandsche Bank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Netherlands",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-reserve-bank-of-new-zealand-040",
+      "name": "Reserve Bank of New Zealand",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "New Zealand",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-national-bank-of-the-republic-of-north-macedonia-041",
+      "name": "National Bank of the Republic of North Macedonia",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "North Macedonia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-norway-042",
+      "name": "Central Bank of Norway",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Norway",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-reserve-bank-of-peru-043",
+      "name": "Central Reserve Bank of Peru",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Peru",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bangko-sentral-ng-pilipinas-044",
+      "name": "Bangko Sentral ng Pilipinas",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Philippines",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-narodowy-bank-polski-045",
+      "name": "Narodowy Bank Polski",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Poland",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-banco-de-portugal-046",
+      "name": "Banco de Portugal",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Portugal",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-national-bank-of-romania-047",
+      "name": "National Bank of Romania",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Romania",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-the-russian-federation-048",
+      "name": "Central Bank of the Russian Federation",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Russia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-saudi-central-bank-049",
+      "name": "Saudi Central Bank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Saudi Arabia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-national-bank-of-serbia-050",
+      "name": "National Bank of Serbia",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Serbia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-monetary-authority-of-singapore-051",
+      "name": "Monetary Authority of Singapore",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Singapore",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-national-bank-of-slovakia-052",
+      "name": "National Bank of Slovakia",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Slovakia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-banka-slovenije-053",
+      "name": "Banka Slovenije",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Slovenia",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-south-african-reserve-bank-054",
+      "name": "South African Reserve Bank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "South Africa",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-spain-055",
+      "name": "Bank of Spain",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Spain",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-sveriges-riksbank-056",
+      "name": "Sveriges Riksbank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Sweden",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-swiss-national-bank-057",
+      "name": "Swiss National Bank",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Switzerland",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-thailand-058",
+      "name": "Bank of Thailand",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Thailand",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-the-republic-of-turkiye-059",
+      "name": "Central Bank of the Republic of Türkiye",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Türkiye",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-central-bank-of-the-united-arab-emirates-060",
+      "name": "Central Bank of the United Arab Emirates",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "United Arab Emirates",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-bank-of-england-061",
+      "name": "Bank of England",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "United Kingdom",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-board-of-governors-of-the-federal-reserve-system-062",
+      "name": "Board of Governors of the Federal Reserve System",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "United States",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "central_bank_directory-state-bank-of-viet-nam-063",
+      "name": "State Bank of Viet Nam",
+      "kind": "central_bank_directory",
+      "region": null,
+      "country": "Viet Nam",
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "international_financial_institution-bank-for-international-settlements-001",
+      "name": "Bank for International Settlements",
+      "kind": "international_financial_institution",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "international_financial_institution-international-monetary-fund-002",
+      "name": "International Monetary Fund",
+      "kind": "international_financial_institution",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "international_financial_institution-world-bank-003",
+      "name": "World Bank",
+      "kind": "international_financial_institution",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "international_financial_institution-asian-development-bank-004",
+      "name": "Asian Development Bank",
+      "kind": "international_financial_institution",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "international_financial_institution-african-development-bank-005",
+      "name": "African Development Bank",
+      "kind": "international_financial_institution",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "international_financial_institution-inter-american-development-bank-006",
+      "name": "Inter-American Development Bank",
+      "kind": "international_financial_institution",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "international_financial_institution-european-bank-for-reconstruction-and-development-007",
+      "name": "European Bank for Reconstruction and Development",
+      "kind": "international_financial_institution",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "international_financial_institution-new-development-bank-008",
+      "name": "New Development Bank",
+      "kind": "international_financial_institution",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "international_financial_institution-asian-infrastructure-investment-bank-009",
+      "name": "Asian Infrastructure Investment Bank",
+      "kind": "international_financial_institution",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "global-institutions.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "institution_reference-blackrock-001",
+      "name": "BlackRock",
+      "kind": "institution_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-financial-institutions-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "institution_reference-vanguard-002",
+      "name": "Vanguard",
+      "kind": "institution_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-financial-institutions-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "institution_reference-state-street-003",
+      "name": "State Street",
+      "kind": "institution_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-financial-institutions-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "institution_reference-jpmorganchase-004",
+      "name": "JPMorganChase",
+      "kind": "institution_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-financial-institutions-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "institution_reference-bayer-monsanto-005",
+      "name": "Bayer / Monsanto",
+      "kind": "institution_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-financial-institutions-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "payment_network_reference-paypal-001",
+      "name": "PayPal",
+      "kind": "payment_network_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-payment-networks-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "payment_network_reference-venmo-002",
+      "name": "Venmo",
+      "kind": "payment_network_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-payment-networks-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "payment_network_reference-cash-app-003",
+      "name": "Cash App",
+      "kind": "payment_network_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-payment-networks-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "payment_network_reference-zelle-004",
+      "name": "Zelle",
+      "kind": "payment_network_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-payment-networks-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    },
+    {
+      "id": "payment_network_reference-apple-pay-005",
+      "name": "Apple Pay",
+      "kind": "payment_network_reference",
+      "region": null,
+      "country": null,
+      "publicReferenceUrl": null,
+      "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
+      "integrationStatus": "NOT_VERIFIED_CONNECTED",
+      "source": {
+        "repo": "Joaquinloera/Worldsanbox13",
+        "path": "data/global-payment-networks-registry.json"
+      },
+      "livePaymentCapable": false,
+      "productionReady": false
+    }
+  ]
+}
