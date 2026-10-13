@@ -14,6 +14,8 @@ export const ASSETS=Object.freeze([
  'website/global-banking/public-registry-snapshot.json',
  'website/global-banking/research-seed.json',
  'website/home/index.html',
+ 'website/home/tmm-slideshow.css',
+ 'website/home/tmm-slideshow.js',
  'website/banking-matrix/index.html',
  'website/banking-matrix/matrix-data.js',
  'website/master-map/index.html',
