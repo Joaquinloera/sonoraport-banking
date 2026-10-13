@@ -113,8 +113,22 @@ async function main(){
  const finalDeploy=await api('/sites/'+SITE_ID+'/deploys/'+deploy.id);
  const names=new Set((finalDeploy.available_functions??[]).map(f=>f.n??f.name));
  for(const name of Object.keys(plan.functions))if(!names.has(name))throw Error('PREVIOUS_FUNCTION_MISSING_AFTER_DEPLOY_'+name);
- const page=await fetch('https://'+HOST+'/website/global-banking/',{redirect:'follow',cache:'no-store'});
- if(!page.ok||!(await page.text()).includes('Research-only platform'))throw Error('PRODUCTION_PORTAL_SMOKE_TEST_FAILED');
+ const smokePages=[
+  ['/website/home/','SonoraPort AI Holding LLC'],
+  ['/website/global-banking/','Research-only platform'],
+  ['/website/global-banking/official-source-evidence.html','Official banking API evidence'],
+  ['/website/banking-matrix/','SonoraPort Banking Matrix'],
+  ['/website/master-map/','SWARM + SKIM Master Integration Map'],
+  ['/website/swarm-skim/','SWARM + SKIM · Banking evidence'],
+  ['/website/swarm-skim/command-center.html','SWARM'],
+  ['/website/swarm-skim/corridor-workbench.html','corridor']
+ ];
+ for(const [route,marker] of smokePages){
+  const check=await fetch('https://'+HOST+route,{redirect:'follow',cache:'no-store'});
+  if(!check.ok||!(await check.text()).toLowerCase().includes(marker.toLowerCase()))throw Error('PRODUCTION_PAGE_SMOKE_TEST_FAILED:'+route);
+ }
+ const retainedHome=await api('/sites/'+SITE_ID+'/files/index.html');
+ if(retainedHome.sha!==plan.files['/index.html'])throw Error('PRODUCTION_HOME_CONTENT_CHANGED');
  const receipt={status:'LIVE_PRODUCTION_PUBLISHED_AND_SMOKE_TESTED',url:'https://'+HOST,deployId:deploy.id,previousDeployId:oldId,preservedFunctions:plan.previousFunctionCount,preservedFiles:plan.previousFileCount,addedFiles:ASSETS.length,commit:process.env.GITHUB_SHA||null};
  console.log(JSON.stringify(receipt));
  if(process.env.GITHUB_STEP_SUMMARY)writeFileSync(process.env.GITHUB_STEP_SUMMARY,'## Live SonoraPort deployment\n'+Object.entries(receipt).map(([k,v])=>'- '+k+': '+v).join('\n')+'\n',{flag:'a'});
