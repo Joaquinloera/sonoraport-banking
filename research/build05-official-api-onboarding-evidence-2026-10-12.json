@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "1.0.0",
+  "researchDate": "2026-10-12",
+  "program": "SONORAPORT_KINO_BUILD05_PUBLIC_SWARM_SKIM",
+  "authority": "PUBLIC_OFFICIAL_DOCUMENTATION_ONLY",
+  "providerConnectionsVerified": 0,
+  "apiCredentialsPossessed": false,
+  "paymentsInitiated": 0,
+  "records": [
+    {
+      "provider": "Deutsche Bank",
+      "lane": "EUROPE",
+      "sourceUrl": "https://developer.db.com/products/psd2",
+      "sourceStatus": "OFFICIAL_DOCUMENT_FETCHED",
+      "verifiedTechnicalFacts": ["PSD2 XS2A APIs described for sandbox and production", "Licensed third-party-provider roles require relevant eIDAS certificate", "Payment initiation, account information and card funds checks have distinct provider roles"],
+      "credentialIssuance": "NOT_ISSUED_OR_VERIFIED_FOR_SONORAPORT",
+      "sandboxAuthorization": "NOT_VERIFIED"
+    },
+    {
+      "provider": "Federal Reserve Financial Services — FedNow",
+      "lane": "US_CANADA",
+      "sourceUrl": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "sourceStatus": "OFFICIAL_DOCUMENT_FETCHED",
+      "verifiedTechnicalFacts": ["FedNow API documentation describes a Ping API for connectivity verification during participant onboarding", "No public documentation proves SonoraPort is a participating institution or has settlement access"],
+      "credentialIssuance": "NOT_ISSUED_OR_VERIFIED_FOR_SONORAPORT",
+      "sandboxAuthorization": "NOT_VERIFIED"
+    },
+    {
+      "provider": "Wells Fargo Gateway",
+      "lane": "US_CANADA",
+      "sourceUrl": "https://developer.wellsfargo.com/guides/user-guides/how-to/how-to",
+      "sourceStatus": "SEARCH_LEAD_FETCH_EMPTY",
+      "verifiedTechnicalFacts": [],
+      "credentialIssuance": "NOT_VERIFIED",
+      "sandboxAuthorization": "NOT_VERIFIED"
+    },
+    {
+      "provider": "HSBC Developer Portal",
+      "lane": "EUROPE",
+      "sourceUrl": "https://beta.developer.hsbc.com/web-hub/apis",
+      "sourceStatus": "SEARCH_LEAD_FETCH_EMPTY",
+      "verifiedTechnicalFacts": [],
+      "credentialIssuance": "NOT_VERIFIED",
+      "sandboxAuthorization": "NOT_VERIFIED"
+    },
+    {
+      "provider": "Bank of America CashPro",
+      "lane": "US_CANADA",
+      "sourceUrl": "https://developer.bankofamerica.com/",
+      "sourceStatus": "PUBLIC_HOME_PAGE_FETCHED_INSUFFICIENT_TECHNICAL_DETAIL",
+      "verifiedTechnicalFacts": [],
+      "credentialIssuance": "NOT_VERIFIED",
+      "sandboxAuthorization": "NOT_VERIFIED"
+    },
+    {
+      "provider": "Bank of China Australia",
+      "lane": "ASIA_PACIFIC",
+      "sourceUrl": "https://www.boc.cn/au/en/bocinfo/bi1/202302/t20230201_22480146.html",
+      "sourceStatus": "PRIOR_RESEARCH_SOURCE_REQUIRES_REFRESH",
+      "verifiedTechnicalFacts": [],
+      "credentialIssuance": "NOT_VERIFIED",
+      "sandboxAuthorization": "NOT_VERIFIED"
+    }
+  ]
+}
