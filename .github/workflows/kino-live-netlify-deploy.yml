@@ -23,7 +23,7 @@ jobs:
       - name: Verify source catalog and safety of added production pages
         run: |
           node website/global-banking/build-public-snapshot.mjs --check
-          node --test deployment/deploy-live-banking.test.mjs deployment/build-banking-preview.test.mjs website/global-banking/*.test.mjs website/home/*.test.mjs
+          node --test deployment/deploy-live-banking.test.mjs deployment/build-banking-preview.test.mjs website/global-banking/*.test.mjs website/home/*.test.mjs website/master-map/*.test.mjs
       - name: Ensure deployment permission exists for live Netlify website
         run: |
           if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
