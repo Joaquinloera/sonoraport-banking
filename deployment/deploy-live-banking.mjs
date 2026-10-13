@@ -20,6 +20,8 @@ export const ASSETS=Object.freeze([
  'website/banking-matrix/matrix-data.js',
  'website/master-map/index.html',
  'website/master-map/master-data.js',
+ 'website/master-map/every-build.html',
+ 'website/master-map/every-build-map.json',
  'website/swarm-skim/index.html',
  'website/swarm-skim/evidence-data.js',
  'website/swarm-skim/command-center.html',
