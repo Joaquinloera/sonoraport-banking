@@ -12,7 +12,25 @@ export const ASSETS=Object.freeze([
  'website/global-banking/portal.js',
  'website/global-banking/portal-registry-fallback.mjs',
  'website/global-banking/public-registry-snapshot.json',
- 'website/global-banking/research-seed.json'
+ 'website/global-banking/research-seed.json',
+ 'website/home/index.html',
+ 'website/banking-matrix/index.html',
+ 'website/banking-matrix/matrix-data.js',
+ 'website/master-map/index.html',
+ 'website/master-map/master-data.js',
+ 'website/swarm-skim/index.html',
+ 'website/swarm-skim/evidence-data.js',
+ 'website/swarm-skim/command-center.html',
+ 'website/swarm-skim/corridor-workbench.html',
+ 'website/swarm-skim/global-corridor-swarm-20.json',
+ 'website/swarm-skim/global-corridor-swarm-20-b.json',
+ 'website/swarm-skim/global-corridor-swarm-20-c.json',
+ 'website/swarm-skim/cross-division-api-research-12.json',
+ 'website/swarm-skim/payments-evidence.json',
+ 'website/swarm-skim/cross-division-evidence.json',
+ 'website/global-banking/official-source-evidence.html',
+ 'website/global-banking/official-source-evidence.js',
+ 'website/global-banking/official-source-evidence.json'
 ]);
 const h40=/^[0-9a-f]{40}$/i,h64=/^[0-9a-f]{64}$/i;
 export function deploymentPlan({files,functions,assets}){
