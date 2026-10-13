@@ -64,7 +64,7 @@ async function main(){
   const response=await api(next,{raw:true}),chunk=await response.json();
   if(!Array.isArray(chunk))throw Error('FILE_LIST_NOT_ARRAY');
   files.push(...chunk);
-  const links=response.headers.get('link')||'',match=links.match(/<([^>]+)>;\\s*rel="next"/);
+  const links=response.headers.get('link')||'',match=links.match(/<([^>]+)>;\s*rel="next"/);
   next=match?new URL(match[1]).pathname+new URL(match[1]).search:null;
   if(p===99&&next)throw Error('FILE_LIST_PAGINATION_TRUNCATED');
  }
@@ -99,7 +99,7 @@ async function main(){
  if(!page.ok||!(await page.text()).includes('Research-only platform'))throw Error('PRODUCTION_PORTAL_SMOKE_TEST_FAILED');
  const receipt={status:'LIVE_PRODUCTION_PUBLISHED_AND_SMOKE_TESTED',url:'https://'+HOST,deployId:deploy.id,previousDeployId:oldId,preservedFunctions:plan.previousFunctionCount,preservedFiles:plan.previousFileCount,addedFiles:ASSETS.length,commit:process.env.GITHUB_SHA||null};
  console.log(JSON.stringify(receipt));
- if(process.env.GITHUB_STEP_SUMMARY)writeFileSync(process.env.GITHUB_STEP_SUMMARY,'## Live SonoraPort deployment\\n'+Object.entries(receipt).map(([k,v])=>'- '+k+': '+v).join('\\n')+'\\n',{flag:'a'});
+ if(process.env.GITHUB_STEP_SUMMARY)writeFileSync(process.env.GITHUB_STEP_SUMMARY,'## Live SonoraPort deployment\n'+Object.entries(receipt).map(([k,v])=>'- '+k+': '+v).join('\n')+'\n',{flag:'a'});
 }
 if(process.argv[1]&&resolve(process.argv[1])===resolve(new URL(import.meta.url).pathname)){
  main().catch(err=>{console.error('SONORAPORT_PRODUCTION_NOT_VERIFIED:',err.message);process.exitCode=1});
