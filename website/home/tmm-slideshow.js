@@ -31,12 +31,14 @@
  slides.forEach(slide=>{
   const photo=slide.querySelector('img[data-tmm-fallback]');
   if(!photo)return;
-  photo.addEventListener('error',()=>{
+  const fallbackImage=()=>{
    const fallback=photo.dataset.tmmFallback;
    if(!photo.dataset.fallbackTried&&fallback&&new URL(fallback,location.href).protocol==='https:'){
     photo.dataset.fallbackTried='yes';photo.src=fallback;
    }else{photo.style.display='none';}
-  });
+  };
+  photo.addEventListener('error',fallbackImage);
+  if(photo.complete&&photo.naturalWidth===0)fallbackImage();
  });
  previous?.addEventListener('click',()=>go(current-1));
  next?.addEventListener('click',()=>go(current+1));
