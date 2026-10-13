@@ -1,0 +1,33 @@
+/* SonoraPort TMM + BRICS cinematic homepage — additive to existing company sections. */
+.tmm-showcase{position:relative;isolation:isolate;min-height:min(760px,84svh);height:clamp(550px,76svh,820px);padding:0;background:#07111c;overflow:hidden;border-bottom:1px solid #9a75454d}
+.tmm-slide{position:absolute;inset:0;display:grid;align-items:end;visibility:hidden;opacity:0;transition:opacity 1s ease,visibility 1s;pointer-events:none}
+.tmm-slide.is-active{visibility:visible;opacity:1;pointer-events:auto;z-index:1}
+.tmm-media{position:absolute;inset:0;overflow:hidden;background:radial-gradient(circle at 65% 35%,#2f5264,#08111e 70%);z-index:-2}
+.tmm-media img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;filter:saturate(.94) contrast(1.06)}
+.tmm-slide[data-scene="banking"] .tmm-media img,.tmm-slide[data-scene="law"] .tmm-media img{object-position:center top}
+.tmm-shade{position:absolute;inset:0;background:linear-gradient(90deg,#020a17ed 0%,#071527a8 40%,#0916241a 75%),linear-gradient(0deg,#030912ef 0%,transparent 44%);z-index:-1}
+.tmm-copy{position:relative;width:min(810px,95%);padding:24px clamp(24px,6vw,104px) 116px;animation:none}
+.tmm-slide.is-active .tmm-copy{animation:tmm-appear .65s ease both}
+.tmm-kicker{color:#e6c78c;font-size:clamp(10px,1.2vw,13px);letter-spacing:.23em;text-transform:uppercase;font-weight:700}
+.tmm-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,6.5vw,96px);font-weight:400;line-height:1.03;margin:20px 0;color:#fff7e8;letter-spacing:-.025em;text-shadow:0 2px 30px #0009}
+.tmm-title em{color:#d8b780;font-style:normal}
+.tmm-desc{font-size:clamp(16px,1.75vw,21px);max-width:640px;line-height:1.55;color:#f0ebe4;text-shadow:0 2px 12px #000b}
+.tmm-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:25px}
+.tmm-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:47px;border:1px solid #dfbb7c;padding:12px 20px;letter-spacing:.065em;text-transform:uppercase;text-decoration:none;font-size:12px;font-weight:800;border-radius:4px;background:#e3bd7e;color:#07131f}
+.tmm-actions a.secondary{background:#081523b8;color:#f1dfbe}
+.tmm-actions a:hover{background:#fff0d3;color:#092036}
+.tmm-controls{position:absolute;z-index:5;inset:auto clamp(18px,4vw,65px) 27px;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.tmm-controls button{appearance:none;border:1px solid #c8a77599;background:#071421be;border-radius:4px;color:#fff;min-width:43px;height:42px;display:inline-grid;place-items:center;cursor:pointer;font-size:20px}
+.tmm-controls button:hover,.tmm-controls button:focus-visible{background:#aa844d;color:#090e16}
+.tmm-navbtns{display:flex;gap:9px}
+.tmm-dots{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+.tmm-dots button{min-width:11px;width:11px;height:11px;border-radius:50%;padding:0;border:1px solid #f5e0c0;background:#d0c7b377}
+.tmm-dots button[aria-current="true"]{width:27px;border-radius:8px;background:#f0c782}
+.tmm-counter{color:#f3ebdf;font-size:13px;font-variant-numeric:tabular-nums;letter-spacing:.14em;min-width:60px;text-align:right}
+.tmm-readout{position:absolute;inset:18px 22px auto auto;z-index:5;color:#f8f2e6;background:#06121dd9;border:1px solid #ad8d605d;border-radius:4px;padding:6px 11px;font-size:11px;letter-spacing:.13em}
+.tmm-readout strong{color:#f1d39a}
+.tmm-showcase a:focus-visible,.tmm-showcase button:focus-visible{outline:3px solid #ffcc7d;outline-offset:4px}
+.tmm-slide[aria-hidden="true"] a{visibility:hidden}
+@keyframes tmm-appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.tmm-showcase{height:clamp(540px,80svh,820px)}.tmm-shade{background:linear-gradient(0deg,#040b18f9 0%,#071421bd 42%,#0c1b3188 70%,#060d1b44 100%)}.tmm-copy{padding:50px 22px 124px;width:100%}.tmm-title{font-size:clamp(41px,10vw,63px)}.tmm-desc{font-size:16px}.tmm-controls{bottom:20px;gap:10px}.tmm-readout{top:12px;right:12px;font-size:10px}.tmm-slide[data-scene="banking"] .tmm-media img{object-position:48% center}.tmm-slide[data-scene="law"] .tmm-media img{object-position:65% center}}
+@media(prefers-reduced-motion:reduce){.tmm-slide{transition:none}.tmm-slide.is-active .tmm-copy{animation:none}.tmm-showcase{scroll-behavior:auto}}
