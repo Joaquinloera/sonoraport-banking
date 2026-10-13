@@ -4,6 +4,8 @@ on:
     paths:
       - 'data/global-banking-all-providers-registry.json'
       - 'integrations/global-banking/**'
+      - 'netlify/functions/global-banking-research*'
+      - 'website/global-banking/**'
       - 'tests/global-banking-registry.test.mjs'
       - 'research/**'
       - 'migrations/research-queue-security.test.mjs'
@@ -12,6 +14,8 @@ on:
   pull_request:
     paths:
       - 'integrations/global-banking/**'
+      - 'netlify/functions/global-banking-research*'
+      - 'website/global-banking/**'
       - 'data/global-banking-all-providers-registry.json'
       - 'tests/global-banking-registry.test.mjs'
       - 'research/**'
@@ -30,4 +34,4 @@ jobs:
         with:
           node-version: '22'
       - name: Validate complete read-only global banking inventory and research queue contract
-        run: node --test tests/global-banking-registry.test.mjs integrations/global-banking/*.test.mjs research/*.test.mjs migrations/research-queue-security.test.mjs
+        run: node --test tests/global-banking-registry.test.mjs integrations/global-banking/*.test.mjs research/*.test.mjs netlify/functions/global-banking-research.test.mjs website/global-banking/*.test.mjs migrations/research-queue-security.test.mjs
