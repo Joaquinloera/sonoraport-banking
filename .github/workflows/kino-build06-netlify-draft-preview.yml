@@ -1,0 +1,77 @@
+name: KINO BUILD06 Banking Portal Draft Preview
+on:
+  push:
+    paths:
+      - 'deployment/build-banking-preview.mjs'
+      - 'deployment/build-banking-preview.test.mjs'
+      - 'website/global-banking/**'
+      - '.github/workflows/kino-build06-netlify-draft-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: kino-bank-preview-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: false
+jobs:
+  verify-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify current public banking source and snapshot
+        run: |
+          node website/global-banking/build-public-snapshot.mjs --check
+          node --test deployment/build-banking-preview.test.mjs website/global-banking/*.test.mjs
+      - name: Build isolated public-only Netlify draft bundle
+        run: node deployment/build-banking-preview.mjs --output "$RUNNER_TEMP/kino-public-banking-draft"
+      - name: Archive only the approved public files
+        uses: actions/upload-artifact@v4
+        with:
+          name: kino-build06-netlify-static-draft
+          retention-days: 30
+          if-no-files-found: error
+          path: ${{ runner.temp }}/kino-public-banking-draft/
+  # No automatic deployment, no production flag, and no access to main site.
+  deploy-bank-draft-only:
+    if: github.event_name == 'workflow_dispatch'
+    needs: verify-and-package
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      # Existing verified separate Netlify banking project; NOT sonoraportaiholdingllc.com.
+      NETLIFY_SITE_ID: 15b849d7-b776-4e6b-a3e6-06b0e3b25f66
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: kino-build06-netlify-static-draft
+          path: public-site
+      - name: Verify deploy access is explicitly configured
+        shell: bash
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+            echo 'Draft deployment blocked: configure NETLIFY_AUTH_TOKEN in this repository Actions secrets.'
+            exit 1
+          fi
+      - name: Publish DRAFT preview on the separate banking Netlify project
+        shell: bash
+        run: |
+          npx --yes netlify-cli deploy \
+            --no-build \
+            --dir public-site \
+            --site "$NETLIFY_SITE_ID" \
+            --auth "$NETLIFY_AUTH_TOKEN" \
+            --context deploy-preview \
+            --message 'KINO BUILD06 public banking research preview only' \
+            --json > "$RUNNER_TEMP/kino-netlify-draft-receipt.json"
+          node -e "const r=require(process.argv[1]);if(!r.deploy_url&&!r.url){process.exit(1)}console.log('Netlify draft preview created:',r.deploy_url||r.url)" "$RUNNER_TEMP/kino-netlify-draft-receipt.json"
+      - name: Preserve verifiable draft deployment receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: kino-build06-draft-deployment-receipt
+          retention-days: 30
+          if-no-files-found: error
+          path: ${{ runner.temp }}/kino-netlify-draft-receipt.json
