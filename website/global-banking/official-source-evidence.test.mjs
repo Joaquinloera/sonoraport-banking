@@ -25,7 +25,7 @@ test('published official API source workbench contains eight safe public provide
  assert.equal(unique.size,8);
 });
 test('live website routes and all 24 published assets exist and are accessible from navigation',()=>{
- assert.equal(ASSETS.length,26);
+ assert.equal(ASSETS.length,28);
  for(const p of ASSETS){assert.ok(p.startsWith('website/'));assert.ok(!p.includes('..'));assert.ok(existsSync(join(base,p)),p);}
  const home=readFileSync(join(base,'website/home/index.html'),'utf8');
  const portal=readFileSync(join(base,'website/global-banking/index.html'),'utf8');
