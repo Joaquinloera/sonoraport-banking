@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-10-13",
+  "mode": "PUBLIC_SOURCE_RESEARCH_NOT_PROVIDER_ACCESS",
+  "productionBankingConnectionsVerified": 0,
+  "hostedAIAgentsVerified": 0,
+  "entries": [
+    {
+      "provider": "Federal Reserve FedNow DevRel APIs",
+      "lane": "US_CANADA",
+      "sourceUrl": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "sourceTitle": "FedNow APIs | Federal Reserve Financial Services",
+      "documentedAuthentication": [
+        "FedLine Developer / FedNow DevRel access path identified; technical credential issuance not established from this page"
+      ],
+      "documentedCapability": [
+        "Participant list API",
+        "Ping connectivity confirmation API"
+      ],
+      "providerOnboarding": "Participating financial institution access; institutional agreement and onboarding required",
+      "sandboxAccess": "NOT_VERIFIED_AUTHORIZED",
+      "catalogReconciliationRequired": true
+    },
+    {
+      "provider": "Citi Developer APIs",
+      "lane": "US_CANADA",
+      "sourceUrl": "https://developer.citi.com/apidocs/",
+      "sourceTitle": "Authentication Guide | Account Reporting",
+      "documentedAuthentication": [
+        "Client SSL certificates",
+        "API-specific authentication version",
+        "Client ID / Client Secret issued through authorized developer onboarding"
+      ],
+      "documentedCapability": [
+        "Developer API integration guide",
+        "Token acquisition and certificate setup"
+      ],
+      "providerOnboarding": "Developer portal account, certificates and applicable API access authorization",
+      "sandboxAccess": "NOT_VERIFIED_AUTHORIZED",
+      "catalogReconciliationRequired": false
+    },
+    {
+      "provider": "Deutsche Bank PSD2",
+      "lane": "EUROPE",
+      "sourceUrl": "https://developer.db.com/products/psd2",
+      "sourceTitle": "Deutsche Bank PSD2 XS2A API",
+      "documentedAuthentication": [
+        "eIDAS certificates",
+        "Licensed TPP role relevant to requested PSD2 service"
+      ],
+      "documentedCapability": [
+        "PISP payment initiation/status",
+        "AISP account information with customer consent",
+        "PIISP funds availability"
+      ],
+      "providerOnboarding": "Licensed third-party provider with applicable eIDAS certificate and customer authorization",
+      "sandboxAccess": "PUBLIC_SANDBOX_DOCUMENTED_NOT_AUTHORIZED",
+      "catalogReconciliationRequired": false
+    },
+    {
+      "provider": "Goldman Sachs Transaction Banking",
+      "lane": "US_CANADA",
+      "sourceUrl": "https://developer.gs.com/docs/services/transaction-banking/auth-connection/",
+      "sourceTitle": "Basic API Authentication",
+      "documentedAuthentication": [
+        "Mutual TLS certificates",
+        "IP allowlisting",
+        "Client developer portal user and API application onboarding"
+      ],
+      "documentedCapability": [
+        "Transaction Banking API certificates and applications"
+      ],
+      "providerOnboarding": "Provider-established organizational account and API certificate setup",
+      "sandboxAccess": "NOT_VERIFIED_AUTHORIZED",
+      "catalogReconciliationRequired": false
+    },
+    {
+      "provider": "Wise Platform",
+      "lane": "EUROPE",
+      "sourceUrl": "https://docs.wise.com/guides/developer/auth-and-security",
+      "sourceTitle": "Security and access | Wise Platform",
+      "documentedAuthentication": [
+        "OAuth 2.0 partner integrations",
+        "mTLS",
+        "Client ID and Client Secret provided during partner onboarding"
+      ],
+      "documentedCapability": [
+        "Partner API authentication flows"
+      ],
+      "providerOnboarding": "Wise partnership agreement and approved partner credentials",
+      "sandboxAccess": "NOT_VERIFIED_AUTHORIZED",
+      "catalogReconciliationRequired": false
+    },
+    {
+      "provider": "Banco Central do Brasil Pix",
+      "lane": "BRAZIL",
+      "sourceUrl": "https://www.bcb.gov.br/en/financialstability/pixparticipants",
+      "sourceTitle": "Pix Participants",
+      "documentedAuthentication": [
+        "Institutional Pix/SPI/DICT participation and permission requirements; not a general public API key"
+      ],
+      "documentedCapability": [
+        "Pix participation",
+        "SPI direct/indirect settlement participation",
+        "DICT alias directory access by eligible participants"
+      ],
+      "providerOnboarding": "BCB participant criteria; indirect access requires a responsible direct participant relationship",
+      "sandboxAccess": "NOT_VERIFIED_AUTHORIZED",
+      "catalogReconciliationRequired": false
+    },
+    {
+      "provider": "Swift API Channel",
+      "lane": "GLOBAL_RAILS",
+      "sourceUrl": "https://www.swift.com/products/swift-apis",
+      "sourceTitle": "API Channel | Swift",
+      "documentedAuthentication": [
+        "Swift SDK handles supported API authentication, authorization, signing and error handling"
+      ],
+      "documentedCapability": [
+        "Developer portal API catalogue",
+        "SDK and example payloads"
+      ],
+      "providerOnboarding": "Approved Swift developer and institutional participation requirements must be verified for each API",
+      "sandboxAccess": "NOT_VERIFIED_AUTHORIZED",
+      "catalogReconciliationRequired": false
+    },
+    {
+      "provider": "ICBC European Open Banking",
+      "lane": "CHINA",
+      "sourceUrl": "https://open.icbc.com.cn/icbc/apip/europe/index.html",
+      "sourceTitle": "ICBC Developer Portal",
+      "documentedAuthentication": [
+        "Regulated TPP onboarding",
+        "Open Banking Directory SSA",
+        "Client ID / Client Secret after SSA validation",
+        "eIDAS certificate"
+      ],
+      "documentedCapability": [
+        "ICBC Europe open banking API developer access"
+      ],
+      "providerOnboarding": "Approved third-party provider registration and bank review",
+      "sandboxAccess": "DOCUMENTED_SANDBOX_NOT_AUTHORIZED",
+      "catalogReconciliationRequired": false
+    }
+  ]
+}
