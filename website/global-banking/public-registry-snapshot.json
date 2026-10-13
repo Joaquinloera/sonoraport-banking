@@ -2276,7 +2276,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": "https://www.bis.org",
+      "publicReferenceUrl": "https://www.bis.org/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2292,7 +2292,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": "https://www.imf.org",
+      "publicReferenceUrl": "https://www.imf.org/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2308,7 +2308,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": "https://www.worldbank.org",
+      "publicReferenceUrl": "https://www.worldbank.org/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2324,7 +2324,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": "https://www.adb.org",
+      "publicReferenceUrl": "https://www.adb.org/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2340,7 +2340,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": "https://www.afdb.org",
+      "publicReferenceUrl": "https://www.afdb.org/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2356,7 +2356,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": "https://www.iadb.org",
+      "publicReferenceUrl": "https://www.iadb.org/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2372,7 +2372,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": "https://www.ebrd.com",
+      "publicReferenceUrl": "https://www.ebrd.com/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2388,7 +2388,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": "https://www.ndb.int",
+      "publicReferenceUrl": "https://www.ndb.int/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
@@ -2404,7 +2404,7 @@
       "kind": "international_financial_institution",
       "region": null,
       "country": null,
-      "publicReferenceUrl": "https://www.aiib.org",
+      "publicReferenceUrl": "https://www.aiib.org/",
       "evidenceStatus": "REPOSITORY_RESEARCH_NOT_LIVE_VERIFIED",
       "integrationStatus": "NOT_VERIFIED_CONNECTED",
       "source": {
