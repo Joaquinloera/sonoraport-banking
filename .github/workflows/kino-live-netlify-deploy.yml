@@ -37,11 +37,19 @@ jobs:
           path: research/output/kino-every-build-public-skim-receipts.json
           if-no-files-found: warn
           retention-days: 90
-      - name: Ensure deployment permission exists for live Netlify website
+      # Each push performs source checks and produces research receipts only.
+      # Production publication requires an explicit manual workflow dispatch.
+      - name: Record production deployment not requested
+        if: github.event_name != 'workflow_dispatch'
+        run: |
+          echo 'KINO source verification completed. Production deployment was NOT requested or performed.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Ensure deployment permission exists for manually authorized Netlify website build
+        if: github.event_name == 'workflow_dispatch'
         run: |
           if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
             echo 'LIVE DEPLOYMENT BLOCKED: configure NETLIFY_AUTH_TOKEN in GitHub Actions secrets'
             exit 1
           fi
       - name: Deploy into EXISTING production domain without replacing homepage
+        if: github.event_name == 'workflow_dispatch'
         run: node deployment/deploy-live-banking.mjs
