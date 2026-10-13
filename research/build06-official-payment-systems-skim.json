@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "researchDate": "2026-10-12",
+  "program": "SonoraPort KINO #281102 coordinated public SWARM + SKIM",
+  "researchOnly": true,
+  "executionMethod": "COORDINATED_TINYFISH_PUBLIC_SEARCH_AND_FETCH_NOT_HOSTED_AUTONOMOUS_AGENTS",
+  "hostedAgentsVerifiedByThisRun": 0,
+  "providerCredentialsIssuedOrPossessed": false,
+  "liveBankingConnectionsVerified": 0,
+  "bankingTransactionsInitiated": 0,
+  "sourceGroups": [
+    {
+      "lane": "CHINA_CIPS",
+      "provider": "Cross-border Interbank Payment System",
+      "verificationStatus": "TWO_OFFICIAL_DOCUMENTS_FETCHED",
+      "finding": "CIPS official materials distinguish direct participation and participant account requirements; ordinary public research is not institutional settlement access.",
+      "apiAccessStatus": "NOT_VERIFIED",
+      "sources": [
+        {"url":"https://www.cips.com.cn/kjjqgsyyingw/jrcips/index.shtml","status":"FETCHED","title":"Join CIPS"},
+        {"url":"https://www.cips.com.cn/kjjqgsyyingw/2025-12/11/article_2025121115190568735.shtml","status":"FETCHED","title":"What are the requirements for CIPS account management?"}
+      ]
+    },
+    {
+      "lane": "AFRICA_NIGERIA",
+      "provider": "Nigeria Inter-Bank Settlement System",
+      "verificationStatus": "TWO_OFFICIAL_DOCUMENTS_FETCHED",
+      "finding": "Official NIBSS pages describe instant payment infrastructure and the National Payment Stack; provider API credentials and sponsorship are not established.",
+      "apiAccessStatus": "NOT_VERIFIED",
+      "sources": [
+        {"url":"https://nibss-plc.com.ng/nibss-instant-payment/","status":"FETCHED","title":"NIBSS Instant Payment (NIP)"},
+        {"url":"https://nibss-plc.com.ng/national-payment-stack/","status":"FETCHED","title":"National Payment Stack (NPS)"}
+      ]
+    },
+    {
+      "lane": "CARIBBEAN_ECCB",
+      "provider": "Eastern Caribbean Central Bank",
+      "verificationStatus": "TWO_OFFICIAL_DOCUMENTS_FETCHED",
+      "finding": "ECCB public documentation explains payment and settlement operations and regional payment integration; direct API availability is unverified.",
+      "apiAccessStatus": "NOT_VERIFIED",
+      "sources": [
+        {"url":"https://www.eccb-centralbank.org/payment-and-settlement-operations","status":"FETCHED","title":"Payment and Settlement Operations"},
+        {"url":"https://www.eccb-centralbank.org/blogs/payment-system-integration","status":"FETCHED","title":"Payment System Integration"}
+      ]
+    },
+    {
+      "lane": "EUROPE_ECB",
+      "provider": "European Central Bank TARGET/TIPS",
+      "verificationStatus": "TWO_OFFICIAL_DOCUMENTS_FETCHED",
+      "finding": "ECB documentation contains TIPS participant onboarding materials and TARGET settlement-service references; production participant authorization is not established.",
+      "apiAccessStatus": "NOT_VERIFIED",
+      "sources": [
+        {"url":"https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/tips/html/index.en.html","status":"FETCHED","title":"TIPS documents & links"},
+        {"url":"https://www.ecb.europa.eu/paym/target/html/index.en.html","status":"FETCHED","title":"TARGET Services & Pontes"}
+      ]
+    },
+    {
+      "lane": "MEXICO_BANXICO",
+      "provider": "Banco de México SPEI/CoDi",
+      "verificationStatus": "TWO_OFFICIAL_DOCUMENTS_FETCHED",
+      "finding": "Banco de México public documentation explains SPEI electronic payment services and CoDi participation paths; no production API keys or banking sponsorship were verified.",
+      "apiAccessStatus": "NOT_VERIFIED",
+      "sources": [
+        {"url":"https://www.banxico.org.mx/services/interbanking-electronic-payme.html","status":"FETCHED","title":"SPEI, information, Banco de México"},
+        {"url":"https://www.banxico.org.mx/sistemas-de-pago/codi-cobro-digital-banco-me.html","status":"FETCHED","title":"CoDi, Cobro Digital"}
+      ]
+    },
+    {
+      "lane": "IRAN_CBI",
+      "provider": "Central Bank of Iran public payment infrastructure",
+      "verificationStatus": "PARTIAL_OFFICIAL_DOCUMENT_FETCH",
+      "finding": "Official payment infrastructure overview was retrieved, but one separate official payment-system page timed out; developer API and authorized participation remain unverified.",
+      "apiAccessStatus": "NOT_VERIFIED",
+      "sources": [
+        {"url":"https://www.cbi.ir/page/15746.aspx","status":"TIMEOUT_NOT_VERIFIED","title":null},
+        {"url":"https://www.cbi.ir/section/1481.aspx","status":"FETCHED","title":"Payments & Infrastructure"}
+      ]
+    }
+  ]
+}
