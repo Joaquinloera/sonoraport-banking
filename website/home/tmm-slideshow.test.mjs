@@ -28,3 +28,16 @@ test('research-only website does not ask customers for a password or claim provi
  assert.ok(home.includes('Ownership and development permissions are subject to independent verification'));
  assert.ok(home.includes('https://sonoraport.com/overview/'));
 });
+
+test('TMM Law Firm is an existing division with law-office and protected portal infrastructure, not a proposed concept',()=>{
+ assert.ok(home.includes('TMM LAW FIRM · EXISTING LEGAL OFFICE'));
+ assert.ok(home.includes('Your existing TMM Law Firm website'));
+ assert.ok(home.includes('Private client portal'));
+ assert.ok(home.includes('Attorney-controlled operations'));
+ assert.ok(home.includes('immigration and detention defense'));
+ assert.ok(home.includes('wrongful-conviction review'));
+ assert.ok(!home.includes('Legal-services division concept'));
+ assert.ok(!home.includes('TMM LAW FIRM · DIVISION CONCEPT'));
+ assert.ok(!home.includes('Concept section.'));
+ assert.ok(home.includes('do not replace the recovered law portal'));
+});
