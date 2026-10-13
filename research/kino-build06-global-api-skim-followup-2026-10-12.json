@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0.0",
+  "program": "KINO #281102 SWARM SKIM GLOBAL BANKING",
+  "date": "2026-10-12",
+  "mode": "PUBLIC_OFFICIAL_DOCS_ONLY",
+  "sourceCount": 8,
+  "officialPagesFetched": 7,
+  "searchLeadsPendingVerification": 1,
+  "credentialsIssuedOrPossessed": false,
+  "providerPartnershipsVerified": 0,
+  "productionBankingConnections": 0,
+  "financialTransfersExecuted": 0,
+  "sourceVerificationLevel": "PUBLIC_WEBSITE_CONTENT_OR_SEARCH_LEAD_NOT_PROVIDER_AUTHORIZATION",
+  "sources": [
+    {
+      "provider": "HSBC Developer Portal",
+      "lane": "EUROPE",
+      "url": "https://develop.hsbc.com/knowledge-article/sandbox-project-user-guide",
+      "verification": "OFFICIAL_PAGE_FETCHED",
+      "publicFinding": "HSBC corporate sandbox projects are created in Dev Hub; registered projects generate client credentials and encryption keys for sandbox authentication",
+      "onboarding": "REGISTERED_DEVELOPER_PROJECT_REQUIRED",
+      "connectionStatus": "DOCS_ONLY_NOT_CONNECTED",
+      "credentialsPossessed": false
+    },
+    {
+      "provider": "HSBC Sandbox Toolkit",
+      "lane": "EUROPE",
+      "url": "https://develop.hsbc.com/dev-hub/sandbox-toolkit",
+      "verification": "OFFICIAL_PAGE_FETCHED",
+      "publicFinding": "Sandbox toolkit provides developer guidance for using client credentials and project-generated encryption keys",
+      "onboarding": "REGISTERED_DEV_HUB_REQUIRED",
+      "connectionStatus": "DOCS_ONLY_NOT_CONNECTED",
+      "credentialsPossessed": false
+    },
+    {
+      "provider": "Wells Fargo Gateway",
+      "lane": "US_CANADA",
+      "url": "https://developer.wellsfargo.com/guides/user-guides/how-to/how-to",
+      "verification": "OFFICIAL_SEARCH_LEAD_FETCH_EMPTY",
+      "publicFinding": "Search result points to a sandbox user ID onboarding guide; actual page body was unavailable for verification",
+      "onboarding": "DIRECT_SOURCE_VERIFICATION_PENDING",
+      "connectionStatus": "DOCS_ONLY_NOT_CONNECTED",
+      "credentialsPossessed": false
+    },
+    {
+      "provider": "Bank of China Australia CDR Product API",
+      "lane": "ASIA_PACIFIC",
+      "url": "https://www.bankofchina.com/au/en/bocinfo/bi1/202009/t20200930_18479393.html",
+      "verification": "OFFICIAL_PAGE_FETCHED",
+      "publicFinding": "Bank of China Australia public notice states CDR open-banking developer product data API availability; it is not evidence of customer account authorization",
+      "onboarding": "PRODUCT_DATA_ONLY_NOT_CUSTOMER_ACCESS",
+      "connectionStatus": "DOCS_ONLY_NOT_CONNECTED",
+      "credentialsPossessed": false
+    },
+    {
+      "provider": "Australian CDR public API discovery",
+      "lane": "ASIA_PACIFIC",
+      "url": "https://www.cdr.gov.au/for-providers/how-find-data-holders-product-data-request-service",
+      "verification": "OFFICIAL_PAGE_FETCHED",
+      "publicFinding": "CDR government guidance describes data-holder brand discovery through a register and unauthenticated public product data APIs; consumer data requires different authorized access",
+      "onboarding": "PUBLIC_PRODUCT_DATA_SEPARATE_FROM_CONSUMER_DATA",
+      "connectionStatus": "DOCS_ONLY_NOT_CONNECTED",
+      "credentialsPossessed": false
+    },
+    {
+      "provider": "FedNow FedLine Developer",
+      "lane": "US_CANADA",
+      "url": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "verification": "OFFICIAL_PAGE_FETCHED",
+      "publicFinding": "FedNow APIs are accessible through FedNow DevRel/FedLine Developer for participants; includes connectivity and participant-information features",
+      "onboarding": "FEDNOW_PARTICIPANT_ACCESS_REQUIRED",
+      "connectionStatus": "DOCS_ONLY_NOT_CONNECTED",
+      "credentialsPossessed": false
+    },
+    {
+      "provider": "Swift API Channel",
+      "lane": "GLOBAL_RAILS",
+      "url": "https://www.swift.com/products/swift-apis",
+      "verification": "OFFICIAL_PAGE_FETCHED",
+      "publicFinding": "Swift advertises a developer API channel with over 20 APIs and connectivity tools; developer access and production onboarding must be verified separately",
+      "onboarding": "SWIFT_DEVELOPER_ACCESS_NOT_GRANTED",
+      "connectionStatus": "DOCS_ONLY_NOT_CONNECTED",
+      "credentialsPossessed": false
+    },
+    {
+      "provider": "CIPS participation",
+      "lane": "CHINA",
+      "url": "https://www.cips.com.cn/kjjqgsyyingw/jrcips/index.shtml",
+      "verification": "OFFICIAL_PAGE_FETCHED",
+      "publicFinding": "CIPS documents direct participation and settlement access procedures for eligible institutional participants; this is not a publicly issued payment API key",
+      "onboarding": "INSTITUTIONAL_PARTICIPATION_REQUIRED",
+      "connectionStatus": "DOCS_ONLY_NOT_CONNECTED",
+      "credentialsPossessed": false
+    }
+  ]
+}
