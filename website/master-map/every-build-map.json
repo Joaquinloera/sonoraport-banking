@@ -1,0 +1,2105 @@
+{
+  "schema": "sonoraport.every-build-master-map.v1",
+  "title": "TMM SonoraPort BRICS Financial Institution — Mandatory Every-Build Map",
+  "currentBaseBuild": "BUILD099",
+  "nextBuild": "BUILD100",
+  "updatedAt": "2026-10-13",
+  "targetDomain": "https://sonoraportaiholdingllc.com",
+  "publishedDeploymentVerified": false,
+  "rule": "RECOVER → AI AGENTS → SWARM → SKIM → CROSS-CHECK → CODE → TEST → SAVE → VERIFY",
+  "workflow": [
+    "RECOVER",
+    "AI AGENTS",
+    "SWARM",
+    "SKIM",
+    "CROSS-CHECK",
+    "CODE",
+    "TEST",
+    "SAVE",
+    "VERIFY"
+  ],
+  "requiredEveryBuild": true,
+  "agentArchitecture": {
+    "coordinator": "KINO #281102",
+    "wings": [
+      "CYBERCOM #88",
+      "SOUTHCOM #29.999.00",
+      "CENTCOM #1111",
+      "#55",
+      "#5505",
+      "#5515"
+    ],
+    "definedSpecialistRoles": 144,
+    "hostedIndependentLLMAgentsVerified": 0,
+    "concurrentResearchLimit": 8,
+    "requireReceipts": true,
+    "note": "Role definitions and bounded concurrent jobs are NOT proof of hosted autonomous AI agents."
+  },
+  "immutableRequirements": [
+    "retain existing designs, art, pages, functions, code and project boundaries",
+    "build real live site and connected software, not reports only",
+    "all listed research lanes required in every build",
+    "never fabricate provider API credentials or licensed bank/rail activation",
+    "reconcile existing Netlify production site before deploy",
+    "credentials in server-side secrets only",
+    "prove tests and production success independently",
+    "save build + manifest + evidence receipts to Library/GitHub"
+  ],
+  "bricsOfficialListSource": "https://brics.br/en/documents/issue-note-brazils-brics-presidency-english.pdf/%40%40download/file",
+  "brics": [
+    {
+      "country": "Brazil",
+      "rail": "Pix / SPI",
+      "sourceUrl": "https://www.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT.html",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "Russia",
+      "rail": "SPFS / domestic payment system",
+      "sourceUrl": "https://www.cbr.ru/eng/",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "India",
+      "rail": "UPI / NPCI / IMPS",
+      "sourceUrl": "https://www.npci.org.in/",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "China",
+      "rail": "CIPS / UnionPay",
+      "sourceUrl": "https://www.cips.com.cn/kjjqgsyyingw/index/index.shtml",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "South Africa",
+      "rail": "PayShap / SARB",
+      "sourceUrl": "https://www.resbank.co.za/",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "Egypt",
+      "rail": "InstaPay / IPN",
+      "sourceUrl": "https://www.cbe.org.eg/",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "Ethiopia",
+      "rail": "EthSwitch / National Bank",
+      "sourceUrl": "https://nbe.gov.et/",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "Iran",
+      "rail": "CBI interbank rails / institutional research",
+      "sourceUrl": "https://www.cbi.ir/",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "United Arab Emirates",
+      "rail": "Aani / UAEIPP / CBUAE",
+      "sourceUrl": "https://www.centralbank.ae/",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "Indonesia",
+      "rail": "BI-FAST / Bank Indonesia",
+      "sourceUrl": "https://www.bi.go.id/",
+      "status": "research-required",
+      "productionAccessVerified": false
+    },
+    {
+      "country": "Saudi Arabia",
+      "rail": "Sarie / Saudi Payments / SAMA",
+      "sourceUrl": "https://www.sama.gov.sa/",
+      "status": "research-required",
+      "productionAccessVerified": false
+    }
+  ],
+  "lanes": [
+    {
+      "id": "GLOBAL_BANKS",
+      "label": "Global banks, payment networks and central-bank infrastructure",
+      "agentWing": "CYBERCOM",
+      "scope": [
+        "United States",
+        "United Kingdom",
+        "European Union",
+        "Switzerland",
+        "Canada",
+        "Japan",
+        "Australia",
+        "Singapore"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "BRICS_ALL_11",
+      "label": "Every named BRICS member and banks / rails",
+      "agentWing": "CENTCOM",
+      "scope": [
+        "Brazil",
+        "Russia",
+        "India",
+        "China",
+        "South Africa",
+        "Egypt",
+        "Ethiopia",
+        "Iran",
+        "United Arab Emirates",
+        "Indonesia",
+        "Saudi Arabia"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "MEXICO",
+      "label": "Mexico: SPEI / CoDi and all key bank developers",
+      "agentWing": "SOUTHCOM",
+      "scope": [
+        "Mexico"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "SOUTH_AMERICA",
+      "label": "South America: country-wide bank and central-bank corridors",
+      "agentWing": "SOUTHCOM",
+      "scope": [
+        "Brazil",
+        "Argentina",
+        "Chile",
+        "Colombia",
+        "Peru",
+        "Uruguay",
+        "Paraguay",
+        "Bolivia",
+        "Ecuador",
+        "Venezuela",
+        "Guyana",
+        "Suriname"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "CARIBBEAN",
+      "label": "Caribbean islands and CARICOM / ECCU corridors",
+      "agentWing": "SOUTHCOM",
+      "scope": [
+        "Jamaica",
+        "Dominican Republic",
+        "Haiti",
+        "Trinidad and Tobago",
+        "Bahamas",
+        "Barbados",
+        "Eastern Caribbean",
+        "Puerto Rico",
+        "Cuba",
+        "Cayman Islands",
+        "Aruba",
+        "Curaçao"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "AFRICA",
+      "label": "Africa: central banks, fintech, mobile and instant payments",
+      "agentWing": "CENTCOM",
+      "scope": [
+        "South Africa",
+        "Nigeria",
+        "Kenya",
+        "Ghana",
+        "Morocco",
+        "Egypt",
+        "Ethiopia"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "ASIA_MIDDLE_EAST",
+      "label": "Asia, BRICS and Middle East cross-border banks and clearing",
+      "agentWing": "CENTCOM",
+      "scope": [
+        "China",
+        "India",
+        "Indonesia",
+        "UAE",
+        "Saudi Arabia",
+        "Japan",
+        "Singapore",
+        "Iran",
+        "Russia"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "PAYMENT_NETWORKS",
+      "label": "Merchant, digital wallet and regulated payment providers",
+      "agentWing": "CYBERCOM",
+      "scope": [
+        "Stripe",
+        "Zelle",
+        "PayPal",
+        "Venmo",
+        "Cash App Pay",
+        "Square",
+        "Apple Pay",
+        "SWIFT",
+        "Visa",
+        "Mastercard"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "CROSS_BORDER_CORRIDORS",
+      "label": "FX, settlement sponsorship, international corridors and treasury",
+      "agentWing": "SOUTHCOM",
+      "scope": [
+        "United States–Mexico",
+        "Mexico–Caribbean",
+        "United States–Caribbean",
+        "Brazil–China",
+        "India–UAE",
+        "Africa–BRICS",
+        "South America–Caribbean"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "API_AUTH_SDK",
+      "label": "Official developer docs; endpoint, sandbox, OAuth/mTLS/keys, SDK, webhooks",
+      "agentWing": "CYBERCOM",
+      "scope": [
+        "API catalogs",
+        "auth method",
+        "SDK",
+        "onboarding",
+        "sandbox",
+        "rate limits",
+        "licensing"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "AI_CODEX_AGENTS",
+      "label": "OpenAI Codex and AI agent workforce orchestration / research receipts",
+      "agentWing": "CYBERCOM",
+      "scope": [
+        "OpenAI",
+        "Gemini",
+        "Azure AI",
+        "AWS Bedrock",
+        "GitHub agents"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "BLOCKCHAIN_DIGITAL_ASSETS",
+      "label": "EVM, Solana, XRPL, wallets, custody and compliance",
+      "agentWing": "CYBERCOM",
+      "scope": [
+        "Ethereum",
+        "Solana",
+        "XRPL",
+        "Circle",
+        "Coinbase Developer",
+        "Fireblocks"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "CARDS_BANKING_CORE",
+      "label": "TMM cards, account onboarding, statements, treasury, internal ledger and fraud",
+      "agentWing": "CYBERCOM",
+      "scope": [
+        "Visa issuer",
+        "Mastercard",
+        "Supabase Auth",
+        "webhook signatures",
+        "KYC/AML"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "SITE_NETLIFY_GITHUB_SUPABASE",
+      "label": "Live website / designs, Netlify functions, GitHub CI, Supabase schema and rollback",
+      "agentWing": "CYBERCOM",
+      "scope": [
+        "sonoraportaiholdingllc.com",
+        "Netlify",
+        "GitHub",
+        "Supabase"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "TMM_LAW",
+      "label": "Existing TMM Law Firm, protected client / staff portals and attorney-review gates",
+      "agentWing": "CYBERCOM",
+      "scope": [
+        "TMM Law Firm"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "SONORAPORT_TRADE_INDUSTRIAL",
+      "label": "SonoraPort port, 1,300-hectare referenced development, trade/logistics, industrial projects",
+      "agentWing": "SOUTHCOM",
+      "scope": [
+        "SonoraPort Mexico",
+        "Sea of Cortez",
+        "shipping",
+        "energy"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    },
+    {
+      "id": "OTHER_USER_PROJECTS",
+      "label": "Matcha Manita, KayleenGPT, Worldsanbox13, real estate, dispensary and other authorized projects",
+      "agentWing": "CYBERCOM",
+      "scope": [
+        "Matcha Manita",
+        "KayleenGPT",
+        "Worldsanbox13",
+        "real estate",
+        "dispensary",
+        "telecom",
+        "government information"
+      ],
+      "recurrence": "EVERY_BUILD",
+      "minimumDeliverables": [
+        "official-source research",
+        "SKIM evidence",
+        "cross-check",
+        "code impact or documented gap",
+        "tests",
+        "saved receipt"
+      ]
+    }
+  ],
+  "providers": [
+    {
+      "name": "Federal Reserve FedNow",
+      "lane": "GLOBAL_BANKS",
+      "country": "US",
+      "capability": "FedNow",
+      "authentication": "financial institution participation; FedLine",
+      "sourceUrl": "https://www.frbservices.org/financial-services/fednow",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "J.P. Morgan Payments",
+      "lane": "GLOBAL_BANKS",
+      "country": "US",
+      "capability": "treasury, payments APIs",
+      "authentication": "OAuth/client credential per approved product; institutional contract",
+      "sourceUrl": "https://developer.payments.jpmorgan.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Citi",
+      "lane": "GLOBAL_BANKS",
+      "country": "US",
+      "capability": "corporate bank APIs",
+      "authentication": "developer onboarding and bank contract",
+      "sourceUrl": "https://developer.citi.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Goldman Sachs TxB",
+      "lane": "GLOBAL_BANKS",
+      "country": "US",
+      "capability": "transaction banking API",
+      "authentication": "developer account and security onboarding",
+      "sourceUrl": "https://developer.gs.com/docs/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Wise Platform",
+      "lane": "CROSS_BORDER_CORRIDORS",
+      "country": "Global",
+      "capability": "international payouts, FX",
+      "authentication": "partner access / API authorization",
+      "sourceUrl": "https://docs.wise.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Swift API Channel",
+      "lane": "CROSS_BORDER_CORRIDORS",
+      "country": "Global",
+      "capability": "banking messaging, Swift APIs",
+      "authentication": "Swift developer enrollment / approved access",
+      "sourceUrl": "https://www.swift.com/products/swift-apis",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Deutsche Bank",
+      "lane": "GLOBAL_BANKS",
+      "country": "Germany",
+      "capability": "corporate APIs / PSD2",
+      "authentication": "OAuth/PSD2 onboarding as documented",
+      "sourceUrl": "https://developer.db.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "HSBC",
+      "lane": "GLOBAL_BANKS",
+      "country": "UK",
+      "capability": "global liquidity / corporate APIs",
+      "authentication": "enterprise bank approval",
+      "sourceUrl": "https://developer.hsbc.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Bank of China",
+      "lane": "BRICS_ALL_11",
+      "country": "China",
+      "capability": "CIPS participant bank",
+      "authentication": "institutional membership; no public consumer credentials",
+      "sourceUrl": "https://www.cips.com.cn/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "ICBC",
+      "lane": "BRICS_ALL_11",
+      "country": "China",
+      "capability": "CIPS / bank APIs",
+      "authentication": "institutional developer enrollment",
+      "sourceUrl": "https://open.icbc.com.cn/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "CIPS",
+      "lane": "BRICS_ALL_11",
+      "country": "China",
+      "capability": "RMB cross-border settlement network",
+      "authentication": "regulated financial participant / partner",
+      "sourceUrl": "https://www.cips.com.cn/kjjqgsyyingw/index/index.shtml",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "NPCI UPI",
+      "lane": "BRICS_ALL_11",
+      "country": "India",
+      "capability": "UPI real-time retail payments",
+      "authentication": "participating banks / PSP eligibility",
+      "sourceUrl": "https://www.npci.org.in/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Axis Bank",
+      "lane": "BRICS_ALL_11",
+      "country": "India",
+      "capability": "UPI partner API examples",
+      "authentication": "bank API contract / sandbox enrollment",
+      "sourceUrl": "https://apiportal.axis.bank.in/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Brazil Pix DICT",
+      "lane": "BRICS_ALL_11",
+      "country": "Brazil",
+      "capability": "Pix address-key directory API",
+      "authentication": "mutual TLS; Pix participation/security rules",
+      "sourceUrl": "https://www.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT.html",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Banco do Brasil",
+      "lane": "SOUTH_AMERICA",
+      "country": "Brazil",
+      "capability": "banking / Pix integrations",
+      "authentication": "bank partner onboarding",
+      "sourceUrl": "https://www.bb.com.br/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Itaú",
+      "lane": "SOUTH_AMERICA",
+      "country": "Brazil",
+      "capability": "corporate and Pix",
+      "authentication": "developer platform / partner contract",
+      "sourceUrl": "https://www.itau.com.br/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Mexico SPEI",
+      "lane": "MEXICO",
+      "country": "Mexico",
+      "capability": "interbank credit transfers",
+      "authentication": "Banxico participant eligibility",
+      "sourceUrl": "https://www.banxico.org.mx/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Mexico CoDi",
+      "lane": "MEXICO",
+      "country": "Mexico",
+      "capability": "QR-based payment collection over SPEI",
+      "authentication": "participant bank / third-party scheme rules",
+      "sourceUrl": "https://www.banxico.org.mx/sistemas-de-pago/codi-avances-banco-mexico.html",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "BBVA México",
+      "lane": "MEXICO",
+      "country": "Mexico",
+      "capability": "open banking / payments",
+      "authentication": "API Market contractual onboarding",
+      "sourceUrl": "https://www.bbvaapimarket.com/",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Banorte",
+      "lane": "MEXICO",
+      "country": "Mexico",
+      "capability": "bank integration, SPEI participant",
+      "authentication": "bank approval and secure credentials",
+      "sourceUrl": "https://www.banorte.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Santander México",
+      "lane": "MEXICO",
+      "country": "Mexico",
+      "capability": "payment and account APIs",
+      "authentication": "regulated bank / partner onboarding",
+      "sourceUrl": "https://www.santander.com.mx/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Banamex",
+      "lane": "MEXICO",
+      "country": "Mexico",
+      "capability": "CoDi/SPEI participant bank",
+      "authentication": "bank contract / approved API use",
+      "sourceUrl": "https://www.banamex.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Colombia Bre-B",
+      "lane": "SOUTH_AMERICA",
+      "country": "Colombia",
+      "capability": "instant interoperable payments",
+      "authentication": "participating institutions / payment intermediaries",
+      "sourceUrl": "https://banrep.gov.co/es/bre-b/que-es",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Bancolombia",
+      "lane": "SOUTH_AMERICA",
+      "country": "Colombia",
+      "capability": "Bre-B participant bank / APIs",
+      "authentication": "approved partner credentials",
+      "sourceUrl": "https://www.bancolombia.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Banco de la Nación Argentina / BCRA",
+      "lane": "SOUTH_AMERICA",
+      "country": "Argentina",
+      "capability": "Transferencias 3.0 / payments",
+      "authentication": "national banking institution access",
+      "sourceUrl": "https://www.bcra.gob.ar/",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Banco Central de Chile",
+      "lane": "SOUTH_AMERICA",
+      "country": "Chile",
+      "capability": "national payments infrastructure",
+      "authentication": "regulated access / technical standards",
+      "sourceUrl": "https://www.bcentral.cl/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Banco Central de Reserva del Perú",
+      "lane": "SOUTH_AMERICA",
+      "country": "Peru",
+      "capability": "payment system / BCRP",
+      "authentication": "central bank rules and licensed participants",
+      "sourceUrl": "https://www.bcrp.gob.pe/",
+      "evidenceStatus": "retry-required",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Banco Central del Uruguay",
+      "lane": "SOUTH_AMERICA",
+      "country": "Uruguay",
+      "capability": "domestic payment schemes",
+      "authentication": "approved institutional access",
+      "sourceUrl": "https://www.bcu.gub.uy/",
+      "evidenceStatus": "retry-required",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Central Bank of Dominican Republic",
+      "lane": "CARIBBEAN",
+      "country": "Dominican Republic",
+      "capability": "interbank payment rules",
+      "authentication": "BCRD participant authorization",
+      "sourceUrl": "https://www.bancentral.gov.do/",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Bank of Jamaica",
+      "lane": "CARIBBEAN",
+      "country": "Jamaica",
+      "capability": "Jam-Dex / RTGS / payment systems",
+      "authentication": "BOJ and participant requirements",
+      "sourceUrl": "https://boj.org.jm/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "ECCB / Eastern Caribbean",
+      "lane": "CARIBBEAN",
+      "country": "ECCU",
+      "capability": "fast payments and CAPSS pilot",
+      "authentication": "member country / bank participation; DCash 2.0 suspended",
+      "sourceUrl": "https://www.eccb-centralbank.org/",
+      "evidenceStatus": "research-required",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "CARICOM CAPSS",
+      "lane": "CARIBBEAN",
+      "country": "Caribbean",
+      "capability": "regional payment/settlement pilot",
+      "authentication": "institutional / regional sponsor",
+      "sourceUrl": "https://www.caricom.org/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Republic Bank",
+      "lane": "CARIBBEAN",
+      "country": "Trinidad and Tobago",
+      "capability": "regional banking / cards",
+      "authentication": "bank partnership and credential approval",
+      "sourceUrl": "https://republictt.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "CIBC Caribbean",
+      "lane": "CARIBBEAN",
+      "country": "Caribbean",
+      "capability": "regional banking platform",
+      "authentication": "bank contract",
+      "sourceUrl": "https://www.cibccaribbean.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Central Bank of Nigeria / NIBSS",
+      "lane": "AFRICA",
+      "country": "Nigeria",
+      "capability": "NIBSS NIP real-time transfers",
+      "authentication": "bank/PSP participation",
+      "sourceUrl": "https://nibss-plc.com.ng/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "GhIPSS",
+      "lane": "AFRICA",
+      "country": "Ghana",
+      "capability": "instant interbank payments",
+      "authentication": "Ghana bank / PSP participation",
+      "sourceUrl": "https://www.ghipss.net/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "PayShap",
+      "lane": "AFRICA",
+      "country": "South Africa",
+      "capability": "instant payment system",
+      "authentication": "participating bank",
+      "sourceUrl": "https://www.resbank.co.za/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Kenya PesaLink",
+      "lane": "AFRICA",
+      "country": "Kenya",
+      "capability": "interbank payments",
+      "authentication": "bank participation",
+      "sourceUrl": "https://pesalink.co.ke/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Bank Indonesia BI-FAST",
+      "lane": "BRICS_ALL_11",
+      "country": "Indonesia",
+      "capability": "instant payments",
+      "authentication": "Bank Indonesia participation",
+      "sourceUrl": "https://www.bi.go.id/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "UAE Aani / CBUAE",
+      "lane": "ASIA_MIDDLE_EAST",
+      "country": "United Arab Emirates",
+      "capability": "instant payments",
+      "authentication": "CBUAE operator or partner requirements",
+      "sourceUrl": "https://www.centralbank.ae/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Saudi Payments / Sarie",
+      "lane": "ASIA_MIDDLE_EAST",
+      "country": "Saudi Arabia",
+      "capability": "interbank payments",
+      "authentication": "SAMA approval",
+      "sourceUrl": "https://www.sama.gov.sa/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "New Development Bank",
+      "lane": "BRICS_ALL_11",
+      "country": "BRICS",
+      "capability": "development financing (not retail payments API)",
+      "authentication": "institutional project sponsorship",
+      "sourceUrl": "https://www.ndb.int/",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Stripe",
+      "lane": "PAYMENT_NETWORKS",
+      "country": "Global",
+      "capability": "merchant API",
+      "authentication": "secret API keys stored server-side; restricted access",
+      "sourceUrl": "https://docs.stripe.com/api/authentication",
+      "evidenceStatus": "confirmed-public-document",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "PayPal",
+      "lane": "PAYMENT_NETWORKS",
+      "country": "Global",
+      "capability": "payments APIs",
+      "authentication": "OAuth client ID/secret stored server-side",
+      "sourceUrl": "https://developer.paypal.com/api/rest/authentication/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Cash App Pay",
+      "lane": "PAYMENT_NETWORKS",
+      "country": "US",
+      "capability": "merchant acceptance",
+      "authentication": "merchant onboarding; approved APIs",
+      "sourceUrl": "https://developers.cash.app/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Zelle",
+      "lane": "PAYMENT_NETWORKS",
+      "country": "US",
+      "capability": "bank P2P network",
+      "authentication": "participating financial institution enrollment",
+      "sourceUrl": "https://www.zellepay.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Visa Issuing",
+      "lane": "CARDS_BANKING_CORE",
+      "country": "Global",
+      "capability": "card issuance / webhook lifecycle",
+      "authentication": "issuer sponsorship and signed webhooks",
+      "sourceUrl": "https://developer.visa.com/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "OpenAI Codex",
+      "lane": "AI_CODEX_AGENTS",
+      "country": "Global",
+      "capability": "AI-assisted engineering/agent tools",
+      "authentication": "authorized OpenAI API key or user login",
+      "sourceUrl": "https://developers.openai.com/codex/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Ethereum",
+      "lane": "BLOCKCHAIN_DIGITAL_ASSETS",
+      "country": "Global",
+      "capability": "JSON-RPC / smart contracts",
+      "authentication": "public RPC or provider key; wallet signatures",
+      "sourceUrl": "https://ethereum.org/en/developers/docs/",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "Solana",
+      "lane": "BLOCKCHAIN_DIGITAL_ASSETS",
+      "country": "Global",
+      "capability": "RPC / signed transactions",
+      "authentication": "RPC provider; wallet signing",
+      "sourceUrl": "https://solana.com/docs",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    },
+    {
+      "name": "XRPL",
+      "lane": "BLOCKCHAIN_DIGITAL_ASSETS",
+      "country": "Global",
+      "capability": "JSON-RPC / WebSocket",
+      "authentication": "node endpoint / account signature",
+      "sourceUrl": "https://xrpl.org/docs",
+      "evidenceStatus": "queue",
+      "credentialValue": "NOT_STORED",
+      "liveConnected": false,
+      "detailsToSkim": [
+        "endpoint/method",
+        "API key application/onboarding",
+        "OAuth or mTLS or signatures",
+        "SDK examples",
+        "sandbox/pricing/limits",
+        "licence/sponsorship",
+        "webhooks/status callbacks"
+      ],
+      "lastCrossChecked": "2026-10-13"
+    }
+  ],
+  "corridors": [
+    {
+      "name": "USA ⇄ Mexico",
+      "currencyPair": "USD ⇄ MXN",
+      "components": "FedNow/ACH/Swift ↔ SPEI/CoDi",
+      "lane": "MEXICO",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Mexico ⇄ Brazil",
+      "currencyPair": "MXN ⇄ BRL",
+      "components": "SPEI/FX provider ↔ Pix",
+      "lane": "SOUTH_AMERICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "USA ⇄ Brazil",
+      "currencyPair": "USD ⇄ BRL",
+      "components": "ACH/Swift/FedNow ↔ Pix",
+      "lane": "SOUTH_AMERICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Brazil ⇄ China",
+      "currencyPair": "BRL ⇄ CNY",
+      "components": "regulated FX / Swift / CIPS",
+      "lane": "BRICS_ALL_11",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Russia ⇄ China",
+      "currencyPair": "RUB ⇄ CNY",
+      "components": "institutional CIPS/SPFS research; sanctions review",
+      "lane": "BRICS_ALL_11",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "India ⇄ UAE",
+      "currencyPair": "INR ⇄ AED",
+      "components": "UPI / UAE domestic networks / regulated partner",
+      "lane": "BRICS_ALL_11",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "India ⇄ Brazil",
+      "currencyPair": "INR ⇄ BRL",
+      "components": "UPI / regulated FX ↔ Pix",
+      "lane": "BRICS_ALL_11",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "China ⇄ South Africa",
+      "currencyPair": "CNY ⇄ ZAR",
+      "components": "institutional CIPS/Swift ↔ SA payments",
+      "lane": "BRICS_ALL_11",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Brazil ⇄ South Africa",
+      "currencyPair": "BRL ⇄ ZAR",
+      "components": "regulated FX / Swift / PayShap",
+      "lane": "BRICS_ALL_11",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Egypt ⇄ UAE",
+      "currencyPair": "EGP ⇄ AED",
+      "components": "bank sponsored international + local instant rails",
+      "lane": "BRICS_ALL_11",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Indonesia ⇄ India",
+      "currencyPair": "IDR ⇄ INR",
+      "components": "BI-FAST / UPI partner research",
+      "lane": "BRICS_ALL_11",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Saudi Arabia ⇄ UAE",
+      "currencyPair": "SAR ⇄ AED",
+      "components": "Sarie/Aani or approved FX route",
+      "lane": "BRICS_ALL_11",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Mexico ⇄ Colombia",
+      "currencyPair": "MXN ⇄ COP",
+      "components": "SPEI / Bre-B via regulated FX provider",
+      "lane": "SOUTH_AMERICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Colombia ⇄ Peru",
+      "currencyPair": "COP ⇄ PEN",
+      "components": "Bre-B / Peru local payment corridors",
+      "lane": "SOUTH_AMERICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Argentina ⇄ Brazil",
+      "currencyPair": "ARS ⇄ BRL",
+      "components": "Transferencias 3.0 / Pix with FX provider",
+      "lane": "SOUTH_AMERICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Chile ⇄ Peru",
+      "currencyPair": "CLP ⇄ PEN",
+      "components": "domestic rails / licensed FX",
+      "lane": "SOUTH_AMERICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Uruguay ⇄ Brazil",
+      "currencyPair": "UYU ⇄ BRL",
+      "components": "domestic / Pix / FX providers",
+      "lane": "SOUTH_AMERICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Paraguay ⇄ Brazil",
+      "currencyPair": "PYG ⇄ BRL",
+      "components": "SPI local / Pix / FX",
+      "lane": "SOUTH_AMERICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Ecuador ⇄ Colombia",
+      "currencyPair": "USD ⇄ COP",
+      "components": "domestic Ecuador payment / Bre-B",
+      "lane": "SOUTH_AMERICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "USA ⇄ Dominican Republic",
+      "currencyPair": "USD ⇄ DOP",
+      "components": "Swift/partner → DR interbank",
+      "lane": "CARIBBEAN",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "USA ⇄ Jamaica",
+      "currencyPair": "USD ⇄ JMD",
+      "components": "Swift/partner → Jamaican banking",
+      "lane": "CARIBBEAN",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "USA ⇄ Trinidad & Tobago",
+      "currencyPair": "USD ⇄ TTD",
+      "components": "bank / international network",
+      "lane": "CARIBBEAN",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "USA ⇄ Eastern Caribbean",
+      "currencyPair": "USD ⇄ XCD",
+      "components": "bank / ECCU Fast Payment System (research stage)",
+      "lane": "CARIBBEAN",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Mexico ⇄ Caribbean",
+      "currencyPair": "MXN ⇄ XCD/DOP/JMD",
+      "components": "SPEI / FX partner / CARICOM bank",
+      "lane": "CARIBBEAN",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "CARICOM intra-regional",
+      "currencyPair": "mixed local currencies",
+      "components": "CAPSS pilot / bank participants",
+      "lane": "CARIBBEAN",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "Africa ⇄ Caribbean",
+      "currencyPair": "various",
+      "components": "licensed bank / FX / swift partner",
+      "lane": "AFRICA",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "South America ⇄ Caribbean",
+      "currencyPair": "various",
+      "components": "Pix/Bre-B/local → FX correspondent",
+      "lane": "CARIBBEAN",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    },
+    {
+      "name": "USA ⇄ India",
+      "currencyPair": "USD ⇄ INR",
+      "components": "Swift + partner / UPI receipt via PSP",
+      "lane": "ASIA_MIDDLE_EAST",
+      "status": "architecture-research",
+      "noRealMoneyTransfer": true,
+      "requires": [
+        "institution/PSP sponsorship",
+        "FX quote and compliance",
+        "KYC/AML/sanctions",
+        "bank approvals",
+        "settlement reconciliation",
+        "webhook/idempotency"
+      ]
+    }
+  ],
+  "otherProjectConnections": [
+    {
+      "name": "SonoraPort global banking",
+      "repo": "Joaquinloera/sonoraport-banking",
+      "status": "GitHub source"
+    },
+    {
+      "name": "Research hive",
+      "repo": "Joaquinloera/Sonoraportworldclock-hive",
+      "status": "research CI / 144 roles defined"
+    },
+    {
+      "name": "Worldsanbox13",
+      "repo": "Joaquinloera/Worldsanbox13",
+      "status": "authorization and availability need recheck"
+    },
+    {
+      "name": "Matcha Manita",
+      "repo": "Joaquinloera/matcha-manita",
+      "status": "preserve existing separately"
+    },
+    {
+      "name": "TMM Law Firm",
+      "source": "user uploaded SONORAPORT_RECOVERY_MASTER_BUILD_23_NETLIFY_READY.zip",
+      "status": "existing law division; attorney-review gate preserved"
+    }
+  ],
+  "deployment": {
+    "publishedNetlifyDeploy": "6ac521aa1d3bf44138ef1fad",
+    "siteId": "588bcdea-734c-4b3c-a225-1ef92c20ef53",
+    "knownBlocker": "PUBLISHED_SITE_FILE_MANIFEST_UNAVAILABLE_NO_DEPLOY",
+    "latestCombinedArchive": "TMM_SONORAPORT_BUILD099_BANKING_BRICS_SLIDESHOW_PRESERVED.zip",
+    "cardProviderIssuedVerified": false,
+    "customerFundsTransferVerified": false
+  },
+  "officialSourceSurvey": {
+    "date": "2026-10-13",
+    "method": "TinyFish parallel source fetch; official web crosscheck",
+    "requestedTargets": 20,
+    "receivedDocuments": 13,
+    "timeoutsOrErrors": 7,
+    "passes": "a fetched public page is not evidence of live API access",
+    "highlights": [
+      "Pix DICT mTLS authentication",
+      "Banxico CoDi bank participant list",
+      "Colombia Bre-B payment interoperability",
+      "CIPS Chinese participating bank directory",
+      "Swift API Channel developer portal",
+      "NDB development bank not a retail payments API",
+      "ECCB suspended DCash 2.0 development to prioritize fast payments and CAPSS pilot (ECCB Feb 2026 Monetary Council)"
+    ],
+    "eccbEvidenceUrl": "https://cdn.eccb-centralbank.org/documents/2026-02-17-14-37-37-Communique-of-the-112th-Meeting-of-the-ECCB-Monetary-Council.pdf"
+  },
+  "buildGates": [
+    "recover archived code/hashes/site design and functions",
+    "assign and record specialist region jobs",
+    "record fetch/sources/timestamps per lane",
+    "extract auth, SDK, sandbox, eligibility and API capabilities",
+    "cross-check official source against prior records",
+    "code site + verified integration changes",
+    "test safety and data contracts",
+    "save versioned archive + receipts",
+    "verify CI and live Netlify routes without inventing activation"
+  ]
+}
