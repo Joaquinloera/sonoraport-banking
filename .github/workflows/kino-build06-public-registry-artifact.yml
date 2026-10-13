@@ -1,0 +1,38 @@
+name: KINO BUILD06 Public Banking Research Archive
+on:
+  push:
+    paths:
+      - 'website/global-banking/**'
+      - '.github/workflows/kino-build06-public-registry-artifact.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-and-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify snapshot is generated from actual source repository
+        run: |
+          node website/global-banking/build-public-snapshot.mjs --check
+          node --test website/global-banking/*.test.mjs
+      - name: Package sanitized public banking research portal
+        uses: actions/upload-artifact@v4
+        with:
+          name: kino-build06-public-global-banking-research
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            website/global-banking/index.html
+            website/global-banking/portal.css
+            website/global-banking/portal.js
+            website/global-banking/portal-registry-fallback.mjs
+            website/global-banking/build-public-snapshot.mjs
+            website/global-banking/public-registry-snapshot.json
+            website/global-banking/research-seed.json
+            website/global-banking/*.test.mjs
+            website/global-banking/README-BUILD06-SNAPSHOT.md
