@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "project": "SonoraPort",
+  "build": "agent-1290-integration-20261014",
+  "date": "2026-10-14",
+  "methods": [
+    "TinyFish search",
+    "Tavily search"
+  ],
+  "liveConnectionsVerified": 0,
+  "records": [
+    {
+      "name": "Standard Bank",
+      "region": "South Africa",
+      "type": "bank",
+      "url": "https://developer.standardbank.co.za/",
+      "facts": [
+        "Public API developer portal",
+        "Registration required to begin using APIs"
+      ],
+      "access": "registration_required",
+      "status": "documentation_discovered"
+    },
+    {
+      "name": "Banco do Brasil",
+      "region": "Brazil",
+      "type": "bank",
+      "url": "https://developers.bb.com.br/",
+      "facts": [
+        "Pix API supports QR-code receipt configuration",
+        "Developer help documents OAuth2 authorization"
+      ],
+      "access": "provider_credentials_required",
+      "status": "documentation_verified"
+    },
+    {
+      "name": "Itaú",
+      "region": "Brazil",
+      "type": "bank",
+      "url": "https://devportal.itau.com.br/autenticacao-documentacao",
+      "facts": [
+        "Regulatory Pix API documentation describes mTLS authentication",
+        "OAuth2 documented",
+        "Dynamic certificate and credential issuance guidance available"
+      ],
+      "access": "provider_credentials_required",
+      "status": "documentation_verified"
+    },
+    {
+      "name": "Bradesco",
+      "region": "Brazil",
+      "type": "bank",
+      "url": "https://developers.bradesco.com.br/",
+      "facts": [
+        "Developer portal offers technical documentation, sandbox and credential management"
+      ],
+      "access": "provider_credentials_required",
+      "status": "documentation_discovered"
+    },
+    {
+      "name": "Banco de México SPEI",
+      "region": "Mexico",
+      "type": "payment_network",
+      "url": "https://www.banxico.org.mx/payment-systems/d/%7B90965A55-8F44-7DD2-45CF-2BF1D7C0B75B%7D.pdf",
+      "facts": [
+        "SPEI participation and communication requirements documented by central bank",
+        "Connectivity described as private network with encrypted communication and digital signatures"
+      ],
+      "access": "institutional_participation",
+      "status": "standards_verified"
+    }
+  ]
+}
