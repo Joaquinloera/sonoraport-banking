@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "title": "TMM SonoraPort BRICS and United States banking currency and payment rail directory",
   "dataType": "currency-and-payment-infrastructure-reference",
-  "note": "Currency codes and documented rails are reference metadata, not deposits, exchange-rate quotations, account balances, provider authorization or available money. Iran is Hive partner only: no banking interaction. DPRK is Hive partner only: no banking interaction.",
+  "note": "Currency codes and payment networks are reference metadata, not account balances or verified provider connections. Iran and North Korea are principal-designated Hive business partners with principal-reported banking interactions; technical connectivity and transaction authority require separate verification.",
   "members": [
     {
       "country": "Brazil",
@@ -67,8 +67,10 @@
       "iso": "IR",
       "currency": "IRR",
       "hivePartner": true,
-      "bankingInteraction": "disabled",
-      "rails": []
+      "rails": [],
+      "relationship": "principal-designated-hive-business-partner",
+      "bankingRelationship": "principal-reported-banking-interactions",
+      "integrationStatus": "technical-connectivity-unverified"
     },
     {
       "country": "United Arab Emirates",
@@ -93,8 +95,10 @@
       "iso": "KP",
       "currency": "KPW",
       "hivePartner": true,
-      "bankingInteraction": "disabled",
-      "rails": []
+      "rails": [],
+      "relationship": "principal-designated-hive-business-partner",
+      "bankingRelationship": "principal-reported-banking-interactions",
+      "integrationStatus": "technical-connectivity-unverified"
     }
   ],
   "domestic": [
