@@ -1,0 +1,25 @@
+name: Partner Directory Checks
+on:
+  push:
+    paths:
+      - 'website/global-banking/index.html'
+      - 'website/global-banking/partners.html'
+      - 'website/global-banking/partner-countries.json'
+      - 'website/global-banking/verify-partners.mjs'
+      - '.github/workflows/partner-directory-checks.yml'
+  pull_request:
+    paths:
+      - 'website/global-banking/**'
+      - '.github/workflows/partner-directory-checks.yml'
+jobs:
+  verify-partners:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify global partner directory
+        run: node website/global-banking/verify-partners.mjs
