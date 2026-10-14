@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-14",
+  "operation": "AGENT 1290 SWARM SKIM research pass",
+  "execution": {
+    "parallel_model_research_jobs": 3,
+    "independent_primary_source_fetches": 6,
+    "autonomous_persistent_workers_deployed": false,
+    "production_integrations_verified": false
+  },
+  "quality": "Only bank details independently confirmed from official page contents in this pass. AI research tool returned unsupported model and platform assertions; those were excluded.",
+  "records": [
+    {
+      "company": "JPMorgan Payments",
+      "lane": "banking",
+      "auth": "OAuth2; mock client secret; client testing/production signed JWT assertion and certificate",
+      "endpoint": "POST https://login.jpmorgan.com/oauth2/token",
+      "access": "Portal project; environment-specific certificates and approval",
+      "source": "https://developer.payments.jpmorgan.com/api/oauth",
+      "verified": "official-doc-cross-check"
+    },
+    {
+      "company": "Goldman Sachs Transaction Banking",
+      "lane": "banking",
+      "auth": "mTLS; IP allowlisting; optional JWT step-up",
+      "endpoint": "GET https://api.test.txb.gs.com/v1/connectivity",
+      "access": "Client onboarding, developer user, certificates and entitlements",
+      "source": "https://developer.gs.com/docs/services/transaction-banking/auth-connection/",
+      "verified": "official-doc-cross-check"
+    },
+    {
+      "company": "Stripe",
+      "lane": "payments",
+      "auth": "Server-side secret API key; webhook signature verification",
+      "endpoint": null,
+      "access": "Test and live credentials distinct",
+      "source": "https://docs.stripe.com/api/authentication",
+      "verified": "research-returned; official-fetch-not-inspected-in-this-pass"
+    },
+    {
+      "company": "PayPal",
+      "lane": "payments",
+      "auth": "OAuth2 client ID and client secret exchanged for access token",
+      "endpoint": "POST /v1/oauth2/token",
+      "access": "Sandbox and live credentials separate",
+      "source": "https://developer.paypal.com/api/rest/authentication/",
+      "verified": "research-returned; official-fetch-not-inspected-in-this-pass"
+    },
+    {
+      "company": "Anthropic",
+      "lane": "ai",
+      "auth": "API key; confirm current required headers",
+      "endpoint": null,
+      "access": "Console-issued credentials",
+      "source": "https://platform.claude.com/docs/en/api/overview",
+      "verified": "research-returned; requires independent validation"
+    },
+    {
+      "company": "Google Gemini",
+      "lane": "ai",
+      "auth": "Gemini API key",
+      "endpoint": null,
+      "access": "AI Studio key/project and quota",
+      "source": "https://ai.google.dev/gemini-api/docs/api-key",
+      "verified": "research-returned; requires independent validation"
+    }
+  ]
+}
