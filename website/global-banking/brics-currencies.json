@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "TMM SonoraPort BRICS Banking Financial Institution currency and rail directory",
+  "dataType": "currency-and-payment-infrastructure-reference",
+  "note": "Currency codes and documented rails are reference metadata, not deposits, exchange-rate quotations, account balances, provider authorization or available money. Iran is Hive partner only: no banking interaction. DPRK is Hive partner only: no banking interaction.",
+  "members": [
+    {
+      "country": "Brazil",
+      "iso": "BR",
+      "currency": "BRL",
+      "rails": [
+        "Pix"
+      ]
+    },
+    {
+      "country": "Russia",
+      "iso": "RU",
+      "currency": "RUB",
+      "rails": [
+        "SPFS",
+        "Mir"
+      ]
+    },
+    {
+      "country": "India",
+      "iso": "IN",
+      "currency": "INR",
+      "rails": [
+        "UPI",
+        "IMPS"
+      ]
+    },
+    {
+      "country": "China",
+      "iso": "CN",
+      "currency": "CNY",
+      "rails": [
+        "CIPS"
+      ]
+    },
+    {
+      "country": "South Africa",
+      "iso": "ZA",
+      "currency": "ZAR",
+      "rails": [
+        "PayShap"
+      ]
+    },
+    {
+      "country": "Egypt",
+      "iso": "EG",
+      "currency": "EGP",
+      "rails": [
+        "InstaPay"
+      ]
+    },
+    {
+      "country": "Ethiopia",
+      "iso": "ET",
+      "currency": "ETB",
+      "rails": [
+        "EthSwitch"
+      ]
+    },
+    {
+      "country": "Iran",
+      "iso": "IR",
+      "currency": "IRR",
+      "hivePartner": true,
+      "bankingInteraction": "disabled",
+      "rails": []
+    },
+    {
+      "country": "United Arab Emirates",
+      "iso": "AE",
+      "currency": "AED",
+      "rails": [
+        "Aani"
+      ]
+    },
+    {
+      "country": "Indonesia",
+      "iso": "ID",
+      "currency": "IDR",
+      "rails": [
+        "BI-FAST"
+      ]
+    }
+  ],
+  "associated": [
+    {
+      "country": "North Korea",
+      "iso": "KP",
+      "currency": "KPW",
+      "hivePartner": true,
+      "bankingInteraction": "disabled",
+      "rails": []
+    }
+  ]
+}
