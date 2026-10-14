@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "title": "TMM SonoraPort BRICS Banking Financial Institution currency and rail directory",
+  "title": "TMM SonoraPort BRICS and United States banking currency and payment rail directory",
   "dataType": "currency-and-payment-infrastructure-reference",
   "note": "Currency codes and documented rails are reference metadata, not deposits, exchange-rate quotations, account balances, provider authorization or available money. Iran is Hive partner only: no banking interaction. DPRK is Hive partner only: no banking interaction.",
   "members": [
@@ -95,6 +95,23 @@
       "hivePartner": true,
       "bankingInteraction": "disabled",
       "rails": []
+    }
+  ],
+  "domestic": [
+    {
+      "country": "United States",
+      "iso": "US",
+      "currency": "USD",
+      "currencyName": "United States dollar",
+      "symbol": "$",
+      "role": "TMM SonoraPort domestic base currency",
+      "rails": [
+        "Fedwire",
+        "FedNow",
+        "ACH",
+        "RTP"
+      ],
+      "bankingInteraction": "provider-authorization-required"
     }
   ]
 }
