@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "SonoraPort SWARM command roles",
+  "executionStatus": "roles-defined-not-autonomously-deployed",
+  "workflow": [
+    "RECOVER",
+    "AI AGENTS",
+    "SWARM",
+    "SKIM",
+    "CROSS-CHECK",
+    "CODE",
+    "TEST",
+    "SAVE",
+    "VERIFY"
+  ],
+  "agents": [
+    {
+      "id": "777787777",
+      "name": "JARVIS",
+      "responsibility": "SWARM command coordination"
+    },
+    {
+      "id": "281102",
+      "name": "KINO",
+      "responsibility": "Central coordinator, website engineering, database, testing and deployment"
+    },
+    {
+      "id": "88",
+      "name": "CYBERCOM",
+      "responsibility": "Cybersecurity, authentication, API security and technical review"
+    },
+    {
+      "id": "1111",
+      "name": "CENTCOM",
+      "responsibility": "Architecture, integrations, AI infrastructure and production security"
+    },
+    {
+      "id": "2222",
+      "name": "SOUTHCOM",
+      "responsibility": "Company, vendor, government and API research"
+    },
+    {
+      "id": "55",
+      "name": "SUPPORT 55",
+      "responsibility": "Additional assigned support agent"
+    },
+    {
+      "id": "5505",
+      "name": "SUPPORT 5505",
+      "responsibility": "Additional assigned support agent"
+    },
+    {
+      "id": "5515",
+      "name": "SUPPORT 5515",
+      "responsibility": "Additional assigned support agent"
+    }
+  ],
+  "taskStatus": [
+    "queued",
+    "assigned",
+    "researching",
+    "cross-checking",
+    "coding",
+    "testing",
+    "saving",
+    "verifying",
+    "complete",
+    "blocked"
+  ],
+  "evidenceRequired": [
+    "taskId",
+    "assignedAgentId",
+    "sourceReferences",
+    "commitSha",
+    "testResult",
+    "savedArtifact",
+    "verificationStatus"
+  ]
+}
