@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {readFileSync} from 'node:fs';
+const path=process.argv[2];
+if(!path) throw new Error('Pass deployed index.ts path');
+let source=readFileSync(path,'utf8').replace('req:Request','req').replace('a:Record<string,number>','a').replace('t:{status:string}','t');
+let handler;
+let env={SUPABASE_URL:'https://example.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'test-secret'};
+let db={ok:true,json:async()=>[{target:'SPFS',status:'skimmed'},{target:'CIPS',status:'skimmed'},{target:'UPI',status:'queued'}]};
+let requests=[];
+const ctx={Deno:{serve:fn=>handler=fn,env:{get:k=>env[k]}},Response,JSON,fetch:async(url,opts)=>{requests.push({url,opts});return db;}};
+vm.runInNewContext(source,ctx,{filename:path});
+async function check(method){const res=await handler(new Request('https://example.test',{method}));return {status:res.status,body:await res.json()};}
+let r=await check('GET');
+assert.equal(r.status,200);assert.equal(r.body.taskCount,3);assert.equal(r.body.counts.skimmed,2);assert.equal(r.body.counts.queued,1);assert.equal(r.body.aiAgentsVerified,false);
+assert.equal(requests[0].opts.headers.apikey,'test-secret');
+r=await check('POST');assert.equal(r.status,405);
+env.SUPABASE_SERVICE_ROLE_KEY='';r=await check('GET');assert.equal(r.status,503);
+env.SUPABASE_SERVICE_ROLE_KEY='test-secret';db={ok:false,status:403};r=await check('GET');assert.equal(r.status,502);
+console.log('PASS: GET counts, auth header, method rejection, missing credentials, database failure (5 checks)');
