@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const root=new URL('./',import.meta.url);
+const roles=JSON.parse(readFileSync(new URL('agent-command-roles.json',root),'utf8'));
+const html=readFileSync(new URL('command-center.html',root),'utf8');
+assert.deepEqual(roles.workflow,['RECOVER','AI AGENTS','SWARM','SKIM','CROSS-CHECK','CODE','TEST','SAVE','VERIFY']);
+assert.deepEqual(roles.agents.map(a=>a.id),['777787777','281102','88','1111','2222','55','5505','5515']);
+assert.equal(new Set(roles.agents.map(a=>a.id)).size,roles.agents.length);
+for(const a of roles.agents)assert.ok(a.name&&a.responsibility);
+assert.equal(roles.executionStatus,'roles-defined-not-autonomously-deployed');
+assert.match(html,/fetch\("agent-command-roles.json"/);
+assert.match(html,/id="agentRoster"/);
+assert.match(html,/textContent=a.responsibility/);
+assert.match(html,/autonomous execution not verified/);
+console.log('PASS: 8 SWARM agent roles and 9 workflow stages validated');
