@@ -68,6 +68,90 @@
       ],
       "access": "institutional_participation",
       "status": "standards_verified"
+    },
+    {
+      "name": "CIPS",
+      "region": "China",
+      "type": "payment_network",
+      "url": "https://www.cips.com.cn/kjjqgsyyingw/jrcips/index.shtml",
+      "facts": [
+        "RMB cross-border wholesale payment and settlement system",
+        "Public information distinguishes direct and indirect participation"
+      ],
+      "access": "institutional_participation",
+      "status": "standards_discovered"
+    },
+    {
+      "name": "ICBC",
+      "region": "China / Europe",
+      "type": "bank",
+      "url": "https://open.icbc.com.cn/icbc/apip/europe/index.html",
+      "facts": [
+        "Official ICBC developer portal describes open banking APIs for regulated third-party providers",
+        "Regional PSD2 documentation is available"
+      ],
+      "access": "regulated_third_party",
+      "status": "documentation_discovered"
+    },
+    {
+      "name": "Bank of China",
+      "region": "China / Australia / Austria",
+      "type": "bank",
+      "url": "https://www.bankofchina.com/au/en/bocinfo/bi1/202302/t20230201_22480146.html",
+      "facts": [
+        "Australian product API gateway is publicly documented",
+        "Austria provides a third-party developer portal"
+      ],
+      "access": "region_specific",
+      "status": "documentation_discovered"
+    },
+    {
+      "name": "New Development Bank",
+      "region": "BRICS",
+      "type": "development_bank",
+      "url": "https://www.ndb.int/",
+      "facts": [
+        "Official project finance institution website identified",
+        "No public banking payment initiation API confirmed"
+      ],
+      "access": "unverified_api_access",
+      "status": "institution_researched"
+    },
+    {
+      "name": "NPCI UPI",
+      "region": "India",
+      "type": "payment_network",
+      "url": "https://www.npci.org.in/product/upi",
+      "facts": [
+        "NPCI publishes UPI product and live member information",
+        "No general public direct UPI payment API access established"
+      ],
+      "access": "member_or_partner_access",
+      "status": "standards_discovered"
+    },
+    {
+      "name": "Banorte",
+      "region": "Mexico",
+      "type": "bank",
+      "url": "https://developers.banorte.com/",
+      "facts": [
+        "Official API developer portal provides registration and API catalog",
+        "Portal describes testing environment and production access"
+      ],
+      "access": "provider_credentials_required",
+      "status": "documentation_discovered"
+    },
+    {
+      "name": "PayShap",
+      "region": "South Africa",
+      "type": "payment_network",
+      "url": "https://www.bankservafrica.com/website/services/rapid-payments-programme",
+      "facts": [
+        "Official Rapid Payments Programme documentation describes PayShap",
+        "No public direct payment initiation API confirmed"
+      ],
+      "access": "participant_or_partner_access",
+      "status": "standards_discovered"
     }
   ]
 }
