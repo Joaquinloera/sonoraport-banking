@@ -5,7 +5,12 @@
     "United States",
     "Mexico",
     "Brazil",
-    "Global blockchain"
+    "Global blockchain",
+    "Caribbean",
+    "Global messaging",
+    "United States compliance",
+    "Iran",
+    "North Korea"
   ],
   "providers": [
     {
@@ -93,6 +98,61 @@
       "authentication": "product-specific; not established by public ATM API listing",
       "apiKey": "not verified for payment initiation",
       "json": "published ATM information API",
+      "sandbox": "not verified",
+      "status": "research_only"
+    },
+    {
+      "name": "Barbados BiMPay",
+      "region": "Caribbean",
+      "kind": "central-bank-payment-system",
+      "official": "https://www.centralbank.org.bb/bimpay-about",
+      "authentication": "participating bank access; no public developer authentication confirmed",
+      "apiKey": "not publicly verified",
+      "json": "public JSON interface not verified",
+      "sandbox": "not verified",
+      "status": "research_only"
+    },
+    {
+      "name": "SWIFT APIs",
+      "region": "Global messaging",
+      "kind": "cross-border-payment-tracking",
+      "official": "https://www.swift.com/products/swift-apis",
+      "authentication": "SWIFT API channel onboarding and product-specific access",
+      "apiKey": "SWIFT developer credentials require enrollment",
+      "json": "payment tracking and pre-validation API products",
+      "sandbox": "product-specific developer access",
+      "status": "research_only"
+    },
+    {
+      "name": "OFAC Sanctions List Service",
+      "region": "United States compliance",
+      "kind": "sanctions-data",
+      "official": "https://ofac.treasury.gov/sanctions-list-service",
+      "authentication": "public data download; confirm formats and refresh frequency",
+      "apiKey": "no payment API key",
+      "json": "structured sanctions datasets; format varies",
+      "sandbox": "not applicable",
+      "status": "research_only"
+    },
+    {
+      "name": "Iran Financial Systems Research",
+      "region": "Iran",
+      "kind": "country-research",
+      "official": "https://www.cbi.ir/",
+      "authentication": "no verified bank API credentials",
+      "apiKey": "not verified",
+      "json": "no verified public banking JSON endpoint",
+      "sandbox": "not verified",
+      "status": "research_only"
+    },
+    {
+      "name": "DPRK Financial Systems Research",
+      "region": "North Korea",
+      "kind": "country-research",
+      "official": "https://ofac.treasury.gov/sanctions-programs-and-country-information/north-korea-sanctions",
+      "authentication": "no verified bank API credentials",
+      "apiKey": "not verified",
+      "json": "no verified public banking JSON endpoint",
       "sandbox": "not verified",
       "status": "research_only"
     }
