@@ -1,0 +1,67 @@
+{
+  "schema": "sonoraport.api-skim.v1",
+  "purpose": "Public developer documentation; no secret keys or live access implied",
+  "regions": [
+    "United States",
+    "Mexico",
+    "Brazil",
+    "Global blockchain"
+  ],
+  "providers": [
+    {
+      "name": "FedNow",
+      "region": "United States",
+      "kind": "instant-payments",
+      "official": "https://www.frbservices.org/financial-services/fednow",
+      "authentication": "institutional connectivity and service authorization",
+      "apiKey": "not publicly issued as a universal key",
+      "json": "participant and connectivity APIs documented",
+      "sandbox": "institution/provider-specific",
+      "status": "research_only"
+    },
+    {
+      "name": "SPEI",
+      "region": "Mexico",
+      "kind": "interbank-payments",
+      "official": "https://www.banxico.org.mx/payment-systems/d/%7B90965A55-8F44-7DD2-45CF-2BF1D7C0B75B%7D.pdf",
+      "authentication": "participant technical documentation",
+      "apiKey": "not publicly available",
+      "json": "technical interface details require participant documentation",
+      "sandbox": "participant-specific",
+      "status": "research_only"
+    },
+    {
+      "name": "Pix DICT",
+      "region": "Brazil",
+      "kind": "instant-payments",
+      "official": "https://www.bcb.gov.br/estabilidadefinanceira/pix",
+      "authentication": "mutual TLS and participant access",
+      "apiKey": "institution-issued credentials",
+      "json": "DICT API technical specifications",
+      "sandbox": "participant-specific",
+      "status": "research_only"
+    },
+    {
+      "name": "Circle Programmable Wallets",
+      "region": "Global blockchain",
+      "kind": "digital-assets",
+      "official": "https://developers.circle.com/cpn/guides/wallets/setup-circle-wallet-for-cpn-payments",
+      "authentication": "API key plus encrypted entity secret",
+      "apiKey": "CPN Console > Developer > API Keys",
+      "json": "POST /v1/w3s/config/entity/entitySecret",
+      "sandbox": "sandbox/mainnet subject to account enablement",
+      "status": "research_only"
+    },
+    {
+      "name": "Stellar Horizon",
+      "region": "Global blockchain",
+      "kind": "blockchain-ledger",
+      "official": "https://developers.stellar.org/docs/data/apis/horizon",
+      "authentication": "public REST reads; signing required for transactions",
+      "apiKey": "public ledger reads may not require a key",
+      "json": "REST JSON resources",
+      "sandbox": "Stellar testnet",
+      "status": "research_only"
+    }
+  ]
+}
