@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedOn": "2026-10-13",
+  "operation": "six concurrent region-specific research calls plus six official-source fetches; not autonomous deployed agents",
+  "purpose": "SonoraPort SWARM+SKIM evidence for existing banking gateway",
+  "records": [
+    {
+      "region": "US",
+      "provider": "FedNow",
+      "source": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "technicalFindings": "Account Balance, Network Intelligence, Participant List, Ping informational APIs",
+      "onboarding": "FedNow DevRel via FedLine Developer",
+      "unverified": "Exact endpoints, credentials and participant access not publicly confirmed",
+      "status": "official-public-source-reviewed",
+      "paymentInitiationAuthorized": false
+    },
+    {
+      "region": "Europe",
+      "provider": "ECB TIPS",
+      "source": "https://www.ecb.europa.eu/paym/target/target-professional-use-documents-links/tips/html/index.en.html",
+      "technicalFindings": "TIPS UDFS, UHB, message examples, MPL schemas and onboarding documentation",
+      "onboarding": "TIPS onboarding and connectivity documentation",
+      "unverified": "No direct public REST endpoint verified",
+      "status": "official-public-source-reviewed",
+      "paymentInitiationAuthorized": false
+    },
+    {
+      "region": "Russia",
+      "provider": "SPFS",
+      "source": "https://www.cbr.ru/eng/development/mcirabis/fin_msg_transfer_system/",
+      "technicalFindings": "Financial messaging; ISO 20022 and SWIFT formats; direct or service bureau connection",
+      "onboarding": "Application and registration documents; software and security recommendations",
+      "unverified": "No public API endpoint or SonoraPort enrollment verified",
+      "status": "official-public-source-reviewed",
+      "paymentInitiationAuthorized": false
+    },
+    {
+      "region": "Brazil",
+      "provider": "Pix",
+      "source": "https://github.com/bacen/pix-api",
+      "technicalFindings": "OpenAPI 3.0 release 2.10.0",
+      "onboarding": "Security and initiation manuals separately required",
+      "unverified": "Institutional sandbox and permissions unverified",
+      "status": "official-public-source-reviewed",
+      "paymentInitiationAuthorized": false
+    },
+    {
+      "region": "India",
+      "provider": "Axis UPI",
+      "source": "https://apiportal.axis.bank.in/portal/product/36081",
+      "technicalFindings": "37 UPI APIs listed, individual API details restricted",
+      "onboarding": "Account sign-in and subscription access",
+      "unverified": "Endpoints and credentials gated",
+      "status": "official-public-source-reviewed",
+      "paymentInitiationAuthorized": false
+    },
+    {
+      "region": "China",
+      "provider": "CIPS",
+      "source": "https://www.cips.com.cn/kjjqgsyyingw/jrcips/index.shtml",
+      "technicalFindings": "RMB wholesale payment, RTGS and DNS, direct/indirect participant pathway",
+      "onboarding": "Institutional participation and technical integration process",
+      "unverified": "No public direct API endpoints confirmed",
+      "status": "official-public-source-reviewed",
+      "paymentInitiationAuthorized": false
+    }
+  ],
+  "hiveBoundary": "Iran and DPRK existing Hive partner records unchanged; principal-reported banking relationships preserved; no transaction initiation"
+}
