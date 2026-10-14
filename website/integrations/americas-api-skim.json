@@ -62,6 +62,39 @@
       "json": "REST JSON resources",
       "sandbox": "Stellar testnet",
       "status": "research_only"
+    },
+    {
+      "name": "Visa Direct",
+      "region": "United States / Americas",
+      "kind": "cross-border-card-payouts",
+      "official": "https://developer.visa.com/capabilities/visa-direct-account-and-wallet/docs-authentication",
+      "authentication": "mutual TLS, client certificates, project credentials",
+      "apiKey": "developer project credentials via Visa Developer",
+      "json": "REST APIs with documented request schemas",
+      "sandbox": "Visa Developer sandbox",
+      "status": "research_only"
+    },
+    {
+      "name": "Mastercard Cross-Border Services",
+      "region": "United States / Americas / Caribbean",
+      "kind": "cross-border-payouts",
+      "official": "https://developer.mastercard.com/cross-border-services/documentation",
+      "authentication": "developer account and API credentials; review product documentation",
+      "apiKey": "developer portal credential issuance",
+      "json": "published Cross-Border Services API reference",
+      "sandbox": "Mastercard developer sandbox tutorials",
+      "status": "research_only"
+    },
+    {
+      "name": "Banorte Developer APIs",
+      "region": "Mexico",
+      "kind": "banking-api",
+      "official": "https://developers.banorte.com/es/api/23",
+      "authentication": "product-specific; not established by public ATM API listing",
+      "apiKey": "not verified for payment initiation",
+      "json": "published ATM information API",
+      "sandbox": "not verified",
+      "status": "research_only"
     }
   ]
 }
