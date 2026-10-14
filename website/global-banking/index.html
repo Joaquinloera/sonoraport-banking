@@ -56,8 +56,8 @@
     </section>
     <section class="source-evidence" aria-labelledby="brics-currency-title" style="max-width:1150px;margin:auto;padding:40px 20px">
       <p class="eyebrow">TMM SONORAPORT · BRICS BANKING FINANCIAL INSTITUTION</p>
-      <h2 id="brics-currency-title">BRICS currencies &amp; payment networks</h2>
-      <p>Currency and payment infrastructure directory. No account balances or transferable funds are represented. Iran and North Korea remain designated Hive partners only; no banking integration is initiated for either.</p>
+      <h2 id="brics-currency-title">USD, BRICS currencies &amp; payment networks</h2>
+      <p>United States dollar (USD) is the TMM SonoraPort domestic base currency. Currency and payment infrastructure directory. No account balances or transferable funds are represented. Iran and North Korea remain designated Hive partners only; no banking integration is initiated for either.</p>
       <p id="brics-status" role="status">Loading BRICS currency directory…</p>
       <div id="brics-currencies" class="cards" aria-label="BRICS currencies and payment systems"></div>
     </section>
@@ -74,8 +74,8 @@
   <script type="module">
     const target=document.getElementById('brics-currencies'),status=document.getElementById('brics-status');
     try {const response=await fetch('./brics-currencies.json',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();
-      for(const item of [...data.members,...data.associated]) {const card=document.createElement('article');card.className='card';const h=document.createElement('h3');h.textContent=item.country+' · '+item.currency;const p=document.createElement('p');p.textContent=item.hivePartner?'Hive partner · no banking interaction':'Documented networks: '+item.rails.join(', ');card.append(h,p);target.append(card)}
-      status.textContent=data.members.length+' BRICS member currency records · '+data.associated.length+' additional Hive partner record';
+      for(const item of [...(data.domestic||[]),...data.members,...data.associated]) {const card=document.createElement('article');card.className='card';const h=document.createElement('h3');h.textContent=item.country+' · '+item.currency;const p=document.createElement('p');p.textContent=item.hivePartner?'Hive partner · no banking interaction':'Documented networks: '+item.rails.join(', ');card.append(h,p);target.append(card)}
+      status.textContent=(data.domestic||[]).length+' USD domestic currency record · '+data.members.length+' BRICS member currency records · '+data.associated.length+' additional Hive partner record';
     } catch(error) {status.textContent='BRICS currency directory unavailable: '+error.message}
   </script>
 </body>
