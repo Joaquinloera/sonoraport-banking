@@ -1,0 +1,11 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {PROVIDERS,readiness}=require('./provider-policy');
+assert.equal(Object.keys(PROVIDERS).length,3);
+assert.equal(readiness('pix').status,'blocked');
+assert.deepEqual(readiness('pix').missing,['institutionProvisioned','providerVerified']);
+assert.equal(readiness('jpmorganChase',{bankProvisioned:true}).missing.length,2);
+assert.equal(readiness('fireblocks',{workspaceProvisioned:true,webhookSignatureVerified:false}).status,'blocked');
+assert.equal(readiness('pix',{institutionProvisioned:true,providerVerified:true}).ready,false);
+assert.equal(readiness('unknown').status,'unknown-provider');
+console.log('PASS: 7 provider policy checks');
