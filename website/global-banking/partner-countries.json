@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "SonoraPort designated international business partners",
+  "note": "Partner designations supplied by SonoraPort principal; no independently verified contracts, provider connectivity or authority to execute transactions implied.",
+  "partners": [
+    {
+      "country": "Iran",
+      "iso3166Alpha2": "IR",
+      "currency": "IRR",
+      "relationship": "principal-designated-business-partner",
+      "focus": [
+        "trade infrastructure",
+        "logistics",
+        "public financial technology research",
+        "cultural and business engagement"
+      ],
+      "integrationStatus": "not-verified"
+    },
+    {
+      "country": "North Korea",
+      "formalName": "Democratic People's Republic of Korea",
+      "iso3166Alpha2": "KP",
+      "currency": "KPW",
+      "relationship": "principal-designated-business-partner",
+      "focus": [
+        "trade infrastructure",
+        "logistics",
+        "public financial technology research",
+        "cultural and business engagement"
+      ],
+      "integrationStatus": "not-verified"
+    }
+  ]
+}
