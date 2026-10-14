@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "project": "SonoraPort AI Holding LLC",
+  "scope": "Global and United States",
+  "integrationPolicy": "Public documentation and authorized commercial integrations only. No biological weapon development, acquisition, production or deployment.",
+  "liveProviderConnectionsVerified": 0,
+  "providers": [
+    {
+      "name": "OpenAI",
+      "category": "AI",
+      "region": "United States",
+      "documentation": "https://developers.openai.com/api/docs/guides/agents",
+      "capability": "Agents API, Agents SDK, Responses API",
+      "access": "api_key_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Anthropic",
+      "category": "AI",
+      "region": "United States",
+      "documentation": "https://docs.anthropic.com/en/api/getting-started",
+      "capability": "Claude model API",
+      "access": "api_key_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Google Cloud Vertex AI",
+      "category": "AI",
+      "region": "United States / Global",
+      "documentation": "https://cloud.google.com/vertex-ai/docs",
+      "capability": "Managed AI and model APIs",
+      "access": "cloud_account_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Microsoft Azure AI",
+      "category": "AI",
+      "region": "United States / Global",
+      "documentation": "https://learn.microsoft.com/en-us/azure/ai-services/",
+      "capability": "Azure AI services",
+      "access": "cloud_account_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "AWS Bedrock",
+      "category": "AI",
+      "region": "United States / Global",
+      "documentation": "https://docs.aws.amazon.com/bedrock/",
+      "capability": "Managed foundation model access",
+      "access": "cloud_account_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Mistral AI",
+      "category": "AI",
+      "region": "France / Global",
+      "documentation": "https://docs.mistral.ai/",
+      "capability": "Model APIs",
+      "access": "api_key_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Anduril Lattice",
+      "category": "Defense AI",
+      "region": "United States",
+      "documentation": "https://developer.anduril.com/guides/concepts/overview",
+      "capability": "Public SDK documentation and developer program; access restricted",
+      "access": "developer_program_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Palantir Foundry",
+      "category": "Defense / Enterprise AI",
+      "region": "United States / Global",
+      "documentation": "https://www.palantir.com/docs/foundry/",
+      "capability": "Enterprise data platform documentation",
+      "access": "enterprise_authorization_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Shield AI",
+      "category": "Defense AI",
+      "region": "United States",
+      "documentation": "https://shield.ai/",
+      "capability": "Public company information; no integration API confirmed",
+      "access": "not_verified",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Starlink",
+      "category": "Satellite Connectivity",
+      "region": "United States / Global",
+      "documentation": "https://www.starlink.com/business",
+      "capability": "Business satellite connectivity; API availability unverified",
+      "access": "commercial_service_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "SpaceX",
+      "category": "Aerospace",
+      "region": "United States",
+      "documentation": "https://www.spacex.com/",
+      "capability": "Public company information; no open banking or general integration API confirmed",
+      "access": "not_verified",
+      "connection": "not_connected"
+    },
+    {
+      "name": "NIH NCBI",
+      "category": "Biotechnology / Public Research",
+      "region": "United States / Global",
+      "documentation": "https://www.ncbi.nlm.nih.gov/home/develop/api/",
+      "capability": "E-utilities public biomedical literature and metadata APIs",
+      "access": "public_api",
+      "connection": "not_connected"
+    },
+    {
+      "name": "CDC",
+      "category": "Public Health / Biodefense",
+      "region": "United States",
+      "documentation": "https://data.cdc.gov/",
+      "capability": "Public health datasets and surveillance information",
+      "access": "public_data",
+      "connection": "not_connected"
+    },
+    {
+      "name": "EMBL-EBI",
+      "category": "Biotechnology / Public Research",
+      "region": "Europe / Global",
+      "documentation": "https://www.ebi.ac.uk/services",
+      "capability": "Public bioinformatics services and data resources",
+      "access": "public_data",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Thermo Fisher Scientific",
+      "category": "Biotechnology / Laboratory",
+      "region": "United States / Global",
+      "documentation": "https://www.thermofisher.com/",
+      "capability": "Laboratory instruments and informatics; partner integration requires verification",
+      "access": "partner_access_unverified",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Illumina",
+      "category": "Biotechnology / Laboratory",
+      "region": "United States / Global",
+      "documentation": "https://www.illumina.com/",
+      "capability": "Sequencing and informatics; integration access requires verification",
+      "access": "partner_access_unverified",
+      "connection": "not_connected"
+    }
+  ]
+}
