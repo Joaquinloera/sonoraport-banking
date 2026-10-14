@@ -10,10 +10,11 @@
   "scripts": {
     "start": "node server.js",
     "check": "node --check server.js",
-    "test": "node --check server.js && node website/banking-matrix/verify-matrix.mjs && node website/swarm-skim/verify-command-center.mjs && node website/swarm-skim/verify-agent-roles.mjs && node website/global-banking/verify-partners.mjs && node provider-gateway/verify-official-integration-specs.cjs",
+    "test": "node --check server.js && node website/banking-matrix/verify-matrix.mjs && node website/swarm-skim/verify-command-center.mjs && node website/swarm-skim/verify-agent-roles.mjs && node website/global-banking/verify-partners.mjs && node provider-gateway/verify-official-integration-specs.cjs && npm run test:integration-evidence",
     "test:matrix": "node website/banking-matrix/verify-matrix.mjs",
     "test:swarm": "node website/swarm-skim/verify-command-center.mjs",
     "test:agents": "node website/swarm-skim/verify-agent-roles.mjs",
-    "test:provider-specs": "node provider-gateway/verify-official-integration-specs.cjs"
+    "test:provider-specs": "node provider-gateway/verify-official-integration-specs.cjs",
+    "test:integration-evidence": "node website/integrations/verify-integrations.mjs && node website/integrations/verify-global-evidence.mjs"
   }
 }
