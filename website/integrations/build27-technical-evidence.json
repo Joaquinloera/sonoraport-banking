@@ -1,0 +1,50 @@
+{
+  "build": 27,
+  "date": "2026-10-15",
+  "scope": "Five parallel research divisions; public technical evidence only, no live connection implied",
+  "researchStreams": 5,
+  "autonomousAgentsDeployed": false,
+  "productionConnectionsVerified": 0,
+  "records": [
+    {
+      "division": "Global banks",
+      "provider": "DBS",
+      "finding": "Official DBS developer catalog includes deposits, fund transfers, loans, parties and reference data",
+      "source": "https://www.dbs.com/dbsdevelopers/index.html",
+      "verification": "Official documentation fetched",
+      "integrationState": "Research only"
+    },
+    {
+      "division": "Payment networks",
+      "provider": "SWIFT",
+      "finding": "Official Swift API Channel documentation describes API-based network connectivity",
+      "source": "https://www.swift.com/products/swift-apis",
+      "verification": "Official documentation fetched",
+      "integrationState": "Research only"
+    },
+    {
+      "division": "Merchant payments",
+      "provider": "Adyen",
+      "finding": "Official API Explorer documents payments APIs and management capabilities",
+      "source": "https://docs.adyen.com/api-explorer/",
+      "verification": "Official documentation fetched",
+      "integrationState": "Research only"
+    },
+    {
+      "division": "AI platforms",
+      "provider": "Amazon Bedrock",
+      "finding": "Official AWS page lists Bedrock agent capabilities and developer resources",
+      "source": "https://aws.amazon.com/bedrock/",
+      "verification": "Official documentation fetched",
+      "integrationState": "Research only"
+    },
+    {
+      "division": "Blockchain",
+      "provider": "Alchemy",
+      "finding": "Official Solana API quickstart explains developer setup and API-key prerequisite",
+      "source": "https://www.alchemy.com/docs/reference/solana-api-quickstart",
+      "verification": "Official documentation fetched",
+      "integrationState": "Research only"
+    }
+  ]
+}
