@@ -1,0 +1,39 @@
+{
+  "build": 18,
+  "productionConnectionsVerified": 0,
+  "independentAgentsVerified": 0,
+  "providers": [
+    {
+      "name": "FedNow APIs",
+      "region": "United States",
+      "category": "banking",
+      "official": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "interface": "Account balance and FedNow DevRel API resources",
+      "status": "research_only"
+    },
+    {
+      "name": "Anthropic Messages",
+      "region": "Global",
+      "category": "ai",
+      "official": "https://docs.anthropic.com/en/api/messages",
+      "interface": "POST /v1/messages; POST /v1/messages/count_tokens",
+      "status": "research_only"
+    },
+    {
+      "name": "NCBI BioNLP",
+      "region": "United States",
+      "category": "bioinformatics",
+      "official": "https://www.ncbi.nlm.nih.gov/research/bionlp/APIs/",
+      "interface": "Biomedical text-mining web APIs",
+      "status": "research_only"
+    },
+    {
+      "name": "Solana JSON-RPC",
+      "region": "Global",
+      "category": "blockchain",
+      "official": "https://solana.com/docs/rpc/http/getbalance",
+      "interface": "getBalance JSON-RPC",
+      "status": "research_only"
+    }
+  ]
+}
