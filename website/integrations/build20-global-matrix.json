@@ -1,0 +1,243 @@
+{
+  "build": 20,
+  "kind": "official-documentation-integration-matrix",
+  "providerCount": 26,
+  "productionConnectionsVerified": 0,
+  "notes": "Documentation evidence, not provider account access, bank sponsorship, credentials or payment capability. Some institution URLs are corporate entry points, not confirmed API references.",
+  "providers": [
+    {
+      "name": "JPMorgan Payments",
+      "category": "Banks",
+      "region": "US / Global",
+      "official": "https://developer.payments.jpmorgan.com/api/home",
+      "interface": "Corporate payments API catalog",
+      "access": "Developer onboarding; product approval",
+      "status": "Not verified"
+    },
+    {
+      "name": "Citi",
+      "category": "Banks",
+      "region": "US / Global",
+      "official": "https://developer.citi.com/",
+      "interface": "Institutional and consumer API portal",
+      "access": "Institutional developer access",
+      "status": "Not verified"
+    },
+    {
+      "name": "HSBC",
+      "category": "Banks",
+      "region": "Global",
+      "official": "https://develop.hsbc.com/",
+      "interface": "Business API portal",
+      "access": "Business onboarding",
+      "status": "Not verified"
+    },
+    {
+      "name": "ICBC",
+      "category": "Banks",
+      "region": "China",
+      "official": "https://www.icbc.com.cn/",
+      "interface": "Corporate banking; public developer API not confirmed",
+      "access": "Institutional inquiry",
+      "status": "Not verified"
+    },
+    {
+      "name": "Bank of China",
+      "category": "Banks",
+      "region": "China",
+      "official": "https://www.boc.cn/",
+      "interface": "Corporate banking; public developer API not confirmed",
+      "access": "Institutional inquiry",
+      "status": "Not verified"
+    },
+    {
+      "name": "BBVA",
+      "category": "Banks",
+      "region": "Mexico / Global",
+      "official": "https://www.bbva.com/",
+      "interface": "Corporate API details pending source verification",
+      "access": "Institutional inquiry",
+      "status": "Not verified"
+    },
+    {
+      "name": "CIPS",
+      "category": "Rails",
+      "region": "China / Global",
+      "official": "https://www.cips.com.cn/",
+      "interface": "RMB cross-border clearing; API access not confirmed",
+      "access": "Participant sponsorship",
+      "status": "Not verified"
+    },
+    {
+      "name": "SWIFT",
+      "category": "Rails",
+      "region": "Global",
+      "official": "https://www.swift.com/products/swift-apis",
+      "interface": "Swift API Channel",
+      "access": "Swift onboarding / credentials",
+      "status": "Not verified"
+    },
+    {
+      "name": "FedNow",
+      "category": "Rails",
+      "region": "US",
+      "official": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "interface": "FedNow APIs / FedLine Developer",
+      "access": "Eligible institution access",
+      "status": "Not verified"
+    },
+    {
+      "name": "Pix",
+      "category": "Rails",
+      "region": "Brazil",
+      "official": "https://www.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT.html",
+      "interface": "DICT API documentation",
+      "access": "Pix participant access",
+      "status": "Not verified"
+    },
+    {
+      "name": "SPEI",
+      "category": "Rails",
+      "region": "Mexico",
+      "official": "https://www.banxico.org.mx/",
+      "interface": "SPEI standards; direct API not confirmed",
+      "access": "Participant access",
+      "status": "Not verified"
+    },
+    {
+      "name": "UPI",
+      "category": "Rails",
+      "region": "India",
+      "official": "https://www.npci.org.in/",
+      "interface": "UPI interfaces; direct API not confirmed",
+      "access": "PSP / bank partnership",
+      "status": "Not verified"
+    },
+    {
+      "name": "Stripe",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://docs.stripe.com/api",
+      "interface": "REST API; PaymentIntents and webhooks",
+      "access": "Secret API key / account",
+      "status": "Not verified"
+    },
+    {
+      "name": "PayPal",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://developer.paypal.com/api/rest/",
+      "interface": "REST APIs",
+      "access": "OAuth 2.0",
+      "status": "Not verified"
+    },
+    {
+      "name": "Adyen",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://docs.adyen.com/api-explorer/",
+      "interface": "Payments APIs",
+      "access": "Merchant account and API key",
+      "status": "Not verified"
+    },
+    {
+      "name": "Visa",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://developer.visa.com/",
+      "interface": "Visa Developer APIs",
+      "access": "Sandbox / production onboarding",
+      "status": "Not verified"
+    },
+    {
+      "name": "Mastercard",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://developer.mastercard.com/",
+      "interface": "Mastercard developer APIs",
+      "access": "Product-specific onboarding",
+      "status": "Not verified"
+    },
+    {
+      "name": "OpenAI",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://developers.openai.com/api/reference/responses/overview/",
+      "interface": "Responses API",
+      "access": "API credentials",
+      "status": "Not verified"
+    },
+    {
+      "name": "Anthropic",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://docs.anthropic.com/en/api/messages",
+      "interface": "POST /v1/messages",
+      "access": "API credentials",
+      "status": "Not verified"
+    },
+    {
+      "name": "Google Gemini",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://ai.google.dev/api",
+      "interface": "Gemini REST and streaming",
+      "access": "API credentials",
+      "status": "Not verified"
+    },
+    {
+      "name": "Microsoft Azure AI",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/reference",
+      "interface": "Azure AI reference; authorization needed for some pages",
+      "access": "Azure tenant / resource",
+      "status": "Not verified"
+    },
+    {
+      "name": "AWS Bedrock",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://docs.aws.amazon.com/bedrock/latest/APIReference/welcome.html",
+      "interface": "Bedrock model APIs and agents",
+      "access": "AWS IAM",
+      "status": "Not verified"
+    },
+    {
+      "name": "Mistral",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://docs.mistral.ai/api/",
+      "interface": "POST /v1/chat/completions",
+      "access": "API credentials",
+      "status": "Not verified"
+    },
+    {
+      "name": "Alchemy",
+      "category": "Blockchain",
+      "region": "Global",
+      "official": "https://www.alchemy.com/docs",
+      "interface": "Multichain RPC and wallet APIs",
+      "access": "Alchemy API key",
+      "status": "Not verified"
+    },
+    {
+      "name": "Ethereum",
+      "category": "Blockchain",
+      "region": "Global",
+      "official": "https://ethereum.org/en/developers/docs/apis/json-rpc/",
+      "interface": "Ethereum JSON-RPC",
+      "access": "Node / RPC provider",
+      "status": "Not verified"
+    },
+    {
+      "name": "Solana",
+      "category": "Blockchain",
+      "region": "Global",
+      "official": "https://solana.com/docs/rpc",
+      "interface": "HTTP and WebSocket RPC",
+      "access": "RPC provider",
+      "status": "Not verified"
+    }
+  ]
+}
