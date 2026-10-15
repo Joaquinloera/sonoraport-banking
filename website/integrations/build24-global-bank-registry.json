@@ -1,0 +1,152 @@
+{
+  "build": 24,
+  "scope": "Global banking gateway; six banks are seed examples, never the maximum",
+  "date": "2026-10-15",
+  "productionConnectionsVerified": 0,
+  "regions": [
+    "United States",
+    "Canada",
+    "Mexico",
+    "Central America",
+    "South America",
+    "Caribbean",
+    "Europe",
+    "Africa",
+    "Asia-Pacific",
+    "Middle East",
+    "BRICS"
+  ],
+  "institutions": [
+    {
+      "name": "JPMorgan",
+      "region": "United States / Global",
+      "source": "https://developer.payments.jpmorgan.com/api/home",
+      "status": "Existing seed; documentation catalog"
+    },
+    {
+      "name": "Citi",
+      "region": "United States / Global",
+      "source": "https://developer.citi.com/",
+      "status": "Existing seed; documentation catalog"
+    },
+    {
+      "name": "HSBC",
+      "region": "Europe / Global",
+      "source": "https://develop.hsbc.com/",
+      "status": "Existing seed; documentation catalog"
+    },
+    {
+      "name": "ICBC",
+      "region": "China / BRICS",
+      "source": "https://www.icbc.com.cn/",
+      "status": "Existing seed; public bank reference only"
+    },
+    {
+      "name": "Bank of China",
+      "region": "China / BRICS",
+      "source": "https://www.boc.cn/",
+      "status": "Existing seed; public bank reference only"
+    },
+    {
+      "name": "BBVA",
+      "region": "Mexico / Europe",
+      "source": "https://www.bbva.com/",
+      "status": "Existing seed; public bank reference only"
+    },
+    {
+      "name": "Deutsche Bank",
+      "region": "Europe / Global",
+      "source": "https://developer.db.com/",
+      "status": "Official API program page fetched; product access unverified"
+    },
+    {
+      "name": "BMO",
+      "region": "Canada / North America",
+      "source": "https://developer.bmo.com/api/commercial/catalogue",
+      "status": "Commercial API catalog located; extracted page incomplete"
+    },
+    {
+      "name": "Emirates NBD",
+      "region": "Middle East",
+      "source": "https://www.emiratesnbd.com/en/corporate-and-institutional-banking/transaction-banking/digital-solution/api-banking",
+      "status": "Official API banking page fetched; exact interface unverified"
+    }
+  ],
+  "researchCoverage": [
+    {
+      "region": "Brazil / South America",
+      "targets": [
+        "Banco do Brasil",
+        "Itaú Unibanco"
+      ],
+      "status": "Research queued; no API claims"
+    },
+    {
+      "region": "India / BRICS",
+      "targets": [
+        "State Bank of India"
+      ],
+      "status": "Research queued; no API claims"
+    },
+    {
+      "region": "Africa",
+      "targets": [
+        "Standard Bank",
+        "Ecobank",
+        "Absa"
+      ],
+      "status": "Research queued; no API claims"
+    },
+    {
+      "region": "Asia-Pacific",
+      "targets": [
+        "DBS"
+      ],
+      "status": "Research queued; no API claims"
+    },
+    {
+      "region": "Middle East",
+      "targets": [
+        "First Abu Dhabi Bank",
+        "Saudi National Bank"
+      ],
+      "status": "Research queued; no API claims"
+    },
+    {
+      "region": "Caribbean / Central America",
+      "targets": [
+        "Regional banks and correspondent networks"
+      ],
+      "status": "Discovery queued"
+    },
+    {
+      "region": "Iran",
+      "targets": [
+        "Public banking institutions"
+      ],
+      "status": "Public research only; restrictions and connectivity not verified"
+    },
+    {
+      "region": "North Korea",
+      "targets": [
+        "Public banking institutions"
+      ],
+      "status": "Public research only; restrictions and connectivity not verified"
+    }
+  ],
+  "requiredFields": [
+    "institution",
+    "jurisdiction",
+    "corporate API catalog",
+    "OAuth/mTLS or certificate method",
+    "account information",
+    "treasury",
+    "payment initiation",
+    "transaction status",
+    "SDK",
+    "webhooks",
+    "participant requirements",
+    "approval and credential status",
+    "production connection verification"
+  ]
+}
