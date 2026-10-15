@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "project": "SonoraPort AI Holding LLC",
+  "updated": "2026-10-14",
+  "source": "Official documentation reviewed via TinyFish content extraction",
+  "productionConnectionsVerified": 0,
+  "providers": [
+    {
+      "name": "Stripe",
+      "category": "payments",
+      "documentation": "https://docs.stripe.com/api/authentication",
+      "authentication": [
+        "HTTPS",
+        "HTTP Basic Auth with secret key as username",
+        "Bearer authentication supported"
+      ],
+      "capabilities": [
+        "Payments API"
+      ],
+      "access": "provider-account-required",
+      "connection": "not_connected",
+      "evidence": "Official Stripe API authentication reference; independently corroborated by TinyFish search"
+    },
+    {
+      "name": "Anthropic",
+      "category": "ai",
+      "documentation": "https://platform.claude.com/docs/en/api/overview",
+      "authentication": [
+        "Authorization Bearer API key or workload identity token",
+        "anthropic-version header",
+        "content-type application/json"
+      ],
+      "capabilities": [
+        "POST /v1/messages",
+        "GET /v1/models",
+        "POST /v1/messages/batches"
+      ],
+      "access": "provider-account-required",
+      "connection": "not_connected",
+      "evidence": "Official Claude API overview extracted via TinyFish"
+    }
+  ]
+}

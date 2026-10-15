@@ -1,0 +1,40 @@
+{
+  "build": 15,
+  "date": "2026-10-14",
+  "method": "four parallel discovery streams plus four official documents fetched; no autonomous worker execution verified",
+  "providers": [
+    {
+      "name": "SWIFT API Channel",
+      "url": "https://www.swift.com/products/swift-apis",
+      "api": "GPI Tracker, pre-validation, case resolution and KYC Registry APIs",
+      "auth": "Swift developer/participant access; specific credential scheme not verified",
+      "status": "research_only"
+    },
+    {
+      "name": "Brazil Pix DICT",
+      "url": "https://www.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT.html",
+      "api": "Directory create, query, update and claim operations",
+      "auth": "authentication and digital signature sections documented; institutional access",
+      "status": "research_only"
+    },
+    {
+      "name": "OpenAI Responses",
+      "url": "https://developers.openai.com/api/reference/responses/overview/",
+      "api": "Responses interface with function calling and tools",
+      "auth": "API credentials required; exact scopes not extracted",
+      "status": "research_only"
+    },
+    {
+      "name": "Ethereum JSON-RPC",
+      "url": "https://ethereum.org/developers/docs/apis/json-rpc/",
+      "api": "Ethereum client JSON-RPC node interface",
+      "auth": "node/provider dependent",
+      "status": "research_only"
+    }
+  ],
+  "checks": {
+    "officialPagesFetched": 4,
+    "independentAgentsVerified": 0,
+    "liveBankConnectionsVerified": 0
+  }
+}

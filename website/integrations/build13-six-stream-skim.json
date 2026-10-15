@@ -1,0 +1,73 @@
+{
+  "build": "13",
+  "date": "2026-10-14",
+  "execution": "six parallel TinyFish discovery streams and six official documentation fetches; not autonomous independent agents",
+  "streams": [
+    {
+      "agent": "#88 CYBERCOM",
+      "provider": "WebAuthn",
+      "url": "https://www.passkeycentral.org/developer-documents/",
+      "endpoint": "browser WebAuthn API",
+      "authentication": "public-key passkeys",
+      "sdk": "passkeys.dev code samples and libraries",
+      "sandbox": "not verified",
+      "access": "application implementation required"
+    },
+    {
+      "agent": "#1111 CENTCOM",
+      "provider": "FedNow",
+      "url": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "endpoint": "Ping, Participant List, Account Balance, Network Intelligence APIs",
+      "authentication": "FedLine Developer and participant access",
+      "sdk": "not verified",
+      "sandbox": "not verified",
+      "access": "FedNow participant onboarding"
+    },
+    {
+      "agent": "#2222 SOUTHCOM",
+      "provider": "SPEI",
+      "url": "https://www.banxico.org.mx/services/spei_-transfers-banco-mexico.html",
+      "endpoint": "SPEI participant settlement system; public endpoint not verified",
+      "authentication": "participant institutional access",
+      "sdk": "not verified",
+      "sandbox": "not verified",
+      "access": "Banco de México participation requirements"
+    },
+    {
+      "agent": "#55 AI",
+      "provider": "Anthropic Claude",
+      "url": "https://docs.anthropic.com/en/api/messages",
+      "endpoint": "POST /v1/messages; POST /v1/messages/count_tokens",
+      "authentication": "API credentials; exact header not extracted in this pass",
+      "sdk": "not verified",
+      "sandbox": "not verified",
+      "access": "developer account and API authorization"
+    },
+    {
+      "agent": "#5515 DIGITAL ASSETS",
+      "provider": "Solana",
+      "url": "https://solana.com/docs/rpc/http/getbalance",
+      "endpoint": "JSON-RPC getBalance",
+      "authentication": "public devnet RPC example; production RPC provider access varies",
+      "sdk": "not verified",
+      "sandbox": "devnet example documented",
+      "access": "RPC endpoint"
+    },
+    {
+      "agent": "#5505 PUBLIC BIOMEDICAL",
+      "provider": "NCBI E-utilities",
+      "url": "https://www.ncbi.nlm.nih.gov/home/develop/api/",
+      "endpoint": "Entrez E-utilities search/link/retrieval",
+      "authentication": "public API; API keys available",
+      "sdk": "Entrez Direct command-line tools",
+      "sandbox": "not verified",
+      "access": "NCBI public developer APIs"
+    }
+  ],
+  "crossCheck": {
+    "officialDocumentsFetched": 6,
+    "liveConnectionsVerified": 0,
+    "unverifiedFieldsExplicit": true
+  },
+  "status": "research only"
+}

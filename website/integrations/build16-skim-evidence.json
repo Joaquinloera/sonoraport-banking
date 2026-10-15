@@ -1,0 +1,50 @@
+{
+  "build": 16,
+  "date": "2026-10-14",
+  "method": "four parallel searches and four official docs fetched; not autonomous workers",
+  "findings": [
+    {
+      "division": "#88 CYBERCOM",
+      "provider": "Passkeys/WebAuthn",
+      "official": "https://www.passkeycentral.org/developer-documents/",
+      "interface": "WebAuthn public-key authentication",
+      "sdk": "passkeys.dev examples and developer tools",
+      "access": "application-side implementation",
+      "status": "research_only"
+    },
+    {
+      "division": "#1111 CENTCOM",
+      "provider": "FedNow",
+      "official": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "interface": "Account Balance and participant APIs",
+      "sdk": "not verified",
+      "access": "FedNow DevRel via FedLine Developer",
+      "status": "research_only"
+    },
+    {
+      "division": "#55 AI",
+      "provider": "Google Gemini",
+      "official": "https://ai.google.dev/api",
+      "interface": "unary, streaming and real-time REST API",
+      "sdk": "language SDK references available",
+      "access": "API credentials required",
+      "status": "research_only"
+    },
+    {
+      "division": "#5515 DIGITAL ASSETS",
+      "provider": "Solana",
+      "official": "https://solana.com/docs/rpc/http/getbalance",
+      "interface": "getBalance JSON-RPC",
+      "sdk": "not verified",
+      "access": "public devnet example; production access not verified",
+      "status": "research_only"
+    }
+  ],
+  "verification": {
+    "fetchedOfficialPages": 4,
+    "productionConnections": 0,
+    "autonomousWorkersVerified": 0,
+    "scriptSyntaxFix": "two literal backslash-n sequences removed from scripts/verify-website.mjs",
+    "netlifyBuildVerified": false
+  }
+}
