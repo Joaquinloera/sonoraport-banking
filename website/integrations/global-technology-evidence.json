@@ -148,6 +148,42 @@
       "capability": "Sequencing and informatics; integration access requires verification",
       "access": "partner_access_unverified",
       "connection": "not_connected"
+    },
+    {
+      "name": "Palantir Foundry REST API Connectors",
+      "category": "Defense-adjacent enterprise software",
+      "region": "United States",
+      "documentation": "https://palantir.com/docs/foundry/available-connectors/rest-apis",
+      "capability": "REST API connectors and governed data integrations; non-operational",
+      "access": "organization_authorization_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Anduril Developer Platform",
+      "category": "Defense technology documentation",
+      "region": "United States",
+      "documentation": "https://docs.anduril.com/guide/quickstart",
+      "capability": "Public platform documentation and developer onboarding; no weapon-control integrations",
+      "access": "organization_authorization_required",
+      "connection": "not_connected"
+    },
+    {
+      "name": "NCBI E-utilities",
+      "category": "Biomedical research data",
+      "region": "United States",
+      "documentation": "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
+      "capability": "Public biomedical literature and database query interfaces",
+      "access": "public_api_with_usage_limits",
+      "connection": "not_connected"
+    },
+    {
+      "name": "Ethereum JSON-RPC",
+      "category": "Blockchain infrastructure",
+      "region": "Global",
+      "documentation": "https://eips.ethereum.org/EIPS/eip-1474",
+      "capability": "Standardized read-only chain data queries and public RPC method specifications",
+      "access": "rpc_provider_dependent",
+      "connection": "not_connected"
     }
   ]
 }
