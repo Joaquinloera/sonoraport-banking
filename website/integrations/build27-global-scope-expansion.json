@@ -1,0 +1,70 @@
+{
+  "build": 27,
+  "expansion": "BRICS, Mexico, South America, Caribbean, AI engineering and public defense AI research",
+  "date": "2026-10-15",
+  "productionConnectionsVerified": 0,
+  "autonomousWorkersVerified": 0,
+  "requiredScope": [
+    "All BRICS member-country banking ecosystems",
+    "Mexico",
+    "South America",
+    "Caribbean",
+    "Global commercial and central banks",
+    "Global AI companies",
+    "Public defense/aerospace AI companies",
+    "Blockchain and digital asset platforms"
+  ],
+  "evidence": [
+    {
+      "lane": "BRICS development banking",
+      "provider": "New Development Bank",
+      "finding": "Official institution website; no public corporate banking API established",
+      "source": "https://www.ndb.int/",
+      "status": "Official source fetched; technical access not verified"
+    },
+    {
+      "lane": "Mexico and South America",
+      "provider": "BBVA API Market",
+      "finding": "Official banking API documentation entry point; product and country access require per-API checks",
+      "source": "https://www.bbvaapimarket.com/en/banking-apis/",
+      "status": "Official source fetched; technical access not verified"
+    },
+    {
+      "lane": "Caribbean banking",
+      "provider": "Scotiabank Developer Portal",
+      "finding": "Official developer portal; availability in Caribbean jurisdictions must be verified separately",
+      "source": "https://developer.scotiabank.com/en.html",
+      "status": "Official source fetched; technical access not verified"
+    },
+    {
+      "lane": "Global AI engineering",
+      "provider": "Anthropic Claude Agent SDK",
+      "finding": "Official agent SDK explains planning and tool use, including file and code operations",
+      "source": "https://code.claude.com/docs/en/agent-sdk/overview",
+      "status": "Official source fetched; technical access not verified"
+    }
+  ],
+  "defenseAI": {
+    "provider": "Anduril Lattice",
+    "source": "https://www.anduril.com/lattice/lattice-sdk",
+    "status": "Official page discovered; extraction failed; SDK/API details unverified"
+  },
+  "requiredFields": [
+    "apiEndpoints",
+    "authentication",
+    "oauth",
+    "mTLS",
+    "SDKs",
+    "webhooks",
+    "permissions",
+    "testEnvironment",
+    "productionOnboarding",
+    "licensingOrInstitutionalSponsorship",
+    "softwareArchitecture",
+    "agentOrchestration",
+    "blockchainRPC",
+    "walletCustody",
+    "auditAndReconciliation"
+  ],
+  "notes": "Research targets and documentation are not connected providers; no secrets or production keys obtained."
+}
