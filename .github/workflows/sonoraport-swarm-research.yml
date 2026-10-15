@@ -1,0 +1,25 @@
+name: SonoraPort SWARM Research Execution
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: sonoraport-swarm-dispatch
+  cancel-in-progress: false
+jobs:
+  invoke-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUPABASE_URL: ${{ secrets.SONORAPORT_SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SONORAPORT_SUPABASE_SERVICE_ROLE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require server-side secrets
+        run: |
+          test -n "$SUPABASE_URL" || { echo "Missing SONORAPORT_SUPABASE_URL"; exit 2; }
+          test -n "$SUPABASE_SERVICE_ROLE_KEY" || { echo "Missing SONORAPORT_SUPABASE_SERVICE_ROLE_KEY"; exit 2; }
+      - name: Invoke model worker and verify database receipts
+        run: node scripts/verify-swarm37-execution.cjs
