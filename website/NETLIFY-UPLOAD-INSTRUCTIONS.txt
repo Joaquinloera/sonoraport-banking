@@ -1,0 +1,11 @@
+SONORAPORT NETLIFY DEPLOYMENT PACKAGE
+
+This archive is generated from the existing GitHub main branch website/ directory, preserving all tracked website pages and static assets. It is NOT the small standalone BUILD19 sample.
+
+1. Download the artifact named sonoraport-netlify-site from GitHub Actions > Package SonoraPort for Netlify > latest successful run.
+2. Unzip the GitHub Actions artifact to obtain sonoraport-netlify-site.zip.
+3. In Netlify, open the existing SonoraPort project and choose a manual deploy of the extracted site ZIP (do not create a new site).
+4. Confirm that /, /home/, /integrations/build20-global-matrix.html, /integrations/build20-global-matrix.json and /integrations/build21-security-evidence.json return successfully.
+5. Verify the deployment ID, time, domain and rendered homepage before accepting the build.
+
+No payment processing, financial accounts, banking credentials, AI model accounts or blockchain wallets are automatically connected by deploying this static site. Server-side functions and site-level environment settings need a separate preservation and deployment audit; a manual static deploy may affect existing functions. Do not replace a live deploy until those functions are backed up and reviewed.
