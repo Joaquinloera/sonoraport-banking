@@ -1,0 +1,94 @@
+{
+  "build": "SWARM-30",
+  "date": "2026-10-15",
+  "status": "official-source-research-verified;model-agents-not-executed",
+  "mandatoryWorkflow": [
+    "RECOVER",
+    "AI AGENTS",
+    "SWARM",
+    "SKIM",
+    "CROSS-CHECK",
+    "CODE",
+    "TEST",
+    "SAVE",
+    "VERIFY"
+  ],
+  "divisions": [
+    {
+      "id": "ai",
+      "company": "OpenAI",
+      "source": "https://developers.openai.com/api/docs/guides/agents",
+      "type": "agent software developer documentation",
+      "verification": "source fetched"
+    },
+    {
+      "id": "defense",
+      "company": "Anduril Lattice",
+      "source": "https://developer.anduril.com/reference/overview/overview",
+      "type": "public developer API and SDK documentation",
+      "verification": "source fetched"
+    },
+    {
+      "id": "satellite",
+      "company": "Starlink",
+      "source": "https://starlink.com/support/article/4aa53c87-3b38-619c-1db8-cf59711e2aa5",
+      "type": "API activation support article",
+      "verification": "source fetched; authentication and contract access not established"
+    },
+    {
+      "id": "us",
+      "company": "FDIC",
+      "source": "https://api.fdic.gov/banks/docs/",
+      "type": "BankFind API documentation",
+      "verification": "source fetched"
+    },
+    {
+      "id": "brics",
+      "company": "NPCI India",
+      "source": "https://www.npci.org.in/",
+      "type": "national payments network",
+      "verification": "fetch empty; not technically verified"
+    },
+    {
+      "id": "latam",
+      "company": "Banco Central do Brasil",
+      "source": "https://www.bcb.gov.br/en/financialstability/pix_en",
+      "type": "Pix payment network official documentation",
+      "verification": "source fetched"
+    },
+    {
+      "id": "caribbean",
+      "company": "ECCB",
+      "source": "https://www.eccb-centralbank.org/payment-and-settlement-operations",
+      "type": "settlement operations documentation",
+      "verification": "source fetched"
+    },
+    {
+      "id": "deeds",
+      "company": "Maricopa County Recorder",
+      "source": "https://recorder.maricopa.gov/recording/document-search.html",
+      "type": "official recorded-document search",
+      "verification": "source fetched; API not established"
+    },
+    {
+      "id": "blockchain",
+      "company": "Solana",
+      "source": "https://solana.com/docs/rpc",
+      "type": "JSON RPC methods",
+      "verification": "source fetched"
+    }
+  ],
+  "requiredTechnicalFields": [
+    "published endpoints",
+    "JSON or OpenAPI schemas",
+    "SDKs",
+    "OAuth API keys and auth",
+    "webhooks",
+    "permissions",
+    "production onboarding",
+    "access limitations",
+    "official source",
+    "verified integration tests"
+  ],
+  "productionConnected": false
+}
