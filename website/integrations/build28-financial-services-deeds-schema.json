@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "module": "sonoraport-financial-services-and-deed-administration",
+  "date": "2026-10-15",
+  "operationalState": "DESIGN_AND_RESEARCH_ONLY",
+  "productionMoneyMovementEnabled": false,
+  "domains": {
+    "identity": {
+      "flows": [
+        "OIDC authorization-code PKCE",
+        "MFA or passkeys",
+        "short-lived sessions",
+        "role-based approval"
+      ],
+      "secrets": "server-side vault only"
+    },
+    "banking": {
+      "objects": [
+        "institution",
+        "account_reference",
+        "balance_snapshot",
+        "transaction",
+        "payment_instruction",
+        "deposit_event",
+        "reconciliation_entry"
+      ],
+      "controls": [
+        "idempotency keys",
+        "approval workflow",
+        "provider authorization",
+        "webhook signature verification",
+        "immutable audit log"
+      ]
+    },
+    "deeds": {
+      "objects": [
+        "jurisdiction",
+        "recorder_document_id",
+        "parcel_reference",
+        "instrument_type",
+        "recording_date",
+        "document_source",
+        "verification_status"
+      ],
+      "controls": [
+        "recorder-source provenance",
+        "no ownership assertion without official verification",
+        "access controls"
+      ]
+    }
+  },
+  "examples": {
+    "paymentInstruction": {
+      "instructionId": "example-not-live",
+      "rail": "ACH",
+      "amountMinor": 12500,
+      "currency": "USD",
+      "status": "DRAFT_UNAUTHORIZED",
+      "providerReference": null,
+      "authorizationRequired": true
+    },
+    "depositEvent": {
+      "eventId": "example-not-live",
+      "accountReference": "redacted",
+      "status": "UNVERIFIED",
+      "postedAmountMinor": null
+    },
+    "deedRecord": {
+      "jurisdiction": "US county recorder",
+      "documentId": "example-not-verified",
+      "recordingDate": null,
+      "ownershipVerified": false
+    }
+  },
+  "officialSources": [
+    {
+      "provider": "JPMorgan Payments",
+      "url": "https://developer.payments.jpmorgan.com/api/home",
+      "evidence": "API reference and sample resources"
+    },
+    {
+      "provider": "Stripe Treasury",
+      "url": "https://docs.stripe.com/treasury/examples/webhooks",
+      "evidence": "Treasury webhook event documentation; legacy documentation, check current product eligibility"
+    },
+    {
+      "provider": "San Diego County Recorder",
+      "url": "https://www.sdarcc.gov/content/arcc/home/divisions/recorder-clerk/recording.html",
+      "evidence": "Official deed recording rules; no API access established"
+    }
+  ]
+}
