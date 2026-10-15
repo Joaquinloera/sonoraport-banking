@@ -4,27 +4,31 @@ Deno.serve(async(req:Request)=>{
  const base=Deno.env.get("SUPABASE_URL"),key=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"),modelKey=Deno.env.get("OPENAI_API_KEY");
  if(!base||!key)return new Response(JSON.stringify({error:"database_not_configured"}),{status:503,headers:H});
  const headers={apikey:key,authorization:"Bearer "+key,"content-type":"application/json"};
- const insert=async(table:string,body:unknown)=>{const r=await fetch(base+"/rest/v1/"+table,{method:"POST",headers:{...headers,prefer:"return=representation"},body:JSON.stringify(body)});if(!r.ok)throw Error("insert_"+table+"_"+r.status);return await r.json()};
- const patch=async(table:string,id:string,body:unknown)=>{const r=await fetch(base+"/rest/v1/"+table+"?id=eq."+id,{method:"PATCH",headers,body:JSON.stringify(body)});if(!r.ok)throw Error("update_"+table+"_"+r.status)};
- const rows=await insert("sonoraport_swarm_runs",{worker:"model-dispatch-v3",state:"started"});
+ const request=async(path:string,method="GET",body?:unknown,prefer?:string)=>{
+  const r=await fetch(base+"/rest/v1/"+path,{method,headers:{...headers,...(prefer?{prefer}:{})},...(body===undefined?{}:{body:JSON.stringify(body)})});
+  if(!r.ok)throw Error("db_"+method+"_"+r.status);return await r.json().catch(()=>null);
+ };
+ const rows=await request("sonoraport_swarm_runs","POST",{worker:"model-dispatch-v4",state:"started"},"return=representation");
  const run=rows[0].id;
- const event=async(task_id:string|null,stage:string,outcome:string,detail:unknown={})=>insert("sonoraport_swarm_events",{run_id:run,task_id,stage,outcome,detail});
+ const event=async(task_id:string|null,stage:string,outcome:string,detail:unknown={})=>request("sonoraport_swarm_events","POST",{run_id:run,task_id,stage,outcome,detail});
+ const finish=async(state:string,jobs_seen:number,jobs_saved:number,error_code?:string)=>request("sonoraport_swarm_runs?id=eq."+run,"PATCH",{state,jobs_seen,jobs_saved,finished_at:new Date().toISOString(),...(error_code?{error_code}:{})});
+ let jobsSeen=0,saved=0,failed=0;
  try{
-  if(!modelKey){await event(null,"configuration","missing_model_key");await patch("sonoraport_swarm_runs",run,{state:"configuration_missing",error_code:"MODEL_KEY_MISSING",finished_at:new Date().toISOString()});return new Response(JSON.stringify({run_id:run,status:"configuration_missing"}),{status:503,headers:H})}
-  const q=await fetch(base+"/rest/v1/sonoraport_swarm_tasks?select=id,target,source_url,assigned_agent&status=eq.queued&order=created_at.asc&limit=2",{headers});
-  if(!q.ok)throw Error("queue_read_"+q.status);
-  const jobs=await q.json();let saved=0;
+  if(!modelKey){await event(null,"configuration","missing_model_key");await finish("configuration_missing",0,0,"MODEL_KEY_MISSING");return new Response(JSON.stringify({run_id:run,status:"configuration_missing"}),{status:503,headers:H})}
+  const jobs=await request("rpc/sonoraport_claim_swarm_tasks","POST",{p_limit:2});jobsSeen=jobs.length;
   for(const job of jobs){
-   await event(job.id,"model_request","started",{target:job.target});
-   const ai=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"authorization":"Bearer "+modelKey,"content-type":"application/json"},body:JSON.stringify({model:"gpt-4.1-mini",store:false,input:"Summarize publicly available API documentation for "+job.target+" from "+job.source_url+". Clearly distinguish unknown facts."})});
-   if(!ai.ok){await event(job.id,"model_request","failed",{http_status:ai.status});continue}
-   const output=await ai.json();
-   const findings=(output.output||[]).flatMap((x:{content?:Array<{type:string,text?:string}>})=>x.content||[]).filter((x:{type:string})=>x.type==="output_text").map((x:{text?:string})=>x.text||"").join("\n");
-   if(!findings){await event(job.id,"model_request","empty");continue}
-   await patch("sonoraport_swarm_tasks",job.id,{status:"complete",extracted:{findings:findings.slice(0,12000),source_url:job.source_url,model_response_id:output.id}});
-   saved++;await event(job.id,"database_write","saved",{model_response_id:output.id});
+   try{
+    await event(job.id,"model_request","started",{target:job.target,source_url:job.source_url});
+    const ai=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{authorization:"Bearer "+modelKey,"content-type":"application/json"},body:JSON.stringify({model:"gpt-4.1-mini",store:false,input:"Analyze public technical documentation for "+job.target+". Official source: "+job.source_url+". Extract APIs, auth, SDKs, webhooks, sandbox/production access and requirements. Clearly label every unverified or unknown claim. Do not invent API keys, credentials or endpoints."})});
+    if(!ai.ok)throw Error("model_http_"+ai.status);
+    const output=await ai.json();
+    const findings=(output.output||[]).flatMap((x:{content?:Array<{type:string,text?:string}>})=>x.content||[]).filter((x:{type:string})=>x.type==="output_text").map((x:{text?:string})=>x.text||"").join("\n");
+    if(!findings)throw Error("model_empty_output");
+    await request("sonoraport_swarm_tasks?id=eq."+job.id,"PATCH",{status:"complete",error:null,extracted:{findings:findings.slice(0,12000),source_url:job.source_url,model_response_id:output.id,verification:"model_generated_unverified"}});
+    saved++;await event(job.id,"database_write","saved",{model_response_id:output.id});
+   }catch(e){failed++;const message=String(e).slice(0,160);await request("sonoraport_swarm_tasks?id=eq."+job.id,"PATCH",{status:"queued",error:message});await event(job.id,"model_request","failed",{error:message})}
   }
-  await patch("sonoraport_swarm_runs",run,{state:"completed",jobs_seen:jobs.length,jobs_saved:saved,finished_at:new Date().toISOString()});
-  return new Response(JSON.stringify({run_id:run,status:"completed",jobs_seen:jobs.length,jobs_saved:saved}),{headers:H});
- }catch(e){await event(null,"worker","failed",{error:String(e).slice(0,160)}).catch(()=>{});await patch("sonoraport_swarm_runs",run,{state:"failed",error_code:"WORKER_ERROR",finished_at:new Date().toISOString()}).catch(()=>{});return new Response(JSON.stringify({run_id:run,status:"failed"}),{status:500,headers:H})}
+  await finish(failed?"failed":"completed",jobsSeen,saved,failed?"TASK_FAILURE":undefined);
+  return new Response(JSON.stringify({run_id:run,status:failed?"failed":"completed",jobs_seen:jobsSeen,jobs_saved:saved,jobs_failed:failed}),{status:failed?500:200,headers:H});
+ }catch(e){await event(null,"worker","failed",{error:String(e).slice(0,160)}).catch(()=>{});await finish("failed",jobsSeen,saved,"WORKER_ERROR").catch(()=>{});return new Response(JSON.stringify({run_id:run,status:"failed"}),{status:500,headers:H})}
 });
