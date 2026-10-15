@@ -1,0 +1,547 @@
+{
+  "build": 23,
+  "createdOn": "2026-10-15",
+  "project": "SonoraPort Global Banking + BRICS Financial Infrastructure",
+  "productionConnectionsVerified": 0,
+  "providerCount": 26,
+  "scope": "All 26 providers retained; public technical documentation does not grant production credentials or financial network participation.",
+  "providers": [
+    {
+      "name": "JPMorgan Payments",
+      "category": "Banks",
+      "region": "US / Global",
+      "official": "https://developer.payments.jpmorgan.com/api/home",
+      "interface": "Corporate payments API catalog",
+      "access": "Developer onboarding; product approval",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Certificate-based API authentication",
+        "source": "https://developer.payments.jpmorgan.com/api/authentication",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "Corporate APIs",
+        "OAuth or certificates/mTLS as documented",
+        "Treasury",
+        "Account and payment capabilities"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Citi",
+      "category": "Banks",
+      "region": "US / Global",
+      "official": "https://developer.citi.com/",
+      "interface": "Institutional and consumer API portal",
+      "access": "Institutional developer access",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Client SSL certificate requirements",
+        "source": "https://developer.citi.com/apidocs/",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "Corporate APIs",
+        "OAuth or certificates/mTLS as documented",
+        "Treasury",
+        "Account and payment capabilities"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "HSBC",
+      "category": "Banks",
+      "region": "Global",
+      "official": "https://develop.hsbc.com/",
+      "interface": "Business API portal",
+      "access": "Business onboarding",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Business API portal",
+        "source": "https://develop.hsbc.com/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Corporate APIs",
+        "OAuth or certificates/mTLS as documented",
+        "Treasury",
+        "Account and payment capabilities"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "ICBC",
+      "category": "Banks",
+      "region": "China",
+      "official": "https://www.icbc.com.cn/",
+      "interface": "Corporate banking; public developer API not confirmed",
+      "access": "Institutional inquiry",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Corporate banking; public developer API not confirmed",
+        "source": "https://www.icbc.com.cn/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Corporate APIs",
+        "OAuth or certificates/mTLS as documented",
+        "Treasury",
+        "Account and payment capabilities"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Bank of China",
+      "category": "Banks",
+      "region": "China",
+      "official": "https://www.boc.cn/",
+      "interface": "Corporate banking; public developer API not confirmed",
+      "access": "Institutional inquiry",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Corporate banking; public developer API not confirmed",
+        "source": "https://www.boc.cn/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Corporate APIs",
+        "OAuth or certificates/mTLS as documented",
+        "Treasury",
+        "Account and payment capabilities"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "BBVA",
+      "category": "Banks",
+      "region": "Mexico / Global",
+      "official": "https://www.bbva.com/",
+      "interface": "Corporate API details pending source verification",
+      "access": "Institutional inquiry",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Corporate API details pending source verification",
+        "source": "https://www.bbva.com/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Corporate APIs",
+        "OAuth or certificates/mTLS as documented",
+        "Treasury",
+        "Account and payment capabilities"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "CIPS",
+      "category": "Rails",
+      "region": "China / Global",
+      "official": "https://www.cips.com.cn/",
+      "interface": "RMB cross-border clearing; API access not confirmed",
+      "access": "Participant sponsorship",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "RMB cross-border clearing; API access not confirmed",
+        "source": "https://www.cips.com.cn/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Technical standards",
+        "Participant access",
+        "Integration requirements"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "SWIFT",
+      "category": "Rails",
+      "region": "Global",
+      "official": "https://www.swift.com/products/swift-apis",
+      "interface": "Swift API Channel",
+      "access": "Swift onboarding / credentials",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Swift API Channel",
+        "source": "https://www.swift.com/products/swift-apis",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "Technical standards",
+        "Participant access",
+        "Integration requirements"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "FedNow",
+      "category": "Rails",
+      "region": "US",
+      "official": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "interface": "FedNow APIs / FedLine Developer",
+      "access": "Eligible institution access",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "FedNow DevRel / FedLine Developer API access",
+        "source": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "Technical standards",
+        "Participant access",
+        "Integration requirements"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Pix",
+      "category": "Rails",
+      "region": "Brazil",
+      "official": "https://www.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT.html",
+      "interface": "DICT API documentation",
+      "access": "Pix participant access",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "DICT API documentation",
+        "source": "https://www.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT.html",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Technical standards",
+        "Participant access",
+        "Integration requirements"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "SPEI",
+      "category": "Rails",
+      "region": "Mexico",
+      "official": "https://www.banxico.org.mx/",
+      "interface": "SPEI standards; direct API not confirmed",
+      "access": "Participant access",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "SPEI standards; direct API not confirmed",
+        "source": "https://www.banxico.org.mx/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Technical standards",
+        "Participant access",
+        "Integration requirements"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "UPI",
+      "category": "Rails",
+      "region": "India",
+      "official": "https://www.npci.org.in/",
+      "interface": "UPI interfaces; direct API not confirmed",
+      "access": "PSP / bank partnership",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "UPI interfaces; direct API not confirmed",
+        "source": "https://www.npci.org.in/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Technical standards",
+        "Participant access",
+        "Integration requirements"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Stripe",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://docs.stripe.com/api",
+      "interface": "REST API; PaymentIntents and webhooks",
+      "access": "Secret API key / account",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "REST API reference",
+        "source": "https://docs.stripe.com/api",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "Credentials",
+        "SDKs",
+        "Webhooks",
+        "Payment processing"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "PayPal",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://developer.paypal.com/api/rest/",
+      "interface": "REST APIs",
+      "access": "OAuth 2.0",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "OAuth 2.0 REST access tokens",
+        "source": "https://developer.paypal.com/api/rest/authentication",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "Credentials",
+        "SDKs",
+        "Webhooks",
+        "Payment processing"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Adyen",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://docs.adyen.com/api-explorer/",
+      "interface": "Payments APIs",
+      "access": "Merchant account and API key",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Payments APIs",
+        "source": "https://docs.adyen.com/api-explorer/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Credentials",
+        "SDKs",
+        "Webhooks",
+        "Payment processing"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Visa",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://developer.visa.com/",
+      "interface": "Visa Developer APIs",
+      "access": "Sandbox / production onboarding",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Visa Developer APIs",
+        "source": "https://developer.visa.com/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Credentials",
+        "SDKs",
+        "Webhooks",
+        "Payment processing"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Mastercard",
+      "category": "Payments",
+      "region": "Global",
+      "official": "https://developer.mastercard.com/",
+      "interface": "Mastercard developer APIs",
+      "access": "Product-specific onboarding",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Mastercard developer APIs",
+        "source": "https://developer.mastercard.com/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Credentials",
+        "SDKs",
+        "Webhooks",
+        "Payment processing"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "OpenAI",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://developers.openai.com/api/reference/responses/overview/",
+      "interface": "Responses API",
+      "access": "API credentials",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Responses API",
+        "source": "https://developers.openai.com/api/reference/responses/overview/",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "Model APIs",
+        "Agent frameworks",
+        "Authentication",
+        "Orchestration"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Anthropic",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://docs.anthropic.com/en/api/messages",
+      "interface": "POST /v1/messages",
+      "access": "API credentials",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "POST /v1/messages",
+        "source": "https://docs.anthropic.com/en/api/messages",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "Model APIs",
+        "Agent frameworks",
+        "Authentication",
+        "Orchestration"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Google Gemini",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://ai.google.dev/api",
+      "interface": "Gemini REST and streaming",
+      "access": "API credentials",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Gemini REST and streaming",
+        "source": "https://ai.google.dev/api",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Model APIs",
+        "Agent frameworks",
+        "Authentication",
+        "Orchestration"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Microsoft Azure AI",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/reference",
+      "interface": "Azure AI reference; authorization needed for some pages",
+      "access": "Azure tenant / resource",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Azure AI reference; authorization needed for some pages",
+        "source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/reference",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Model APIs",
+        "Agent frameworks",
+        "Authentication",
+        "Orchestration"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "AWS Bedrock",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://docs.aws.amazon.com/bedrock/latest/APIReference/welcome.html",
+      "interface": "Bedrock model APIs and agents",
+      "access": "AWS IAM",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Bedrock model APIs and agents",
+        "source": "https://docs.aws.amazon.com/bedrock/latest/APIReference/welcome.html",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Model APIs",
+        "Agent frameworks",
+        "Authentication",
+        "Orchestration"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Mistral",
+      "category": "AI",
+      "region": "Global",
+      "official": "https://docs.mistral.ai/api/",
+      "interface": "POST /v1/chat/completions",
+      "access": "API credentials",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "POST /v1/chat/completions",
+        "source": "https://docs.mistral.ai/api/",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "Model APIs",
+        "Agent frameworks",
+        "Authentication",
+        "Orchestration"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Alchemy",
+      "category": "Blockchain",
+      "region": "Global",
+      "official": "https://www.alchemy.com/docs",
+      "interface": "Multichain RPC and wallet APIs",
+      "access": "Alchemy API key",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Multichain RPC and wallet APIs",
+        "source": "https://www.alchemy.com/docs",
+        "evidence": "Existing BUILD20 catalog; deeper technical validation pending"
+      },
+      "requirementsByCategory": [
+        "RPC endpoints",
+        "SDKs",
+        "Wallets"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Ethereum",
+      "category": "Blockchain",
+      "region": "Global",
+      "official": "https://ethereum.org/en/developers/docs/apis/json-rpc/",
+      "interface": "Ethereum JSON-RPC",
+      "access": "Node / RPC provider",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Ethereum JSON-RPC",
+        "source": "https://ethereum.org/en/developers/docs/apis/json-rpc/",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "RPC endpoints",
+        "SDKs",
+        "Wallets"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    },
+    {
+      "name": "Solana",
+      "category": "Blockchain",
+      "region": "Global",
+      "official": "https://solana.com/docs/rpc",
+      "interface": "HTTP and WebSocket RPC",
+      "access": "RPC provider",
+      "status": "Not verified",
+      "extraction": {
+        "finding": "Solana RPC methods",
+        "source": "https://solana.com/docs/rpc",
+        "evidence": "Official documentation fetched 2026-10-15"
+      },
+      "requirementsByCategory": [
+        "RPC endpoints",
+        "SDKs",
+        "Wallets"
+      ],
+      "integrationState": "Research only; no verified production connection"
+    }
+  ]
+}
