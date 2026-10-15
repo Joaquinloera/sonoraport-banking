@@ -1,0 +1,47 @@
+name: Package SonoraPort for Netlify
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify existing website
+        run: |
+          node scripts/verify-website.mjs
+          node --test src/gateway.test.mjs
+      - name: Verify integrated matrix and original homepage
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          w=Path('website')
+          assert (w/'index.html').is_file()
+          assert (w/'home/index.html').is_file()
+          assert (w/'integrations/build20-global-matrix.html').is_file()
+          d=json.loads((w/'integrations/build20-global-matrix.json').read_text())
+          assert len(d['providers'])>=26
+          assert len(set(p['category'] for p in d['providers']))==5
+          assert 'build20-global-matrix.html' in (w/'index.html').read_text()
+          assert (w/'integrations/build21-security-evidence.json').is_file()
+          print('Original homepage and 26-provider integration matrix verified')
+          PY
+      - name: Package complete website directory for Netlify manual upload
+        run: |
+          cd website
+          zip -qr ../sonoraport-netlify-site.zip .
+          cd ..
+          unzip -t sonoraport-netlify-site.zip | tail -1
+      - name: Upload deployable ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: sonoraport-netlify-site
+          path: sonoraport-netlify-site.zip
+          retention-days: 30
