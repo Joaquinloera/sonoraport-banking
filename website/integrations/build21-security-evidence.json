@@ -1,0 +1,52 @@
+{
+  "build": 21,
+  "mode": "documentation_only",
+  "productionConnectionsVerified": 0,
+  "records": [
+    {
+      "provider": "JPMorgan",
+      "auth": "OAuth 2.0; product-specific mTLS and digital signatures",
+      "url": "https://developer.payments.jpmorgan.com/api/mtls-with-digital-signature"
+    },
+    {
+      "provider": "JPMorgan",
+      "auth": "OAuth access tokens and certificates",
+      "url": "https://developer.payments.jpmorgan.com/api/oauth"
+    },
+    {
+      "provider": "Adyen",
+      "auth": "Secure webhook authentication and integrity validation",
+      "url": "https://docs.adyen.com/development-resources/webhooks/secure-webhooks"
+    },
+    {
+      "provider": "Stripe",
+      "auth": "Webhook signature and delivery handling",
+      "url": "https://docs.stripe.com/webhooks/signature"
+    },
+    {
+      "provider": "PayPal",
+      "auth": "OAuth 2.0 client credentials for REST access",
+      "url": "https://developer.paypal.com/api/rest/authentication/"
+    },
+    {
+      "provider": "Mistral",
+      "auth": "Chat completions POST /v1/chat/completions",
+      "url": "https://docs.mistral.ai/api/"
+    },
+    {
+      "provider": "Solana",
+      "auth": "Read-only JSON-RPC getBalance (lamports)",
+      "url": "https://solana.com/docs/rpc/http/getbalance"
+    },
+    {
+      "provider": "Ethereum",
+      "auth": "JSON-RPC interface via node",
+      "url": "https://ethereum.org/en/developers/docs/apis/json-rpc/"
+    },
+    {
+      "provider": "SWIFT",
+      "auth": "API Channel, onboarding via developer portal",
+      "url": "https://www.swift.com/products/swift-apis"
+    }
+  ]
+}
