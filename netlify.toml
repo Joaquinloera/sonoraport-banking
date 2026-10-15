@@ -1,0 +1,15 @@
+[build]
+  publish = "website"
+  command = "node scripts/verify-website.mjs"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+
+# Preview deployment only until the production site's build settings are audited.
