@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "runDate": "2026-10-14",
+  "method": "five parallel TinyFish research searches followed by batch official-documentation extraction; no independently deployed autonomous AI workers",
+  "execution": {
+    "searchStreams": 5,
+    "officialDocumentsFetched": 5,
+    "liveProviderConnectionsVerified": 0
+  },
+  "findings": [
+    {
+      "stream": "Banking",
+      "provider": "FedNow",
+      "official": "https://www.frbservices.org/fedline-solutions/fedline-developer/fednow-apis/",
+      "endpoints": [
+        "Ping API",
+        "Participant List API",
+        "Account Balance API",
+        "Network Intelligence API"
+      ],
+      "authentication": "FedNow DevRel via FedLine Developer; institution-specific authorization; exact credentials not publicly confirmed",
+      "sdk": "not verified",
+      "sandbox": "participant onboarding required; not verified",
+      "connection": "research_only"
+    },
+    {
+      "stream": "AI",
+      "provider": "OpenAI",
+      "official": "https://developers.openai.com/api/reference/overview/",
+      "endpoints": [
+        "/v1/responses",
+        "/v1/models"
+      ],
+      "authentication": "HTTP Authorization: Bearer API key or short-lived workload identity token; Admin API key for admin endpoints",
+      "sdk": "official client libraries documented",
+      "sandbox": "not verified",
+      "connection": "research_only"
+    },
+    {
+      "stream": "Payments",
+      "provider": "Pix DICT",
+      "official": "https://www.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT.html",
+      "endpoints": [
+        "DICT API (specific paths require further specification extraction)"
+      ],
+      "authentication": "participant authorization; exact method not yet verified",
+      "sdk": "not verified",
+      "sandbox": "not verified",
+      "connection": "research_only"
+    },
+    {
+      "stream": "Blockchain",
+      "provider": "Ethereum JSON-RPC",
+      "official": "https://ethereum.org/developers/docs/apis/json-rpc/",
+      "endpoints": [
+        "eth_blockNumber",
+        "eth_getBalance",
+        "eth_call",
+        "eth_sendRawTransaction"
+      ],
+      "authentication": "RPC endpoint provider-dependent; public node access differs",
+      "sdk": "Ethereum client libraries; exact packages not checked",
+      "sandbox": "test networks exist; provider access unverified",
+      "connection": "research_only"
+    },
+    {
+      "stream": "Biomedical Public Research",
+      "provider": "NCBI E-utilities",
+      "official": "https://www.ncbi.nlm.nih.gov/home/develop/api/",
+      "endpoints": [
+        "E-utilities Entrez API"
+      ],
+      "authentication": "public API; API key may be used for higher limits",
+      "sdk": "not verified",
+      "sandbox": "not verified",
+      "connection": "research_only"
+    }
+  ],
+  "crossCheck": {
+    "officialSourceUrls": 5,
+    "unverifiedFields": "marked explicitly",
+    "biologicalWeapons": "excluded",
+    "sanctionedTransactions": "excluded"
+  }
+}
