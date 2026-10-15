@@ -1,0 +1,77 @@
+{
+  "build": 22,
+  "source": "official-documentation",
+  "verifiedProductionConnections": 0,
+  "records": [
+    {
+      "name": "JPMorgan Payments",
+      "category": "Banks",
+      "extraction": "Certificate authentication and authorization",
+      "official": "https://developer.payments.jpmorgan.com/api/authentication",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    },
+    {
+      "name": "Citi",
+      "category": "Banks",
+      "extraction": "Client SSL certificate EKU requirements",
+      "official": "https://developer.citi.com/apidocs/",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    },
+    {
+      "name": "SWIFT",
+      "category": "Rails",
+      "extraction": "Swift API Channel",
+      "official": "https://www.swift.com/products/swift-apis",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    },
+    {
+      "name": "Stripe",
+      "category": "Payments",
+      "extraction": "HTTPS event webhooks",
+      "official": "https://docs.stripe.com/webhooks",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    },
+    {
+      "name": "PayPal",
+      "category": "Payments",
+      "extraction": "OAuth 2.0 REST access tokens",
+      "official": "https://developer.paypal.com/api/rest/authentication",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    },
+    {
+      "name": "Adyen",
+      "category": "Payments",
+      "extraction": "HMAC webhook signature verification",
+      "official": "https://docs.adyen.com/development-resources/webhooks/secure-webhooks/verify-hmac-signatures",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    },
+    {
+      "name": "Anthropic",
+      "category": "AI",
+      "extraction": "POST /v1/messages",
+      "official": "https://docs.anthropic.com/en/api/messages",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    },
+    {
+      "name": "Mistral",
+      "category": "AI",
+      "extraction": "POST /v1/chat/completions",
+      "official": "https://docs.mistral.ai/api/endpoint/chat",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    },
+    {
+      "name": "Ethereum",
+      "category": "Blockchain",
+      "extraction": "Ethereum JSON-RPC",
+      "official": "https://ethereum.org/en/developers/docs/apis/json-rpc/",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    },
+    {
+      "name": "Solana",
+      "category": "Blockchain",
+      "extraction": "getBalance RPC",
+      "official": "https://solana.com/docs/rpc/http/getbalance",
+      "verification": "Official documentation retrieved; SonoraPort production integration unverified"
+    }
+  ]
+}
