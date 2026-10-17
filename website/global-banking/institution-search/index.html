@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Institution Search | SonoraPort</title><style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#091321;color:#e9edf5;font:16px system-ui,sans-serif}header,main,footer{max-width:1140px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #334157}a{color:#e8bb65}strong.gold,h1 span{color:#e8bb65}.eyebrow{color:#e8bb65;letter-spacing:.17em;font-size:.75rem}h1{font-size:clamp(2rem,5vw,4rem);margin:.3em 0}p{color:#b5c0d0;line-height:1.6}.panel{border:1px solid #334157;border-radius:14px;background:#101f31;padding:20px;margin:24px 0}.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}label{display:block;color:#cdd8e7;font-size:.9rem}input,select,button{width:100%;margin-top:8px;padding:12px;border:1px solid #5a6980;border-radius:8px;background:#091321;color:#fff;font:inherit}button{background:#d8ad60;color:#091321;font-weight:700;cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f5d79b}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:13px 10px;border-bottom:1px solid #334157;vertical-align:top}th{color:#e8bb65}small,.muted{color:#a8b8ca}.scroll{overflow-x:auto}.notice{border-left:3px solid #e8bb65;padding-left:14px}.stats{display:flex;gap:18px;flex-wrap:wrap}footer{border-top:1px solid #334157;color:#9aabc0}
+</style></head><body>
+<header><div><strong>SONORA<strong class="gold">PORT</strong></strong> <small>AI HOLDING LLC</small></div><a href="../../index.html">← Return to homepage</a></header>
+<main><p class="eyebrow">GLOBAL BANKING INTELLIGENCE / RESEARCH INTERFACE</p><h1>Institution <span>Search</span></h1><p>Explore imported public-registry records by country, institution name and verification status. This is an independent research module and does not represent live bank access, financial partnerships or payment authorization.</p>
+<div class="panel"><p class="notice" id="status" role="status">No public banking dataset has been loaded. Import an approved JSON file to explore locally in your browser.</p>
+<div class="controls"><label>Load local JSON or JSONL<input type="file" id="file" accept=".json,.jsonl,application/json"></label><label>Country<input id="country" maxlength="2" placeholder="e.g. BR, MX, US"></label><label>Institution name<input id="name" placeholder="Search names"></label><label>Classification<select id="classification"><option value="">All statuses</option><option value="needs_review">Needs review</option><option value="source_label_only">Source label only</option></select></label></div>
+<div class="stats"><p><strong id="total">0</strong> loaded records</p><p><strong id="matches">0</strong> matching records</p><p><strong id="countries">0</strong> countries</p></div>
+</div>
+<div class="panel scroll"><table><thead><tr><th>Institution</th><th>Country</th><th>Registry / authority</th><th>Classification</th><th>Official source</th></tr></thead><tbody id="results"><tr><td colspan="5">Load a dataset to begin.</td></tr></tbody></table></div>
+<p class="muted">Only the first 100 matching records are displayed. Loaded data stays in this browser session; this page does not upload files to a server. Records must be independently checked before making operational decisions.</p>
+</main><footer>SonoraPort AI Holding LLC • Public-source research workspace • No live banking connections</footer>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);let rows=[];
+function render(){
+ const c=$('country').value.trim().toUpperCase(),n=$('name').value.trim().toLowerCase(),s=$('classification').value;
+ const matches=rows.filter(r=>(!c||r.country===c)&&(!n||r.institution_name.toLowerCase().includes(n))&&(!s||r.classification_status===s));
+ $('total').textContent=rows.length.toLocaleString();$('matches').textContent=matches.length.toLocaleString();$('countries').textContent=new Set(rows.map(r=>r.country)).size;
+ const tbody=$('results');tbody.replaceChildren();
+ if(!matches.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=5;td.textContent='No matching records.';tr.append(td);tbody.append(tr);return;}
+ for(const r of matches.slice(0,100)){const tr=document.createElement('tr');
+ for(const val of [r.institution_name,r.country,[r.registry_id,r.authority].filter(Boolean).join(' / '),r.classification_status||'Unclassified']){
+ const td=document.createElement('td');td.textContent=val||'—';tr.append(td);}
+ const td=document.createElement('td');if(/^https:\/\//i.test(r.source_url)){const a=document.createElement('a');a.href=r.source_url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Official source ↗';td.append(a);}else{td.textContent='Source unavailable';}tr.append(td);tbody.append(tr);}
+}
+for(const id of ['country','name','classification'])$(id).addEventListener('input',render);
+$('file').addEventListener('change',async e=>{
+ const f=e.target.files[0];if(!f)return;
+ if(f.size>25*1024*1024){$('status').textContent='File exceeds 25 MB local limit.';return;}
+ try{const content=await f.text();const parsed=f.name.toLowerCase().endsWith('.jsonl')?content.split(/\r?\n/).filter(Boolean).map(line=>JSON.parse(line)):JSON.parse(content);
+ if(!Array.isArray(parsed))throw Error('Expected a JSON array or JSONL records');
+ const next=parsed.map(r=>{if(!r||typeof r!=='object'||typeof r.institution_name!=='string'||typeof r.country!=='string')throw Error('Each record requires institution_name and country');return r;});
+ rows=next;$('status').textContent='Loaded '+rows.length+' local records from '+f.name+'. Data is not independently verified.';render();
+ }catch(err){$('status').textContent='Could not load dataset: '+err.message;}
+});
+</script></body></html>
