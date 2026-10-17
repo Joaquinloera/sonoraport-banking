@@ -1,0 +1,86 @@
+[
+  {
+    "id": "swift-api",
+    "organization": "Swift",
+    "domain": "banking",
+    "country": "Belgium",
+    "sourceUrl": "https://www.swift.com/products/swift-apis",
+    "sourceType": "official documentation",
+    "technicalFinding": "Developer portal documents more than 20 APIs including GPI Tracker, pre-validation and KYC Registry",
+    "evidenceStatus": "docs_verified",
+    "relationshipEvidence": [],
+    "privateCredentialsCollected": false
+  },
+  {
+    "id": "swift-gpi",
+    "organization": "Swift",
+    "domain": "banking",
+    "country": "Belgium",
+    "sourceUrl": "https://docs.developer.swift.com/docs/api-guides/gpi-apis",
+    "sourceType": "official technical specification",
+    "technicalFinding": "GPI API guides link OpenAPI specifications for credit transfers, cover payments, financial institution transfers and market infrastructure",
+    "evidenceStatus": "docs_verified",
+    "relationshipEvidence": [],
+    "privateCredentialsCollected": false
+  },
+  {
+    "id": "ncbi",
+    "organization": "NIH NCBI",
+    "domain": "biotechnology",
+    "country": "United States",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/home/develop/api/",
+    "sourceType": "official documentation",
+    "technicalFinding": "Entrez E-utilities include eight server-side programs; BLAST HTTPS API and PubChem PUG REST interfaces",
+    "evidenceStatus": "docs_verified",
+    "relationshipEvidence": [],
+    "privateCredentialsCollected": false
+  },
+  {
+    "id": "besu",
+    "organization": "Hyperledger Besu",
+    "domain": "blockchain",
+    "country": "Global",
+    "sourceUrl": "https://docs.besu-eth.org/public-networks/reference/api/",
+    "sourceType": "official documentation",
+    "technicalFinding": "JSON-RPC namespaces include ETH, NET, WEB3, DEBUG, TRACE and TXPOOL",
+    "evidenceStatus": "docs_verified",
+    "relationshipEvidence": [],
+    "privateCredentialsCollected": false
+  },
+  {
+    "id": "besu-security",
+    "organization": "Hyperledger Besu",
+    "domain": "blockchain",
+    "country": "Global",
+    "sourceUrl": "https://docs.besu-eth.org/public-networks/how-to/use-besu-api",
+    "sourceType": "official documentation",
+    "technicalFinding": "RPC HTTP 8545 and WebSocket 8546 defaults; host allowlist is not authentication; supports JWT-based authentication",
+    "evidenceStatus": "docs_verified",
+    "relationshipEvidence": [],
+    "privateCredentialsCollected": false
+  },
+  {
+    "id": "solana",
+    "organization": "Solana",
+    "domain": "blockchain",
+    "country": "Global",
+    "sourceUrl": "https://solana.com/docs/rpc",
+    "sourceType": "official documentation",
+    "technicalFinding": "RPC provides HTTP request-response and WebSocket subscriptions; shared public endpoints are not intended for production",
+    "evidenceStatus": "docs_verified",
+    "relationshipEvidence": [],
+    "privateCredentialsCollected": false
+  },
+  {
+    "id": "anduril",
+    "organization": "Anduril Industries",
+    "domain": "military-ai",
+    "country": "United States",
+    "sourceUrl": "https://github.com/anduril",
+    "sourceType": "official source repository",
+    "technicalFinding": "Public organization repository index includes Lattice SDKs and Entities API sample applications",
+    "evidenceStatus": "docs_verified",
+    "relationshipEvidence": [],
+    "privateCredentialsCollected": false
+  }
+]
