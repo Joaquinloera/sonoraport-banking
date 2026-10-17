@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "purpose": "Official banking registry source manifest for KINO public-data ingestion",
+  "sources": [
+    {"country": "US", "authority": "FDIC", "url": "https://api.fdic.gov/banks/institutions", "format": "json_api", "adapter": "fdic", "status": "adapter_committed_not_live_tested"},
+    {"country": "SG", "authority": "Monetary Authority of Singapore", "url": "https://eservices.mas.gov.sg/fid/institution", "format": "directory_with_download", "adapter": null, "status": "official_directory_found", "filter": "Banking; exclude non-bank financial licenses"},
+    {"country": "IN", "authority": "Reserve Bank of India", "url": "https://www.rbi.org.in/scripts/bs_viewcontent.aspx?Id=3657", "format": "html", "adapter": null, "status": "official_list_found", "filter": "Bank categories and foreign-bank branches"},
+    {"country": "AU", "authority": "Australian Prudential Regulation Authority", "url": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions", "format": "html", "adapter": null, "status": "official_list_found", "filter": "Authorized deposit-taking institutions; distinguish banks from other ADIs"},
+    {"country": "CA", "authority": "OSFI", "url": "https://www.osfi-bsif.gc.ca/en/supervision/financial-institutions/banks", "format": "html", "adapter": null, "status": "verification_pending"}
+  ],
+  "quality_rules": ["Keep original source URLs", "Distinguish bank licenses from other financial institutions", "Do not infer API access from regulatory listing", "Do not count unharvested records", "Do not claim cross-border completeness"]
+}
