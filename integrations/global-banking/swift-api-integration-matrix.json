@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "provider": "SWIFT",
+  "classification": "PUBLIC_DOCUMENTATION_NOT_CONNECTED",
+  "verifiedOn": "2026-10-16",
+  "documentation": "https://docs.developer.swift.com/docs/getting-started/api-consumers/authentication",
+  "auth": {
+    "protocol": "OAuth 2.0",
+    "tokenEndpointSandbox": "https://sandbox.swift.com/oauth2/v1/token",
+    "tokenEndpointPilot": "https://api-pilot.swift.com/oauth2/v1/token",
+    "tokenEndpointProduction": "https://api.swift.com/oauth2/v1/token",
+    "grants": [
+      "password (product-specific)",
+      "JWT bearer (product-specific)"
+    ],
+    "credentials": "Provider-issued consumer key/secret and product-specific license or certificate; never store secrets in repository",
+    "tokenLifetimeMinutes": 30
+  },
+  "software": {
+    "sdk": "SWIFT SDK",
+    "microgateway": "SWIFT Microgateway",
+    "testing": "SWIFT API sandbox/Postman collections",
+    "sandboxMayReturnStaticResponses": true
+  },
+  "paymentInitiation": {
+    "documentation": "https://docs.developer.swift.com/docs/api-guides/payment-initiation-api",
+    "sandbox": "Static sample responses",
+    "pilot": "Not available per documentation"
+  },
+  "blockchain": {
+    "nativeBlockchainRail": false,
+    "notes": "Do not imply SWIFT API access provides blockchain custody or settlement"
+  },
+  "connectionStatus": "UNVERIFIED",
+  "sources": [
+    "https://docs.developer.swift.com/docs/getting-started/api-consumers/authentication",
+    "https://docs.developer.swift.com/docs/getting-started/api-consumers/sandbox",
+    "https://docs.developer.swift.com/docs/api-guides/payment-initiation-api"
+  ]
+}
