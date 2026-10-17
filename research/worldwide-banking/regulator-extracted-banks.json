@@ -1,0 +1,1009 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-10-16",
+  "provenance": "Extracted from regulator-published bank tables; not API integrations",
+  "records": [
+    {
+      "name": "Absa Bank Ghana LTD",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Access Bank (Ghana) Plc",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Agricultural Development Bank Plc",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank of Africa Ghana Limited",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "CalBank PLC",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Consolidated Bank Ghana Limited",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Ecobank Ghana Plc",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Fidelity Bank (Ghana) LTD",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "First Atlantic Bank PLC",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "First Bank (Ghana) LTD",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "First National Bank (Ghana) Limited",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "GCB Bank Plc",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Guaranty Trust Bank (Ghana) LTD",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "National Investment Bank PLC",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "OmniBSIC Bank Ghana LTD",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Prudential Bank Limited",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Republic Bank (Ghana) PLC",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Societe General Ghana Plc",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Stanbic Bank Ghana Limited",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Standard Chartered Bank Ghana Plc",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "United Bank for Africa (Ghana) Limited",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Universal Merchant Bank Ghana LTD",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Zenith Bank (Ghana) Limited",
+      "country": "GH",
+      "classification": "REGULATOR_LISTED_BANK",
+      "source": "https://www.bog.gov.gh/supervision-regulation/registered-institutions/banks/",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Alex Bank Pty Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "AMP Bank Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Australia and New Zealand Banking Group Limited\\*",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Australian Military Bank Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Auswide Bank Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Avenue Bank Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "B&E Ltd (trading as Bank of us)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank Australia Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank of Queensland Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bendigo and Adelaide Bank Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Beyond Bank Australia Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "BNK Banking Corporation Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Cairns Penny Savings & Loans Limited (trading as Cairns Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Central Murray Credit Union Limited (trading as Central Murray Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Central West Credit Union Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Coastline Credit Union Limited (Trading as Coastline Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Commonwealth Bank of Australia\\*",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Community First Credit Union Limited (trading as Community First Bank, Easy Street Financial Services and Illawarra Credit Union)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Credit Union Australia Ltd (trading as Great Southern Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Credit Union SA Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Cuscal Limited (provides industry services)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Defence Bank Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Dnister Ukrainian Credit Co-operative Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Fire Service Credit Union Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "First Option Bank Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Gateway Bank Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Goulburn Murray Credit Union Co-operative Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Heritage and People's Choice Limited (trading as Heritage Bank, People's Choice Credit Union and People First Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Horizon Credit Union Ltd (trading as Horizon Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Hume Bank Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "IMB Ltd (trading as IMB Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Indue Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Judo Bank Pty Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Laboratories Credit Union Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Macarthur Credit Union Ltd (trading as THE MAC)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Macquarie Bank Limited\\*",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Maitland Mutual Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Members Banking Group Limited (trading as RACQ Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "MyState Bank Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "National Australia Bank Limited\\*",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Newcastle Greater Mutual Group Ltd (trading as Newcastle Permanent, and Greater Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Norfina Limited (trading as Suncorp Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Northern Inland Credit Union Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Orange Credit Union Limited (trading as Bank Orange)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Police & Nurses Limited (trading as P&N Bank, and BCU Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Police Bank Ltd (trading as Border Bank and Bank of Heritage Isle)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Police Credit Union Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Police Financial Services Limited (trading as BankVic)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "QPCU Limited (trading as QBANK)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Queensland Country Bank Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Railways Credit Union Limited (trading as MOVE)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Regional Australia Bank Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "South West Slopes Credit Union Ltd (trading as SWSBANK)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Southern Cross Credit Union Ltd",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Teachers Mutual Bank Limited (trading as Australian Mutual Bank, Firefighters Mutual Bank, Health Professionals Bank, Teachers Mutual Bank and UniBank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "The Broken Hill Community Credit Union Ltd (trading as Broken Hill Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "The Capricornian Ltd Trading as The Capricornian Bank",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Traditional Credit Union Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Transport Mutual Credit Union Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Tyro Payments Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Unity Bank Limited (trading as G&C Mutual Bank and Reliance Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Victoria Teachers Limited (trading as Bank First)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Warwick Credit Union Ltd (trading as Darling Downs Bank)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "WAW Credit Union Co-Operative Limited (trading as BankWAW)",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Westpac Banking Corporation\\*",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Woolworths Team Bank Limited",
+      "country": "AU",
+      "classification": "Australian-owned authorised deposit-taking institutions",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Arab Bank Australia Limited",
+      "country": "AU",
+      "classification": "Foreign subsidiary banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Australian Settlements Limited (trading as Banking Circle Australia, provides industry services)",
+      "country": "AU",
+      "classification": "Foreign subsidiary banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank of China (Australia) Limited",
+      "country": "AU",
+      "classification": "Foreign subsidiary banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank of Sydney Ltd",
+      "country": "AU",
+      "classification": "Foreign subsidiary banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "HSBC Bank Australia Limited",
+      "country": "AU",
+      "classification": "Foreign subsidiary banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "ING Bank (Australia) Limited (trading as ING)",
+      "country": "AU",
+      "classification": "Foreign subsidiary banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Rabobank Australia Limited",
+      "country": "AU",
+      "classification": "Foreign subsidiary banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Revolut Payments Australia Pty Ltd (trading as Revolut Bank Australia)",
+      "country": "AU",
+      "classification": "Foreign subsidiary banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Agricultural Bank of China Limited",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank of America, National Association",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank of Baroda",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank of China Limited",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank of Communications Co., Ltd.",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Bank of Taiwan",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Barclays Bank PLC",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Canadian Imperial Bank of Commerce",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "China Construction Bank Corporation",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "China Everbright Bank Co., Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "China Merchants Bank Co., Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Citibank, N.A.",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Cooperatieve Rabobank U.A. (trading as Rabobank)",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Crédit Agricole Corporate and Investment Bank",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "DBS Bank Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Deutsche Bank Aktiengessellschaft",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "E.SUN Commercial Bank, Ltd.",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "First Commercial Bank",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Hua Nan Commercial Bank, Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Industrial and Commercial Bank of China Limited",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "ING Bank N.V.",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Intesa Sanpaolo SPA",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "JPMorgan Chase Bank, National Association",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Land Bank of Taiwan Co., Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Mega International Commercial Bank Co., Ltd.",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Mizuho Bank, Ltd.",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "MUFG Bank, Ltd.",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "NongHyup Bank",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Oversea-Chinese Banking Corporation Limited",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Royal Bank of Canada",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Shinhan Bank Co., Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Societe Generale",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Standard Chartered Bank",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "State Bank of India",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "State Street Bank and Trust Company",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Sumitomo Mitsui Banking Corporation",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Taipei Fubon Commercial Bank Co., Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Taishin International Bank Co., Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Taiwan Business Bank, Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Taiwan Cooperative Bank, Ltd",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "The Bank of New York Mellon",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "The Hongkong and Shanghai Banking Corporation Limited",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "The Northern Trust Company",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "UBS AG",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "Union Bank of India",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    },
+    {
+      "name": "United Overseas Bank Limited",
+      "country": "AU",
+      "classification": "Branches of foreign banks",
+      "source": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "bankApi": "UNVERIFIED"
+    }
+  ],
+  "verifiedLiveConnections": 0
+}
