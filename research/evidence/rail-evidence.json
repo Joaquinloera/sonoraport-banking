@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.0",
+  "scope": "public documentary evidence, not credentials or payment access",
+  "updatedOn": "2026-10-16",
+  "coverage": {
+    "countriesDocumented": 3,
+    "worldwideComplete": false
+  },
+  "entries": [
+    {
+      "id": "BR-PIX",
+      "country": "BR",
+      "rail": "Pix",
+      "operator": "Banco Central do Brasil",
+      "officialSources": [
+        "https://github.com/bacen/pix-api",
+        "https://bacen.github.io/pix-api/",
+        "https://www.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT.html"
+      ],
+      "technicalEvidence": {
+        "specification": "OpenAPI 3.0",
+        "publicSpecificationVersion": "2.10.0",
+        "securityDocumentation": "separate BCB Pix security and initiation manuals"
+      },
+      "access": "Participant or approved PSP integration required; public OpenAPI is not production authorization",
+      "status": "DOCUMENTATION_VERIFIED",
+      "live": false
+    },
+    {
+      "id": "IN-UPI",
+      "country": "IN",
+      "rail": "UPI",
+      "operator": "NPCI",
+      "officialSources": [
+        "https://www.npci.org.in/product/upi/roles-responsibilities"
+      ],
+      "technicalEvidence": {
+        "participantTypes": [
+          "Issuer Bank",
+          "PSP Bank",
+          "TPAP",
+          "PPI issuer"
+        ],
+        "approval": "NPCI approves participants and governs processing, settlement and dispute responsibilities"
+      },
+      "access": "NPCI participant approval and PSP relationships; not an open public transfer API",
+      "status": "PARTICIPATION_VERIFIED",
+      "live": false
+    },
+    {
+      "id": "CN-CIPS",
+      "country": "CN",
+      "rail": "CIPS",
+      "operator": "Cross-border Interbank Payment System",
+      "officialSources": [
+        "https://www.cips.com.cn/en/operation_service/downloads/index.html",
+        "https://www.cips.com.cn/kjjqgs/attachDir/2025/12/2025123016391377329.pdf"
+      ],
+      "technicalEvidence": {
+        "participation": [
+          "direct",
+          "indirect"
+        ],
+        "currency": "CNY",
+        "account": "Direct participant holds CIPS settlement account; indirect participates through direct participant",
+        "messagePermissions": "Direct participants request messaging privileges",
+        "reconciliation": "CIPS reconciliation reports and transaction notices"
+      },
+      "access": "Formal direct/indirect participant onboarding; institutional eligibility applies",
+      "status": "RULES_VERIFIED",
+      "live": false
+    }
+  ]
+}
