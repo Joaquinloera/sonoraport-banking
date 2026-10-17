@@ -1,0 +1,240 @@
+{
+  "version": 1,
+  "asOf": "2026-10-16",
+  "coverage": "STARTER_BANK_PROVIDER_REGISTRY_NOT_WORLDWIDE_COMPLETE",
+  "banks": [
+    {
+      "id": "US-JPM",
+      "name": "JPMorgan Chase",
+      "country": "US",
+      "region": "North America",
+      "officialSource": "https://developer.payments.jpmorgan.com/api/home",
+      "capabilities": [
+        "payments",
+        "treasury",
+        "reporting"
+      ],
+      "onboarding": "Developer portal and bank onboarding",
+      "documentationStatus": "OFFICIAL_PORTAL_IDENTIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "US-CITI",
+      "name": "Citi",
+      "country": "US",
+      "region": "North America",
+      "officialSource": "https://developer.citi.com/",
+      "capabilities": [
+        "treasury",
+        "payments",
+        "accounts"
+      ],
+      "onboarding": "Citi developer onboarding",
+      "documentationStatus": "OFFICIAL_PORTAL_IDENTIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "CN-ICBC",
+      "name": "Industrial and Commercial Bank of China",
+      "country": "CN",
+      "region": "Asia",
+      "officialSource": "https://open.icbc.com.cn/icbc/apip/transboundary.html",
+      "capabilities": [
+        "cross-border cash management",
+        "accounts",
+        "payment instructions"
+      ],
+      "onboarding": "Corporate service agreement and enabled bank-enterprise access",
+      "documentationStatus": "OFFICIAL_PORTAL_IDENTIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "CN-BOC",
+      "name": "Bank of China",
+      "country": "CN",
+      "region": "Asia",
+      "officialSource": "https://www.boc.cn/en/",
+      "capabilities": [
+        "corporate banking",
+        "international settlement"
+      ],
+      "onboarding": "Bank onboarding; API documentation not verified",
+      "documentationStatus": "BANK_IDENTIFIED_API_UNVERIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "ES-BBVA",
+      "name": "BBVA",
+      "country": "ES",
+      "region": "Europe,Latin America",
+      "officialSource": "https://www.bbvaapimarket.com/en/api-developers/api-calls",
+      "capabilities": [
+        "accounts",
+        "banking APIs",
+        "sandbox"
+      ],
+      "onboarding": "App registration; API-specific two/three-legged authentication",
+      "documentationStatus": "OFFICIAL_PORTAL_IDENTIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "ZA-STANDARD",
+      "name": "Standard Bank",
+      "country": "ZA",
+      "region": "Africa",
+      "officialSource": "https://developer.standardbank.com/APIMarketplace/s/",
+      "capabilities": [
+        "banking API marketplace"
+      ],
+      "onboarding": "Product-specific enrollment",
+      "documentationStatus": "OFFICIAL_PORTAL_IDENTIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "ZA-ABSA",
+      "name": "Absa",
+      "country": "ZA",
+      "region": "Africa",
+      "officialSource": "https://developer.absa.africa/",
+      "capabilities": [
+        "corporate banking APIs"
+      ],
+      "onboarding": "Bank client API enrollment",
+      "documentationStatus": "OFFICIAL_PORTAL_IDENTIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "BR-BB",
+      "name": "Banco do Brasil",
+      "country": "BR",
+      "region": "South America",
+      "officialSource": "https://www.bb.com.br/",
+      "capabilities": [
+        "corporate banking"
+      ],
+      "onboarding": "API documentation not verified",
+      "documentationStatus": "BANK_IDENTIFIED_API_UNVERIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "MX-BANORTE",
+      "name": "Banorte",
+      "country": "MX",
+      "region": "North America",
+      "officialSource": "https://www.banorte.com/",
+      "capabilities": [
+        "corporate banking"
+      ],
+      "onboarding": "API documentation not verified",
+      "documentationStatus": "BANK_IDENTIFIED_API_UNVERIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "GB-HSBC",
+      "name": "HSBC",
+      "country": "GB",
+      "region": "Europe,Global",
+      "officialSource": "https://developer.hsbc.com/",
+      "capabilities": [
+        "banking APIs"
+      ],
+      "onboarding": "Product-specific bank enrollment",
+      "documentationStatus": "OFFICIAL_PORTAL_IDENTIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "IN-SBI",
+      "name": "State Bank of India",
+      "country": "IN",
+      "region": "Asia",
+      "officialSource": "https://sbi.co.in/",
+      "capabilities": [
+        "corporate banking"
+      ],
+      "onboarding": "API documentation not verified",
+      "documentationStatus": "BANK_IDENTIFIED_API_UNVERIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "RU-SBER",
+      "name": "Sberbank",
+      "country": "RU",
+      "region": "Europe,Asia",
+      "officialSource": "https://www.sberbank.com/",
+      "capabilities": [
+        "banking"
+      ],
+      "onboarding": "Sanctions screening and authorization required",
+      "documentationStatus": "OFFICIAL_PORTAL_IDENTIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "EG-NBE",
+      "name": "National Bank of Egypt",
+      "country": "EG",
+      "region": "Africa",
+      "officialSource": "https://www.nbe.com.eg/",
+      "capabilities": [
+        "banking"
+      ],
+      "onboarding": "API documentation not verified",
+      "documentationStatus": "BANK_IDENTIFIED_API_UNVERIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "ET-CBE",
+      "name": "Commercial Bank of Ethiopia",
+      "country": "ET",
+      "region": "Africa",
+      "officialSource": "https://combanketh.et/",
+      "capabilities": [
+        "banking"
+      ],
+      "onboarding": "API documentation not verified",
+      "documentationStatus": "BANK_IDENTIFIED_API_UNVERIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "AE-ENBD",
+      "name": "Emirates NBD",
+      "country": "AE",
+      "region": "Middle East",
+      "officialSource": "https://www.emiratesnbd.com/",
+      "capabilities": [
+        "banking"
+      ],
+      "onboarding": "API documentation not verified",
+      "documentationStatus": "BANK_IDENTIFIED_API_UNVERIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    },
+    {
+      "id": "ID-BRI",
+      "name": "Bank Rakyat Indonesia",
+      "country": "ID",
+      "region": "Asia",
+      "officialSource": "https://bri.co.id/",
+      "capabilities": [
+        "banking"
+      ],
+      "onboarding": "API documentation not verified",
+      "documentationStatus": "BANK_IDENTIFIED_API_UNVERIFIED",
+      "productionConnection": "NOT_VERIFIED",
+      "transferEnabled": false
+    }
+  ]
+}
