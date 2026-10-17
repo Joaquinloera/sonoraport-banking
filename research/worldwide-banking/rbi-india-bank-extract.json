@@ -1,0 +1,292 @@
+{
+  "schemaVersion": "1.0",
+  "country": "IN",
+  "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+  "extractionMethod": "Named banks transcribed from regulator's Banks in India list; partial page extraction",
+  "complete": false,
+  "liveConnections": 0,
+  "records": [
+    {
+      "name": "State Bank of India",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Bank of Baroda",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Bank of India",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Bank of Maharashtra",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Canara Bank",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Central Bank of India",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Indian Overseas Bank",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Indian Bank",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Punjab National Bank",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Union Bank of India",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Punjab & Sind Bank",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "UCO Bank",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Axis Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Bandhan Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "CSB Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "City Union Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "DCB Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Dhanlaxmi Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Federal Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "HDFC Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "ICICI Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "IndusInd Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "IDFC FIRST Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Jammu & Kashmir Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Karnataka Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Karur Vysya Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Kotak Mahindra Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Nainital Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "RBL Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "South Indian Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Tamilnad Mercantile Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "YES Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "IDBI Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Coastal Local Area Bank Ltd.",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Krishna Bhima Samruddhi Local Area Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Au Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Capital Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Equitas Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "ESAF Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Suryoday Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Ujjivan Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Utkarsh Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "slice Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Jana Small finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Shivalik Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Unity Small Finance Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    },
+    {
+      "name": "Airtel Payments Bank Limited",
+      "source": "https://m.rbi.org.in/CommonPerson/english/scripts/banksinindia.aspx",
+      "api": "NOT_VERIFIED",
+      "bankRegulatoryCategory": "RBI_LISTED_BANK_TYPE_TO_CONFIRM"
+    }
+  ]
+}
