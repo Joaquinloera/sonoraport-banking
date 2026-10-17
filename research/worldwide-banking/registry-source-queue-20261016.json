@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0",
+  "project": "SonoraPort worldwide banking source ingestion",
+  "status": "SOURCE_DISCOVERY_ONLY",
+  "institutionRecordsExtractedInThisFile": 0,
+  "productionBankConnections": 0,
+  "notes": "Source URLs are research inputs, not proof of bank API availability or regulated partnership.",
+  "sources": [
+    {
+      "country": "US",
+      "regulator": "FDIC",
+      "url": "https://api.fdic.gov/banks/docs/",
+      "kind": "API documentation",
+      "bulkDataUrl": "https://banks.data.fdic.gov/bankfind-suite/bulkdata",
+      "extractionStatus": "PENDING",
+      "bankApiStatus": "UNVERIFIED"
+    },
+    {
+      "country": "EU",
+      "regulator": "ECB",
+      "url": "https://www.ecb.europa.eu/stats/financial_corporations/list_of_financial_institutions/html/index.en.html",
+      "kind": "Daily financial institution download",
+      "bulkDataUrl": null,
+      "extractionStatus": "PENDING",
+      "bankApiStatus": "UNVERIFIED"
+    },
+    {
+      "country": "MX",
+      "regulator": "CNBV",
+      "url": "https://www.cnbv.gob.mx/Entidades-Autorizadas/Paginas/Banca-Multiple.aspx",
+      "kind": "Authorized commercial banks",
+      "bulkDataUrl": null,
+      "extractionStatus": "PENDING",
+      "bankApiStatus": "UNVERIFIED"
+    },
+    {
+      "country": "ZA",
+      "regulator": "SARB",
+      "url": "https://www.resbank.co.za/en/home/what-we-do/Prudentialregulation/sa-registered-banks-and-representative-offices",
+      "kind": "Registered banks and representative offices",
+      "bulkDataUrl": null,
+      "extractionStatus": "PENDING",
+      "bankApiStatus": "UNVERIFIED"
+    },
+    {
+      "country": "AE",
+      "regulator": "CBUAE",
+      "url": "https://centralbank.ae/en/licensing/",
+      "kind": "Banking licensing portal",
+      "bulkDataUrl": null,
+      "extractionStatus": "PENDING",
+      "bankApiStatus": "UNVERIFIED"
+    },
+    {
+      "country": "JP",
+      "regulator": "JFSA",
+      "url": "https://www.fsa.go.jp/en/regulated/licensed/index.html",
+      "kind": "Licensed financial institutions",
+      "bulkDataUrl": null,
+      "extractionStatus": "PENDING",
+      "bankApiStatus": "UNVERIFIED"
+    }
+  ]
+}
