@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "build": "worldwide_codex_matrix_batch_001",
+  "research_date": "2026-10-17",
+  "scope": "Global banking, payment infrastructure and blockchain interoperability",
+  "status": "public_technical_metadata_only",
+  "entities": [
+    {
+      "id": "swift-api",
+      "name": "SWIFT API Platform",
+      "type": "financial_messaging_api_platform",
+      "region": "global",
+      "interfaces": [
+        "API catalogue",
+        "developer SDKs and specifications"
+      ],
+      "auth_metadata": [
+        "authorization grants",
+        "entitlements",
+        "certificates"
+      ],
+      "environment_metadata": [
+        "sandbox",
+        "pilot",
+        "live"
+      ],
+      "source": "https://docs.developer.swift.com/docs/api-guides",
+      "evidence_level": "official_documentation",
+      "connection_status": "not_connected"
+    },
+    {
+      "id": "bis-nexus",
+      "name": "BIS Project Nexus",
+      "type": "cross_border_instant_payment_interoperability",
+      "region": "cross_border",
+      "interfaces": [
+        "instant payment system interoperability architecture"
+      ],
+      "auth_metadata": [
+        "not assessed in this batch"
+      ],
+      "environment_metadata": [
+        "technical documentation"
+      ],
+      "source": "https://docs.bis.org/nexus",
+      "evidence_level": "official_documentation",
+      "connection_status": "not_connected"
+    },
+    {
+      "id": "hyperledger-besu",
+      "name": "Hyperledger Besu",
+      "type": "blockchain_execution_client",
+      "region": "global",
+      "interfaces": [
+        "JSON-RPC HTTP",
+        "JSON-RPC WebSocket",
+        "GraphQL HTTP"
+      ],
+      "auth_metadata": [
+        "username/password",
+        "JWT public-key authentication",
+        "method-level permissions"
+      ],
+      "environment_metadata": [
+        "self-hosted node",
+        "public and private networks"
+      ],
+      "source": "https://docs.besu-eth.org/public-networks/how-to/use-besu-api",
+      "evidence_level": "official_documentation",
+      "connection_status": "not_connected"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "swift-api",
+      "to": "bis-nexus",
+      "kind": "shared_research_domain",
+      "domain": "cross-border payments",
+      "verified_direct_integration": false
+    },
+    {
+      "from": "bis-nexus",
+      "to": "hyperledger-besu",
+      "kind": "shared_research_domain",
+      "domain": "financial infrastructure",
+      "verified_direct_integration": false
+    }
+  ],
+  "rules": [
+    "Research-domain relationships do not imply actual commercial or technical integrations.",
+    "Never store credentials or private data.",
+    "Keep documented capability distinct from active integration.",
+    "Website and live deployments unchanged."
+  ]
+}
