@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.1",
+  "build": "KINO_281102_CODEX_MATRIX_002",
+  "as_of": "2026-10-17",
+  "purpose": "Machine-readable technical evidence graph for later SonoraPort integration; no website changes",
+  "entities": [
+    {
+      "id": "swift-api",
+      "name": "Swift API Platform",
+      "type": "financial_messaging_platform",
+      "geography": "global",
+      "technical": {
+        "identity": "unified identity and security model",
+        "standards": [
+          "ISO 20022"
+        ],
+        "lifecycle": [
+          "documentation",
+          "application registration",
+          "sandbox",
+          "production deployment"
+        ],
+        "interfaces": [
+          "Swift API catalogue"
+        ],
+        "authentication": "application credentials required"
+      },
+      "source": {
+        "url": "https://docs.developer.swift.com/apis/payments-scheme/getting-started/swift-api-platform",
+        "publisher": "Swift"
+      },
+      "connection": "research_only"
+    },
+    {
+      "id": "nexus",
+      "name": "Nexus Global Payments",
+      "type": "cross_border_instant_payments",
+      "geography": "multijurisdictional",
+      "technical": {
+        "standards": [
+          "ISO 20022"
+        ],
+        "interfaces": [
+          "published API specifications",
+          "message specifications"
+        ],
+        "participants": [
+          "instant payment system operators",
+          "banks",
+          "payment service providers",
+          "FX providers"
+        ],
+        "operational_status": "not yet operational per official technical documentation"
+      },
+      "source": {
+        "url": "https://docs.nexusglobalpayments.org/",
+        "publisher": "Nexus Global Payments"
+      },
+      "connection": "research_only"
+    },
+    {
+      "id": "besu",
+      "name": "Hyperledger Besu",
+      "type": "blockchain_execution_client",
+      "geography": "global",
+      "technical": {
+        "language": "Java",
+        "license": "Apache-2.0",
+        "interfaces": [
+          "JSON-RPC HTTP",
+          "JSON-RPC WebSocket",
+          "IPC",
+          "GraphQL HTTP"
+        ],
+        "api_namespaces": [
+          "ETH",
+          "NET",
+          "WEB3",
+          "ADMIN",
+          "DEBUG",
+          "TRACE",
+          "TXPOOL"
+        ],
+        "documented_default_ports": {
+          "rpc_http": 8545,
+          "rpc_ws": 8546,
+          "graphql_http": 8547
+        },
+        "rpc_methods": [
+          "rpc_modules",
+          "eth_sendRawTransaction"
+        ],
+        "authentication": [
+          "username/password",
+          "JWT public-key"
+        ],
+        "signing": "external wallet or signing service; Besu does not manage private keys"
+      },
+      "source": {
+        "url": "https://docs.besu-eth.org/public-networks/how-to/use-besu-api",
+        "publisher": "Besu"
+      },
+      "connection": "research_only"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "swift-api",
+      "to": "nexus",
+      "kind": "standards_overlap",
+      "standard": "ISO 20022",
+      "verified_direct_connection": false
+    },
+    {
+      "from": "besu",
+      "to": "swift-api",
+      "kind": "architecture_comparison",
+      "verified_direct_connection": false
+    }
+  ],
+  "evidence_rules": {
+    "secret_credentials_collected": false,
+    "website_modified": false,
+    "live_connections_asserted": false,
+    "relationship_classification": "explicitly distinguish shared standards from deployed integrations"
+  },
+  "next_research_targets": [
+    "ISO 20022 account-validation API resources",
+    "Nexus API specifications",
+    "Swift API authentication",
+    "Besu JSON-RPC method schemas"
+  ]
+}
