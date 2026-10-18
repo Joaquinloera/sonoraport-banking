@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Public documentation research targets; not connected services or verified partnerships",
+  "scope": [
+    "AI models and agents",
+    "AI banking",
+    "Global banking and payment networks",
+    "Blockchain and digital assets",
+    "Cloud cybersecurity telecom",
+    "Biotechnology and robotics"
+  ],
+  "targets": [
+    {
+      "company": "OpenAI",
+      "category": "AI models and agents",
+      "documentation": "https://developers.openai.com/api/docs",
+      "auth": "API key or workload identity; authorization required",
+      "status": "official_docs_located"
+    },
+    {
+      "company": "Anthropic",
+      "category": "AI models and agents",
+      "documentation": "https://platform.claude.com/docs/en/api/overview",
+      "auth": "API key or workload identity; authorization required",
+      "status": "official_docs_located"
+    },
+    {
+      "company": "Google Gemini",
+      "category": "AI models and agents",
+      "documentation": "https://ai.google.dev/gemini-api/docs",
+      "auth": "Developer credential required",
+      "status": "official_docs_located"
+    },
+    {
+      "company": "Stripe Financial Connections",
+      "category": "AI banking and financial data",
+      "documentation": "https://docs.stripe.com/api/financial_connections/sessions/create",
+      "auth": "Stripe credentials and end-user permissions required",
+      "status": "official_docs_located"
+    }
+  ],
+  "data_rules": [
+    "Official public sources only",
+    "Never include secrets or private customer records",
+    "Separate source documentation from actual integration",
+    "Record licensing, permissions and geographic limitations",
+    "Never label research targets as partners or connected APIs"
+  ]
+}
