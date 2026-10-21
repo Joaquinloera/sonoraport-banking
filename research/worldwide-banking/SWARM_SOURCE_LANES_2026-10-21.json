@@ -1,0 +1,45 @@
+{
+  "build": "SWARM_REAL_BANKS_2026_10_21",
+  "status": "OFFICIAL_SOURCE_FETCH_VERIFIED_NOT_FULL_DATASET_IMPORT",
+  "sources": [
+    {
+      "jurisdiction": "US",
+      "authority": "FDIC",
+      "url": "https://api.fdic.gov/banks/docs/",
+      "apiSpec": "https://api.fdic.gov/banks/docs/swagger.yaml",
+      "institutionSchema": "https://api.fdic.gov/banks/docs/institution_properties.yaml",
+      "locationSchema": "https://api.fdic.gov/banks/docs/location_properties.yaml",
+      "keyFinding": "Current documentation says registration/key not yet required for queries; future governance expected",
+      "scope": "FDIC insured institutions and locations"
+    },
+    {
+      "jurisdiction": "EU/EEA",
+      "authority": "EBA",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/data/registers-and-other-list-institutions/credit-institutions-register",
+      "keyFinding": "EBA register includes CRD credit institutions and EEA/non-EEA branches; national registers may be more detailed or current",
+      "scope": "EBA credit institution register"
+    },
+    {
+      "jurisdiction": "AU",
+      "authority": "APRA",
+      "url": "https://www.apra.gov.au/registers/list-registered-authorised-deposit-taking-institutions",
+      "scope": "Authorized deposit-taking institutions",
+      "verification": "fetch attempted"
+    },
+    {
+      "jurisdiction": "CA",
+      "authority": "OSFI",
+      "url": "https://www.osfi-bsif.gc.ca/en/supervision/financial-institutions/banks",
+      "scope": "Federally regulated banks",
+      "verification": "fetch attempted"
+    },
+    {
+      "jurisdiction": "SG",
+      "authority": "MAS",
+      "url": "https://eservices.mas.gov.sg/fid/institution",
+      "scope": "Financial institutions directory",
+      "verification": "fetch attempted"
+    }
+  ],
+  "note": "No private API keys collected; no full institution exports ingested in this operation. These are source-lane records, not bank counts."
+}
