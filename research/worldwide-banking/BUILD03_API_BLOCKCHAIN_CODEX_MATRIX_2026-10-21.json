@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0",
+  "build": "BUILD03_API_BLOCKCHAIN_CODEX",
+  "retrievedDate": "2026-10-21",
+  "status": "PUBLIC_DOCUMENTATION_DISCOVERED_CREDENTIALS_NOT_ACQUIRED",
+  "records": [
+    {
+      "id": "FDIC-BANKFIND",
+      "domain": "banking_registry",
+      "provider": "FDIC",
+      "url": "https://api.fdic.gov/banks/docs/",
+      "interface": "REST public banking datasets",
+      "auth": "Consult official API docs; do not assume credential requirement",
+      "secretStatus": "none collected"
+    },
+    {
+      "id": "PLAID-OAUTH",
+      "domain": "banking_integration",
+      "provider": "Plaid",
+      "url": "https://plaid.com/docs/link/oauth/",
+      "interface": "OAuth account-linking",
+      "auth": "OAuth user consent and provider-issued application credentials",
+      "secretStatus": "not collected"
+    },
+    {
+      "id": "PLAID-INSTITUTIONS",
+      "domain": "banking_integration",
+      "provider": "Plaid",
+      "url": "https://plaid.com/docs/api/institutions/",
+      "interface": "Institution metadata API",
+      "auth": "Provider-issued client credentials; verify endpoint-specific requirements",
+      "secretStatus": "not collected"
+    },
+    {
+      "id": "ETHEREUM-JSONRPC",
+      "domain": "blockchain",
+      "provider": "Ethereum",
+      "url": "https://ethereum.org/developers/docs/apis/json-rpc/",
+      "interface": "JSON-RPC",
+      "auth": "Depends on node operator or gateway; hosted RPC may require project API key",
+      "secretStatus": "not collected"
+    },
+    {
+      "id": "ETHEREUM-EXECUTION",
+      "domain": "blockchain",
+      "provider": "Ethereum execution APIs",
+      "url": "https://github.com/ethereum/execution-apis",
+      "interface": "Execution JSON-RPC specifications",
+      "auth": "Depends on node provider",
+      "secretStatus": "not collected"
+    },
+    {
+      "id": "SWIFT-API",
+      "domain": "payments_infrastructure",
+      "provider": "Swift",
+      "url": "https://www.swift.com/products/swift-apis",
+      "interface": "Financial messaging APIs",
+      "auth": "Provider onboarding and authorized credentials required for protected services",
+      "secretStatus": "not collected"
+    },
+    {
+      "id": "ISO20022-API",
+      "domain": "payments_standard",
+      "provider": "ISO 20022",
+      "url": "https://www.iso20022.org/catalogue/iso-20022-api-resources",
+      "interface": "Financial message/API resource standards",
+      "auth": "Documentation is not a bank credential or transaction authorization",
+      "secretStatus": "not collected"
+    },
+    {
+      "id": "ETHERSCAN-API",
+      "domain": "blockchain_metadata",
+      "provider": "Etherscan",
+      "url": "https://docs.etherscan.io/introduction",
+      "interface": "Blockchain explorer data API",
+      "auth": "Provider-issued API key according to plan",
+      "secretStatus": "not collected"
+    }
+  ],
+  "matrixFields": [
+    "provider",
+    "domain",
+    "country_or_network",
+    "regulator",
+    "official_documentation_url",
+    "interface_type",
+    "auth_method",
+    "credential_issuance",
+    "required_scopes",
+    "rate_limits",
+    "sandbox_available",
+    "production_access_status",
+    "data_classes",
+    "source_retrieved_date",
+    "verification_status",
+    "entity_relationships",
+    "secret_reference_only"
+  ],
+  "securityRule": "Never commit private API keys, wallet seed phrases, account tokens, PINs or payment credentials to GitHub or public website."
+}
