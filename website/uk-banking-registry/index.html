@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UK Banking Registry | SonoraPort Banking Research</title>
+<meta name="description" content="Evidence-linked sample of UK PRA-regulated banks, with FRNs and LEIs. Research directory, not a banking service.">
+<style>:root{font-family:system-ui,sans-serif;color-scheme:dark}body{margin:0;background:#0a1220;color:#edf3fb}header,main,footer{max-width:1100px;margin:auto;padding:25px}header{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid #33425b}a{color:#e8c783}h1{font-size:clamp(2rem,5vw,3.5rem)}p{line-height:1.65;color:#b8c8dc}.eyebrow{color:#e8c783;letter-spacing:.1em;text-transform:uppercase}input{width:100%;padding:14px;background:#15233a;color:white;border:1px solid #586981;border-radius:8px;font:inherit}table{border-collapse:collapse;width:100%;margin-top:22px}th,td{padding:14px 10px;text-align:left;border-bottom:1px solid #33425b}th{color:#e8c783}tr:hover{background:#14233a}.wrap{overflow-x:auto}.note{border-left:4px solid #e8c783;background:#14233a;padding:14px 20px;margin:25px 0}footer{border-top:1px solid #33425b;color:#aabbd0}@media(max-width:600px){th,td{padding:10px 6px;font-size:.82rem}}</style></head>
+<body><header><strong>SONORAPORT / BANKING RESEARCH</strong><nav><a href="/">Banking home</a> · <a href="https://sonoraportaiholdingllc.com">Main company</a></nav></header>
+<main><p class="eyebrow">NORTHCOM · Build 07 · 21 October 2026</p><h1>United Kingdom banking registry</h1>
+<p>Search a source-observed sample of UK-incorporated banks authorized to accept deposits, drawn from the Bank of England Prudential Regulation Authority's published table.</p>
+<div class="note"><strong>Research sample — not a complete register.</strong><p>8 examples. No customer accounts, payments, or banking services are offered here. Confirm current authorizations directly with the regulator before relying on any entry.</p></div>
+<label for="search">Search institution name, FRN or LEI</label><input id="search" type="search" placeholder="Try Barclays, 754568 or 213800..." autocomplete="off">
+<p id="count" aria-live="polite"></p><div class="wrap"><table><thead><tr><th>Institution</th><th>FRN</th><th>LEI</th></tr></thead><tbody id="rows"></tbody></table></div>
+<p>Primary source: <a href="https://www.bankofengland.co.uk/prudential-regulation/authorisations/which-firms-does-the-pra-regulate" rel="noopener noreferrer">PRA — Which firms does the PRA regulate?</a></p>
+<p>Evidence and methodology: <a href="https://github.com/Joaquinloera/sonoraport-banking/blob/main/research/NORTHCOM_BUILD07_UK_PRA_SOURCE_CHECKPOINT_2026-10-21.md">Build 07 research checkpoint</a>.</p></main>
+<footer>SonoraPort banking research · Independent public-source directory · Not affiliated with the PRA</footer>
+<script>
+const records=[
+["ABC International Bank Plc","149025","PQEBSF10YW5QXWIKTJ21"],
+["Afin Bank Limited","1004742","213800NRZ2K3AGEXHT08"],
+["AIB GROUP (UK) P.L.C.","122088","54930061N57ORAEPGX16"],
+["Aldermore Bank Plc","204503","2138009CAEGO41Q6HB61"],
+["ALLICA BANK LIMITED","821851","8945008WK6DNAUZQ7L32"],
+["Atom Bank PLC","661960","213800YWQOYL4VQODV50"],
+["Barclays Bank UK PLC","759676","213800UUGANOMFJ9X769"],
+["ClearBank Limited","754568","213800PERENGATFCHD95"]
+];
+const rows=document.querySelector("#rows"),count=document.querySelector("#count"),search=document.querySelector("#search");
+function render(){const q=search.value.trim().toLowerCase();const matches=records.filter(r=>r.some(v=>v.toLowerCase().includes(q)));rows.replaceChildren(...matches.map(r=>{const tr=document.createElement("tr");r.forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.append(td)});return tr}));count.textContent=matches.length+" of "+records.length+" source-observed sample records";}
+search.addEventListener("input",render);render();
+</script></body></html>
