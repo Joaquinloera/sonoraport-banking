@@ -20,11 +20,16 @@ function skim(record, index) {
     providerConnectionVerified: false, paymentInitiationAuthorized: false
   };
 }
+const BATCH_SIZE = 100;
 const results = [];
-for (let index = 0; index < data.records.length; index++) {
-  results.push(skim(data.records[index], index));
+for (let offset = 0; offset < data.records.length; offset += BATCH_SIZE) {
+  const end = Math.min(offset + BATCH_SIZE, data.records.length);
+  for (let index = offset; index < end; index++) {
+    results.push(skim(data.records[index], index));
+  }
+  console.log(`SKIM batch ${Math.floor(offset / BATCH_SIZE) + 1}: validated ${end - offset} records (${end}/${data.records.length})`);
 }
-const report = {schemaVersion: '1.0.0', executionType: 'local-evidence-validation', autonomousDiscovery: false, networkFetchPerformed: false, sourceEvidenceCount: results.length, results};
+const report = {schemaVersion: '1.0.0', executionType: 'local-evidence-validation', autonomousDiscovery: false, networkFetchPerformed: false, batchSize: BATCH_SIZE, batchCount: Math.ceil(results.length / BATCH_SIZE), sourceEvidenceCount: results.length, results};
 fs.mkdirSync(path.dirname(outputPath), {recursive: true});
 fs.writeFileSync(outputPath, JSON.stringify(report, null, 2) + '\n');
 console.log(`SKIM complete: ${results.length} validated records; ${outputPath}`);
