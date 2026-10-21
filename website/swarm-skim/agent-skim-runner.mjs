@@ -5,7 +5,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const evidencePath = process.argv[2] ?? path.join(here, '../global-banking/research-evidence-2026-10-13.json');
 const outputPath = process.argv[3] ?? path.join(here, 'latest-skim-results.json');
 const data = JSON.parse(fs.readFileSync(evidencePath, 'utf8'));
-if (!Array.isArray(data.records) || data.records.length > 500) throw new Error('Invalid evidence roster');
+if (!Array.isArray(data.records)) throw new Error('Invalid evidence roster');
 const required = ['region', 'provider', 'source', 'technicalFindings', 'onboarding', 'unverified'];
 function skim(record, index) {
   for (const key of required) if (typeof record[key] !== 'string' || !record[key].trim()) throw new Error(`Missing ${key} in record ${index}`);
@@ -20,8 +20,11 @@ function skim(record, index) {
     providerConnectionVerified: false, paymentInitiationAuthorized: false
   };
 }
-const results = await Promise.all(data.records.map(async (record, index) => skim(record, index)));
-const report = {schemaVersion: '1.0.0', executionType: 'bounded-local-worker-fanout', autonomousDiscovery: false, networkFetchPerformed: false, sourceEvidenceCount: results.length, results};
+const results = [];
+for (let index = 0; index < data.records.length; index++) {
+  results.push(skim(data.records[index], index));
+}
+const report = {schemaVersion: '1.0.0', executionType: 'local-evidence-validation', autonomousDiscovery: false, networkFetchPerformed: false, sourceEvidenceCount: results.length, results};
 fs.mkdirSync(path.dirname(outputPath), {recursive: true});
 fs.writeFileSync(outputPath, JSON.stringify(report, null, 2) + '\n');
-console.log(`SKIM complete: ${results.length} bounded workers; ${outputPath}`);
+console.log(`SKIM complete: ${results.length} validated records; ${outputPath}`);
