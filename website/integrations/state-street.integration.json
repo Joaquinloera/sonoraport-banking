@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "bank": {
+    "name": "State Street Bank and Trust Company",
+    "fdic_certificate": "14",
+    "city": "Boston",
+    "state": "MA"
+  },
+  "developer": {
+    "portal": "https://developer.statestreet.com/",
+    "oauth_token_url": "https://api.statestreet.com/oauth/accesstoken",
+    "auth": "oauth2_client_credentials",
+    "access": "bank_approval_required"
+  },
+  "modules": {
+    "api_metadata": {
+      "status": "discovery"
+    },
+    "wallets": {
+      "status": "entitlement_required"
+    },
+    "digital_assets": {
+      "status": "entitlement_required"
+    },
+    "blockchain": {
+      "status": "entitlement_required"
+    },
+    "payment_card_security": {
+      "mode": "synthetic_data_only",
+      "features": [
+        "tokenization",
+        "fraud_signal_scoring",
+        "skimming_detection"
+      ]
+    }
+  },
+  "secrets": {
+    "client_id_env": "STATE_STREET_CLIENT_ID",
+    "client_secret_env": "STATE_STREET_CLIENT_SECRET",
+    "never_commit": true
+  },
+  "verification": {
+    "live_api_connected": false,
+    "bank_credentials_provisioned": false
+  }
+}
