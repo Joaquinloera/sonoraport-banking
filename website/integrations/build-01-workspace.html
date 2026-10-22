@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SonoraPort | Banking Integration Workspace — Build 01</title><meta name="description" content="SonoraPort banking integration workbench with official developer documentation and working provider search."><style>
+:root{font-family:system-ui,sans-serif;color:#e7edf5;background:#07111e}*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1100px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid #2c4157}a{color:#92d5ff}h1{font-size:clamp(30px,6vw,55px);line-height:1.08}p{line-height:1.6;color:#b8c9d9}.tag{color:#80e0b0;letter-spacing:.12em;text-transform:uppercase;font-size:12px}.tools{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}input,select{background:#14283a;color:white;border:1px solid #52687c;border-radius:8px;padding:14px;font:inherit}input{flex:1;min-width:220px}select{min-width:170px}.list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.item{border:1px solid #30495d;border-radius:12px;padding:20px;background:#102235}.item h2{font-size:21px;margin:4px 0}.item small{color:#8dddb6}.item a{display:inline-block;margin-top:12px}.count{font-variant-numeric:tabular-nums}.empty{padding:24px;border:1px dashed #52687c}footer{margin-top:50px;border-top:1px solid #2c4157}button{cursor:pointer}a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f1c77c;outline-offset:3px}</style></head>
+<body><header><strong>SONORAPORT / BUILD 01</strong><nav><a href="../">Main site</a> · <a href="./banking-directory.html">Banking directory</a></nav></header>
+<main><p class="tag">Global banking · Payments · Official integrations</p><h1>Financial infrastructure integration workspace</h1><p>Search banks, payment networks, digital wallets, and developer platforms. Each provider opens its official developer documentation or official website. No customer credentials are collected.</p>
+<div class="tools"><input id="search" type="search" placeholder="Search JPMorgan, Pix, PayPal, UPI, Zelle…" aria-label="Search providers"><select id="region" aria-label="Filter region"><option value="">All regions</option><option>United States</option><option>Brazil</option><option>India</option><option>China</option><option>South Africa</option><option>Mexico</option></select></div><p id="count" class="count" role="status"></p><section id="results" class="list" aria-label="Financial providers"></section></main>
+<footer><p>Source-linked research workspace. API access and production payment capabilities require provider approval and integration testing. This page does not claim live financial connectivity.</p></footer>
+<script>
+const providers=[
+['J.P. Morgan Payments','United States','Banking API','https://developer.payments.jpmorgan.com/'],
+['Chase','United States','Bank','https://www.chase.com/'],
+['PayPal','United States','Digital payments','https://developer.paypal.com/'],
+['Venmo','United States','Wallet','https://venmo.com/'],
+['Zelle','United States','Bank transfer network','https://www.zellepay.com/'],
+['Cash App','United States','Payments app','https://cash.app/'],
+['Apple Pay','United States','Wallet API','https://developer.apple.com/apple-pay/'],
+['Google Pay','United States','Wallet API','https://developers.google.com/pay/api'],
+['Stripe','United States','Payments API','https://docs.stripe.com/'],
+['Visa','United States','Card network API','https://developer.visa.com/'],
+['Mastercard','United States','Card network API','https://developer.mastercard.com/'],
+['FedNow','United States','Instant payment rail','https://www.frbservices.org/financial-services/fednow'],
+['RTP Network','United States','Instant payment rail','https://www.theclearinghouse.org/payment-systems/rtp'],
+['NCUA','United States','Credit union registry','https://ncua.gov/analysis/credit-union-corporate-call-report-data'],
+['FDIC','United States','Bank registry','https://banks.data.fdic.gov/'],
+['Banco Central do Brasil — Pix','Brazil','Instant payments','https://www.bcb.gov.br/estabilidadefinanceira/pix'],
+['Itaú Unibanco','Brazil','Bank','https://www.itau.com.br/'],
+['Bradesco','Brazil','Bank','https://banco.bradesco/'],
+['NPCI — UPI','India','Instant payments','https://www.npci.org.in/what-we-do/upi/product-overview'],
+['CIPS','China','Cross-border payments','https://www.cips.com.cn/'],
+['Bank of China','China','Bank','https://www.boc.cn/en/'],
+['PayShap','South Africa','Instant payments','https://www.payshap.co.za/'],
+['Standard Bank','South Africa','Bank','https://www.standardbank.co.za/'],
+['Banco de México — SPEI','Mexico','Payment rail','https://www.banxico.org.mx/'],
+['BBVA México','Mexico','Bank','https://www.bbva.mx/'],
+['Banorte','Mexico','Bank','https://www.banorte.com/']
+];
+const search=document.getElementById('search'),region=document.getElementById('region'),results=document.getElementById('results'),count=document.getElementById('count');
+function render(){const q=search.value.trim().toLocaleLowerCase();const filtered=providers.filter(x=>(!region.value||x[1]===region.value)&&x.join(' ').toLocaleLowerCase().includes(q));results.replaceChildren();for(const x of filtered){const card=document.createElement('article');card.className='item';const label=document.createElement('small');label.textContent=x[1]+' · '+x[2];const title=document.createElement('h2');title.textContent=x[0];const link=document.createElement('a');link.href=x[3];link.target='_blank';link.rel='noopener noreferrer';link.textContent='Open official source ↗';card.append(label,title,link);results.append(card)}count.textContent=filtered.length+' of '+providers.length+' providers';if(!filtered.length){const p=document.createElement('p');p.className='empty';p.textContent='No providers match. Try a broader search.';results.append(p)}}
+search.addEventListener('input',render);region.addEventListener('change',render);render();
+</script></body></html>
