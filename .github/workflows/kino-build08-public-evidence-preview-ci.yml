@@ -1,0 +1,42 @@
+name: KINO Build08 Complete Public Banking Evidence Draft
+on:
+  push:
+    paths:
+      - 'deployment/build-banking-preview.mjs'
+      - 'deployment/build-banking-preview.test.mjs'
+      - 'website/global-banking/**'
+      - '.github/workflows/kino-build08-public-evidence-preview-ci.yml'
+  pull_request:
+    paths:
+      - 'deployment/build-banking-preview.mjs'
+      - 'deployment/build-banking-preview.test.mjs'
+      - 'website/global-banking/**'
+      - '.github/workflows/kino-build08-public-evidence-preview-ci.yml'
+permissions:
+  contents: read
+jobs:
+  verify-public-site-artifact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unit and source-privacy verification
+        run: |
+          node --test deployment/build-banking-preview.test.mjs
+          node website/global-banking/build-public-snapshot.mjs --check
+      - name: Build complete static public-only website draft
+        run: node deployment/build-banking-preview.mjs --output "$RUNNER_TEMP/kino-build08-public-banking"
+      - name: Assert official evidence page and dependencies are deployable
+        run: |
+          test -s "$RUNNER_TEMP/kino-build08-public-banking/website/global-banking/official-source-evidence.html"
+          test -s "$RUNNER_TEMP/kino-build08-public-banking/website/global-banking/official-source-evidence.js"
+          test -s "$RUNNER_TEMP/kino-build08-public-banking/website/global-banking/official-source-evidence.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kino-build08-public-banking-preview
+          path: ${{ runner.temp }}/kino-build08-public-banking/
+          retention-days: 30
+          if-no-files-found: error

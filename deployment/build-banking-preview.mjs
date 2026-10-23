@@ -15,6 +15,9 @@ export const PUBLIC_FILES=Object.freeze([
   'website/global-banking/portal-registry-fallback.mjs',
   'website/global-banking/public-registry-snapshot.json',
   'website/global-banking/research-seed.json',
+  'website/global-banking/official-source-evidence.html',
+  'website/global-banking/official-source-evidence.js',
+  'website/global-banking/official-source-evidence.json',
 ]);
 const FORBIDDEN_FIELDS=new Set(['accountNumber','routingNumber','balanceUSD','clientSecret','privateKey','apiKey','accessToken']);
 function readJSON(path){try{return JSON.parse(readFileSync(path,'utf8'));}catch{throw Error('PUBLIC_BUILD_INPUT_NOT_VALID_JSON')}}
@@ -41,6 +44,33 @@ function recordsSafe(snapshot,seed){
   return {publicResearchEntries:snapshot.records.length,excludedHistoricalRecords:snapshot.historicalEntriesExcluded,
     developerResearchEntries:seed.providers.length,regions:seed.regions.length};
 }
+
+/** Validate each official-source record before bundling into a PUBLIC draft. */
+function officialEvidenceSafe(data) {
+ if(!data||data.mode!=='PUBLIC_SOURCE_RESEARCH_NOT_PROVIDER_ACCESS'||
+   data.productionBankingConnectionsVerified!==0||data.hostedAIAgentsVerified!==0||
+   !Array.isArray(data.entries)||data.entries.length<1||data.entries.length>150)
+   throw Error('UNSAFE_OFFICIAL_EVIDENCE');
+ const urls=new Set();
+ for(const row of data.entries){
+  if(!row||typeof row.provider!=='string'||!row.provider.trim()||
+    typeof row.lane!=='string'||!row.lane.trim()||
+    typeof row.sourceTitle!=='string'||typeof row.providerOnboarding!=='string'||
+    !Array.isArray(row.documentedAuthentication)||!Array.isArray(row.documentedCapability)||
+    typeof row.sandboxAccess!=='string')
+    throw Error('INVALID_OFFICIAL_EVIDENCE');
+  for(const field of FORBIDDEN_FIELDS)if(Object.hasOwn(row,field))throw Error('PRIVATE_OFFICIAL_EVIDENCE_FIELD');
+  let u;try{u=new URL(row.sourceUrl)}catch{throw Error('UNSAFE_OFFICIAL_SOURCE_URL')}
+  if(u.protocol!=='https:'||u.username||u.password||u.port||u.hash||
+    [...u.searchParams.keys()].some(key=>/token|key|secret|auth|session|signature/i.test(key))||
+    urls.has(u.href))throw Error('UNSAFE_OFFICIAL_SOURCE_URL');
+  urls.add(u.href);
+  if(/sk_(?:live|test)_[a-z0-9]{12,}|bearer\\s+[a-z0-9._-]{20,}/i.test(JSON.stringify(row)))
+    throw Error('SENSITIVE_OFFICIAL_EVIDENCE');
+ }
+ return data.entries.length;
+}
+
 export function buildBankingPreview({sourceRoot,outputDir}){
   if(!sourceRoot||!outputDir)throw Error('SOURCE_AND_OUTPUT_REQUIRED');
   const src=resolve(sourceRoot),out=resolve(outputDir);
@@ -49,13 +79,13 @@ export function buildBankingPreview({sourceRoot,outputDir}){
   for(const file of PUBLIC_FILES)if(!existsSync(join(src,file)))throw Error('MISSING_PUBLIC_SOURCE_FILE: '+file);
   const snapshot=readJSON(join(src,'website/global-banking/public-registry-snapshot.json'));
   const seed=readJSON(join(src,'website/global-banking/research-seed.json'));
-  const counts=recordsSafe(snapshot,seed);
+  const counts={...recordsSafe(snapshot,seed),officialDocumentPages:officialEvidenceSafe(readJSON(join(src,'website/global-banking/official-source-evidence.json')))};
   const js=readFileSync(join(src,'website/global-banking/portal.js'),'utf8');
   const html=readFileSync(join(src,'website/global-banking/index.html'),'utf8');
   if(!js.includes('public-registry-snapshot.json')||!js.includes('filterSnapshot')||!html.includes('Research-only platform'))throw Error('PUBLIC_PORTAL_NOT_FAIL_CLOSED');
   mkdirSync(out,{recursive:true});
   for(const file of PUBLIC_FILES){const p=join(out,file);mkdirSync(dirname(p),{recursive:true});copyFileSync(join(src,file),p);}
-  const index=`<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>SonoraPort · Global Banking Research Preview</title></head><body><main><h1>SonoraPort Global Banking Research</h1><p>BUILD06 preview · public documentation only · ${counts.publicResearchEntries} public research entries · ${counts.excludedHistoricalRecords} unverified historical entries excluded.</p><p>No bank account access, verified partnerships, live AI workers, or transfers are available through this preview.</p><p><a href="/website/global-banking/">Open searchable global banking research →</a></p><p><a href="https://sonoraportaiholdingllc.com/">Return to the existing SonoraPort main website</a></p></main></body></html>\n`;
+  const index=`<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>SonoraPort · Global Banking Research Preview</title></head><body><main><h1>SonoraPort Global Banking Research</h1><p>BUILD06 preview · public documentation only · ${counts.publicResearchEntries} public research entries · ${counts.excludedHistoricalRecords} unverified historical entries excluded.</p><p>No bank account access, verified partnerships, live AI workers, or transfers are available through this preview.</p><p><a href="/website/global-banking/">Open searchable global banking research →</a></p><p><a href="/website/global-banking/official-source-evidence.html">Explore ${counts.officialDocumentPages} official banking API source records →</a></p><p><a href="https://sonoraportaiholdingllc.com/">Return to the existing SonoraPort main website</a></p></main></body></html>\n`;
   writeFileSync(join(out,'index.html'),index);
   writeFileSync(join(out,'_headers'),`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n  X-Frame-Options: DENY\n  X-Robots-Tag: noindex, nofollow\n  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; object-src 'none'\n`);
   return Object.freeze({...counts,mode:'STATIC_DRAFT_DEPLOY_ONLY',mainWebsiteChanged:false,liveBankConnections:0,
